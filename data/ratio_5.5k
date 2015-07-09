@@ -1,0 +1,851 @@
+Params : 1 10 100 2 10 0 5500 10000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 693 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 76 WriteCount = 617
+    0      0  0.00     0  10026
+Submitted = 21676 Completed write count = 13378 Completed Read Count = 1461 Total = 14839
+Readcount = 2174 WriteCount = 18885
+  145   1333  4584.11    60  10000
+Submitted = 38500 Completed write count = 34645 Completed Read Count = 3855 Total = 38500
+Readcount = 3855 WriteCount = 15143
+  240   2130  3007.22   264  10000
+Submitted = 55983 Completed write count = 49749 Completed Read Count = 5558 Total = 55307
+Readcount = 5623 WriteCount = 15715
+  168   1501  3000.73    32  10047
+Submitted = 76801 Completed write count = 67642 Completed Read Count = 7475 Total = 75117
+Readcount = 7652 WriteCount = 18789
+  192   1789  2995.57   101  10000
+Submitted = 93500 Completed write count = 84177 Completed Read Count = 9323 Total = 93500
+Readcount = 9323 WriteCount = 15028
+  184   1655  3005.91    30  10000
+Submitted = 110992 Completed write count = 99372 Completed Read Count = 10967 Total = 110339
+Readcount = 11032 WriteCount = 15783
+  164   1518  2990.80    27  10000
+Submitted = 132000 Completed write count = 117537 Completed Read Count = 13028 Total = 130565
+Readcount = 13173 WriteCount = 18867
+  206   1815  3006.33    32  10000
+Submitted = 148500 Completed write count = 133668 Completed Read Count = 14832 Total = 148500
+Readcount = 14832 WriteCount = 14841
+  180   1615  3004.04    14  10000
+Percent of requests satisfied = 100.0000
+Params : 1 10 100 2 10 0 5500 10000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 11606 Completed write count = 1303 Completed Read Count = 150 Total = 1453
+Readcount = 1149 WriteCount = 10457
+   14    128  3019.90     6  10000
+Submitted = 30466 Completed write count = 19262 Completed Read Count = 2102 Total = 21364
+Readcount = 3038 WriteCount = 16971
+  195   1794  3016.12   128  10000
+Submitted = 49066 Completed write count = 44126 Completed Read Count = 4839 Total = 48965
+Readcount = 4845 WriteCount = 16793
+  274   2488  2991.88   271  10000
+Submitted = 66592 Completed write count = 59770 Completed Read Count = 6634 Total = 66404
+Readcount = 6652 WriteCount = 15719
+  179   1565  3008.99    81  10000
+Submitted = 85466 Completed write count = 76874 Completed Read Count = 8592 Total = 85466
+Readcount = 8592 WriteCount = 16934
+  196   1711  3021.08    54  10000
+Submitted = 104071 Completed write count = 93138 Completed Read Count = 10329 Total = 103466
+Readcount = 10389 WriteCount = 16808
+  173   1624  2999.63    54  10000
+Submitted = 121596 Completed write count = 109353 Completed Read Count = 12156 Total = 121509
+Readcount = 12163 WriteCount = 15751
+  182   1622  3011.96    62  10000
+Submitted = 140607 Completed write count = 126372 Completed Read Count = 14052 Total = 140424
+Readcount = 14073 WriteCount = 17101
+  189   1702  2992.86    45  10000
+Submitted = 159174 Completed write count = 142615 Completed Read Count = 15878 Total = 158493
+Readcount = 15941 WriteCount = 16699
+  182   1624  3003.55    19  10000
+Percent of requests satisfied = 99.5722
+Params : 1 10 100 2 10 0 5500 10000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 11035 Completed write count = 2627 Completed Read Count = 4 Total = 2631
+Readcount = 1153 WriteCount = 9882
+    0    253  3513.14     5  10310
+Submitted = 29040 Completed write count = 18956 Completed Read Count = 2149 Total = 21105
+Readcount = 2956 WriteCount = 16202
+  214   1631  3011.92   173  10000
+Submitted = 47295 Completed write count = 42559 Completed Read Count = 4736 Total = 47295
+Readcount = 4736 WriteCount = 16475
+  258   2363  2999.36   145  10000
+Submitted = 65615 Completed write count = 59023 Completed Read Count = 6566 Total = 65589
+Readcount = 6570 WriteCount = 16486
+  182   1644  3003.67    56  10000
+Submitted = 84038 Completed write count = 75465 Completed Read Count = 8491 Total = 83956
+Readcount = 8500 WriteCount = 16493
+  192   1644  3010.58   168  10000
+Submitted = 102406 Completed write count = 91962 Completed Read Count = 10364 Total = 102326
+Readcount = 10369 WriteCount = 16499
+  187   1649  2992.64    52  10000
+Submitted = 120631 Completed write count = 108358 Completed Read Count = 12270 Total = 120628
+Readcount = 12271 WriteCount = 16323
+  190   1639  3003.65    45  10000
+Submitted = 138751 Completed write count = 124674 Completed Read Count = 14074 Total = 138748
+Readcount = 14075 WriteCount = 16316
+  180   1632  3001.34    37  10000
+Submitted = 157406 Completed write count = 141521 Completed Read Count = 15882 Total = 157403
+Readcount = 15883 WriteCount = 16847
+  180   1684  2990.19    29  10000
+Percent of requests satisfied = 99.9981
+Params : 1 10 100 4 10 0 5500 10000 4
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 11646 Completed write count = 2989 Completed Read Count = 119 Total = 3108
+Readcount = 1149 WriteCount = 10497
+   11    283  3625.66   134  10490
+Submitted = 29625 Completed write count = 22065 Completed Read Count = 2415 Total = 24480
+Readcount = 2903 WriteCount = 16225
+  229   1905  3024.95   991  10000
+Submitted = 48041 Completed write count = 43295 Completed Read Count = 4746 Total = 48041
+Readcount = 4746 WriteCount = 16573
+  233   2126  2998.29   882  10000
+Submitted = 66593 Completed write count = 60066 Completed Read Count = 6527 Total = 66593
+Readcount = 6527 WriteCount = 16771
+  178   1677  3011.39   683  10000
+Submitted = 84782 Completed write count = 76371 Completed Read Count = 8370 Total = 84740
+Readcount = 8375 WriteCount = 16341
+  184   1629  3004.33   797  10000
+Submitted = 103041 Completed write count = 92813 Completed Read Count = 10228 Total = 103041
+Readcount = 10228 WriteCount = 16406
+  185   1645  3001.55   741  10000
+Submitted = 121631 Completed write count = 109532 Completed Read Count = 12069 Total = 121601
+Readcount = 12074 WriteCount = 16744
+  184   1670  2998.18   773  10001
+Submitted = 139672 Completed write count = 125818 Completed Read Count = 13853 Total = 139671
+Readcount = 13853 WriteCount = 16262
+  178   1629  3001.27   669  10000
+Submitted = 158120 Completed write count = 142468 Completed Read Count = 15651 Total = 158119
+Readcount = 15651 WriteCount = 16650
+  179   1663  2999.62   700  10000
+Percent of requests satisfied = 99.9994
+Params : 1 10 100 4 10 0 5500 10000 4
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10001
+Submitted = 11769 Completed write count = 1463 Completed Read Count = 158 Total = 1621
+Readcount = 1132 WriteCount = 10637
+   15    144  3020.47    55  10003
+Submitted = 30625 Completed write count = 23547 Completed Read Count = 2624 Total = 26171
+Readcount = 3070 WriteCount = 16918
+  246   2205  3018.49  1270  10001
+Submitted = 49260 Completed write count = 44306 Completed Read Count = 4870 Total = 49176
+Readcount = 4878 WriteCount = 16827
+  224   2078  3000.33  1203  10000
+Submitted = 66664 Completed write count = 60068 Completed Read Count = 6588 Total = 66656
+Readcount = 6589 WriteCount = 15693
+  171   1575  2998.99   712  10000
+Submitted = 85625 Completed write count = 77093 Completed Read Count = 8531 Total = 85624
+Readcount = 8531 WriteCount = 17019
+  193   1703  3009.93   830  10001
+Submitted = 104039 Completed write count = 93691 Completed Read Count = 10347 Total = 104038
+Readcount = 10347 WriteCount = 16598
+  182   1660  2995.35   780  10001
+Submitted = 121664 Completed write count = 109628 Completed Read Count = 12035 Total = 121663
+Readcount = 12035 WriteCount = 15937
+  168   1593  2993.76   714  10000
+Submitted = 140742 Completed write count = 126661 Completed Read Count = 13984 Total = 140645
+Readcount = 13999 WriteCount = 17114
+  194   1701  3013.36   770  10000
+Submitted = 159039 Completed write count = 143225 Completed Read Count = 15813 Total = 159038
+Readcount = 15813 WriteCount = 16483
+  183   1658  3001.44   807  10000
+Percent of requests satisfied = 99.9994
+Params : 1 10 100 2 10 0 5500 10000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 14805 Completed write count = 1523 Completed Read Count = 31 Total = 1554
+Readcount = 1456 WriteCount = 13349
+    3    150  2591.89     3  10018
+Submitted = 33277 Completed write count = 17323 Completed Read Count = 1916 Total = 19239
+Readcount = 3318 WriteCount = 16610
+  188   1579  3014.61    96  10000
+Submitted = 51419 Completed write count = 44678 Completed Read Count = 4911 Total = 49589
+Readcount = 5057 WriteCount = 16403
+  297   2719  2994.33   273  10066
+Submitted = 69955 Completed write count = 62800 Completed Read Count = 6921 Total = 69721
+Readcount = 6947 WriteCount = 16646
+  200   1812  3013.33    54  10000
+Submitted = 88312 Completed write count = 79512 Completed Read Count = 8757 Total = 88269
+Readcount = 8762 WriteCount = 16542
+  183   1670  2991.80    90  10000
+Submitted = 106541 Completed write count = 95902 Completed Read Count = 10523 Total = 106425
+Readcount = 10534 WriteCount = 16457
+  176   1639  3010.83    86  10000
+Submitted = 124401 Completed write count = 111882 Completed Read Count = 12237 Total = 124119
+Readcount = 12306 WriteCount = 16088
+  171   1598  3013.11    35  10000
+Submitted = 143339 Completed write count = 129137 Completed Read Count = 14184 Total = 143321
+Readcount = 14186 WriteCount = 17058
+  194   1725  2996.98    25  10000
+Submitted = 161541 Completed write count = 145459 Completed Read Count = 16042 Total = 161500
+Readcount = 16047 WriteCount = 16341
+  185   1632  3005.18    36  10000
+Percent of requests satisfied = 99.9746
+Params : 1 10 100 4 10 0 5500 10000 4
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10001
+Submitted = 11594 Completed write count = 2637 Completed Read Count = 13 Total = 2650
+Readcount = 1148 WriteCount = 10446
+    1    260  3176.36   120  10000
+Submitted = 29520 Completed write count = 20987 Completed Read Count = 2247 Total = 23234
+Readcount = 2889 WriteCount = 16185
+  223   1834  3017.50   882  10000
+Submitted = 48024 Completed write count = 43237 Completed Read Count = 4787 Total = 48024
+Readcount = 4787 WriteCount = 16606
+  254   2228  3009.92  1167  10001
+Submitted = 66497 Completed write count = 59888 Completed Read Count = 6609 Total = 66497
+Readcount = 6609 WriteCount = 16651
+  182   1664  2996.98   727  10000
+Submitted = 84530 Completed write count = 76151 Completed Read Count = 8374 Total = 84525
+Readcount = 8376 WriteCount = 16266
+  176   1626  3003.48   719  10000
+Submitted = 103024 Completed write count = 92821 Completed Read Count = 10203 Total = 103024
+Readcount = 10203 WriteCount = 16667
+  182   1667  2992.96   694  10000
+Submitted = 121497 Completed write count = 109490 Completed Read Count = 12007 Total = 121497
+Readcount = 12007 WriteCount = 16669
+  180   1666  2993.36   859  10000
+Submitted = 139560 Completed write count = 125688 Completed Read Count = 13872 Total = 139560
+Readcount = 13872 WriteCount = 16198
+  186   1619  3013.16   704  10000
+Submitted = 158024 Completed write count = 142367 Completed Read Count = 15657 Total = 158024
+Readcount = 15657 WriteCount = 16679
+  178   1667  2994.24   699  10001
+Percent of requests satisfied = 100.0000
+Params : 1 10 100 8 10 0 5500 10000 8
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 4076 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 415 WriteCount = 3661
+    0      0  0.00     0  10034
+Submitted = 22000 Completed write count = 19835 Completed Read Count = 2164 Total = 21999
+Readcount = 2164 WriteCount = 16175
+  216   1983  5227.26  3774  10001
+Submitted = 39068 Completed write count = 34885 Completed Read Count = 3917 Total = 38802
+Readcount = 3945 WriteCount = 15287
+  174   1503  3020.80  2484  10000
+Submitted = 60374 Completed write count = 53567 Completed Read Count = 6025 Total = 59592
+Readcount = 6094 WriteCount = 19157
+  211   1868  2993.73  2950  10000
+Submitted = 77000 Completed write count = 69193 Completed Read Count = 7806 Total = 76999
+Readcount = 7806 WriteCount = 14914
+  178   1564  3009.38  2248  10000
+Submitted = 94215 Completed write count = 84393 Completed Read Count = 9491 Total = 93884
+Readcount = 9520 WriteCount = 15501
+  168   1518  2995.86  2088  10000
+Submitted = 115374 Completed write count = 103051 Completed Read Count = 11626 Total = 114677
+Readcount = 11698 WriteCount = 18981
+  212   1865  3006.14  2579  10000
+Submitted = 132000 Completed write count = 118611 Completed Read Count = 13388 Total = 131999
+Readcount = 13388 WriteCount = 14936
+  176   1558  3000.33  2158  10000
+Submitted = 149215 Completed write count = 133907 Completed Read Count = 15122 Total = 149029
+Readcount = 15148 WriteCount = 15455
+  173   1528  2995.67  2107  10000
+Percent of requests satisfied = 99.8753
+Params : 1 10 100 8 10 0 5500 10000 8
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 13824 Completed write count = 2570 Completed Read Count = 0 Total = 2570
+Readcount = 1400 WriteCount = 12424
+    0    254  2767.50   434  10012
+Submitted = 32419 Completed write count = 24025 Completed Read Count = 2655 Total = 26680
+Readcount = 3220 WriteCount = 16775
+  264   2143  3004.86  3427  10000
+Submitted = 50680 Completed write count = 45607 Completed Read Count = 5073 Total = 50680
+Readcount = 5073 WriteCount = 16408
+  242   2162  3006.36  3664  10000
+Submitted = 68826 Completed write count = 61902 Completed Read Count = 6879 Total = 68781
+Readcount = 6889 WriteCount = 16330
+  180   1627  2998.08  2412  10001
+Submitted = 87313 Completed write count = 78404 Completed Read Count = 8719 Total = 87122
+Readcount = 8740 WriteCount = 16636
+  184   1650  3000.30  2383  10000
+Submitted = 105680 Completed write count = 95220 Completed Read Count = 10458 Total = 105678
+Readcount = 10459 WriteCount = 16648
+  173   1683  2997.09  2511  10000
+Submitted = 123904 Completed write count = 111574 Completed Read Count = 12282 Total = 123856
+Readcount = 12285 WriteCount = 16398
+  182   1633  3005.35  2275  10000
+Submitted = 142317 Completed write count = 128160 Completed Read Count = 14049 Total = 142209
+Readcount = 14060 WriteCount = 16638
+  176   1658  3000.47  2265  10001
+Submitted = 160680 Completed write count = 144770 Completed Read Count = 15907 Total = 160677
+Readcount = 15908 WriteCount = 16515
+  186   1663  3002.52  2323  10001
+Percent of requests satisfied = 99.9981
+Params : 1 10 100 8 10 0 5500 10000 8
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 12709 Completed write count = 2887 Completed Read Count = 0 Total = 2887
+Readcount = 1291 WriteCount = 11418
+    0    286  3151.64   477  10009
+Submitted = 30814 Completed write count = 22605 Completed Read Count = 2524 Total = 25129
+Readcount = 3111 WriteCount = 16285
+  251   1966  3010.76  3035  10025
+Submitted = 49367 Completed write count = 44243 Completed Read Count = 4945 Total = 49188
+Readcount = 4963 WriteCount = 16701
+  242   2165  3004.01  2937  10000
+Submitted = 67807 Completed write count = 60990 Completed Read Count = 6818 Total = 67808
+Readcount = 6818 WriteCount = 16585
+  187   1675  2998.68  2194  10000
+Submitted = 85884 Completed write count = 77285 Completed Read Count = 8599 Total = 85884
+Readcount = 8599 WriteCount = 16296
+  178   1629  2993.19  2087  10000
+Submitted = 104381 Completed write count = 93863 Completed Read Count = 10518 Total = 104381
+Readcount = 10518 WriteCount = 16578
+  191   1657  3015.91  2097  10000
+Submitted = 122834 Completed write count = 110479 Completed Read Count = 12355 Total = 122834
+Readcount = 12355 WriteCount = 16616
+  183   1661  2987.33  2104  10000
+Submitted = 141003 Completed write count = 126621 Completed Read Count = 14101 Total = 140722
+Readcount = 14130 WriteCount = 16394
+  174   1611  3005.09  2063  10000
+Submitted = 159450 Completed write count = 143509 Completed Read Count = 15893 Total = 159402
+Readcount = 15896 WriteCount = 16681
+  179   1689  2998.72  2152  10000
+Percent of requests satisfied = 99.9699
+Params : 1 10 100 12 10 0 5500 10000 12
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 14338 Completed write count = 874 Completed Read Count = 84 Total = 958
+Readcount = 1470 WriteCount = 12868
+    8     85  2723.01   331  10000
+Submitted = 32178 Completed write count = 19339 Completed Read Count = 2160 Total = 21499
+Readcount = 3258 WriteCount = 16052
+  206   1842  3011.67  6276  10001
+Submitted = 50369 Completed write count = 45181 Completed Read Count = 5072 Total = 50253
+Readcount = 5083 WriteCount = 16366
+  291   2588  2999.39  7572  10000
+Submitted = 69335 Completed write count = 62222 Completed Read Count = 6993 Total = 69215
+Readcount = 7009 WriteCount = 17040
+  192   1703  3006.01  4745  10000
+Submitted = 87267 Completed write count = 78417 Completed Read Count = 8805 Total = 87222
+Readcount = 8810 WriteCount = 16131
+  181   1618  3006.55  4350  10001
+Submitted = 105369 Completed write count = 94735 Completed Read Count = 10633 Total = 105368
+Readcount = 10633 WriteCount = 16279
+  182   1633  2991.09  4520  10001
+Submitted = 124345 Completed write count = 111815 Completed Read Count = 12486 Total = 124301
+Readcount = 12490 WriteCount = 17119
+  185   1706  3005.93  4745  10000
+Submitted = 142267 Completed write count = 128006 Completed Read Count = 14260 Total = 142266
+Readcount = 14260 WriteCount = 16152
+  177   1620  2994.20  4312  10000
+Submitted = 160382 Completed write count = 144305 Completed Read Count = 16076 Total = 160381
+Readcount = 16076 WriteCount = 16299
+  181   1629  3011.59  4497  10000
+Percent of requests satisfied = 99.9994
+Params : 1 10 100 12 10 0 5500 10000 12
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 11000 Completed write count = 1911 Completed Read Count = 206 Total = 2117
+Readcount = 1076 WriteCount = 9924
+   20    190  3287.97   640  10000
+Submitted = 29739 Completed write count = 25965 Completed Read Count = 2833 Total = 28798
+Readcount = 2911 WriteCount = 16904
+  262   2402  3008.84  7221  10000
+Submitted = 48236 Completed write count = 43275 Completed Read Count = 4712 Total = 47987
+Readcount = 4736 WriteCount = 16672
+  188   1732  3005.44  4513  10000
+Submitted = 66000 Completed write count = 59472 Completed Read Count = 6528 Total = 66000
+Readcount = 6528 WriteCount = 15972
+  181   1622  2998.41  4340  10000
+Submitted = 84623 Completed write count = 76169 Completed Read Count = 8454 Total = 84623
+Readcount = 8454 WriteCount = 16697
+  192   1669  3008.78  4288  10001
+Submitted = 103285 Completed write count = 92843 Completed Read Count = 10276 Total = 103119
+Readcount = 10293 WriteCount = 16823
+  182   1665  2997.72  4293  10000
+Submitted = 121000 Completed write count = 108957 Completed Read Count = 12043 Total = 121000
+Readcount = 12043 WriteCount = 15965
+  176   1613  3000.97  4078  10000
+Submitted = 139623 Completed write count = 125725 Completed Read Count = 13898 Total = 139623
+Readcount = 13898 WriteCount = 16768
+  185   1676  3000.32  4388  10001
+Submitted = 158285 Completed write count = 142450 Completed Read Count = 15764 Total = 158214
+Readcount = 15771 WriteCount = 16789
+  186   1671  2999.09  4386  10000
+Percent of requests satisfied = 99.9551
+Params : 1 10 100 12 10 0 5500 10000 12
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 13917 Completed write count = 1346 Completed Read Count = 4 Total = 1350
+Readcount = 1392 WriteCount = 12525
+    0    133  2770.80   504  10000
+Submitted = 31850 Completed write count = 19917 Completed Read Count = 2170 Total = 22087
+Readcount = 3128 WriteCount = 16197
+  216   1853  3013.67  5970  10001
+Submitted = 50102 Completed write count = 45152 Completed Read Count = 4950 Total = 50102
+Readcount = 4950 WriteCount = 16430
+  278   2528  3005.86  7279  10000
+Submitted = 68994 Completed write count = 62184 Completed Read Count = 6809 Total = 68993
+Readcount = 6809 WriteCount = 17033
+  185   1703  2996.13  4554  10000
+Submitted = 87033 Completed write count = 78484 Completed Read Count = 8548 Total = 87032
+Readcount = 8548 WriteCount = 16300
+  173   1630  3003.92  4503  10000
+Submitted = 105327 Completed write count = 94558 Completed Read Count = 10336 Total = 104894
+Readcount = 10384 WriteCount = 16458
+  177   1594  3005.61  4420  10084
+Submitted = 124225 Completed write count = 111916 Completed Read Count = 12308 Total = 124224
+Readcount = 12308 WriteCount = 16974
+  196   1733  3007.45  4762  10000
+Submitted = 142158 Completed write count = 128157 Completed Read Count = 14000 Total = 142157
+Readcount = 14000 WriteCount = 16241
+  169   1626  2989.11  4374  10000
+Submitted = 160428 Completed write count = 144358 Completed Read Count = 15781 Total = 160139
+Readcount = 15810 WriteCount = 16460
+  177   1618  3000.71  4372  10001
+Percent of requests satisfied = 99.8199
+Params : 1 10 100 16 10 0 5500 10000 16
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 13662 Completed write count = 1154 Completed Read Count = 0 Total = 1154
+Readcount = 1392 WriteCount = 12270
+    0    113  2751.73   762  10052
+Submitted = 31293 Completed write count = 22296 Completed Read Count = 2458 Total = 24754
+Readcount = 3123 WriteCount = 15900
+  245   2112  3009.25 11661  10000
+Submitted = 49903 Completed write count = 44810 Completed Read Count = 5093 Total = 49903
+Readcount = 5093 WriteCount = 16640
+  264   2254  3012.41 10227  10000
+Submitted = 68600 Completed write count = 61622 Completed Read Count = 6978 Total = 68600
+Readcount = 6978 WriteCount = 16812
+  188   1681  2996.31  7471  10001
+Submitted = 86293 Completed write count = 77479 Completed Read Count = 8814 Total = 86293
+Readcount = 8814 WriteCount = 15857
+  183   1585  3006.84  6883  10000
+Submitted = 104994 Completed write count = 94284 Completed Read Count = 10639 Total = 104923
+Readcount = 10649 WriteCount = 16866
+  182   1678  2991.97  7730  10000
+Submitted = 123600 Completed write count = 111055 Completed Read Count = 12544 Total = 123599
+Readcount = 12545 WriteCount = 16710
+  190   1678  3007.15  7682  10000
+Submitted = 141303 Completed write count = 126998 Completed Read Count = 14304 Total = 141302
+Readcount = 14305 WriteCount = 15943
+  176   1594  2995.48  6957  10000
+Submitted = 160019 Completed write count = 143812 Completed Read Count = 16206 Total = 160018
+Readcount = 16207 WriteCount = 16814
+  190   1679  2998.19  7469  10000
+Percent of requests satisfied = 99.9994
+Params : 1 10 100 16 10 0 5500 10000 16
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 19159 Completed write count = 16483 Completed Read Count = 1827 Total = 18310
+Readcount = 1908 WriteCount = 17251
+  181   1643  4811.90  8109  10000
+Submitted = 38500 Completed write count = 34638 Completed Read Count = 3862 Total = 38500
+Readcount = 3862 WriteCount = 17387
+  204   1820  3008.28  7885  10000
+Submitted = 55000 Completed write count = 49531 Completed Read Count = 5469 Total = 55000
+Readcount = 5469 WriteCount = 14893
+  160   1489  3001.81  6598  10001
+Submitted = 73982 Completed write count = 66432 Completed Read Count = 7418 Total = 73850
+Readcount = 7437 WriteCount = 17014
+  194   1688  3007.48  7372  10000
+Submitted = 93500 Completed write count = 84123 Completed Read Count = 9377 Total = 93500
+Readcount = 9377 WriteCount = 17578
+  196   1770  2998.78  7563  10000
+Submitted = 110000 Completed write count = 98953 Completed Read Count = 11047 Total = 110000
+Readcount = 11047 WriteCount = 14830
+  167   1483  3002.08  6720  10000
+Submitted = 129006 Completed write count = 116099 Completed Read Count = 12840 Total = 128936
+Readcount = 12846 WriteCount = 17207
+  179   1712  2999.65  7269  10000
+Submitted = 148500 Completed write count = 133629 Completed Read Count = 14871 Total = 148500
+Readcount = 14871 WriteCount = 17469
+  200   1733  3005.81  7627  10122
+Percent of requests satisfied = 100.0000
+Params : 1 10 100 16 10 0 5500 10000 16
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10001
+Submitted = 12471 Completed write count = 1753 Completed Read Count = 175 Total = 1928
+Readcount = 1212 WriteCount = 11259
+   17    174  2993.21   918  10000
+Submitted = 30973 Completed write count = 25455 Completed Read Count = 2668 Total = 28123
+Readcount = 2974 WriteCount = 16740
+  249   2369  3019.84 10926  10002
+Submitted = 49345 Completed write count = 44569 Completed Read Count = 4775 Total = 49344
+Readcount = 4775 WriteCount = 16571
+  210   1912  2999.80  7994  10000
+Submitted = 67327 Completed write count = 60697 Completed Read Count = 6515 Total = 67212
+Readcount = 6524 WriteCount = 16233
+  173   1610  2996.42  6736  10000
+Submitted = 86017 Completed write count = 77531 Completed Read Count = 8426 Total = 85957
+Readcount = 8435 WriteCount = 16779
+  190   1684  3015.06  6976  10001
+Submitted = 104345 Completed write count = 94092 Completed Read Count = 10252 Total = 104344
+Readcount = 10252 WriteCount = 16511
+  183   1657  3006.63  6948  10000
+Submitted = 122327 Completed write count = 110240 Completed Read Count = 12050 Total = 122290
+Readcount = 12067 WriteCount = 16167
+  179   1613  2993.80  6743  10000
+Submitted = 141017 Completed write count = 127107 Completed Read Count = 13909 Total = 141016
+Readcount = 13909 WriteCount = 16848
+  185   1687  2997.68  7068  10000
+Submitted = 159391 Completed write count = 143584 Completed Read Count = 15806 Total = 159390
+Readcount = 15806 WriteCount = 16477
+  190   1649  3002.22  6765  10000
+Percent of requests satisfied = 99.9994
+Params : 1 10 100 16 10 0 5500 10000 16
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 1402 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 134 WriteCount = 1268
+    0      0  0.00     0  10026
+Submitted = 22000 Completed write count = 17993 Completed Read Count = 2049 Total = 20041
+Readcount = 2275 WriteCount = 18457
+  203   1785  4696.62  8177  10049
+Submitted = 38500 Completed write count = 34538 Completed Read Count = 3961 Total = 38499
+Readcount = 3961 WriteCount = 14814
+  191   1659  3002.31  6903  10000
+Submitted = 56793 Completed write count = 50781 Completed Read Count = 5759 Total = 56540
+Readcount = 5796 WriteCount = 16458
+  179   1621  3011.51  6872  10001
+Submitted = 77000 Completed write count = 68950 Completed Read Count = 7783 Total = 76733
+Readcount = 7803 WriteCount = 18200
+  202   1817  2984.25  7644  10000
+Submitted = 93500 Completed write count = 84033 Completed Read Count = 9466 Total = 93499
+Readcount = 9466 WriteCount = 14837
+  168   1509  3008.41  6561  10000
+Submitted = 111793 Completed write count = 100387 Completed Read Count = 11270 Total = 111657
+Readcount = 11286 WriteCount = 16473
+  180   1632  3007.42  7050  10000
+Submitted = 132000 Completed write count = 118535 Completed Read Count = 13335 Total = 131870
+Readcount = 13343 WriteCount = 18150
+  206   1814  2987.41  7574  10000
+Submitted = 148500 Completed write count = 133473 Completed Read Count = 15026 Total = 148499
+Readcount = 15026 WriteCount = 14817
+  169   1497  3010.66  6420  10000
+Percent of requests satisfied = 99.9993
+Params : 1 10 100 16 10 0 5500 10000 16
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 11570 Completed write count = 3553 Completed Read Count = 90 Total = 3643
+Readcount = 1103 WriteCount = 10467
+    9    353  3353.84  2024  10000
+Submitted = 29790 Completed write count = 24381 Completed Read Count = 2605 Total = 26986
+Readcount = 2873 WriteCount = 16450
+  250   2078  3078.50 10221  10001
+Submitted = 48273 Completed write count = 43533 Completed Read Count = 4740 Total = 48273
+Readcount = 4740 WriteCount = 16616
+  214   1921  3013.69  8053  10000
+Submitted = 66802 Completed write count = 60090 Completed Read Count = 6649 Total = 66739
+Readcount = 6656 WriteCount = 16613
+  190   1654  2998.52  6883  10000
+Submitted = 84694 Completed write count = 76241 Completed Read Count = 8453 Total = 84694
+Readcount = 8453 WriteCount = 16095
+  180   1616  2998.78  6817  10000
+Submitted = 103273 Completed write count = 92960 Completed Read Count = 10313 Total = 103273
+Readcount = 10313 WriteCount = 16719
+  186   1671  3003.06  7095  10000
+Submitted = 121837 Completed write count = 109676 Completed Read Count = 12142 Total = 121818
+Readcount = 12147 WriteCount = 16730
+  182   1670  3001.41  7040  10000
+Submitted = 139694 Completed write count = 125758 Completed Read Count = 13935 Total = 139693
+Readcount = 13935 WriteCount = 16069
+  179   1609  3003.67  6721  10000
+Submitted = 158273 Completed write count = 142466 Completed Read Count = 15806 Total = 158272
+Readcount = 15806 WriteCount = 16708
+  187   1670  2999.54  6999  10001
+Percent of requests satisfied = 99.9994
+Params : 1 10 100 20 10 0 5500 10000 20
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 14919 Completed write count = 1096 Completed Read Count = 0 Total = 1096
+Readcount = 1451 WriteCount = 13468
+    0    107  2681.51   942  10000
+Submitted = 32772 Completed write count = 22626 Completed Read Count = 2473 Total = 25099
+Readcount = 3191 WriteCount = 16113
+  245   2148  3006.10 14650  10000
+Submitted = 51038 Completed write count = 46079 Completed Read Count = 4962 Total = 51040
+Readcount = 4962 WriteCount = 16495
+  251   2350  3007.63 13536  10001
+Submitted = 69499 Completed write count = 62616 Completed Read Count = 6858 Total = 69474
+Readcount = 6863 WriteCount = 16560
+  189   1653  3008.96  9102  10000
+Submitted = 87772 Completed write count = 79106 Completed Read Count = 8669 Total = 87775
+Readcount = 8669 WriteCount = 16467
+  181   1648  2994.76  9254  10001
+Submitted = 106045 Completed write count = 95537 Completed Read Count = 10508 Total = 106045
+Readcount = 10508 WriteCount = 16434
+  183   1643  3006.26  8853  10000
+Submitted = 124852 Completed write count = 112243 Completed Read Count = 12330 Total = 124573
+Readcount = 12364 WriteCount = 16951
+  182   1668  2998.21  9453  10000
+Submitted = 142805 Completed write count = 128636 Completed Read Count = 14169 Total = 142805
+Readcount = 14169 WriteCount = 16148
+  184   1641  2996.53  9417  10000
+Submitted = 161038 Completed write count = 145056 Completed Read Count = 15982 Total = 161038
+Readcount = 15982 WriteCount = 16420
+  181   1642  3004.34  8913  10000
+Percent of requests satisfied = 100.0000
+Params : 1 10 100 20 10 0 5500 10000 20
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 14915 Completed write count = 1180 Completed Read Count = 0 Total = 1179
+Readcount = 1369 WriteCount = 13546
+    0    114  2615.04  1030  10138
+Submitted = 32855 Completed write count = 22783 Completed Read Count = 2451 Total = 25234
+Readcount = 3246 WriteCount = 16063
+  244   2157  3018.25 14762  10000
+Submitted = 50904 Completed write count = 45863 Completed Read Count = 5040 Total = 50903
+Readcount = 5041 WriteCount = 16254
+  259   2312  3006.09 13969  10001
+Submitted = 69741 Completed write count = 62624 Completed Read Count = 6949 Total = 69573
+Readcount = 6967 WriteCount = 16911
+  190   1674  3002.33  9556  10000
+Submitted = 87843 Completed write count = 79150 Completed Read Count = 8692 Total = 87842
+Readcount = 8693 WriteCount = 16376
+  174   1654  2998.73  9525  10000
+Submitted = 105864 Completed write count = 95237 Completed Read Count = 10546 Total = 105783
+Readcount = 10557 WriteCount = 16157
+  184   1597  3012.88  8931  10066
+Submitted = 124963 Completed write count = 112474 Completed Read Count = 12488 Total = 124962
+Readcount = 12489 WriteCount = 17167
+  193   1722  2997.60  9689  10000
+Submitted = 143030 Completed write count = 128682 Completed Read Count = 14324 Total = 143005
+Readcount = 14329 WriteCount = 16227
+  183   1620  2994.62  9096  10000
+Submitted = 160898 Completed write count = 144630 Completed Read Count = 16162 Total = 160792
+Readcount = 16178 WriteCount = 16019
+  183   1594  2993.22  8974  10000
+Percent of requests satisfied = 99.9341
+Params : 1 10 100 20 10 0 5500 10000 20
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10001
+Submitted = 12818 Completed write count = 2996 Completed Read Count = 3 Total = 2999
+Readcount = 1314 WriteCount = 11504
+    0    298  3150.17  2880  10000
+Submitted = 31040 Completed write count = 22869 Completed Read Count = 2655 Total = 25524
+Readcount = 3234 WriteCount = 16302
+  264   1985  3014.87 14659  10001
+Submitted = 49221 Completed write count = 44172 Completed Read Count = 5049 Total = 49221
+Readcount = 5049 WriteCount = 16366
+  239   2132  2994.69 13373  10001
+Submitted = 67556 Completed write count = 60667 Completed Read Count = 6888 Total = 67555
+Readcount = 6889 WriteCount = 16495
+  183   1649  3004.24  9879  10000
+Submitted = 86040 Completed write count = 77340 Completed Read Count = 8699 Total = 86039
+Readcount = 8700 WriteCount = 16673
+  181   1667  3009.07 10540  10000
+Submitted = 104122 Completed write count = 93558 Completed Read Count = 10563 Total = 104121
+Readcount = 10564 WriteCount = 16218
+  186   1621  2997.36  9774  10001
+Submitted = 122556 Completed write count = 110172 Completed Read Count = 12383 Total = 122555
+Readcount = 12384 WriteCount = 16614
+  182   1661  3001.23 10308  10000
+Submitted = 141040 Completed write count = 126827 Completed Read Count = 14212 Total = 141039
+Readcount = 14213 WriteCount = 16655
+  182   1665  3000.45 10447  10000
+Submitted = 159246 Completed write count = 143097 Completed Read Count = 16069 Total = 159166
+Readcount = 16079 WriteCount = 16340
+  185   1625  2996.31 10041  10000
+Percent of requests satisfied = 99.9498
+Params : 1 10 100 2 10 0 5000 10000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 11032 Completed write count = 4494 Completed Read Count = 156 Total = 4650
+Readcount = 1072 WriteCount = 9960
+   14    449  2843.48     6  10000
+Submitted = 28193 Completed write count = 24811 Completed Read Count = 2697 Total = 27507
+Readcount = 2759 WriteCount = 15474
+  255   2028  3015.95   255  10000
+Submitted = 45464 Completed write count = 40687 Completed Read Count = 4518 Total = 45205
+Readcount = 4549 WriteCount = 15481
+  182   1589  3002.04   166  10000
+Submitted = 60986 Completed write count = 54830 Completed Read Count = 6127 Total = 60956
+Readcount = 6134 WriteCount = 13937
+  160   1413  3009.90    41  10000
+Submitted = 78258 Completed write count = 70287 Completed Read Count = 7844 Total = 78131
+Readcount = 7855 WriteCount = 15551
+  171   1545  2997.82    54  10000
+Submitted = 95571 Completed write count = 85871 Completed Read Count = 9558 Total = 95429
+Readcount = 9585 WriteCount = 15583
+  171   1559  2999.88    70  10000
+Submitted = 110986 Completed write count = 99841 Completed Read Count = 11145 Total = 110986
+Readcount = 11145 WriteCount = 13855
+  158   1397  3012.78    31  10000
+Submitted = 128258 Completed write count = 115364 Completed Read Count = 12811 Total = 128175
+Readcount = 12816 WriteCount = 15601
+  166   1551  2996.49    46  10001
+Submitted = 145571 Completed write count = 130836 Completed Read Count = 14519 Total = 145355
+Readcount = 14540 WriteCount = 15589
+  170   1547  2997.94    40  10000
+Percent of requests satisfied = 99.8516
+Params : 1 10 100 2 10 0 5000 10000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Submitted = 0 Completed write count = 0 Completed Read Count = 0 Total = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Submitted = 12001 Completed write count = 4850 Completed Read Count = 4 Total = 4854
+Readcount = 1209 WriteCount = 10792
+    0    482  2868.85     8  10043
+Submitted = 29193 Completed write count = 23614 Completed Read Count = 2699 Total = 26313
+Readcount = 3003 WriteCount = 15398
+  269   1874  3014.69   208  10000
+Submitted = 46010 Completed write count = 41341 Completed Read Count = 4669 Total = 46010
+Readcount = 4669 WriteCount = 15151
+  196   1775  3002.47   226  10000
+Submitted = 62075 Completed write count = 55766 Completed Read Count = 6309 Total = 62075
+Readcount = 6309 WriteCount = 14425
+  164   1441  2998.24    53  10000
+Submitted = 79217 Completed write count = 71249 Completed Read Count = 7968 Total = 79217
+Readcount = 7968 WriteCount = 15483
+  165   1548  3006.49    61  10000
+Submitted = 96010 Completed write count = 86277 Completed Read Count = 9733 Total = 96010
+Readcount = 9733 WriteCount = 15028
+  176   1503  3009.60    48  10000
+Submitted = 112075 Completed write count = 100743 Completed Read Count = 11332 Total = 112075
+Readcount = 11332 WriteCount = 14466
+  159   1446  2995.80    48  10000
+Submitted = 129217 Completed write count = 116237 Completed Read Count = 12980 Total = 129217
+Readcount = 12980 WriteCount = 15494
+  164   1549  2994.42    19  10000
+Submitted = 146010 Completed write count = 131332 Completed Read Count = 14645 Total = 145977
+Readcount = 14651 WriteCount = 15122
+  166   1508  3010.58    38  10000
+Percent of requests satisfied = 99.9774

@@ -1,0 +1,36 @@
+Params : 1 10 100 10 0 0 40 1000 10
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Completed write count = 0 Completed Read Count = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Completed write count = 400 Completed Read Count = 0
+Readcount = 0 WriteCount = 400
+    0     40  900.33   114  10000
+Completed write count = 800 Completed Read Count = 0
+Readcount = 0 WriteCount = 400
+    0     40  1000.18    53  10000
+Completed write count = 1200 Completed Read Count = 0
+Readcount = 0 WriteCount = 400
+    0     40  1000.19    72  10000
+Completed write count = 1600 Completed Read Count = 0
+Readcount = 0 WriteCount = 400
+    0     40  1000.19    57  10000
+Completed write count = 2000 Completed Read Count = 0
+Readcount = 0 WriteCount = 400
+    0     40  1000.15    47  10000
+Completed write count = 2400 Completed Read Count = 0
+Readcount = 0 WriteCount = 400
+    0     39  1000.18    59  10001
+Completed write count = 2800 Completed Read Count = 0
+Readcount = 0 WriteCount = 400
+    0     40  1000.54    63  10000
+Completed write count = 3200 Completed Read Count = 0
+Readcount = 0 WriteCount = 400
+    0     40  1000.15    68  10000
+Completed write count = 3600 Completed Read Count = 0
+Readcount = 0 WriteCount = 400
+    0     40  1000.18    52  10000

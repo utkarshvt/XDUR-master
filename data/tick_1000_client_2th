@@ -1,0 +1,396 @@
+Params : 1 10 100 2 10 0 40 1000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Completed write count = 0 Completed Read Count = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Completed write count = 138 Completed Read Count = 22
+Readcount = 22 WriteCount = 138
+    2     13  2305.39     1  10000
+Completed write count = 242 Completed Read Count = 38
+Readcount = 38 WriteCount = 104
+    1     10  3000.29     0  10000
+Completed write count = 348 Completed Read Count = 52
+Readcount = 52 WriteCount = 106
+    1     10  2971.98     0  10000
+Completed write count = 491 Completed Read Count = 69
+Readcount = 69 WriteCount = 143
+    1     14  2874.36     0  10000
+Completed write count = 599 Completed Read Count = 81
+Readcount = 81 WriteCount = 108
+    1     10  3083.42     0  10000
+Completed write count = 712 Completed Read Count = 88
+Readcount = 88 WriteCount = 113
+    0     11  2920.59     2  10000
+Completed write count = 861 Completed Read Count = 99
+Readcount = 99 WriteCount = 149
+    1     14  3080.92     0  10000
+Completed write count = 969 Completed Read Count = 111
+Readcount = 111 WriteCount = 108
+    1     10  2972.38     0  10000
+Completed write count = 1080 Completed Read Count = 120
+Readcount = 120 WriteCount = 111
+    0     11  2973.14     0  10000
+Params : 1 10 100 2 10 0 80 1000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Completed write count = 0 Completed Read Count = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Completed write count = 289 Completed Read Count = 31
+Readcount = 31 WriteCount = 289
+    3     28  2263.46     2  10001
+Completed write count = 506 Completed Read Count = 54
+Readcount = 54 WriteCount = 217
+    2     21  2972.55     0  10000
+Completed write count = 728 Completed Read Count = 72
+Readcount = 72 WriteCount = 222
+    1     22  2973.11     0  10000
+Completed write count = 1022 Completed Read Count = 98
+Readcount = 98 WriteCount = 294
+    2     29  3000.18     0  10000
+Completed write count = 1240 Completed Read Count = 120
+Readcount = 120 WriteCount = 218
+    2     21  3124.07     0  10000
+Completed write count = 1457 Completed Read Count = 143
+Readcount = 143 WriteCount = 217
+    2     21  2944.83     0  10000
+Completed write count = 1739 Completed Read Count = 181
+Readcount = 181 WriteCount = 282
+    3     28  3000.21     1  10000
+Completed write count = 1961 Completed Read Count = 199
+Readcount = 199 WriteCount = 222
+    1     22  2946.08     1  10000
+Completed write count = 2175 Completed Read Count = 225
+Readcount = 225 WriteCount = 214
+    2     21  3112.36     1  10001
+Params : 1 10 100 2 10 0 120 1000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Completed write count = 0 Completed Read Count = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Completed write count = 431 Completed Read Count = 49
+Readcount = 49 WriteCount = 431
+    4     43  2273.40     1  10000
+Completed write count = 758 Completed Read Count = 82
+Readcount = 82 WriteCount = 327
+    3     32  2972.67     0  10001
+Completed write count = 1081 Completed Read Count = 119
+Readcount = 119 WriteCount = 323
+    3     32  3028.04     1  10000
+Completed write count = 1518 Completed Read Count = 162
+Readcount = 162 WriteCount = 437
+    4     43  2917.78     0  10000
+Completed write count = 1836 Completed Read Count = 204
+Readcount = 204 WriteCount = 318
+    4     31  3103.96     1  10000
+Completed write count = 2157 Completed Read Count = 243
+Readcount = 243 WriteCount = 321
+    3     32  3000.16     1  10000
+Completed write count = 2592 Completed Read Count = 288
+Readcount = 288 WriteCount = 435
+    4     43  2993.27     7  10000
+Completed write count = 2909 Completed Read Count = 331
+Readcount = 331 WriteCount = 317
+    4     31  3038.02     2  10000
+Completed write count = 3236 Completed Read Count = 364
+Readcount = 364 WriteCount = 327
+    3     32  2972.65     1  10000
+Params : 1 10 100 2 10 0 160 1000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Completed write count = 0 Completed Read Count = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Completed write count = 577 Completed Read Count = 63
+Readcount = 63 WriteCount = 577
+    6     57  2288.13     1  10000
+Completed write count = 1017 Completed Read Count = 103
+Readcount = 103 WriteCount = 440
+    4     44  2993.42     0  10000
+Completed write count = 1458 Completed Read Count = 142
+Readcount = 142 WriteCount = 441
+    3     44  2932.13     5  10000
+Completed write count = 2031 Completed Read Count = 209
+Readcount = 209 WriteCount = 573
+    6     57  3026.38     5  10000
+Completed write count = 2471 Completed Read Count = 249
+Readcount = 249 WriteCount = 440
+    4     44  2966.10     1  10000
+Completed write count = 2909 Completed Read Count = 291
+Readcount = 291 WriteCount = 438
+    4     43  3034.40     4  10000
+Completed write count = 3490 Completed Read Count = 350
+Readcount = 350 WriteCount = 581
+    5     58  3005.36     3  10000
+Completed write count = 3926 Completed Read Count = 394
+Readcount = 394 WriteCount = 436
+    4     43  3014.02     2  10000
+Completed write count = 4349 Completed Read Count = 451
+Readcount = 451 WriteCount = 423
+    5     42  3007.24     5  10000
+Params : 1 10 100 2 10 0 200 1000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Completed write count = 0 Completed Read Count = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Completed write count = 717 Completed Read Count = 83
+Readcount = 83 WriteCount = 717
+    8     71  2256.18     4  10000
+Completed write count = 1250 Completed Read Count = 150
+Readcount = 150 WriteCount = 533
+    6     53  2977.90     2  10000
+Completed write count = 1794 Completed Read Count = 206
+Readcount = 206 WriteCount = 544
+    5     54  3044.31     2  10000
+Completed write count = 2519 Completed Read Count = 281
+Readcount = 281 WriteCount = 725
+    7     72  2983.62     5  10000
+Completed write count = 3061 Completed Read Count = 339
+Readcount = 339 WriteCount = 542
+    5     54  3022.30     2  10000
+Completed write count = 3596 Completed Read Count = 404
+Readcount = 404 WriteCount = 535
+    6     53  2988.98     4  10000
+Completed write count = 4329 Completed Read Count = 471
+Readcount = 471 WriteCount = 733
+    6     73  2959.30     7  10000
+Completed write count = 4867 Completed Read Count = 533
+Readcount = 533 WriteCount = 538
+    6     53  3039.21     7  10000
+Completed write count = 5397 Completed Read Count = 603
+Readcount = 603 WriteCount = 530
+    7     53  3017.18     1  10000
+Params : 1 10 100 2 10 0 240 1000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Completed write count = 0 Completed Read Count = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10001
+Completed write count = 869 Completed Read Count = 91
+Readcount = 91 WriteCount = 869
+    9     86  2292.87     5  10000
+Completed write count = 1516 Completed Read Count = 164
+Readcount = 164 WriteCount = 647
+    7     64  2972.82     1  10000
+Completed write count = 2170 Completed Read Count = 230
+Readcount = 230 WriteCount = 654
+    6     65  2972.68     1  10000
+Completed write count = 3045 Completed Read Count = 315
+Readcount = 315 WriteCount = 875
+    8     87  2976.18     4  10000
+Completed write count = 3701 Completed Read Count = 379
+Readcount = 379 WriteCount = 656
+    6     65  3018.45     9  10000
+Completed write count = 4335 Completed Read Count = 465
+Readcount = 465 WriteCount = 634
+    8     63  3061.79     5  10001
+Completed write count = 5195 Completed Read Count = 565
+Readcount = 565 WriteCount = 860
+   10     86  2996.71     9  10000
+Completed write count = 5853 Completed Read Count = 627
+Readcount = 627 WriteCount = 658
+    6     65  2959.15     4  10000
+Completed write count = 6507 Completed Read Count = 693
+Readcount = 693 WriteCount = 654
+    6     65  3004.80     6  10000
+Params : 1 10 100 2 10 0 280 1000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Completed write count = 0 Completed Read Count = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Completed write count = 1007 Completed Read Count = 113
+Readcount = 113 WriteCount = 1007
+   11    100  2250.83     6  10000
+Completed write count = 1768 Completed Read Count = 192
+Readcount = 192 WriteCount = 761
+    7     76  3020.21     1  10000
+Completed write count = 2513 Completed Read Count = 287
+Readcount = 287 WriteCount = 745
+    9     74  3024.38     5  10000
+Completed write count = 3502 Completed Read Count = 418
+Readcount = 418 WriteCount = 989
+   13     98  2991.08    16  10000
+Completed write count = 4241 Completed Read Count = 519
+Readcount = 519 WriteCount = 739
+   10     73  2996.14     8  10000
+Completed write count = 4988 Completed Read Count = 612
+Readcount = 612 WriteCount = 747
+    9     74  2988.12     7  10001
+Completed write count = 5981 Completed Read Count = 739
+Readcount = 739 WriteCount = 993
+   12     99  2997.14    14  10000
+Completed write count = 6744 Completed Read Count = 816
+Readcount = 816 WriteCount = 763
+    7     76  2992.34    12  10000
+Completed write count = 7500 Completed Read Count = 900
+Readcount = 900 WriteCount = 756
+    8     75  3016.05     4  10000
+Params : 1 10 100 2 10 0 320 1000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Completed write count = 0 Completed Read Count = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Completed write count = 1156 Completed Read Count = 124
+Readcount = 124 WriteCount = 1156
+   12    115  2262.66     0  10000
+Completed write count = 2016 Completed Read Count = 224
+Readcount = 224 WriteCount = 860
+   10     86  3007.75     5  10000
+Completed write count = 2881 Completed Read Count = 319
+Readcount = 319 WriteCount = 865
+    9     86  2969.02     4  10000
+Completed write count = 4037 Completed Read Count = 443
+Readcount = 443 WriteCount = 1156
+   12    115  3002.75     4  10000
+Completed write count = 4907 Completed Read Count = 533
+Readcount = 533 WriteCount = 870
+    9     87  3034.68     6  10000
+Completed write count = 5765 Completed Read Count = 635
+Readcount = 635 WriteCount = 858
+   10     85  3000.21    13  10000
+Completed write count = 6920 Completed Read Count = 760
+Readcount = 760 WriteCount = 1155
+   12    115  2987.20     8  10000
+Completed write count = 7784 Completed Read Count = 856
+Readcount = 856 WriteCount = 864
+    9     86  2989.77     6  10001
+Completed write count = 8664 Completed Read Count = 936
+Readcount = 936 WriteCount = 880
+    8     88  2979.74     4  10000
+Params : 1 10 100 2 10 0 400 1000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Completed write count = 0 Completed Read Count = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Completed write count = 1432 Completed Read Count = 168
+Readcount = 168 WriteCount = 1432
+   16    143  2260.43     4  10001
+Completed write count = 2514 Completed Read Count = 286
+Readcount = 286 WriteCount = 1082
+   11    108  2989.83     3  10001
+Completed write count = 3587 Completed Read Count = 413
+Readcount = 413 WriteCount = 1073
+   12    107  3025.34    16  10000
+Completed write count = 5016 Completed Read Count = 584
+Readcount = 584 WriteCount = 1429
+   17    142  2985.52     9  10000
+Completed write count = 6106 Completed Read Count = 694
+Readcount = 694 WriteCount = 1090
+   11    109  2997.51     7  10000
+Completed write count = 7189 Completed Read Count = 811
+Readcount = 811 WriteCount = 1083
+   11    108  2991.82    11  10000
+Completed write count = 8639 Completed Read Count = 961
+Readcount = 961 WriteCount = 1450
+   15    145  3006.38    18  10000
+Completed write count = 9717 Completed Read Count = 1083
+Readcount = 1083 WriteCount = 1078
+   12    107  2991.89     8  10000
+Completed write count = 10796 Completed Read Count = 1204
+Readcount = 1204 WriteCount = 1079
+   12    107  3033.53    11  10000
+Params : 1 10 100 2 10 0 500 1000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Completed write count = 0 Completed Read Count = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Completed write count = 1821 Completed Read Count = 179
+Readcount = 179 WriteCount = 1821
+   17    182  2260.26     9  10000
+Completed write count = 3154 Completed Read Count = 346
+Readcount = 346 WriteCount = 1333
+   16    133  3044.68     7  10000
+Completed write count = 4493 Completed Read Count = 507
+Readcount = 507 WriteCount = 1339
+   16    133  2989.01    13  10000
+Completed write count = 6299 Completed Read Count = 701
+Readcount = 701 WriteCount = 1806
+   19    180  2991.91    17  10000
+Completed write count = 7658 Completed Read Count = 842
+Readcount = 842 WriteCount = 1359
+   14    135  2995.82    11  10001
+Completed write count = 8997 Completed Read Count = 1003
+Readcount = 1003 WriteCount = 1339
+   16    133  3022.60     6  10000
+Completed write count = 10770 Completed Read Count = 1230
+Readcount = 1230 WriteCount = 1773
+   22    177  2984.96    10  10000
+Completed write count = 12139 Completed Read Count = 1361
+Readcount = 1361 WriteCount = 1369
+   13    136  2995.74    16  10000
+Completed write count = 13490 Completed Read Count = 1510
+Readcount = 1510 WriteCount = 1351
+   14    135  3020.19     2  10000
+Params : 1 10 100 2 10 0 600 1000 2
+Size of shared Object Registry = 2410
+Read-Throughput/S  Write Throughput/S  Latency Aborts Time
+Opening port:2022
+Connections = 3
+Tpcc before in.read
+Completed write count = 0 Completed Read Count = 0
+Readcount = 0 WriteCount = 0
+    0      0   NaN     0  10000
+Completed write count = 2155 Completed Read Count = 245
+Readcount = 245 WriteCount = 2155
+   24    215  2253.88     2  10000
+Completed write count = 3802 Completed Read Count = 398
+Readcount = 398 WriteCount = 1647
+   15    164  3005.56    19  10001
+Completed write count = 5407 Completed Read Count = 593
+Readcount = 593 WriteCount = 1605
+   19    160  3011.41    15  10000
+Completed write count = 7569 Completed Read Count = 831
+Readcount = 831 WriteCount = 2162
+   23    216  2996.02    31  10000
+Completed write count = 9197 Completed Read Count = 1003
+Readcount = 1003 WriteCount = 1628
+   17    162  2981.72     5  10001
+Completed write count = 10810 Completed Read Count = 1190
+Readcount = 1190 WriteCount = 1613
+   18    161  3028.07    14  10001
+Completed write count = 12962 Completed Read Count = 1438
+Readcount = 1438 WriteCount = 2152
+   24    215  2979.24    11  10000
+Completed write count = 14575 Completed Read Count = 1625
+Readcount = 1625 WriteCount = 1613
+   18    161  3024.29     8  10000
+Completed write count = 16207 Completed Read Count = 1793
+Readcount = 1793 WriteCount = 1632
+   16    163  2987.29     5  10000

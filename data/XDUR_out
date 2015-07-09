@@ -1,0 +1,1023 @@
+Client count = 3500
+Thread count = 2
+Submitted = 105000 Completed write count = 94454 Completed Read Count = 10546 Total = 105000
+Percent of requests satisfied = 100.0000
+Submitted = 105000 Completed write count = 94441 Completed Read Count = 10559 Total = 105000
+Percent of requests satisfied = 100.0000
+Submitted = 104298 Completed write count = 93795 Completed Read Count = 10444 Total = 104235
+Percent of requests satisfied = 99.9396
+Submitted = 105000 Completed write count = 94390 Completed Read Count = 10610 Total = 105000
+Percent of requests satisfied = 100.0000
+Submitted = 105000 Completed write count = 94533 Completed Read Count = 10465 Total = 104998
+Percent of requests satisfied = 99.9981
+Thread count = 4
+Submitted = 105000 Completed write count = 94629 Completed Read Count = 10370 Total = 104999
+Percent of requests satisfied = 99.9990
+Submitted = 105000 Completed write count = 94479 Completed Read Count = 10518 Total = 104997
+Percent of requests satisfied = 99.9971
+Submitted = 105000 Completed write count = 94449 Completed Read Count = 10550 Total = 104999
+Percent of requests satisfied = 99.9990
+Submitted = 105000 Completed write count = 94399 Completed Read Count = 10600 Total = 104999
+Percent of requests satisfied = 99.9990
+Submitted = 105000 Completed write count = 94419 Completed Read Count = 10580 Total = 104999
+Percent of requests satisfied = 99.9990
+Thread count = 8
+Submitted = 105000 Completed write count = 94485 Completed Read Count = 10515 Total = 105000
+Percent of requests satisfied = 100.0000
+Submitted = 104456 Completed write count = 93965 Completed Read Count = 10458 Total = 104422
+Percent of requests satisfied = 99.9675
+Submitted = 105000 Completed write count = 94481 Completed Read Count = 10515 Total = 104996
+Percent of requests satisfied = 99.9962
+Submitted = 104596 Completed write count = 94161 Completed Read Count = 10272 Total = 104433
+Percent of requests satisfied = 99.8442
+Submitted = 105000 Completed write count = 94463 Completed Read Count = 10536 Total = 104999
+Percent of requests satisfied = 99.9990
+Thread count = 12
+Submitted = 105000 Completed write count = 94398 Completed Read Count = 10600 Total = 104998
+Percent of requests satisfied = 99.9981
+Submitted = 104103 Completed write count = 93785 Completed Read Count = 10229 Total = 104014
+Percent of requests satisfied = 99.9145
+Submitted = 105000 Completed write count = 94500 Completed Read Count = 10496 Total = 104996
+Percent of requests satisfied = 99.9962
+Submitted = 104398 Completed write count = 93951 Completed Read Count = 10383 Total = 104332
+Percent of requests satisfied = 99.9368
+Submitted = 105000 Completed write count = 94547 Completed Read Count = 10451 Total = 104998
+Percent of requests satisfied = 99.9981
+Thread count = 16
+Submitted = 105000 Completed write count = 94412 Completed Read Count = 10587 Total = 104999
+Percent of requests satisfied = 99.9990
+Submitted = 105000 Completed write count = 94383 Completed Read Count = 10616 Total = 104999
+Percent of requests satisfied = 99.9990
+Submitted = 105000 Completed write count = 94519 Completed Read Count = 10481 Total = 105000
+Percent of requests satisfied = 100.0000
+Submitted = 105000 Completed write count = 94539 Completed Read Count = 10461 Total = 105000
+Percent of requests satisfied = 100.0000
+Submitted = 104814 Completed write count = 94202 Completed Read Count = 10608 Total = 104810
+Percent of requests satisfied = 99.9962
+Client count = 3600
+Thread count = 2
+Submitted = 108000 Completed write count = 97214 Completed Read Count = 10785 Total = 107999
+Percent of requests satisfied = 99.9991
+Submitted = 108000 Completed write count = 97075 Completed Read Count = 10925 Total = 108000
+Percent of requests satisfied = 100.0000
+Submitted = 108000 Completed write count = 97297 Completed Read Count = 10703 Total = 108000
+Percent of requests satisfied = 100.0000
+Submitted = 107904 Completed write count = 97169 Completed Read Count = 10714 Total = 107883
+Percent of requests satisfied = 99.9805
+Submitted = 107246 Completed write count = 96523 Completed Read Count = 10723 Total = 107246
+Percent of requests satisfied = 100.0000
+Thread count = 4
+Submitted = 108000 Completed write count = 97036 Completed Read Count = 10964 Total = 108000
+Percent of requests satisfied = 100.0000
+Submitted = 108000 Completed write count = 97266 Completed Read Count = 10733 Total = 107999
+Percent of requests satisfied = 99.9991
+Submitted = 108000 Completed write count = 97153 Completed Read Count = 10847 Total = 108000
+Percent of requests satisfied = 100.0000
+Submitted = 106934 Completed write count = 96108 Completed Read Count = 10687 Total = 106795
+Percent of requests satisfied = 99.8700
+Submitted = 107976 Completed write count = 96921 Completed Read Count = 10793 Total = 107714
+Percent of requests satisfied = 99.7574
+Thread count = 8
+Submitted = 108000 Completed write count = 97140 Completed Read Count = 10860 Total = 108000
+Percent of requests satisfied = 100.0000
+Submitted = 108000 Completed write count = 97230 Completed Read Count = 10770 Total = 108000
+Percent of requests satisfied = 100.0000
+Submitted = 108000 Completed write count = 97021 Completed Read Count = 10976 Total = 107997
+Percent of requests satisfied = 99.9972
+Submitted = 108000 Completed write count = 97335 Completed Read Count = 10665 Total = 108000
+Percent of requests satisfied = 100.0000
+Submitted = 107079 Completed write count = 96325 Completed Read Count = 10756 Total = 107080
+Percent of requests satisfied = 100.0009
+Thread count = 12
+Submitted = 108000 Completed write count = 97319 Completed Read Count = 10679 Total = 107998
+Percent of requests satisfied = 99.9981
+Submitted = 108000 Completed write count = 97250 Completed Read Count = 10750 Total = 108000
+Percent of requests satisfied = 100.0000
+Submitted = 108000 Completed write count = 97366 Completed Read Count = 10632 Total = 107998
+Percent of requests satisfied = 99.9981
+Submitted = 107749 Completed write count = 96807 Completed Read Count = 10902 Total = 107706
+Percent of requests satisfied = 99.9601
+Submitted = 106873 Completed write count = 96370 Completed Read Count = 10438 Total = 106808
+Percent of requests satisfied = 99.9392
+Thread count = 16
+Submitted = 107950 Completed write count = 97171 Completed Read Count = 10723 Total = 107893
+Percent of requests satisfied = 99.9472
+Submitted = 106542 Completed write count = 95845 Completed Read Count = 10696 Total = 106541
+Percent of requests satisfied = 99.9991
+Submitted = 108000 Completed write count = 97103 Completed Read Count = 10896 Total = 107999
+Percent of requests satisfied = 99.9991
+Submitted = 107070 Completed write count = 96428 Completed Read Count = 10593 Total = 107021
+Percent of requests satisfied = 99.9542
+Submitted = 108000 Completed write count = 97085 Completed Read Count = 10914 Total = 107999
+Percent of requests satisfied = 99.9991
+Client count = 3700
+Thread count = 2
+Submitted = 110143 Completed write count = 99017 Completed Read Count = 10831 Total = 109848
+Percent of requests satisfied = 99.7322
+Submitted = 110718 Completed write count = 99515 Completed Read Count = 11090 Total = 110605
+Percent of requests satisfied = 99.8979
+Submitted = 110650 Completed write count = 99524 Completed Read Count = 10832 Total = 110355
+Percent of requests satisfied = 99.7334
+Submitted = 111000 Completed write count = 99922 Completed Read Count = 11077 Total = 110999
+Percent of requests satisfied = 99.9991
+Submitted = 110491 Completed write count = 99353 Completed Read Count = 10924 Total = 110276
+Percent of requests satisfied = 99.8054
+Thread count = 4
+Submitted = 110441 Completed write count = 99275 Completed Read Count = 11165 Total = 110440
+Percent of requests satisfied = 99.9991
+Submitted = 110487 Completed write count = 99423 Completed Read Count = 11063 Total = 110486
+Percent of requests satisfied = 99.9991
+Submitted = 111000 Completed write count = 99975 Completed Read Count = 11025 Total = 111000
+Percent of requests satisfied = 100.0000
+Submitted = 110829 Completed write count = 99871 Completed Read Count = 10927 Total = 110797
+Percent of requests satisfied = 99.9711
+Submitted = 111000 Completed write count = 99782 Completed Read Count = 11216 Total = 110998
+Percent of requests satisfied = 99.9982
+Thread count = 8
+Submitted = 109400 Completed write count = 98477 Completed Read Count = 10903 Total = 109380
+Percent of requests satisfied = 99.9817
+Submitted = 111000 Completed write count = 99901 Completed Read Count = 11096 Total = 110997
+Percent of requests satisfied = 99.9973
+Submitted = 111000 Completed write count = 99876 Completed Read Count = 11122 Total = 110998
+Percent of requests satisfied = 99.9982
+Submitted = 111000 Completed write count = 99963 Completed Read Count = 11036 Total = 110999
+Percent of requests satisfied = 99.9991
+Submitted = 110526 Completed write count = 99296 Completed Read Count = 11015 Total = 110311
+Percent of requests satisfied = 99.8055
+Thread count = 12
+Submitted = 111000 Completed write count = 99907 Completed Read Count = 11093 Total = 111000
+Percent of requests satisfied = 100.0000
+Submitted = 111000 Completed write count = 99956 Completed Read Count = 11044 Total = 111000
+Percent of requests satisfied = 100.0000
+Submitted = 111000 Completed write count = 99730 Completed Read Count = 11270 Total = 111000
+Percent of requests satisfied = 100.0000
+Submitted = 109690 Completed write count = 98734 Completed Read Count = 10924 Total = 109658
+Percent of requests satisfied = 99.9708
+Submitted = 111000 Completed write count = 99947 Completed Read Count = 11052 Total = 110999
+Percent of requests satisfied = 99.9991
+Thread count = 16
+Submitted = 110036 Completed write count = 99007 Completed Read Count = 11000 Total = 110007
+Percent of requests satisfied = 99.9736
+Submitted = 110090 Completed write count = 99103 Completed Read Count = 10977 Total = 110078
+Percent of requests satisfied = 99.9891
+Submitted = 110390 Completed write count = 99397 Completed Read Count = 10993 Total = 110390
+Percent of requests satisfied = 100.0000
+Submitted = 111000 Completed write count = 99920 Completed Read Count = 11080 Total = 111000
+Percent of requests satisfied = 100.0000
+Submitted = 109888 Completed write count = 98726 Completed Read Count = 11044 Total = 109770
+Percent of requests satisfied = 99.8926
+Client count = 3800
+Thread count = 2
+Submitted = 112873 Completed write count = 101395 Completed Read Count = 11344 Total = 112739
+Percent of requests satisfied = 99.8813
+Submitted = 114000 Completed write count = 102499 Completed Read Count = 11499 Total = 113998
+Percent of requests satisfied = 99.9982
+Submitted = 114000 Completed write count = 102550 Completed Read Count = 11450 Total = 114000
+Percent of requests satisfied = 100.0000
+Submitted = 114000 Completed write count = 102609 Completed Read Count = 11391 Total = 114000
+Percent of requests satisfied = 100.0000
+Submitted = 114000 Completed write count = 102631 Completed Read Count = 11367 Total = 113998
+Percent of requests satisfied = 99.9982
+Thread count = 4
+Submitted = 114000 Completed write count = 102581 Completed Read Count = 11417 Total = 113998
+Percent of requests satisfied = 99.9982
+Submitted = 114000 Completed write count = 102713 Completed Read Count = 11286 Total = 113999
+Percent of requests satisfied = 99.9991
+Submitted = 113620 Completed write count = 102046 Completed Read Count = 11287 Total = 113333
+Percent of requests satisfied = 99.7474
+Submitted = 113378 Completed write count = 101747 Completed Read Count = 11264 Total = 113010
+Percent of requests satisfied = 99.6754
+Submitted = 113745 Completed write count = 102488 Completed Read Count = 11257 Total = 113745
+Percent of requests satisfied = 100.0000
+Thread count = 8
+Submitted = 113572 Completed write count = 102150 Completed Read Count = 11407 Total = 113557
+Percent of requests satisfied = 99.9868
+Submitted = 113796 Completed write count = 102050 Completed Read Count = 11667 Total = 113711
+Percent of requests satisfied = 99.9253
+Submitted = 114000 Completed write count = 102615 Completed Read Count = 11382 Total = 113997
+Percent of requests satisfied = 99.9974
+Submitted = 113839 Completed write count = 102158 Completed Read Count = 11418 Total = 113576
+Percent of requests satisfied = 99.7690
+Submitted = 113522 Completed write count = 102058 Completed Read Count = 11264 Total = 113322
+Percent of requests satisfied = 99.8238
+Thread count = 12
+Submitted = 114000 Completed write count = 102724 Completed Read Count = 11276 Total = 114000
+Percent of requests satisfied = 100.0000
+Submitted = 113829 Completed write count = 102324 Completed Read Count = 11503 Total = 113827
+Percent of requests satisfied = 99.9982
+Submitted = 113234 Completed write count = 101810 Completed Read Count = 11312 Total = 113122
+Percent of requests satisfied = 99.9011
+Submitted = 114000 Completed write count = 102694 Completed Read Count = 11306 Total = 114000
+Percent of requests satisfied = 100.0000
+Submitted = 113666 Completed write count = 102134 Completed Read Count = 11422 Total = 113556
+Percent of requests satisfied = 99.9032
+Thread count = 16
+Submitted = 112148 Completed write count = 100939 Completed Read Count = 11193 Total = 112132
+Percent of requests satisfied = 99.9857
+Submitted = 112632 Completed write count = 101208 Completed Read Count = 11359 Total = 112567
+Percent of requests satisfied = 99.9423
+Submitted = 114000 Completed write count = 102677 Completed Read Count = 11322 Total = 113999
+Percent of requests satisfied = 99.9991
+Submitted = 113880 Completed write count = 102415 Completed Read Count = 11465 Total = 113880
+Percent of requests satisfied = 100.0000
+Submitted = 110200 Completed write count = 99115 Completed Read Count = 11085 Total = 110200
+Percent of requests satisfied = 100.0000
+Client count = 3900
+Thread count = 2
+Submitted = 115858 Completed write count = 104157 Completed Read Count = 11623 Total = 115779
+Percent of requests satisfied = 99.9318
+Submitted = 117000 Completed write count = 105344 Completed Read Count = 11656 Total = 117000
+Percent of requests satisfied = 100.0000
+Submitted = 117000 Completed write count = 105339 Completed Read Count = 11657 Total = 116996
+Percent of requests satisfied = 99.9966
+Submitted = 116449 Completed write count = 104621 Completed Read Count = 11827 Total = 116448
+Percent of requests satisfied = 99.9991
+Submitted = 114934 Completed write count = 103251 Completed Read Count = 11427 Total = 114678
+Percent of requests satisfied = 99.7773
+Thread count = 4
+Submitted = 114384 Completed write count = 102551 Completed Read Count = 11454 Total = 114005
+Percent of requests satisfied = 99.6687
+Submitted = 115735 Completed write count = 104113 Completed Read Count = 11582 Total = 115695
+Percent of requests satisfied = 99.9654
+Submitted = 114344 Completed write count = 102970 Completed Read Count = 11374 Total = 114344
+Percent of requests satisfied = 100.0000
+Submitted = 116551 Completed write count = 104696 Completed Read Count = 11692 Total = 116388
+Percent of requests satisfied = 99.8601
+Submitted = 117000 Completed write count = 105230 Completed Read Count = 11767 Total = 116997
+Percent of requests satisfied = 99.9974
+Thread count = 8
+Submitted = 116157 Completed write count = 104376 Completed Read Count = 11654 Total = 116030
+Percent of requests satisfied = 99.8907
+Submitted = 115861 Completed write count = 104178 Completed Read Count = 11654 Total = 115832
+Percent of requests satisfied = 99.9750
+Submitted = 114204 Completed write count = 102791 Completed Read Count = 11386 Total = 114173
+Percent of requests satisfied = 99.9729
+Submitted = 116438 Completed write count = 104814 Completed Read Count = 11622 Total = 116436
+Percent of requests satisfied = 99.9983
+Submitted = 116814 Completed write count = 104966 Completed Read Count = 11847 Total = 116813
+Percent of requests satisfied = 99.9991
+Thread count = 12
+Submitted = 116232 Completed write count = 104560 Completed Read Count = 11629 Total = 116189
+Percent of requests satisfied = 99.9630
+Submitted = 117000 Completed write count = 105280 Completed Read Count = 11718 Total = 116998
+Percent of requests satisfied = 99.9983
+Submitted = 116215 Completed write count = 104594 Completed Read Count = 11621 Total = 116215
+Percent of requests satisfied = 100.0000
+Submitted = 116758 Completed write count = 105029 Completed Read Count = 11728 Total = 116757
+Percent of requests satisfied = 99.9991
+Submitted = 116517 Completed write count = 104867 Completed Read Count = 11641 Total = 116508
+Percent of requests satisfied = 99.9923
+Thread count = 16
+Submitted = 116024 Completed write count = 104358 Completed Read Count = 11579 Total = 115937
+Percent of requests satisfied = 99.9250
+Submitted = 116131 Completed write count = 104418 Completed Read Count = 11481 Total = 115897
+Percent of requests satisfied = 99.7985
+Submitted = 114301 Completed write count = 102794 Completed Read Count = 11506 Total = 114300
+Percent of requests satisfied = 99.9991
+Submitted = 117000 Completed write count = 105311 Completed Read Count = 11689 Total = 117000
+Percent of requests satisfied = 100.0000
+Submitted = 115941 Completed write count = 104191 Completed Read Count = 11743 Total = 115934
+Percent of requests satisfied = 99.9940
+Client count = 4000
+Thread count = 2
+Submitted = 117024 Completed write count = 105149 Completed Read Count = 11779 Total = 116926
+Percent of requests satisfied = 99.9163
+Submitted = 117722 Completed write count = 105758 Completed Read Count = 11805 Total = 117563
+Percent of requests satisfied = 99.8649
+Submitted = 118849 Completed write count = 106776 Completed Read Count = 12073 Total = 118849
+Percent of requests satisfied = 100.0000
+Submitted = 119663 Completed write count = 107466 Completed Read Count = 11982 Total = 119447
+Percent of requests satisfied = 99.8195
+Submitted = 120000 Completed write count = 107931 Completed Read Count = 12068 Total = 119999
+Percent of requests satisfied = 99.9992
+Thread count = 4
+Submitted = 119001 Completed write count = 106985 Completed Read Count = 12014 Total = 118999
+Percent of requests satisfied = 99.9983
+Submitted = 117842 Completed write count = 105742 Completed Read Count = 11658 Total = 117398
+Percent of requests satisfied = 99.6232
+Submitted = 117110 Completed write count = 105427 Completed Read Count = 11671 Total = 117095
+Percent of requests satisfied = 99.9872
+Submitted = 120003 Completed write count = 107772 Completed Read Count = 12230 Total = 120002
+Percent of requests satisfied = 99.9992
+Submitted = 116330 Completed write count = 104689 Completed Read Count = 11590 Total = 116279
+Percent of requests satisfied = 99.9562
+Thread count = 8
+Submitted = 117261 Completed write count = 105591 Completed Read Count = 11669 Total = 117260
+Percent of requests satisfied = 99.9991
+Submitted = 119371 Completed write count = 107233 Completed Read Count = 12119 Total = 119350
+Percent of requests satisfied = 99.9824
+Submitted = 117981 Completed write count = 106149 Completed Read Count = 11820 Total = 117969
+Percent of requests satisfied = 99.9898
+Submitted = 118744 Completed write count = 106670 Completed Read Count = 11950 Total = 118618
+Percent of requests satisfied = 99.8939
+Submitted = 119241 Completed write count = 107575 Completed Read Count = 11663 Total = 119238
+Percent of requests satisfied = 99.9975
+Thread count = 12
+Submitted = 118296 Completed write count = 106322 Completed Read Count = 11931 Total = 118253
+Percent of requests satisfied = 99.9637
+Submitted = 117799 Completed write count = 105904 Completed Read Count = 11819 Total = 117723
+Percent of requests satisfied = 99.9355
+Submitted = 116963 Completed write count = 105356 Completed Read Count = 11583 Total = 116938
+Percent of requests satisfied = 99.9786
+Submitted = 118819 Completed write count = 107076 Completed Read Count = 11743 Total = 118819
+Percent of requests satisfied = 100.0000
+Submitted = 120000 Completed write count = 107969 Completed Read Count = 12030 Total = 119999
+Percent of requests satisfied = 99.9992
+Thread count = 16
+Submitted = 120000 Completed write count = 107938 Completed Read Count = 12061 Total = 119999
+Percent of requests satisfied = 99.9992
+Submitted = 119523 Completed write count = 107524 Completed Read Count = 11999 Total = 119523
+Percent of requests satisfied = 100.0000
+Submitted = 118030 Completed write count = 106026 Completed Read Count = 11695 Total = 117721
+Percent of requests satisfied = 99.7382
+Submitted = 118561 Completed write count = 106624 Completed Read Count = 11935 Total = 118559
+Percent of requests satisfied = 99.9983
+Submitted = 118377 Completed write count = 106355 Completed Read Count = 11940 Total = 118295
+Percent of requests satisfied = 99.9307
+Client count = 4100
+Thread count = 2
+Submitted = 122334 Completed write count = 110153 Completed Read Count = 12145 Total = 122296
+Percent of requests satisfied = 99.9689
+Submitted = 121704 Completed write count = 109615 Completed Read Count = 12071 Total = 121683
+Percent of requests satisfied = 99.9827
+Submitted = 121221 Completed write count = 109075 Completed Read Count = 12146 Total = 121221
+Percent of requests satisfied = 100.0000
+Submitted = 120612 Completed write count = 108414 Completed Read Count = 12153 Total = 120565
+Percent of requests satisfied = 99.9610
+Submitted = 122368 Completed write count = 110110 Completed Read Count = 12124 Total = 122234
+Percent of requests satisfied = 99.8905
+Thread count = 4
+Submitted = 122594 Completed write count = 110125 Completed Read Count = 12469 Total = 122594
+Percent of requests satisfied = 100.0000
+Submitted = 122505 Completed write count = 110194 Completed Read Count = 12223 Total = 122413
+Percent of requests satisfied = 99.9249
+Submitted = 122187 Completed write count = 109939 Completed Read Count = 12182 Total = 122119
+Percent of requests satisfied = 99.9443
+Submitted = 122819 Completed write count = 110528 Completed Read Count = 12205 Total = 122731
+Percent of requests satisfied = 99.9283
+Submitted = 121972 Completed write count = 109815 Completed Read Count = 12155 Total = 121970
+Percent of requests satisfied = 99.9984
+Thread count = 8
+Submitted = 123000 Completed write count = 110733 Completed Read Count = 12267 Total = 123000
+Percent of requests satisfied = 100.0000
+Submitted = 119610 Completed write count = 107524 Completed Read Count = 12064 Total = 119585
+Percent of requests satisfied = 99.9791
+Submitted = 121150 Completed write count = 108992 Completed Read Count = 12055 Total = 121045
+Percent of requests satisfied = 99.9133
+Submitted = 119130 Completed write count = 107008 Completed Read Count = 12107 Total = 119115
+Percent of requests satisfied = 99.9874
+Submitted = 120608 Completed write count = 108730 Completed Read Count = 11878 Total = 120608
+Percent of requests satisfied = 100.0000
+Thread count = 12
+Submitted = 120769 Completed write count = 108745 Completed Read Count = 12022 Total = 120767
+Percent of requests satisfied = 99.9983
+Submitted = 122081 Completed write count = 109632 Completed Read Count = 12405 Total = 122037
+Percent of requests satisfied = 99.9640
+Submitted = 121930 Completed write count = 109796 Completed Read Count = 12096 Total = 121892
+Percent of requests satisfied = 99.9688
+Submitted = 121523 Completed write count = 109360 Completed Read Count = 12076 Total = 121432
+Percent of requests satisfied = 99.9251
+Submitted = 123000 Completed write count = 110710 Completed Read Count = 12287 Total = 122997
+Percent of requests satisfied = 99.9976
+Thread count = 16
+Submitted = 120438 Completed write count = 108207 Completed Read Count = 12230 Total = 120437
+Percent of requests satisfied = 99.9992
+Submitted = 121061 Completed write count = 109061 Completed Read Count = 12000 Total = 121061
+Percent of requests satisfied = 100.0000
+Submitted = 120549 Completed write count = 108154 Completed Read Count = 12261 Total = 120415
+Percent of requests satisfied = 99.8888
+Submitted = 122428 Completed write count = 110119 Completed Read Count = 12193 Total = 122312
+Percent of requests satisfied = 99.9053
+Submitted = 121022 Completed write count = 108909 Completed Read Count = 12112 Total = 121021
+Percent of requests satisfied = 99.9992
+Client count = 4200
+Thread count = 2
+Submitted = 126000 Completed write count = 113504 Completed Read Count = 12480 Total = 125983
+Percent of requests satisfied = 99.9865
+Submitted = 125251 Completed write count = 112775 Completed Read Count = 12474 Total = 125249
+Percent of requests satisfied = 99.9984
+Submitted = 122837 Completed write count = 110482 Completed Read Count = 12187 Total = 122669
+Percent of requests satisfied = 99.8632
+Submitted = 122702 Completed write count = 110519 Completed Read Count = 12167 Total = 122685
+Percent of requests satisfied = 99.9861
+Submitted = 124562 Completed write count = 112052 Completed Read Count = 12510 Total = 124562
+Percent of requests satisfied = 100.0000
+Thread count = 4
+Submitted = 123539 Completed write count = 111081 Completed Read Count = 12329 Total = 123410
+Percent of requests satisfied = 99.8956
+Submitted = 124049 Completed write count = 111686 Completed Read Count = 12292 Total = 123978
+Percent of requests satisfied = 99.9428
+Submitted = 124231 Completed write count = 111833 Completed Read Count = 12333 Total = 124166
+Percent of requests satisfied = 99.9477
+Submitted = 122007 Completed write count = 109828 Completed Read Count = 12178 Total = 122006
+Percent of requests satisfied = 99.9992
+Submitted = 125462 Completed write count = 112828 Completed Read Count = 12457 Total = 125285
+Percent of requests satisfied = 99.8589
+Thread count = 8
+Submitted = 124927 Completed write count = 112387 Completed Read Count = 12540 Total = 124927
+Percent of requests satisfied = 100.0000
+Submitted = 125205 Completed write count = 112736 Completed Read Count = 12467 Total = 125203
+Percent of requests satisfied = 99.9984
+Submitted = 124569 Completed write count = 112265 Completed Read Count = 12303 Total = 124568
+Percent of requests satisfied = 99.9992
+Submitted = 126000 Completed write count = 113430 Completed Read Count = 12568 Total = 125998
+Percent of requests satisfied = 99.9984
+Submitted = 125092 Completed write count = 112652 Completed Read Count = 12429 Total = 125078
+Percent of requests satisfied = 99.9888
+Thread count = 12
+Submitted = 124956 Completed write count = 112670 Completed Read Count = 12285 Total = 124955
+Percent of requests satisfied = 99.9992
+Submitted = 125470 Completed write count = 112823 Completed Read Count = 12513 Total = 125336
+Percent of requests satisfied = 99.8932
+Submitted = 125615 Completed write count = 113028 Completed Read Count = 12524 Total = 125549
+Percent of requests satisfied = 99.9475
+Submitted = 124107 Completed write count = 111644 Completed Read Count = 12344 Total = 123988
+Percent of requests satisfied = 99.9041
+Submitted = 122361 Completed write count = 110073 Completed Read Count = 12278 Total = 122351
+Percent of requests satisfied = 99.9918
+Thread count = 16
+Submitted = 125694 Completed write count = 113057 Completed Read Count = 12636 Total = 125693
+Percent of requests satisfied = 99.9992
+Submitted = 122352 Completed write count = 110150 Completed Read Count = 12199 Total = 122349
+Percent of requests satisfied = 99.9975
+Submitted = 122599 Completed write count = 110266 Completed Read Count = 12263 Total = 122529
+Percent of requests satisfied = 99.9429
+Submitted = 124270 Completed write count = 111760 Completed Read Count = 12397 Total = 124154
+Percent of requests satisfied = 99.9067
+Submitted = 122855 Completed write count = 110616 Completed Read Count = 12239 Total = 122855
+Percent of requests satisfied = 100.0000
+Client count = 4300
+Thread count = 2
+Submitted = 125963 Completed write count = 113354 Completed Read Count = 12608 Total = 125962
+Percent of requests satisfied = 99.9992
+Submitted = 128378 Completed write count = 115583 Completed Read Count = 12792 Total = 128375
+Percent of requests satisfied = 99.9977
+Submitted = 127846 Completed write count = 115014 Completed Read Count = 12818 Total = 127831
+Percent of requests satisfied = 99.9883
+Submitted = 127664 Completed write count = 114826 Completed Read Count = 12811 Total = 127635
+Percent of requests satisfied = 99.9773
+Submitted = 127111 Completed write count = 114314 Completed Read Count = 12650 Total = 126964
+Percent of requests satisfied = 99.8844
+Thread count = 4
+Submitted = 127367 Completed write count = 114783 Completed Read Count = 12551 Total = 127333
+Percent of requests satisfied = 99.9733
+Submitted = 128125 Completed write count = 115232 Completed Read Count = 12893 Total = 128125
+Percent of requests satisfied = 100.0000
+Submitted = 128194 Completed write count = 115235 Completed Read Count = 12931 Total = 128165
+Percent of requests satisfied = 99.9774
+Submitted = 127741 Completed write count = 115193 Completed Read Count = 12548 Total = 127741
+Percent of requests satisfied = 100.0000
+Submitted = 126982 Completed write count = 114600 Completed Read Count = 12382 Total = 126982
+Percent of requests satisfied = 100.0000
+Thread count = 8
+Submitted = 128370 Completed write count = 115528 Completed Read Count = 12804 Total = 128332
+Percent of requests satisfied = 99.9704
+Submitted = 120400 Completed write count = 108398 Completed Read Count = 12001 Total = 120399
+Percent of requests satisfied = 99.9992
+Submitted = 125763 Completed write count = 113444 Completed Read Count = 12316 Total = 125760
+Percent of requests satisfied = 99.9976
+Submitted = 120400 Completed write count = 108369 Completed Read Count = 12030 Total = 120399
+Percent of requests satisfied = 99.9992
+Submitted = 127506 Completed write count = 114387 Completed Read Count = 13118 Total = 127505
+Percent of requests satisfied = 99.9992
+Thread count = 12
+Submitted = 127944 Completed write count = 115203 Completed Read Count = 12740 Total = 127943
+Percent of requests satisfied = 99.9992
+Submitted = 124748 Completed write count = 112273 Completed Read Count = 12473 Total = 124746
+Percent of requests satisfied = 99.9984
+Submitted = 128675 Completed write count = 115859 Completed Read Count = 12757 Total = 128616
+Percent of requests satisfied = 99.9541
+Submitted = 127132 Completed write count = 114100 Completed Read Count = 13005 Total = 127105
+Percent of requests satisfied = 99.9788
+Submitted = 127925 Completed write count = 115085 Completed Read Count = 12840 Total = 127925
+Percent of requests satisfied = 100.0000
+Thread count = 16
+Submitted = 126525 Completed write count = 113882 Completed Read Count = 12643 Total = 126525
+Percent of requests satisfied = 100.0000
+Submitted = 125223 Completed write count = 112717 Completed Read Count = 12505 Total = 125222
+Percent of requests satisfied = 99.9992
+Submitted = 127260 Completed write count = 114467 Completed Read Count = 12706 Total = 127173
+Percent of requests satisfied = 99.9316
+Submitted = 128912 Completed write count = 115756 Completed Read Count = 12991 Total = 128747
+Percent of requests satisfied = 99.8720
+Submitted = 129000 Completed write count = 116103 Completed Read Count = 12895 Total = 128998
+Percent of requests satisfied = 99.9984
+Client count = 4400
+Thread count = 2
+Submitted = 130893 Completed write count = 117866 Completed Read Count = 13026 Total = 130892
+Percent of requests satisfied = 99.9992
+Submitted = 129403 Completed write count = 116512 Completed Read Count = 12840 Total = 129351
+Percent of requests satisfied = 99.9598
+Submitted = 130802 Completed write count = 117735 Completed Read Count = 13066 Total = 130801
+Percent of requests satisfied = 99.9992
+Submitted = 131253 Completed write count = 118079 Completed Read Count = 13173 Total = 131252
+Percent of requests satisfied = 99.9992
+Submitted = 129476 Completed write count = 116437 Completed Read Count = 13038 Total = 129475
+Percent of requests satisfied = 99.9992
+Thread count = 4
+Submitted = 128544 Completed write count = 115539 Completed Read Count = 12949 Total = 128488
+Percent of requests satisfied = 99.9564
+Submitted = 130918 Completed write count = 117531 Completed Read Count = 13157 Total = 130688
+Percent of requests satisfied = 99.8243
+Submitted = 127754 Completed write count = 114949 Completed Read Count = 12805 Total = 127754
+Percent of requests satisfied = 100.0000
+Submitted = 129133 Completed write count = 115968 Completed Read Count = 13088 Total = 129056
+Percent of requests satisfied = 99.9404
+Submitted = 130343 Completed write count = 117353 Completed Read Count = 12989 Total = 130342
+Percent of requests satisfied = 99.9992
+Thread count = 8
+Submitted = 128097 Completed write count = 115129 Completed Read Count = 12968 Total = 128097
+Percent of requests satisfied = 100.0000
+Submitted = 131833 Completed write count = 118479 Completed Read Count = 13350 Total = 131827
+Percent of requests satisfied = 99.9954
+Submitted = 128547 Completed write count = 115583 Completed Read Count = 12962 Total = 128545
+Percent of requests satisfied = 99.9984
+Submitted = 128047 Completed write count = 115451 Completed Read Count = 12596 Total = 128047
+Percent of requests satisfied = 100.0000
+Submitted = 127861 Completed write count = 115046 Completed Read Count = 12812 Total = 127858
+Percent of requests satisfied = 99.9977
+Thread count = 12
+Submitted = 128198 Completed write count = 115286 Completed Read Count = 12901 Total = 128187
+Percent of requests satisfied = 99.9914
+Submitted = 130712 Completed write count = 117550 Completed Read Count = 13104 Total = 130654
+Percent of requests satisfied = 99.9556
+Submitted = 128811 Completed write count = 115751 Completed Read Count = 13056 Total = 128807
+Percent of requests satisfied = 99.9969
+Submitted = 128782 Completed write count = 115707 Completed Read Count = 13073 Total = 128780
+Percent of requests satisfied = 99.9984
+Submitted = 131798 Completed write count = 118712 Completed Read Count = 13034 Total = 131746
+Percent of requests satisfied = 99.9605
+Thread count = 16
+Submitted = 127785 Completed write count = 114915 Completed Read Count = 12864 Total = 127779
+Percent of requests satisfied = 99.9953
+Submitted = 130968 Completed write count = 117835 Completed Read Count = 13132 Total = 130967
+Percent of requests satisfied = 99.9992
+Submitted = 130537 Completed write count = 117334 Completed Read Count = 13203 Total = 130537
+Percent of requests satisfied = 100.0000
+Submitted = 127640 Completed write count = 114765 Completed Read Count = 12875 Total = 127640
+Percent of requests satisfied = 100.0000
+Submitted = 128412 Completed write count = 115641 Completed Read Count = 12770 Total = 128411
+Percent of requests satisfied = 99.9992
+Client count = 4500
+Thread count = 2
+Submitted = 132316 Completed write count = 118848 Completed Read Count = 13467 Total = 132315
+Percent of requests satisfied = 99.9992
+Submitted = 126000 Completed write count = 113629 Completed Read Count = 12370 Total = 125999
+Percent of requests satisfied = 99.9992
+Submitted = 134673 Completed write count = 121171 Completed Read Count = 13502 Total = 134673
+Percent of requests satisfied = 100.0000
+Submitted = 130652 Completed write count = 117626 Completed Read Count = 13028 Total = 130653
+Percent of requests satisfied = 100.0008
+Submitted = 133318 Completed write count = 120056 Completed Read Count = 13206 Total = 133261
+Percent of requests satisfied = 99.9572
+Thread count = 4
+Submitted = 131522 Completed write count = 118177 Completed Read Count = 13345 Total = 131521
+Percent of requests satisfied = 99.9992
+Submitted = 134330 Completed write count = 120668 Completed Read Count = 13257 Total = 133925
+Percent of requests satisfied = 99.6985
+Submitted = 133065 Completed write count = 119686 Completed Read Count = 13212 Total = 132898
+Percent of requests satisfied = 99.8745
+Submitted = 126000 Completed write count = 113341 Completed Read Count = 12658 Total = 125999
+Percent of requests satisfied = 99.9992
+Submitted = 132189 Completed write count = 119030 Completed Read Count = 13158 Total = 132188
+Percent of requests satisfied = 99.9992
+Thread count = 8
+Submitted = 132525 Completed write count = 119389 Completed Read Count = 13135 Total = 132524
+Percent of requests satisfied = 99.9992
+Submitted = 134172 Completed write count = 120711 Completed Read Count = 13461 Total = 134172
+Percent of requests satisfied = 100.0000
+Submitted = 130514 Completed write count = 117514 Completed Read Count = 12997 Total = 130511
+Percent of requests satisfied = 99.9977
+Submitted = 133019 Completed write count = 119847 Completed Read Count = 13168 Total = 133015
+Percent of requests satisfied = 99.9970
+Submitted = 130895 Completed write count = 117765 Completed Read Count = 13128 Total = 130893
+Percent of requests satisfied = 99.9985
+Thread count = 12
+Submitted = 134088 Completed write count = 120725 Completed Read Count = 13362 Total = 134087
+Percent of requests satisfied = 99.9993
+Submitted = 134144 Completed write count = 120797 Completed Read Count = 13347 Total = 134144
+Percent of requests satisfied = 100.0000
+Submitted = 133294 Completed write count = 119996 Completed Read Count = 13297 Total = 133293
+Percent of requests satisfied = 99.9992
+Submitted = 132901 Completed write count = 119603 Completed Read Count = 13297 Total = 132900
+Percent of requests satisfied = 99.9992
+Submitted = 131074 Completed write count = 117867 Completed Read Count = 13195 Total = 131062
+Percent of requests satisfied = 99.9908
+Thread count = 16
+Submitted = 126000 Completed write count = 113726 Completed Read Count = 12273 Total = 125999
+Percent of requests satisfied = 99.9992
+Submitted = 134593 Completed write count = 120937 Completed Read Count = 13480 Total = 134417
+Percent of requests satisfied = 99.8692
+Submitted = 131057 Completed write count = 117779 Completed Read Count = 13277 Total = 131056
+Percent of requests satisfied = 99.9992
+Submitted = 133048 Completed write count = 119921 Completed Read Count = 13125 Total = 133046
+Percent of requests satisfied = 99.9985
+Submitted = 133781 Completed write count = 120641 Completed Read Count = 13140 Total = 133781
+Percent of requests satisfied = 100.0000
+Client count = 4600
+Thread count = 2
+Submitted = 136053 Completed write count = 122239 Completed Read Count = 13814 Total = 136053
+Percent of requests satisfied = 100.0000
+Submitted = 128800 Completed write count = 116036 Completed Read Count = 12762 Total = 128798
+Percent of requests satisfied = 99.9984
+Submitted = 136071 Completed write count = 122406 Completed Read Count = 13601 Total = 136007
+Percent of requests satisfied = 99.9530
+Submitted = 134985 Completed write count = 121385 Completed Read Count = 13534 Total = 134919
+Percent of requests satisfied = 99.9511
+Submitted = 133836 Completed write count = 120357 Completed Read Count = 13477 Total = 133834
+Percent of requests satisfied = 99.9985
+Thread count = 4
+Submitted = 128800 Completed write count = 115921 Completed Read Count = 12878 Total = 128799
+Percent of requests satisfied = 99.9992
+Submitted = 134404 Completed write count = 120859 Completed Read Count = 13545 Total = 134404
+Percent of requests satisfied = 100.0000
+Submitted = 133440 Completed write count = 120232 Completed Read Count = 13208 Total = 133440
+Percent of requests satisfied = 100.0000
+Submitted = 134607 Completed write count = 121164 Completed Read Count = 13356 Total = 134519
+Percent of requests satisfied = 99.9346
+Submitted = 133416 Completed write count = 119895 Completed Read Count = 13521 Total = 133416
+Percent of requests satisfied = 100.0000
+Thread count = 8
+Submitted = 133439 Completed write count = 120104 Completed Read Count = 13333 Total = 133437
+Percent of requests satisfied = 99.9985
+Submitted = 133443 Completed write count = 119970 Completed Read Count = 13471 Total = 133441
+Percent of requests satisfied = 99.9985
+Submitted = 133440 Completed write count = 120225 Completed Read Count = 13215 Total = 133440
+Percent of requests satisfied = 100.0000
+Submitted = 136617 Completed write count = 122946 Completed Read Count = 13669 Total = 136615
+Percent of requests satisfied = 99.9985
+Submitted = 136134 Completed write count = 122639 Completed Read Count = 13492 Total = 136131
+Percent of requests satisfied = 99.9978
+Thread count = 12
+Submitted = 136777 Completed write count = 123326 Completed Read Count = 13451 Total = 136777
+Percent of requests satisfied = 100.0000
+Submitted = 135741 Completed write count = 122033 Completed Read Count = 13591 Total = 135621
+Percent of requests satisfied = 99.9116
+Submitted = 136758 Completed write count = 123142 Completed Read Count = 13612 Total = 136754
+Percent of requests satisfied = 99.9971
+Submitted = 137063 Completed write count = 123315 Completed Read Count = 13748 Total = 137063
+Percent of requests satisfied = 100.0000
+Submitted = 136195 Completed write count = 122556 Completed Read Count = 13604 Total = 136160
+Percent of requests satisfied = 99.9743
+Thread count = 16
+Submitted = 128800 Completed write count = 116023 Completed Read Count = 12776 Total = 128799
+Percent of requests satisfied = 99.9992
+Submitted = 133485 Completed write count = 120156 Completed Read Count = 13329 Total = 133485
+Percent of requests satisfied = 100.0000
+Submitted = 136781 Completed write count = 123107 Completed Read Count = 13673 Total = 136780
+Percent of requests satisfied = 99.9993
+Submitted = 128800 Completed write count = 115967 Completed Read Count = 12833 Total = 128800
+Percent of requests satisfied = 100.0000
+Submitted = 134957 Completed write count = 121464 Completed Read Count = 13494 Total = 134958
+Percent of requests satisfied = 100.0007
+Client count = 4700
+Thread count = 2
+Submitted = 136499 Completed write count = 122698 Completed Read Count = 13798 Total = 136496
+Percent of requests satisfied = 99.9978
+Submitted = 131600 Completed write count = 118379 Completed Read Count = 13220 Total = 131599
+Percent of requests satisfied = 99.9992
+Submitted = 137006 Completed write count = 123379 Completed Read Count = 13583 Total = 136962
+Percent of requests satisfied = 99.9679
+Submitted = 136339 Completed write count = 122616 Completed Read Count = 13721 Total = 136337
+Percent of requests satisfied = 99.9985
+Submitted = 137678 Completed write count = 123995 Completed Read Count = 13681 Total = 137676
+Percent of requests satisfied = 99.9985
+Thread count = 4
+Submitted = 136340 Completed write count = 122626 Completed Read Count = 13711 Total = 136337
+Percent of requests satisfied = 99.9978
+Submitted = 137499 Completed write count = 123802 Completed Read Count = 13697 Total = 137499
+Percent of requests satisfied = 100.0000
+Submitted = 131600 Completed write count = 118554 Completed Read Count = 13046 Total = 131600
+Percent of requests satisfied = 100.0000
+Submitted = 131600 Completed write count = 118463 Completed Read Count = 13136 Total = 131599
+Percent of requests satisfied = 99.9992
+Submitted = 138414 Completed write count = 124466 Completed Read Count = 13948 Total = 138414
+Percent of requests satisfied = 100.0000
+Thread count = 8
+Submitted = 136480 Completed write count = 122636 Completed Read Count = 13842 Total = 136478
+Percent of requests satisfied = 99.9985
+Submitted = 137835 Completed write count = 124112 Completed Read Count = 13579 Total = 137688
+Percent of requests satisfied = 99.8934
+Submitted = 139439 Completed write count = 125624 Completed Read Count = 13813 Total = 139437
+Percent of requests satisfied = 99.9986
+Submitted = 136510 Completed write count = 122730 Completed Read Count = 13779 Total = 136509
+Percent of requests satisfied = 99.9993
+Submitted = 137949 Completed write count = 124103 Completed Read Count = 13845 Total = 137948
+Percent of requests satisfied = 99.9993
+Thread count = 12
+Submitted = 138681 Completed write count = 124780 Completed Read Count = 13901 Total = 138681
+Percent of requests satisfied = 100.0000
+Submitted = 136340 Completed write count = 122623 Completed Read Count = 13716 Total = 136339
+Percent of requests satisfied = 99.9993
+Submitted = 136882 Completed write count = 123301 Completed Read Count = 13553 Total = 136852
+Percent of requests satisfied = 99.9781
+Submitted = 131600 Completed write count = 118597 Completed Read Count = 13001 Total = 131598
+Percent of requests satisfied = 99.9985
+Submitted = 139471 Completed write count = 125608 Completed Read Count = 13852 Total = 139460
+Percent of requests satisfied = 99.9921
+Thread count = 16
+Submitted = 136877 Completed write count = 123058 Completed Read Count = 13819 Total = 136877
+Percent of requests satisfied = 100.0000
+Submitted = 137673 Completed write count = 124132 Completed Read Count = 13540 Total = 137672
+Percent of requests satisfied = 99.9993
+Submitted = 136968 Completed write count = 123293 Completed Read Count = 13675 Total = 136968
+Percent of requests satisfied = 100.0000
+Submitted = 136320 Completed write count = 122632 Completed Read Count = 13687 Total = 136319
+Percent of requests satisfied = 99.9993
+Submitted = 140058 Completed write count = 126293 Completed Read Count = 13764 Total = 140057
+Percent of requests satisfied = 99.9993
+Client count = 4800
+Thread count = 2
+Submitted = 139214 Completed write count = 125224 Completed Read Count = 13989 Total = 139213
+Percent of requests satisfied = 99.9993
+Submitted = 139219 Completed write count = 125325 Completed Read Count = 13893 Total = 139218
+Percent of requests satisfied = 99.9993
+Submitted = 139239 Completed write count = 125251 Completed Read Count = 13988 Total = 139239
+Percent of requests satisfied = 100.0000
+Submitted = 139764 Completed write count = 125881 Completed Read Count = 13883 Total = 139764
+Percent of requests satisfied = 100.0000
+Submitted = 134400 Completed write count = 120953 Completed Read Count = 13447 Total = 134400
+Percent of requests satisfied = 100.0000
+Thread count = 4
+Submitted = 140023 Completed write count = 125871 Completed Read Count = 14149 Total = 140020
+Percent of requests satisfied = 99.9979
+Submitted = 142776 Completed write count = 128375 Completed Read Count = 14406 Total = 142781
+Percent of requests satisfied = 100.0035
+Submitted = 142707 Completed write count = 128263 Completed Read Count = 14444 Total = 142707
+Percent of requests satisfied = 100.0000
+Submitted = 134400 Completed write count = 121013 Completed Read Count = 13385 Total = 134398
+Percent of requests satisfied = 99.9985
+Submitted = 141767 Completed write count = 127663 Completed Read Count = 14101 Total = 141764
+Percent of requests satisfied = 99.9979
+Thread count = 8
+Submitted = 142649 Completed write count = 128440 Completed Read Count = 14167 Total = 142607
+Percent of requests satisfied = 99.9706
+Submitted = 139630 Completed write count = 125645 Completed Read Count = 13984 Total = 139629
+Percent of requests satisfied = 99.9993
+Submitted = 139344 Completed write count = 125251 Completed Read Count = 14091 Total = 139342
+Percent of requests satisfied = 99.9986
+Submitted = 134400 Completed write count = 121024 Completed Read Count = 13373 Total = 134397
+Percent of requests satisfied = 99.9978
+Submitted = 139694 Completed write count = 125743 Completed Read Count = 13942 Total = 139682
+Percent of requests satisfied = 99.9914
+Thread count = 12
+Submitted = 141722 Completed write count = 127477 Completed Read Count = 14154 Total = 141630
+Percent of requests satisfied = 99.9351
+Submitted = 141758 Completed write count = 127447 Completed Read Count = 14251 Total = 141695
+Percent of requests satisfied = 99.9556
+Submitted = 141938 Completed write count = 127603 Completed Read Count = 14334 Total = 141937
+Percent of requests satisfied = 99.9993
+Submitted = 139330 Completed write count = 125372 Completed Read Count = 13956 Total = 139328
+Percent of requests satisfied = 99.9986
+Submitted = 142405 Completed write count = 128217 Completed Read Count = 14163 Total = 142380
+Percent of requests satisfied = 99.9824
+Thread count = 16
+Submitted = 139238 Completed write count = 125285 Completed Read Count = 13953 Total = 139238
+Percent of requests satisfied = 100.0000
+Submitted = 139223 Completed write count = 125397 Completed Read Count = 13826 Total = 139223
+Percent of requests satisfied = 100.0000
+Submitted = 142801 Completed write count = 128600 Completed Read Count = 14174 Total = 142769
+Percent of requests satisfied = 99.9776
+Submitted = 134400 Completed write count = 121157 Completed Read Count = 13242 Total = 134399
+Percent of requests satisfied = 99.9993
+Submitted = 140383 Completed write count = 126428 Completed Read Count = 13938 Total = 140365
+Percent of requests satisfied = 99.9872
+Client count = 4900
+Thread count = 2
+Submitted = 142895 Completed write count = 128573 Completed Read Count = 14300 Total = 142872
+Percent of requests satisfied = 99.9839
+Submitted = 144211 Completed write count = 129643 Completed Read Count = 14567 Total = 144210
+Percent of requests satisfied = 99.9993
+Submitted = 144954 Completed write count = 130246 Completed Read Count = 14708 Total = 144954
+Percent of requests satisfied = 100.0000
+Submitted = 145404 Completed write count = 130772 Completed Read Count = 14592 Total = 145364
+Percent of requests satisfied = 99.9725
+Submitted = 143576 Completed write count = 129408 Completed Read Count = 14168 Total = 143576
+Percent of requests satisfied = 100.0000
+Thread count = 4
+Submitted = 143616 Completed write count = 129265 Completed Read Count = 14349 Total = 143614
+Percent of requests satisfied = 99.9986
+Submitted = 142698 Completed write count = 128511 Completed Read Count = 14186 Total = 142697
+Percent of requests satisfied = 99.9993
+Submitted = 144514 Completed write count = 130199 Completed Read Count = 14280 Total = 144479
+Percent of requests satisfied = 99.9758
+Submitted = 142866 Completed write count = 128542 Completed Read Count = 14321 Total = 142863
+Percent of requests satisfied = 99.9979
+Submitted = 144746 Completed write count = 130344 Completed Read Count = 14400 Total = 144744
+Percent of requests satisfied = 99.9986
+Thread count = 8
+Submitted = 137200 Completed write count = 123031 Completed Read Count = 13767 Total = 136798
+Percent of requests satisfied = 99.7070
+Submitted = 145478 Completed write count = 130973 Completed Read Count = 14504 Total = 145477
+Percent of requests satisfied = 99.9993
+Submitted = 137200 Completed write count = 123289 Completed Read Count = 13497 Total = 136786
+Percent of requests satisfied = 99.6983
+Submitted = 142161 Completed write count = 127792 Completed Read Count = 14368 Total = 142160
+Percent of requests satisfied = 99.9993
+Submitted = 144943 Completed write count = 130502 Completed Read Count = 14325 Total = 144827
+Percent of requests satisfied = 99.9200
+Thread count = 12
+Submitted = 141645 Completed write count = 127603 Completed Read Count = 14042 Total = 141645
+Percent of requests satisfied = 100.0000
+Submitted = 143196 Completed write count = 128702 Completed Read Count = 14298 Total = 143000
+Percent of requests satisfied = 99.8631
+Submitted = 142119 Completed write count = 127850 Completed Read Count = 14268 Total = 142118
+Percent of requests satisfied = 99.9993
+Submitted = 142100 Completed write count = 128009 Completed Read Count = 14090 Total = 142099
+Percent of requests satisfied = 99.9993
+Submitted = 143153 Completed write count = 128756 Completed Read Count = 14396 Total = 143152
+Percent of requests satisfied = 99.9993
+Thread count = 16
+Submitted = 137200 Completed write count = 123364 Completed Read Count = 13835 Total = 137199
+Percent of requests satisfied = 99.9993
+Submitted = 143045 Completed write count = 128479 Completed Read Count = 14542 Total = 143017
+Percent of requests satisfied = 99.9804
+Submitted = 144621 Completed write count = 130102 Completed Read Count = 14473 Total = 144575
+Percent of requests satisfied = 99.9682
+Submitted = 137199 Completed write count = 122682 Completed Read Count = 13673 Total = 136355
+Percent of requests satisfied = 99.3848
+Submitted = 145672 Completed write count = 130955 Completed Read Count = 14687 Total = 145642
+Percent of requests satisfied = 99.9794
+Client count = 5000
+Thread count = 2
+Submitted = 138860 Completed write count = 123762 Completed Read Count = 13765 Total = 137526
+Percent of requests satisfied = 99.0393
+Submitted = 144635 Completed write count = 130218 Completed Read Count = 14417 Total = 144635
+Percent of requests satisfied = 100.0000
+Submitted = 145000 Completed write count = 130229 Completed Read Count = 14769 Total = 144998
+Percent of requests satisfied = 99.9986
+Submitted = 147378 Completed write count = 132805 Completed Read Count = 14572 Total = 147377
+Percent of requests satisfied = 99.9993
+Submitted = 147369 Completed write count = 132517 Completed Read Count = 14851 Total = 147368
+Percent of requests satisfied = 99.9993
+Thread count = 4
+Submitted = 145171 Completed write count = 130449 Completed Read Count = 14385 Total = 144834
+Percent of requests satisfied = 99.7679
+Submitted = 147710 Completed write count = 133042 Completed Read Count = 14601 Total = 147642
+Percent of requests satisfied = 99.9540
+Submitted = 145018 Completed write count = 130447 Completed Read Count = 14571 Total = 145018
+Percent of requests satisfied = 100.0000
+Submitted = 140000 Completed write count = 124830 Completed Read Count = 13992 Total = 138820
+Percent of requests satisfied = 99.1571
+Submitted = 146063 Completed write count = 131257 Completed Read Count = 14806 Total = 146063
+Percent of requests satisfied = 100.0000
+Thread count = 8
+Submitted = 145000 Completed write count = 130390 Completed Read Count = 14608 Total = 144998
+Percent of requests satisfied = 99.9986
+Submitted = 145000 Completed write count = 130274 Completed Read Count = 14723 Total = 144997
+Percent of requests satisfied = 99.9979
+Submitted = 139126 Completed write count = 123892 Completed Read Count = 13799 Total = 137691
+Percent of requests satisfied = 98.9686
+Submitted = 140000 Completed write count = 126035 Completed Read Count = 13965 Total = 140000
+Percent of requests satisfied = 100.0000
+Submitted = 139625 Completed write count = 125077 Completed Read Count = 14024 Total = 139099
+Percent of requests satisfied = 99.6233
+Thread count = 12
+Submitted = 145531 Completed write count = 130932 Completed Read Count = 14475 Total = 145405
+Percent of requests satisfied = 99.9134
+Submitted = 147767 Completed write count = 132936 Completed Read Count = 14830 Total = 147766
+Percent of requests satisfied = 99.9993
+Submitted = 139541 Completed write count = 125186 Completed Read Count = 13946 Total = 139127
+Percent of requests satisfied = 99.7033
+Submitted = 145003 Completed write count = 130691 Completed Read Count = 14312 Total = 145003
+Percent of requests satisfied = 100.0000
+Submitted = 144220 Completed write count = 129719 Completed Read Count = 14501 Total = 144220
+Percent of requests satisfied = 100.0000
+Thread count = 16
+Submitted = 140000 Completed write count = 126007 Completed Read Count = 13845 Total = 139852
+Percent of requests satisfied = 99.8943
+Submitted = 139227 Completed write count = 124466 Completed Read Count = 13980 Total = 138446
+Percent of requests satisfied = 99.4390
+Submitted = 147629 Completed write count = 132713 Completed Read Count = 14904 Total = 147617
+Percent of requests satisfied = 99.9919
+Submitted = 145665 Completed write count = 131172 Completed Read Count = 14492 Total = 145664
+Percent of requests satisfied = 99.9993
+Submitted = 146009 Completed write count = 131428 Completed Read Count = 14580 Total = 146008
+Percent of requests satisfied = 99.9993
+Client count = 5100
+Thread count = 2
+Submitted = 142800 Completed write count = 128434 Completed Read Count = 14363 Total = 142797
+Percent of requests satisfied = 99.9979
+Submitted = 147952 Completed write count = 133165 Completed Read Count = 14784 Total = 147949
+Percent of requests satisfied = 99.9980
+Submitted = 147290 Completed write count = 132465 Completed Read Count = 14669 Total = 147134
+Percent of requests satisfied = 99.8941
+Submitted = 150380 Completed write count = 134977 Completed Read Count = 15002 Total = 149978
+Percent of requests satisfied = 99.7327
+Submitted = 150744 Completed write count = 135557 Completed Read Count = 15078 Total = 150634
+Percent of requests satisfied = 99.9270
+Thread count = 4
+Submitted = 148082 Completed write count = 133071 Completed Read Count = 15009 Total = 148080
+Percent of requests satisfied = 99.9986
+Submitted = 150230 Completed write count = 135141 Completed Read Count = 15088 Total = 150229
+Percent of requests satisfied = 99.9993
+Submitted = 148935 Completed write count = 133983 Completed Read Count = 14949 Total = 148932
+Percent of requests satisfied = 99.9980
+Submitted = 147900 Completed write count = 133138 Completed Read Count = 14762 Total = 147900
+Percent of requests satisfied = 100.0000
+Submitted = 147993 Completed write count = 133077 Completed Read Count = 14916 Total = 147993
+Percent of requests satisfied = 100.0000
+Thread count = 8
+Submitted = 148039 Completed write count = 133341 Completed Read Count = 14697 Total = 148038
+Percent of requests satisfied = 99.9993
+Submitted = 150581 Completed write count = 135566 Completed Read Count = 15015 Total = 150581
+Percent of requests satisfied = 100.0000
+Submitted = 149123 Completed write count = 133942 Completed Read Count = 14841 Total = 148783
+Percent of requests satisfied = 99.7720
+Submitted = 147939 Completed write count = 133233 Completed Read Count = 14705 Total = 147938
+Percent of requests satisfied = 99.9993
+Submitted = 150034 Completed write count = 135181 Completed Read Count = 14851 Total = 150032
+Percent of requests satisfied = 99.9987
+Thread count = 12
+Submitted = 152067 Completed write count = 136911 Completed Read Count = 15154 Total = 152065
+Percent of requests satisfied = 99.9987
+Submitted = 147900 Completed write count = 133104 Completed Read Count = 14794 Total = 147898
+Percent of requests satisfied = 99.9986
+Submitted = 147899 Completed write count = 133015 Completed Read Count = 14881 Total = 147896
+Percent of requests satisfied = 99.9980
+Submitted = 147919 Completed write count = 133226 Completed Read Count = 14692 Total = 147918
+Percent of requests satisfied = 99.9993
+Submitted = 148969 Completed write count = 134139 Completed Read Count = 14813 Total = 148952
+Percent of requests satisfied = 99.9886
+Thread count = 16
+Submitted = 150350 Completed write count = 135150 Completed Read Count = 15187 Total = 150337
+Percent of requests satisfied = 99.9914
+Submitted = 148224 Completed write count = 133510 Completed Read Count = 14712 Total = 148222
+Percent of requests satisfied = 99.9987
+Submitted = 149232 Completed write count = 134231 Completed Read Count = 14960 Total = 149191
+Percent of requests satisfied = 99.9725
+Submitted = 147900 Completed write count = 133366 Completed Read Count = 14534 Total = 147900
+Percent of requests satisfied = 100.0000
+Submitted = 149312 Completed write count = 134354 Completed Read Count = 14928 Total = 149282
+Percent of requests satisfied = 99.9799
+Client count = 5200
+Thread count = 2
+Submitted = 150623 Completed write count = 135517 Completed Read Count = 14979 Total = 150495
+Percent of requests satisfied = 99.9150
+Submitted = 150182 Completed write count = 134945 Completed Read Count = 15235 Total = 150180
+Percent of requests satisfied = 99.9987
+Submitted = 143327 Completed write count = 128485 Completed Read Count = 14150 Total = 142635
+Percent of requests satisfied = 99.5172
+Submitted = 151803 Completed write count = 136828 Completed Read Count = 14971 Total = 151799
+Percent of requests satisfied = 99.9974
+Submitted = 150376 Completed write count = 135199 Completed Read Count = 15091 Total = 150290
+Percent of requests satisfied = 99.9428
+Thread count = 4
+Submitted = 140753 Completed write count = 126447 Completed Read Count = 14080 Total = 140526
+Percent of requests satisfied = 99.8387
+Submitted = 153134 Completed write count = 137996 Completed Read Count = 15138 Total = 153134
+Percent of requests satisfied = 100.0000
+Submitted = 151725 Completed write count = 136467 Completed Read Count = 15170 Total = 151637
+Percent of requests satisfied = 99.9420
+Submitted = 151984 Completed write count = 136327 Completed Read Count = 15318 Total = 151645
+Percent of requests satisfied = 99.7770
+Submitted = 151946 Completed write count = 136773 Completed Read Count = 15173 Total = 151946
+Percent of requests satisfied = 100.0000
+Thread count = 8
+Submitted = 141276 Completed write count = 126948 Completed Read Count = 13950 Total = 140898
+Percent of requests satisfied = 99.7324
+Submitted = 151405 Completed write count = 136022 Completed Read Count = 15379 Total = 151401
+Percent of requests satisfied = 99.9974
+Submitted = 153177 Completed write count = 137777 Completed Read Count = 15399 Total = 153176
+Percent of requests satisfied = 99.9993
+Submitted = 152969 Completed write count = 137606 Completed Read Count = 15362 Total = 152968
+Percent of requests satisfied = 99.9993
+Submitted = 153121 Completed write count = 137766 Completed Read Count = 15351 Total = 153117
+Percent of requests satisfied = 99.9974
+Thread count = 12
+Submitted = 150800 Completed write count = 135815 Completed Read Count = 14984 Total = 150799
+Percent of requests satisfied = 99.9993
+Submitted = 150742 Completed write count = 135691 Completed Read Count = 15050 Total = 150741
+Percent of requests satisfied = 99.9993
+Submitted = 150800 Completed write count = 135797 Completed Read Count = 15002 Total = 150799
+Percent of requests satisfied = 99.9993
+Submitted = 150800 Completed write count = 135784 Completed Read Count = 15016 Total = 150800
+Percent of requests satisfied = 100.0000
+Submitted = 140916 Completed write count = 126950 Completed Read Count = 13966 Total = 140916
+Percent of requests satisfied = 100.0000
+Thread count = 16
+Submitted = 153330 Completed write count = 138072 Completed Read Count = 15258 Total = 153330
+Percent of requests satisfied = 100.0000
+Submitted = 150800 Completed write count = 135875 Completed Read Count = 14924 Total = 150799
+Percent of requests satisfied = 99.9993
+Submitted = 142242 Completed write count = 127087 Completed Read Count = 14139 Total = 141224
+Percent of requests satisfied = 99.2843
+Submitted = 142839 Completed write count = 127919 Completed Read Count = 14333 Total = 142252
+Percent of requests satisfied = 99.5890
+Submitted = 152897 Completed write count = 137545 Completed Read Count = 15352 Total = 152897
+Percent of requests satisfied = 100.0000
+Client count = 5300
+Thread count = 2
+Submitted = 143100 Completed write count = 128495 Completed Read Count = 14604 Total = 143099
+Percent of requests satisfied = 99.9993
+Submitted = 145725 Completed write count = 130561 Completed Read Count = 14461 Total = 145022
+Percent of requests satisfied = 99.5176
+Submitted = 156199 Completed write count = 140307 Completed Read Count = 15568 Total = 155875
+Percent of requests satisfied = 99.7926
+Submitted = 153490 Completed write count = 138150 Completed Read Count = 15260 Total = 153410
+Percent of requests satisfied = 99.9479
+Submitted = 143208 Completed write count = 128908 Completed Read Count = 14298 Total = 143205
+Percent of requests satisfied = 99.9979
+Thread count = 4
+Submitted = 143100 Completed write count = 128918 Completed Read Count = 14182 Total = 143100
+Percent of requests satisfied = 100.0000

@@ -1,0 +1,1525 @@
+Client count = 1000
+Thread count = 2
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  60713  60724  0.00      0      0      0	 20000
+    0  72328  72814  0.00    465     22     27	 20000
+    0  73088  73467  0.00    361      7     12	 20000
+    0  73776  73777  0.00      0      0      0	 20000
+    0  70076  70161  0.00     98      3      2	 20000
+    0  75131  75181  0.00     27      0      3	 20000
+    0  74999  75077  0.00     78      0      0	 20000
+    0  62804  62792  0.00      0      0      0	 20000
+    0  48916  48977  0.00     59      1      1	 21291
+    0  57171  57187  0.00      0      0      0	 21106
+Submitted = 678301 Completed write count = 676499 Completed Read Count = 0 Total = 676489
+Comitted = 675358 Total Aborts = 1088 Total RqAborts = 33 Total Xaborts = 817 Total Commit Aborts = 1121 Random aborts = 6 FallBehindAborts = 45
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  59071  59085  0.00      0      0      0	 20000
+    0  70465  70712  0.00    237     11     14	 20000
+    0  71426  71528  0.00    100      2      5	 20000
+    0  71602  71609  0.00      0      0      0	 20000
+    0  67269  67402  0.00    131      1      1	 20001
+    0  69914  69918  0.00      8      0      0	 20000
+    0  70456  70453  0.00      0      0      0	 20000
+    0  59210  59225  0.00     24      0      0	 20000
+    0  70815  71076  0.00    233      7      9	 20000
+    0  34995  34982  0.00      0      0      0	 20000
+Submitted = 649217 Completed write count = 646008 Completed Read Count = 0 Total = 646000
+Comitted = 645237 Total Aborts = 733 Total RqAborts = 21 Total Xaborts = 835 Total Commit Aborts = 754 Random aborts = 6 FallBehindAborts = 29
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  61415  61440  0.00      0      0      0	 20000
+    0  73040  73203  0.00    169      3      7	 20000
+    0  74931  74944  0.00      2      0      0	 20000
+    0  72252  72235  0.00      0      0      0	 20000
+    0  71012  71055  0.00     24      0      4	 20000
+    0  75655  75978  0.00    339      8     24	 20000
+    0  64039  64163  0.00    119      3      7	 23218
+    0  76137  76121  0.00      0      0      0	 20000
+    0  44040  44057  0.00     14      0      0	 20000
+    0  52520  52533  0.00      0      0      0	 20000
+Submitted = 679320 Completed write count = 676074 Completed Read Count = 0 Total = 676067
+Comitted = 675381 Total Aborts = 667 Total RqAborts = 14 Total Xaborts = 908 Total Commit Aborts = 681 Random aborts = 6 FallBehindAborts = 42
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  59446  59465  0.00      0      0      0	 20069
+    0  72167  72217  0.00     38      0      0	 20000
+    0  70476  70463  0.00      7      0      0	 20001
+    0  71747  71741  0.00      0      0      0	 20000
+    0  67079  67215  0.00    122      1      0	 20000
+    0  72237  72233  0.00      5      0      0	 20000
+    0  71279  71294  0.00      0      0      0	 20000
+    0  61833  61902  0.00     80      3      3	 20000
+    0  51987  52022  0.00     38      0      0	 23736
+    0  52584  52578  0.00      0      0      0	 20000
+Submitted = 664728 Completed write count = 661073 Completed Read Count = 0 Total = 661067
+Comitted = 660780 Total Aborts = 290 Total RqAborts = 4 Total Xaborts = 761 Total Commit Aborts = 294 Random aborts = 6 FallBehindAborts = 3
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  58767  58789  0.00      0      0      0	 20000
+    0  71661  71974  0.00    297      9     27	 20000
+    0  71044  71852  0.00    783     35     31	 20001
+    0  71471  71476  0.00      0      0      0	 20000
+    0  67896  67901  0.00     20      0      0	 20000
+    0  72129  72164  0.00     20      1      1	 20000
+    0  72840  72822  0.00      0      0      0	 20000
+    0  60485  60685  0.00    170      4     10	 20000
+    0  47496  47554  0.00     72      2      5	 24545
+    0  53080  53064  0.00      0      0      0	 20000
+Submitted = 661643 Completed write count = 659107 Completed Read Count = 0 Total = 659096
+Comitted = 657682 Total Aborts = 1362 Total RqAborts = 51 Total Xaborts = 753 Total Commit Aborts = 1413 Random aborts = 6 FallBehindAborts = 74
+Thread count = 4
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  64111  64141  0.00      0      0      0	 20000
+    0  77701  77704  0.00     16      0      0	 20000
+    0  78706  78880  0.00    171      4     11	 20000
+    0  73426  73429  0.00      0      0      0	 20698
+    0  75102  76083  0.00    985      9     17	 20000
+    0  75984  76213  0.00    218      5      5	 20000
+    0  63191  63284  0.00     83      1      0	 20000
+    0  76748  76744  0.00      0      0      0	 20000
+    0  42184  43453  0.00   1248     29     47	 20001
+    0  57552  57559  0.00      0      0      0	 20001
+Submitted = 691246 Completed write count = 690079 Completed Read Count = 0 Total = 690067
+Comitted = 687300 Total Aborts = 2721 Total RqAborts = 48 Total Xaborts = 35267 Total Commit Aborts = 2769 Random aborts = 6 FallBehindAborts = 80
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  62546  62561  0.00      0      0      0	 20000
+    0  77411  77825  0.00    413      8      6	 20000
+    0  78564  78608  0.00     27      0      0	 20000
+    0  77370  77355  0.00      0      0      0	 20000
+    0  73291  73316  0.00     12      0      0	 20000
+    0  78583  78920  0.00    330     18     25	 20000
+    0  68193  68349  0.00    135      5      8	 20000
+    0  78710  78699  0.00      0      0      0	 20000
+    0  40130  40462  0.00    334     15     16	 21401
+    0  64535  64775  0.00    251      5      4	 20000
+Submitted = 705127 Completed write count = 703726 Completed Read Count = 0 Total = 703717
+Comitted = 702165 Total Aborts = 1502 Total RqAborts = 51 Total Xaborts = 37441 Total Commit Aborts = 1553 Random aborts = 7 FallBehindAborts = 59
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  65333  65357  0.00      0      0      0	 20000
+    0  77642  77860  0.00    219      4     10	 20000
+    0  75555  76781  0.00   1170     50     34	 20000
+    0  73437  73435  0.00      0      0      0	 21350
+    0  76031  76115  0.00     91      2      3	 20000
+    0  74289  74448  0.00    145      3      4	 20001
+    0  63320  63448  0.00    139      1      0	 20000
+    0  75384  75385  0.00      0      0      0	 20000
+    0  46883  46916  0.00     32      0      1	 20000
+    0  37835  37836  0.00      0      0      0	 20000
+Submitted = 674524 Completed write count = 672565 Completed Read Count = 0 Total = 672550
+Comitted = 670694 Total Aborts = 1796 Total RqAborts = 60 Total Xaborts = 32503 Total Commit Aborts = 1856 Random aborts = 6 FallBehindAborts = 52
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  60723  60740  0.00      0      0      0	 20000
+    0  74308  74320  0.00     20      0      0	 20000
+    0  75032  75056  0.00     17      0      0	 20000
+    0  73459  73457  0.00      0      0      0	 20000
+    0  69135  69164  0.00     29      2      1	 20000
+    0  73581  73588  0.00     10      1      0	 20000
+    0  74418  74457  0.00     24      1      0	 20000
+    0  53186  53189  0.00      0      0      0	 20000
+    0  76218  76302  0.00     92      5      2	 20000
+    0  38095  38092  0.00      0      0      0	 20001
+Submitted = 671369 Completed write count = 668382 Completed Read Count = 0 Total = 668374
+Comitted = 668164 Total Aborts = 192 Total RqAborts = 9 Total Xaborts = 31414 Total Commit Aborts = 201 Random aborts = 6 FallBehindAborts = 3
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  63882  63915  0.00      0      0      0	 20000
+    0  75617  75688  0.00     85      4      2	 20000
+    0  75602  75687  0.00     91      2      0	 20000
+    0  75238  75247  0.00      0      0      0	 20001
+    0  70474  70535  0.00     65      0      0	 20001
+    0  74702  74722  0.00      9      0      0	 20000
+    0  62490  62491  0.00      0      0      0	 20000
+    0  76071  76080  0.00     23      0      0	 20000
+    0  55179  55213  0.00     28      2      4	 25132
+    0  53747  53743  0.00      0      0      0	 20000
+Submitted = 701114 Completed write count = 697509 Completed Read Count = 0 Total = 697505
+Comitted = 697194 Total Aborts = 301 Total RqAborts = 8 Total Xaborts = 44461 Total Commit Aborts = 309 Random aborts = 6 FallBehindAborts = 6
+Thread count = 8
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  69411  69435  0.00      0      0      0	 20000
+    0  77542  79822  0.00   2253     32     17	 20000
+    0  77204  80804  0.00   3562     53     33	 20000
+    0  76541  81524  0.00   4796    170     17	 20001
+    0  75469  75468  0.00      0      0      0	 20000
+    0  80276  81722  0.00   1375     70     17	 20000
+    0  67343  67349  0.00     16      0      0	 20000
+    0  80436  80464  0.00     15      0      0	 20000
+    0  32565  32575  0.00      0      0      0	 20492
+    0  45703  47828  0.00   2350     64     13	 22630
+Submitted = 693293 Completed write count = 704089 Completed Read Count = 0 Total = 704089
+Comitted = 689307 Total Aborts = 14367 Total RqAborts = 389 Total Xaborts = 119481 Total Commit Aborts = 14756 Random aborts = 7 FallBehindAborts = 97
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  67162  67181  0.00      0      0      0	 20000
+    0  68393  80924  0.00  12246    280     93	 20000
+    0  80405  81649  0.00   1209     34     16	 20000
+    0  77779  77831  0.00     42      2      0	 20611
+    0  83699  83677  0.00      0      0      0	 20000
+    0  81124  81184  0.00     51      4      0	 20000
+    0  61995  64654  0.00   2556    104      3	 20000
+    0  72974  79375  0.00   6202    206     58	 20001
+    0  42404  42422  0.00      0      0      0	 20000
+    0  46963  46965  0.00      6      0      0	 20989
+Submitted = 691384 Completed write count = 710585 Completed Read Count = 0 Total = 710579
+Comitted = 687627 Total Aborts = 22312 Total RqAborts = 630 Total Xaborts = 129569 Total Commit Aborts = 22942 Random aborts = 7 FallBehindAborts = 170
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  67684  67701  0.00      0      0      0	 20001
+    0  70902  80614  0.00   9509    186     82	 20001
+    0  73286  81388  0.00   7805    311     60	 20000
+    0  81580  81601  0.00     21      7      0	 20000
+    0  74601  74596  0.00      0      0      0	 20000
+    0  71462  80648  0.00   8855    330     72	 20001
+    0  58400  58448  0.00     49      0      0	 24339
+    0  73351  80048  0.00   6462    246     41	 20000
+    0  48048  48060  0.00      0      0      0	 21066
+    0  26441  27386  0.00   1176     36      9	 25701
+Submitted = 673082 Completed write count = 703561 Completed Read Count = 0 Total = 703557
+Comitted = 668546 Total Aborts = 33891 Total RqAborts = 1116 Total Xaborts = 135872 Total Commit Aborts = 35007 Random aborts = 7 FallBehindAborts = 264
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  65726  65746  0.00      0      0      0	 20000
+    0  72755  78089  0.00   5286     71     44	 20071
+    0  78713  78817  0.00     98      2      4	 20000
+    0  77794  78701  0.00    881     17      3	 20000
+    0  72048  73940  0.00   1841     49      4	 20000
+    0  73801  77270  0.00   3372    115      5	 20000
+    0  77912  77969  0.00     50      2      0	 20000
+    0  56443  56452  0.00      0      0      0	 20000
+    0  48706  50406  0.00   1742     68     10	 21265
+    0  55456  55441  0.00      0      0      0	 20239
+Submitted = 687332 Completed write count = 696977 Completed Read Count = 0 Total = 696967
+Comitted = 683367 Total Aborts = 13270 Total RqAborts = 324 Total Xaborts = 125321 Total Commit Aborts = 13594 Random aborts = 6 FallBehindAborts = 70
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  69000  69008  0.00      0      0      0	 20000
+    0  78956  80160  0.00   1176     20     27	 20000
+    0  81470  81481  0.00     11      0      0	 20000
+    0  75035  75155  0.00    127      0      3	 20000
+    0  80091  80107  0.00      0      0      0	 20000
+    0  76889  78656  0.00   1755     16      1	 20000
+    0  65475  65873  0.00    394      0      1	 20000
+    0  76061  79150  0.00   3084     17      2	 20000
+    0  33506  33528  0.00      0      0      0	 20620
+    0  63610  63696  0.00     92      3      0	 20935
+Submitted = 708093 Completed write count = 710850 Completed Read Count = 0 Total = 710839
+Comitted = 704138 Total Aborts = 6639 Total RqAborts = 56 Total Xaborts = 146980 Total Commit Aborts = 6695 Random aborts = 7 FallBehindAborts = 34
+Thread count = 12
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  67447  67463  0.00      0      0      0	 20001
+    0  78826  78883  0.00     60      0      0	 20000
+    0  79329  79352  0.00     14      0      0	 20000
+    0  75272  79164  0.00   3887      7      7	 20000
+    0   9109  74269  0.00  64816    357     74	 20000
+    0  44733  79518  0.00  34452    323     62	 20000
+    0  46879  78980  0.00  31805    304     25	 20000
+    0  10944  77592  0.00  66169    451     79	 20000
+    0  58504  78931  0.00  20280    174     25	 20000
+    0  53392  56358  0.00   2947     29      3	 20000
+Submitted = 534802 Completed write count = 750529 Completed Read Count = 0 Total = 750523
+Comitted = 524439 Total Aborts = 224430 Total RqAborts = 1645 Total Xaborts = 336287 Total Commit Aborts = 226075 Random aborts = 7 FallBehindAborts = 275
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  72341  72355  0.00      0      0      0	 20001
+    0  42997  84876  0.00  41692    189     88	 20000
+    0  48171  84416  0.00  35889    353     65	 20000
+    0  37686  84085  0.00  45953    435     94	 20001
+    0  76583  84739  0.00   8109     62     10	 20001
+    0  77554  77581  0.00      0      0      0	 20000
+    0  23691  84330  0.00  60116    534    104	 20000
+    0  11235  84449  0.00  72615    611    136	 20000
+    0  17452  84727  0.00  66664    618     84	 20001
+    0  83414  83458  0.00     41      0      0	 20001
+Submitted = 502809 Completed write count = 825055 Completed Read Count = 0 Total = 825048
+Comitted = 491159 Total Aborts = 331079 Total RqAborts = 2802 Total Xaborts = 355118 Total Commit Aborts = 333881 Random aborts = 8 FallBehindAborts = 581
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  69627  69655  0.00      0      0      0	 20001
+    0  35228  80881  0.00  45550    105     39	 20000
+    0  29591  81312  0.00  51256    482     74	 20000
+    0  63010  82165  0.00  18991    152     12	 20001
+    0  13584  83494  0.00  69271    639     79	 20000
+    0  48402  81609  0.00  32955    248     38	 20000
+    0  51754  76519  0.00  24543    228     60	 20000
+    0  51417  80626  0.00  28936    262     39	 20000
+    0  64991  81101  0.00  15992    133     19	 20000
+    0  10838  73131  0.00  61807    479     92	 20000
+Submitted = 451853 Completed write count = 790523 Completed Read Count = 0 Total = 790510
+Comitted = 438450 Total Aborts = 349301 Total RqAborts = 2728 Total Xaborts = 349334 Total Commit Aborts = 352029 Random aborts = 7 FallBehindAborts = 452
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  67952  67985  0.00      0      0      0	 20001
+    0  79341  81942  0.00   2611      9      0	 20001
+    0  54420  80814  0.00  26248    134     29	 20000
+    0  63260  81970  0.00  18633     80     26	 20000
+    0  68864  75462  0.00   6568     23     11	 20000
+    0  21085  78282  0.00  56791    422     80	 20000
+    0  46055  80344  0.00  34056    222     33	 20000
+    0  79142  79186  0.00     48      0      0	 20000
+    0  69525  69529  0.00      0      0      0	 20000
+    0  39761  78520  0.00  38476    290     50	 20000
+Submitted = 597488 Completed write count = 774067 Completed Read Count = 0 Total = 774056
+Comitted = 589436 Total Aborts = 183431 Total RqAborts = 1180 Total Xaborts = 334172 Total Commit Aborts = 184611 Random aborts = 7 FallBehindAborts = 229
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  68121  68142  0.00      0      0      0	 20000
+    0  79453  79491  0.00     26      0      0	 20001
+    0  55882  78804  0.00  22867     64     15	 20000
+    0  58598  79653  0.00  20905    145     11	 20000
+    0  28390  74404  0.00  45667    342     47	 20000
+    0  44711  79205  0.00  34368    197     52	 20030
+    0  50152  80987  0.00  30541    299     69	 20000
+    0  66162  79932  0.00  13633    127     31	 20000
+    0  58402  58410  0.00      0      0      0	 20000
+    0  79368  79416  0.00     60      0      0	 20000
+Submitted = 597437 Completed write count = 758588 Completed Read Count = 0 Total = 758574
+Comitted = 589329 Total Aborts = 168067 Total RqAborts = 1174 Total Xaborts = 291460 Total Commit Aborts = 169241 Random aborts = 7 FallBehindAborts = 225
+Client count = 2000
+Thread count = 2
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  55214  55226  0.00      0      0      0	 20000
+    0  71710  71735  0.00     15      0      0	 20000
+    0  71465  71455  0.00      0      0      0	 20000
+    0  71457  71591  0.00    113      6      5	 20000
+    0  69638  69646  0.00      8      0      0	 20000
+    0  73000  73045  0.00     52      1      2	 20000
+    0  72471  72479  0.00      0      0      0	 20000
+    0  62119  62302  0.00    176      7      5	 20000
+    0  51938  51959  0.00     23      1      5	 23059
+    0  58902  58892  0.00      0      0      0	 20000
+Submitted = 672482 Completed write count = 666296 Completed Read Count = 0 Total = 666284
+Comitted = 665877 Total Aborts = 387 Total RqAborts = 15 Total Xaborts = 645 Total Commit Aborts = 402 Random aborts = 6 FallBehindAborts = 17
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  53645  53667  0.00      0      0      0	 20000
+    0  71007  71593  0.00    581     22     42	 20000
+    0  72537  72550  0.00      0      0      0	 20000
+    0  70356  70452  0.00     93      1      0	 20000
+    0  68889  68945  0.00     56      1      1	 20000
+    0  71513  71669  0.00    160      9      2	 20000
+    0  70788  70802  0.00      0      0      0	 20000
+    0  59699  59694  0.00      5      0      0	 20000
+    0  71269  71405  0.00    123      2      3	 20001
+    0  37226  37219  0.00      0      0      0	 20000
+Submitted = 654106 Completed write count = 648008 Completed Read Count = 0 Total = 648002
+Comitted = 646944 Total Aborts = 1018 Total RqAborts = 35 Total Xaborts = 692 Total Commit Aborts = 1053 Random aborts = 6 FallBehindAborts = 48
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  55921  55936  0.00      0      0      0	 20000
+    0  75067  75106  0.00     31      0      0	 20000
+    0  73911  73994  0.00     83      1      2	 20001
+    0  74210  74217  0.00      0      0      0	 20000
+    0  68053  68044  0.00     12      0      0	 20001
+    0  72178  72195  0.00     13      1      0	 20000
+    0  73535  73542  0.00      0      0      0	 20000
+    0  62751  62818  0.00     76      5      5	 20000
+    0  45702  45896  0.00    189      6     20	 22000
+    0  56025  56016  0.00      0      0      0	 20000
+Submitted = 669897 Completed write count = 662380 Completed Read Count = 0 Total = 662368
+Comitted = 661957 Total Aborts = 404 Total RqAborts = 13 Total Xaborts = 980 Total Commit Aborts = 417 Random aborts = 6 FallBehindAborts = 27
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  55096  55120  0.00      0      0      0	 20000
+    0  71614  71718  0.00    102      1      4	 20000
+    0  70422  70418  0.00      0      0      0	 20000
+    0  69966  70008  0.00     50      1      0	 20000
+    0  67251  67281  0.00     15      1      0	 20000
+    0  70819  70867  0.00     63      1      0	 20001
+    0  71658  71656  0.00      0      0      0	 20000
+    0  60768  60864  0.00     75      2      2	 20000
+    0  49063  49096  0.00     44      0      2	 26814
+    0  41867  41872  0.00      0      0      0	 20001
+Submitted = 653237 Completed write count = 645649 Completed Read Count = 0 Total = 645637
+Comitted = 645278 Total Aborts = 349 Total RqAborts = 6 Total Xaborts = 638 Total Commit Aborts = 355 Random aborts = 6 FallBehindAborts = 8
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  56285  56301  0.00      0      0      0	 20000
+    0  69806  70986  0.00   1131     45     58	 20000
+    0  70984  70981  0.00      0      0      0	 20000
+    0  70687  70773  0.00     85      2     10	 20000
+    0  67750  67783  0.00     13      0      0	 20000
+    0  70791  70983  0.00    199      7     20	 20000
+    0  69589  69574  0.00      0      0      0	 20000
+    0  60073  60110  0.00     35      0      2	 20000
+    0  69392  69408  0.00      3      0      0	 20000
+    0  25610  25610  0.00      0      0      0	 20000
+Submitted = 638950 Completed write count = 632527 Completed Read Count = 0 Total = 632515
+Comitted = 630990 Total Aborts = 1466 Total RqAborts = 54 Total Xaborts = 584 Total Commit Aborts = 1520 Random aborts = 6 FallBehindAborts = 90
+Thread count = 4
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  59898  59912  0.00      0      0      0	 20000
+    0  73554  76537  0.00   2848    142    143	 20000
+    0  78326  78357  0.00     26      0      0	 20000
+    0  78059  78073  0.00      0      0      0	 20000
+    0  74159  74203  0.00     53      4      1	 20000
+    0  79670  79751  0.00     84      0      0	 20000
+    0  55156  55218  0.00     47      3      2	 21621
+    0  78816  78801  0.00      0      0      0	 20000
+    0  50303  50319  0.00     14      2      0	 20000
+    0  59196  59213  0.00      0      0      0	 20000
+Submitted = 697774 Completed write count = 694877 Completed Read Count = 0 Total = 694868
+Comitted = 691637 Total Aborts = 3072 Total RqAborts = 151 Total Xaborts = 39971 Total Commit Aborts = 3223 Random aborts = 6 FallBehindAborts = 146
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  58962  58981  0.00      0      0      0	 20000
+    0  76055  76534  0.00    470      5     17	 20000
+    0  77705  77742  0.00     35      0      5	 20000
+    0  77814  77796  0.00      0      0      0	 20000
+    0  72030  72083  0.00     43      2      0	 20000
+    0  75748  76020  0.00    254      7      7	 20000
+    0  66024  66348  0.00    328      7     12	 20000
+    0  77054  77044  0.00      0      0      0	 20001
+    0  44887  45045  0.00    131      2      0	 20090
+    0  59329  59311  0.00      0      0      0	 20000
+Submitted = 692181 Completed write count = 687124 Completed Read Count = 0 Total = 687114
+Comitted = 685814 Total Aborts = 1261 Total RqAborts = 23 Total Xaborts = 32922 Total Commit Aborts = 1284 Random aborts = 6 FallBehindAborts = 41
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  58481  58491  0.00      0      0      0	 20000
+    0  76345  76372  0.00     20      0      2	 20000
+    0  76571  77086  0.00    504     10     24	 20000
+    0  76102  76098  0.00      0      0      0	 20000
+    0  72221  72256  0.00     29      0      0	 20000
+    0  75927  75924  0.00      1      0      0	 20001
+    0  65924  66121  0.00    180      4      3	 20000
+    0  76392  76388  0.00      0      0      0	 20000
+    0  51129  51354  0.00    230      9      2	 20000
+    0  39342  39354  0.00      0      0      0	 20957
+Submitted = 680312 Completed write count = 671347 Completed Read Count = 0 Total = 671335
+Comitted = 670345 Total Aborts = 964 Total RqAborts = 23 Total Xaborts = 32909 Total Commit Aborts = 987 Random aborts = 6 FallBehindAborts = 31
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  60155  60170  0.00      0      0      0	 20000
+    0  78714  79477  0.00    732     30     32	 20000
+    0  79939  79967  0.00     16      2      0	 20000
+    0  77045  77049  0.00      0      0      0	 20815
+    0  80503  80767  0.00    268     13      4	 20000
+    0  79814  79895  0.00     74      4      0	 20000
+    0  68321  68343  0.00     28      1      1	 20000
+    0  78428  78487  0.00     45      4      0	 20001
+    0  26343  26349  0.00      0      0      0	 21961
+    0  45748  45743  0.00      0      0      0	 20001
+Submitted = 692741 Completed write count = 682000 Completed Read Count = 0 Total = 681987
+Comitted = 680763 Total Aborts = 1163 Total RqAborts = 54 Total Xaborts = 33906 Total Commit Aborts = 1217 Random aborts = 6 FallBehindAborts = 37
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  62102  62113  0.00      0      0      0	 20000
+    0  83086  83160  0.00     58      1      0	 20000
+    0  83223  83220  0.00      6      0      0	 20001
+    0  77134  77171  0.00     21      1      1	 20000
+    0  78590  78567  0.00      0      0      0	 20001
+    0  77750  77774  0.00     16      0      0	 20000
+    0  66849  66995  0.00    148      2      5	 20000
+    0  75854  78063  0.00   2127     65     49	 20000
+    0  28888  28882  0.00      0      0      0	 20512
+    0  37292  37280  0.00      0      0      0	 20672
+Submitted = 682753 Completed write count = 675227 Completed Read Count = 0 Total = 675227
+Comitted = 672771 Total Aborts = 2376 Total RqAborts = 69 Total Xaborts = 35275 Total Commit Aborts = 2445 Random aborts = 6 FallBehindAborts = 55
+Thread count = 8
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  60727  60761  0.00      0      0      0	 20000
+    0  76998  77860  0.00    849     31      6	 20001
+    0  78872  78907  0.00     29      3      0	 20000
+    0  79923  79917  0.00      0      0      0	 20000
+    0  76554  76617  0.00     53      2      0	 20000
+    0  78461  78813  0.00    351      3      0	 20000
+    0  64414  66046  0.00   1595     28     16	 20000
+    0  79593  79587  0.00      0      0      0	 20000
+    0  51016  52861  0.00   1822     24      3	 20000
+    0  50524  50619  0.00     93      0      0	 20000
+Submitted = 705886 Completed write count = 702012 Completed Read Count = 0 Total = 701998
+Comitted = 697106 Total Aborts = 4792 Total RqAborts = 91 Total Xaborts = 144877 Total Commit Aborts = 4883 Random aborts = 7 FallBehindAborts = 25
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  60009  60032  0.00      0      0      0	 20000
+    0  79704  79719  0.00     22      0      0	 20000
+    0  78750  80401  0.00   1632     11     11	 20000
+    0  78806  78804  0.00      0      0      0	 20000
+    0  74663  77044  0.00   2364     38      2	 20000
+    0  82135  82170  0.00     12      0      0	 20000
+    0  58952  66547  0.00   7488    108     47	 20000
+    0  79425  80596  0.00   1158     22      9	 20000
+    0  48222  48230  0.00      0      0      0	 20001
+    0  60871  60888  0.00     23      5      0	 20000
+Submitted = 709666 Completed write count = 714450 Completed Read Count = 0 Total = 714439
+Comitted = 701554 Total Aborts = 12699 Total RqAborts = 184 Total Xaborts = 136588 Total Commit Aborts = 12883 Random aborts = 7 FallBehindAborts = 69
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  64895  64903  0.00      0      0      0	 20000
+    0  82882  83888  0.00    974     19      5	 20001
+    0  84114  84125  0.00     18      0      0	 20000
+    0  77146  79777  0.00   2565     52     19	 20000
+    0  83890  83889  0.00      0      0      0	 20000
+    0  73704  82757  0.00   8913    143     59	 20000
+    0  71356  71448  0.00     90      0      0	 20000
+    0  53263  58930  0.00   6091    131     38	 21968
+    0  59957  59956  0.00      0      0      0	 20345
+    0  58396  58417  0.00     13      0      0	 20950
+Submitted = 728962 Completed write count = 737720 Completed Read Count = 0 Total = 737709
+Comitted = 718696 Total Aborts = 18664 Total RqAborts = 345 Total Xaborts = 157649 Total Commit Aborts = 19009 Random aborts = 7 FallBehindAborts = 121
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  61878  61897  0.00      0      0      0	 20000
+    0  58064  78578  0.00  19912    604    172	 20000
+    0  78683  78816  0.00    108      7      0	 20000
+    0  78977  78960  0.00      0      0      0	 20000
+    0  74456  74529  0.00     72      0      4	 20000
+    0  68461  78222  0.00   9407    358    101	 20001
+    0  69058  69128  0.00     57      3      1	 20001
+    0  78209  78216  0.00      0      0      0	 20000
+    0  59374  59373  0.00     12      0      0	 25999
+    0  55536  55627  0.00     82      3      0	 20348
+Submitted = 711250 Completed write count = 732149 Completed Read Count = 0 Total = 732135
+Comitted = 701504 Total Aborts = 29650 Total RqAborts = 975 Total Xaborts = 122641 Total Commit Aborts = 30625 Random aborts = 7 FallBehindAborts = 278
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  62611  62629  0.00      0      0      0	 20000
+    0  81040  81197  0.00    152      0      0	 20000
+    0  81086  81279  0.00    185      8      3	 20000
+    0  76526  76582  0.00     54      4      0	 20000
+    0  80829  80824  0.00      0      0      0	 20000
+    0  81907  81947  0.00     38      1      0	 20000
+    0  68978  68999  0.00     21      0      0	 20000
+    0  55000  55470  0.00    558     12      6	 24555
+    0  56600  56604  0.00      6      0      0	 20000
+    0  38870  38871  0.00      0      0      0	 20000
+Submitted = 708753 Completed write count = 697055 Completed Read Count = 0 Total = 697038
+Comitted = 695991 Total Aborts = 1014 Total RqAborts = 25 Total Xaborts = 119495 Total Commit Aborts = 1039 Random aborts = 6 FallBehindAborts = 9
+Thread count = 12
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  63229  63254  0.00      0      0      0	 20000
+    0  73467  79801  0.00   6335      8      9	 20000
+    0  61042  79923  0.00  18826     61     40	 20000
+    0  34575  79587  0.00  44907    103     71	 20000
+    0  57220  80003  0.00  22633    144     34	 20001
+    0  60598  76121  0.00  15412    108     37	 20001
+    0  46196  80251  0.00  33867    186     40	 20001
+    0  30368  80225  0.00  49505    360     78	 20000
+    0  61451  81317  0.00  19736    130     26	 20001
+    0  42980  64747  0.00  21556    202     20	 20000
+Submitted = 560561 Completed write count = 765258 Completed Read Count = 0 Total = 765251
+Comitted = 531167 Total Aborts = 232777 Total RqAborts = 1302 Total Xaborts = 353000 Total Commit Aborts = 234079 Random aborts = 7 FallBehindAborts = 355
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  63396  63419  0.00      0      0      0	 20000
+    0  42930  80385  0.00  37378     89     37	 20000
+    0  11836  80712  0.00  68306    568    104	 20000
+    0  57184  81533  0.00  24208    132     34	 20000
+    0  82552  82560  0.00      0      0      0	 20000
+    0  32945  79084  0.00  45795    355     51	 20001
+    0  39806  83736  0.00  43636    312     57	 20001
+    0  13905  82703  0.00  68365    423     69	 20000
+    0  69942  82247  0.00  12191    105      8	 20000
+    0  35613  77511  0.00  41514    394     73	 20000
+Submitted = 493813 Completed write count = 793914 Completed Read Count = 0 Total = 793904
+Comitted = 450125 Total Aborts = 341393 Total RqAborts = 2378 Total Xaborts = 323864 Total Commit Aborts = 343771 Random aborts = 7 FallBehindAborts = 433
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  66820  66844  0.00      0      0      0	 20000
+    0  66899  84265  0.00  17318     44     27	 20000
+    0  84946  85009  0.00     73      0      0	 20000
+    0  80175  80268  0.00     99      2      0	 20000
+    0  83994  85348  0.00   1342      4      0	 20000
+    0  28461  84042  0.00  55349    231     96	 20000
+    0  25976  84508  0.00  58002    522     91	 20000
+    0  48836  63466  0.00  17140    134     25	 23606
+    0  75772  83329  0.00   7491     65     14	 20000
+    0  56690  56681  0.00      0      0      0	 21965
+Submitted = 654873 Completed write count = 790788 Completed Read Count = 0 Total = 790779
+Comitted = 632949 Total Aborts = 156814 Total RqAborts = 1002 Total Xaborts = 316619 Total Commit Aborts = 157816 Random aborts = 7 FallBehindAborts = 253
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  62624  62650  0.00      0      0      0	 20000
+    0  42636  81642  0.00  38867    155     56	 20001
+    0  34236  81438  0.00  46885    296     64	 20000
+    0  41023  81261  0.00  39901    351     86	 20000
+    0  53113  81328  0.00  28061    158     56	 20001
+    0  64560  77573  0.00  12852    168     24	 20001
+    0  64880  83621  0.00  18544    172     22	 20000
+    0  78262  82473  0.00   4172     37      2	 20001
+    0  71024  76798  0.00   5721     58     21	 20000
+    0  26178  81697  0.00  55128    397    118	 20000
+Submitted = 568866 Completed write count = 790512 Completed Read Count = 0 Total = 790505
+Comitted = 538567 Total Aborts = 250131 Total RqAborts = 1792 Total Xaborts = 348193 Total Commit Aborts = 251923 Random aborts = 7 FallBehindAborts = 449
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  65178  65191  0.00      0      0      0	 20000
+    0  41062  81330  0.00  40096    160     73	 20000
+    0  81838  81988  0.00    143      3      0	 20000
+    0  80407  82023  0.00   1632      0      0	 20001
+    0  77916  77920  0.00      0      0      0	 20000
+    0  81868  81938  0.00     71      0      0	 20000
+    0  36290  71470  0.00  34974    188     46	 20000
+    0  20388  82910  0.00  62192    348     83	 20001
+    0  77233  81882  0.00   4626     25      2	 20000
+    0  46840  81919  0.00  34779    292     68	 20000
+Submitted = 633344 Completed write count = 788607 Completed Read Count = 0 Total = 788596
+Comitted = 609047 Total Aborts = 178513 Total RqAborts = 1016 Total Xaborts = 319785 Total Commit Aborts = 179529 Random aborts = 7 FallBehindAborts = 272
+Client count = 3000
+Thread count = 2
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  46882  46890  0.00      0      0      0	 20001
+    0  71313  71831  0.00    490      8     24	 20000
+    0  69413  69404  0.00      0      0      0	 20000
+    0  69783  69936  0.00    155      7      7	 20001
+    0  67093  67110  0.00      2      0      0	 20000
+    0  70919  70903  0.00      0      0      0	 20001
+    0  70332  70378  0.00     38      1      0	 20000
+    0  60358  60394  0.00     23      0      0	 20001
+    0  70414  70391  0.00      0      0      0	 20000
+    0  43347  43455  0.00     98      2      4	 20929
+Submitted = 648069 Completed write count = 642726 Completed Read Count = 0 Total = 642726
+Comitted = 641883 Total Aborts = 806 Total RqAborts = 18 Total Xaborts = 849 Total Commit Aborts = 824 Random aborts = 6 FallBehindAborts = 35
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  45879  45895  0.00      0      0      0	 20000
+    0  70540  70563  0.00     18      0      0	 20000
+    0  72002  72002  0.00      0      0      0	 20000
+    0  69770  70012  0.00    244      7     15	 20000
+    0  65148  65166  0.00     13      0      0	 20000
+    0  71354  71361  0.00      0      0      0	 20000
+    0  70421  70594  0.00    165      5      4	 20000
+    0  60670  60882  0.00    215     11     11	 20000
+    0  71107  71112  0.00      0      0      0	 20001
+    0  46678  46674  0.00     10      0      0	 20000
+Submitted = 653503 Completed write count = 644280 Completed Read Count = 0 Total = 644271
+Comitted = 643583 Total Aborts = 665 Total RqAborts = 23 Total Xaborts = 609 Total Commit Aborts = 688 Random aborts = 6 FallBehindAborts = 30
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  45737  45751  0.00      0      0      0	 20001
+    0  72326  72341  0.00     11      0      0	 20000
+    0  70077  70074  0.00      0      0      0	 20000
+    0  69712  69795  0.00     92      0      1	 20000
+    0  67123  67189  0.00     53      1      2	 20000
+    0  74204  74204  0.00      0      0      0	 20000
+    0  73597  73746  0.00    139      1      2	 20000
+    0  62307  62533  0.00    236      3      9	 20000
+    0  71971  72487  0.00    493     14     27	 20000
+    0  34440  34447  0.00      0      0      0	 20365
+Submitted = 652429 Completed write count = 643199 Completed Read Count = 0 Total = 643199
+Comitted = 642126 Total Aborts = 1024 Total RqAborts = 19 Total Xaborts = 666 Total Commit Aborts = 1043 Random aborts = 6 FallBehindAborts = 41
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  47537  47544  0.00      0      0      0	 20000
+    0  74747  75459  0.00    678     28     50	 20001
+    0  76065  76074  0.00      0      0      0	 20001
+    0  73692  73766  0.00     80      2      7	 20001
+    0  70075  70097  0.00     19      0      0	 20001
+    0  72641  72907  0.00    270      3     17	 20000
+    0  73556  73558  0.00      0      0      0	 20000
+    0  61552  61569  0.00      1      0      0	 20000
+    0  53903  54134  0.00    276     15     13	 24655
+    0  38092  38088  0.00      0      0      0	 21520
+Submitted = 670432 Completed write count = 658707 Completed Read Count = 0 Total = 658707
+Comitted = 657318 Total Aborts = 1324 Total RqAborts = 48 Total Xaborts = 718 Total Commit Aborts = 1372 Random aborts = 6 FallBehindAborts = 87
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  50184  50201  0.00      0      0      0	 20000
+    0  78604  79056  0.00    447     13     39	 20000
+    0  78573  78792  0.00    199      6     15	 20000
+    0  78951  78947  0.00      0      0      0	 20000
+    0  73233  73258  0.00     11      0      0	 20000
+    0  77383  77396  0.00     38      1      0	 20000
+    0  77550  77622  0.00     68      1      1	 20000
+    0  51242  51247  0.00      0      0      0	 20000
+    0  54033  54066  0.00     27      0      1	 24143
+    0  44718  44702  0.00      0      0      0	 20000
+Submitted = 691094 Completed write count = 676507 Completed Read Count = 0 Total = 676495
+Comitted = 675686 Total Aborts = 790 Total RqAborts = 21 Total Xaborts = 765 Total Commit Aborts = 811 Random aborts = 6 FallBehindAborts = 56
+Thread count = 4
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  49826  49847  0.00      0      0      0	 20000
+    0  77531  77540  0.00     17      0      2	 20001
+    0  76794  77715  0.00    882     30     25	 20000
+    0  77844  77852  0.00      0      0      0	 20000
+    0  73073  73075  0.00     11      0      0	 20000
+    0  76888  77200  0.00    294      4     11	 20001
+    0  67558  68461  0.00    955     13     27	 21205
+    0  76528  76518  0.00      0      0      0	 20000
+    0  52023  52048  0.00     13      0      0	 20000
+    0  49702  49708  0.00      0      0      0	 20000
+Submitted = 697122 Completed write count = 684112 Completed Read Count = 0 Total = 684101
+Comitted = 681876 Total Aborts = 2172 Total RqAborts = 47 Total Xaborts = 34331 Total Commit Aborts = 2219 Random aborts = 6 FallBehindAborts = 65
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  50923  50935  0.00      0      0      0	 20000
+    0  78244  79241  0.00    943     41     37	 20000
+    0  79789  79999  0.00    215     12      4	 20000
+    0  78106  78119  0.00      0      0      0	 20000
+    0  74226  74253  0.00     35      2      0	 20000
+    0  76139  76193  0.00     31      1      0	 20076
+    0  59602  59631  0.00     46      0      0	 22881
+    0  76793  76788  0.00      0      0      0	 20000
+    0  48242  48501  0.00    250      5      4	 20000
+    0  45695  45702  0.00      0      0      0	 20264
+Submitted = 688099 Completed write count = 678846 Completed Read Count = 0 Total = 678846
+Comitted = 677239 Total Aborts = 1520 Total RqAborts = 61 Total Xaborts = 36912 Total Commit Aborts = 1581 Random aborts = 6 FallBehindAborts = 45
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  51738  51752  0.00      0      0      0	 20001
+    0  75268  75618  0.00    330     13      3	 20000
+    0  75089  75855  0.00    742     27     24	 20000
+    0  76254  76252  0.00      0      0      0	 20001
+    0  74009  74073  0.00     65      3      2	 20000
+    0  77234  77864  0.00    612     19     19	 20000
+    0  66465  66482  0.00      0      0      0	 20000
+    0  76912  76992  0.00     75      3      0	 20000
+    0  52524  52562  0.00     55      0      3	 25564
+    0  46604  46591  0.00      0      0      0	 20000
+Submitted = 703714 Completed write count = 688695 Completed Read Count = 0 Total = 688683
+Comitted = 686735 Total Aborts = 1879 Total RqAborts = 65 Total Xaborts = 30025 Total Commit Aborts = 1944 Random aborts = 6 FallBehindAborts = 51
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  53453  53481  0.00      0      0      0	 20000
+    0  78810  79117  0.00    302      4      4	 20000
+    0  80523  80620  0.00    100      3      2	 20000
+    0  80892  80895  0.00      0      0      0	 20000
+    0  73442  73715  0.00    280      2      6	 20000
+    0  79408  79417  0.00     10      0      0	 20000
+    0  55096  55138  0.00     33      0      0	 20413
+    0  78036  78024  0.00      0      0      0	 20000
+    0  48126  48198  0.00     57      2      9	 20000
+    0  61587  61579  0.00      0      0      0	 20975
+Submitted = 703816 Completed write count = 694345 Completed Read Count = 0 Total = 694334
+Comitted = 693532 Total Aborts = 782 Total RqAborts = 11 Total Xaborts = 35784 Total Commit Aborts = 793 Random aborts = 6 FallBehindAborts = 21
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  51488  51520  0.00      0      0      0	 20000
+    0  80847  80831  0.00      8      0      0	 20000
+    0  80089  80172  0.00     72      2      6	 20000
+    0  79280  79278  0.00      0      0      0	 20000
+    0  75476  75814  0.00    326      8      2	 20000
+    0  76941  77763  0.00    797     32     18	 20001
+    0  59517  59563  0.00     33      1      0	 21277
+    0  75403  75388  0.00      0      0      0	 20000
+    0  51866  51921  0.00     32      1      1	 20000
+    0  43110  43099  0.00      0      0      0	 20839
+Submitted = 692068 Completed write count = 680966 Completed Read Count = 0 Total = 680966
+Comitted = 679631 Total Aborts = 1268 Total RqAborts = 44 Total Xaborts = 33510 Total Commit Aborts = 1312 Random aborts = 6 FallBehindAborts = 27
+Thread count = 8
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  53268  53288  0.00      0      0      0	 20000
+    0  79833  79850  0.00     15      0      0	 20000
+    0  81116  81252  0.00    132      3      0	 20000
+    0  83600  83592  0.00      0      0      0	 20000
+    0  74699  77769  0.00   3044     26     19	 20000
+    0  78954  79151  0.00    183      2      0	 20000
+    0  67974  68056  0.00     83      2      0	 20000
+    0  79239  79312  0.00     84      1      0	 20000
+    0  41985  42007  0.00      0      0      0	 22272
+    0  47172  47178  0.00     15      0      0	 21691
+Submitted = 712487 Completed write count = 700216 Completed Read Count = 0 Total = 700216
+Comitted = 696599 Total Aborts = 3556 Total RqAborts = 34 Total Xaborts = 144892 Total Commit Aborts = 3590 Random aborts = 7 FallBehindAborts = 19
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  53055  53081  0.00      0      0      0	 20000
+    0  80290  82370  0.00   2036     35     39	 20000
+    0  78636  81402  0.00   2749     36     24	 20000
+    0  82635  82638  0.00      0      0      0	 20001
+    0  74468  76263  0.00   1755     29     13	 20000
+    0  79938  80195  0.00    254      9      0	 20057
+    0  66379  68197  0.00   1789     38      4	 20001
+    0  76934  79218  0.00   2209     81     25	 20000
+    0  30219  39734  0.00  11426    479     92	 25055
+    0  52413  52591  0.00    168      8      0	 20854
+Submitted = 701481 Completed write count = 708256 Completed Read Count = 0 Total = 708234
+Comitted = 685116 Total Aborts = 22386 Total RqAborts = 715 Total Xaborts = 130735 Total Commit Aborts = 23101 Random aborts = 7 FallBehindAborts = 197
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  55734  55759  0.00      0      0      0	 20001
+    0  77802  81793  0.00   3965     43     41	 20000
+    0  75891  84350  0.00   8120    330     88	 20000
+    0  78452  78651  0.00    191      3      2	 20439
+    0  83772  83754  0.00      0      0      0	 20000
+    0  83675  83916  0.00    212      6     10	 20000
+    0  72983  73628  0.00    624     31      9	 20000
+    0  58657  60390  0.00   2012     68      5	 24059
+    0  55189  55180  0.00      0      0      0	 20000
+    0  52436  55114  0.00   2605     75     18	 20000
+Submitted = 724566 Completed write count = 726554 Completed Read Count = 0 Total = 726534
+Comitted = 708249 Total Aborts = 17729 Total RqAborts = 556 Total Xaborts = 122132 Total Commit Aborts = 18285 Random aborts = 7 FallBehindAborts = 173
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  57211  57228  0.00      0      0      0	 20000
+    0  81593  82638  0.00   1015     31     16	 20000
+    0  82077  82532  0.00    455      4      1	 20000
+    0  77182  77203  0.00      0      0      0	 20058
+    0  79301  80366  0.00   1072     10      0	 20000
+    0  77140  80068  0.00   2888     31     26	 20000
+    0  67669  70725  0.00   2972     81     14	 20000
+    0  58019  58072  0.00     75      5      0	 27851
+    0  45074  45074  0.00      0      0      0	 27291
+    0  65695  65702  0.00      7      2      0	 20000
+Submitted = 745895 Completed write count = 739094 Completed Read Count = 0 Total = 739076
+Comitted = 730414 Total Aborts = 8484 Total RqAborts = 164 Total Xaborts = 154859 Total Commit Aborts = 8648 Random aborts = 7 FallBehindAborts = 57
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  52438  52464  0.00      0      0      0	 20001
+    0  77392  77408  0.00     27      0      0	 20000
+    0  78022  78042  0.00      6      0      0	 20000
+    0  78227  78210  0.00      0      0      0	 20000
+    0  72820  73363  0.00    513     11      2	 20000
+    0  78301  78311  0.00     32      0      0	 20000
+    0  66475  68102  0.00   1594     20      9	 20001
+    0  77779  77781  0.00      0      0      0	 20000
+    0  53324  53342  0.00     20      0      0	 22221
+    0  45685  45676  0.00      0      0      0	 20000
+Submitted = 700858 Completed write count = 688642 Completed Read Count = 0 Total = 688636
+Comitted = 686392 Total Aborts = 2192 Total RqAborts = 31 Total Xaborts = 137592 Total Commit Aborts = 2223 Random aborts = 6 FallBehindAborts = 11
+Thread count = 12
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  54979  55001  0.00      0      0      0	 20000
+    0  51040  80740  0.00  29642     52     21	 20000
+    0  77307  81064  0.00   3739     13      8	 20000
+    0  82599  82606  0.00      0      0      0	 20000
+    0  10949  78426  0.00  67226    272     99	 20000
+    0  45424  81355  0.00  35615    309     30	 20000
+    0  46235  82360  0.00  35809    328     45	 20000
+    0  11164  81422  0.00  70059    587    144	 20110
+    0  63636  75383  0.00  11656     90     17	 20000
+    0  81910  82042  0.00    116      0      0	 20001
+Submitted = 584510 Completed write count = 780873 Completed Read Count = 0 Total = 780862
+Comitted = 525336 Total Aborts = 253862 Total RqAborts = 1651 Total Xaborts = 345602 Total Commit Aborts = 255513 Random aborts = 7 FallBehindAborts = 364
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  54398  54415  0.00      0      0      0	 20000
+    0  51500  81627  0.00  29931    188     25	 20000
+    0  66461  82333  0.00  15722    157     14	 20000
+    0  54223  81629  0.00  27160    252     66	 20000
+    0  52477  82844  0.00  30058    292     24	 20000
+    0  73231  79008  0.00   5720     54      3	 20000
+    0  60717  81415  0.00  20522    194     43	 20000
+    0  59601  74297  0.00  14577    118     22	 20000
+    0  62387  81213  0.00  18623    191     30	 20000
+    0  16805  82512  0.00  65040    678     86	 20000
+Submitted = 605580 Completed write count = 781305 Completed Read Count = 0 Total = 781299
+Comitted = 551815 Total Aborts = 227353 Total RqAborts = 2124 Total Xaborts = 331102 Total Commit Aborts = 229477 Random aborts = 7 FallBehindAborts = 313
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  55487  55526  0.00      0      0      0	 20000
+    0  80461  80521  0.00     84      0      0	 20000
+    0  77273  80743  0.00   3456      2     16	 20001
+    0  81617  81601  0.00      0      0      0	 20000
+    0  54350  76129  0.00  21644    117     35	 20000
+    0  80676  80729  0.00     60      9      0	 20000
+    0  48314  70550  0.00  22126     95     35	 20000
+    0  64079  80472  0.00  16301     89     30	 20000
+    0  46380  79249  0.00  32638    255     57	 20001
+    0  51750  51907  0.00    166      0      0	 22645
+Submitted = 672417 Completed write count = 744301 Completed Read Count = 0 Total = 744301
+Comitted = 647239 Total Aborts = 96475 Total RqAborts = 567 Total Xaborts = 314095 Total Commit Aborts = 97042 Random aborts = 7 FallBehindAborts = 173
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  54969  54977  0.00      0      0      0	 20000
+    0  49602  81556  0.00  31721    231     43	 20000
+    0  62865  82834  0.00  19767    188     44	 20000
+    0  12388  82872  0.00  69765    723     95	 20000
+    0  67193  83616  0.00  16246    171     19	 20000
+    0  23545  79671  0.00  55490    636    128	 20000
+    0  49814  83404  0.00  33243    350     62	 20000
+    0  78434  82917  0.00   4440     51     25	 20000
+    0  72103  78066  0.00   5894     50     20	 20002
+    0  10892  82237  0.00  70744    601    165	 20001
+Submitted = 549158 Completed write count = 792181 Completed Read Count = 0 Total = 792168
+Comitted = 481836 Total Aborts = 307337 Total RqAborts = 3001 Total Xaborts = 338669 Total Commit Aborts = 310338 Random aborts = 7 FallBehindAborts = 601
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  56589  56619  0.00      0      0      0	 20000
+    0  76503  82726  0.00   6176     40     16	 20000
+    0  77738  82271  0.00   4538      5     13	 20001
+    0  78883  82106  0.00   3216     16      6	 20000
+    0  30953  78483  0.00  47140    390     59	 20000
+    0  24969  82541  0.00  57025    542     58	 20000
+    0  24738  82305  0.00  57106    451     86	 20000
+    0  20689  82333  0.00  61134    528     96	 20000
+    0  73713  77773  0.00   4038     24      7	 20000
+    0  57407  82378  0.00  24700    311     46	 20041
+Submitted = 581229 Completed write count = 789725 Completed Read Count = 0 Total = 789716
+Comitted = 522329 Total Aborts = 265073 Total RqAborts = 2307 Total Xaborts = 348736 Total Commit Aborts = 267380 Random aborts = 7 FallBehindAborts = 387
+Client count = 4000
+Thread count = 2
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  37928  37951  0.00      0      0      0	 20000
+    0  73410  73460  0.00     57      0      0	 20000
+    0  71809  71803  0.00      0      0      0	 20000
+    0  73072  73325  0.00    228      8     17	 20001
+    0  69992  70054  0.00     68      1      4	 20001
+    0  71324  71323  0.00      0      0      0	 20000
+    0  70286  70890  0.00    593     15     43	 20000
+    0  54496  54527  0.00     13      0      0	 20000
+    0  70694  70672  0.00      0      0      0	 20000
+    0  45974  46122  0.00    136      4     14	 20000
+Submitted = 656363 Completed write count = 640156 Completed Read Count = 0 Total = 640145
+Comitted = 639009 Total Aborts = 1095 Total RqAborts = 28 Total Xaborts = 623 Total Commit Aborts = 1123 Random aborts = 6 FallBehindAborts = 78
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  37966  37982  0.00      0      0      0	 20000
+    0  71326  71380  0.00     54      2     10	 20000
+    0  71449  71448  0.00      0      0      0	 20000
+    0  71408  71921  0.00    483     21     31	 20000
+    0  65545  65675  0.00    123      1      4	 20000
+    0  70382  70370  0.00      0      0      0	 20001
+    0  70850  70894  0.00     54      0      3	 20000
+    0  61374  62098  0.00    691     23     40	 20000
+    0  69942  69935  0.00      0      0      0	 20001
+    0  38280  38646  0.00    352      8     14	 20000
+Submitted = 647096 Completed write count = 630377 Completed Read Count = 0 Total = 630367
+Comitted = 628551 Total Aborts = 1757 Total RqAborts = 55 Total Xaborts = 778 Total Commit Aborts = 1812 Random aborts = 6 FallBehindAborts = 102
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  34621  34644  0.00      0      0      0	 20000
+    0  68470  68488  0.00     21      0      0	 20001
+    0  70617  70612  0.00      0      0      0	 20000
+    0  70245  70331  0.00     77      0      1	 20000
+    0  67674  67688  0.00     14      0      0	 20000
+    0  71693  71677  0.00      0      0      0	 20000
+    0  71717  71742  0.00     10      0      0	 20000
+    0  63332  63754  0.00    411     19     38	 20000
+    0  71419  71424  0.00      0      0      0	 20000
+    0  48648  48649  0.00     12      0      0	 20884
+Submitted = 653101 Completed write count = 641164 Completed Read Count = 0 Total = 641164
+Comitted = 640591 Total Aborts = 545 Total RqAborts = 19 Total Xaborts = 536 Total Commit Aborts = 564 Random aborts = 6 FallBehindAborts = 39
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  37988  37996  0.00      0      0      0	 20000
+    0  69443  70754  0.00   1234     63     67	 20001
+    0  71406  71405  0.00      0      0      0	 20016
+    0  72309  72439  0.00    123      7     13	 20000
+    0  67452  67512  0.00     64      2      0	 20000
+    0  70066  70081  0.00      0      0      0	 20000
+    0  70070  70109  0.00     45      1      4	 20001
+    0  61268  61290  0.00     30      0      0	 20000
+    0  68635  68651  0.00      0      0      0	 20001
+    0  41827  41858  0.00     56      1      3	 20001
+Submitted = 649727 Completed write count = 632186 Completed Read Count = 0 Total = 632178
+Comitted = 630553 Total Aborts = 1552 Total RqAborts = 74 Total Xaborts = 455 Total Commit Aborts = 1626 Random aborts = 6 FallBehindAborts = 87
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  37297  37325  0.00      0      0      0	 20000
+    0  69597  69656  0.00     57      2      6	 20000
+    0  70655  70652  0.00      0      0      0	 20000
+    0  69471  69470  0.00     10      0      0	 20000
+    0  64349  64390  0.00     45      0      1	 20001
+    0  67081  67085  0.00      0      0      0	 20000
+    0  68586  68603  0.00     13      0      0	 20084
+    0  60864  60944  0.00     85      2      0	 20001
+    0  68066  68067  0.00      0      0      0	 20000
+    0  40251  40403  0.00    137      7      6	 20000
+Submitted = 632508 Completed write count = 616914 Completed Read Count = 0 Total = 616910
+Comitted = 616544 Total Aborts = 347 Total RqAborts = 11 Total Xaborts = 527 Total Commit Aborts = 358 Random aborts = 6 FallBehindAborts = 13
+Thread count = 4
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  40130  40157  0.00      0      0      0	 20000
+    0  72256  72476  0.00    234      3     11	 20000
+    0  72108  72116  0.00      0      0      0	 20000
+    0  72787  72982  0.00    203      3      9	 20000
+    0  71000  71022  0.00     13      0      0	 20000
+    0  73854  74063  0.00    196      5      1	 20000
+    0  75089  75089  0.00      0      0      0	 20000
+    0  68214  68209  0.00      9      0      0	 20000
+    0  51651  52048  0.00    505      7     12	 26581
+    0  58419  58408  0.00      0      0      0	 20054
+Submitted = 693581 Completed write count = 673868 Completed Read Count = 0 Total = 673857
+Comitted = 672675 Total Aborts = 1160 Total RqAborts = 18 Total Xaborts = 33844 Total Commit Aborts = 1178 Random aborts = 6 FallBehindAborts = 33
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  43125  43143  0.00      0      0      0	 20001
+    0  79210  79236  0.00     18      0      0	 20000
+    0  79126  79229  0.00     95      1     13	 20005
+    0  80563  80555  0.00      0      0      0	 20000
+    0  75501  75508  0.00     15      0      0	 20000
+    0  80187  80268  0.00     71      1      1	 20001
+    0  69502  69534  0.00     36      1      1	 20000
+    0  78166  78160  0.00      0      0      0	 20000
+    0  42131  42320  0.00    182      0      4	 20000
+    0  42801  42814  0.00      0      0      0	 20000
+Submitted = 690683 Completed write count = 670822 Completed Read Count = 0 Total = 670815
+Comitted = 670391 Total Aborts = 417 Total RqAborts = 3 Total Xaborts = 32911 Total Commit Aborts = 420 Random aborts = 6 FallBehindAborts = 19
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  40753  40767  0.00      0      0      0	 20000
+    0  73570  75864  0.00   2173    110     79	 20001
+    0  77021  77012  0.00      0      0      0	 20000
+    0  76376  77108  0.00    712     21     16	 20000
+    0  70732  71595  0.00    807     50     25	 20091
+    0  75826  75849  0.00     29      1      0	 20000
+    0  76089  76096  0.00      0      0      0	 20000
+    0  67114  67114  0.00      6      0      0	 20000
+    0  52074  52088  0.00      9      1      0	 20000
+    0  55810  55805  0.00      0      0      0	 20000
+Submitted = 686555 Completed write count = 669649 Completed Read Count = 0 Total = 669645
+Comitted = 665715 Total Aborts = 3736 Total RqAborts = 183 Total Xaborts = 29940 Total Commit Aborts = 3919 Random aborts = 6 FallBehindAborts = 120
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  43157  43172  0.00      0      0      0	 20000
+    0  77952  77959  0.00      4      0      0	 20001
+    0  77933  77944  0.00      0      0      0	 20000
+    0  79057  79050  0.00     12      0      0	 20000
+    0  75011  75120  0.00    103      1      0	 20000
+    0  79324  79351  0.00      9      0      0	 20001
+    0  60539  60540  0.00      0      0      0	 20000
+    0  80689  80809  0.00    132      2      3	 20000
+    0  50012  50065  0.00     50      0      2	 20005
+    0  56068  56066  0.00      0      0      0	 20001
+Submitted = 703091 Completed write count = 680117 Completed Read Count = 0 Total = 680105
+Comitted = 679785 Total Aborts = 310 Total RqAborts = 3 Total Xaborts = 33656 Total Commit Aborts = 313 Random aborts = 6 FallBehindAborts = 5
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  39252  39266  0.00      0      0      0	 20000
+    0  75901  75918  0.00     12      0      0	 20000
+    0  77629  77623  0.00      0      0      0	 20000
+    0  77908  77968  0.00     49      0      0	 20000
+    0  73271  73277  0.00      7      0      0	 20001
+    0  76734  76809  0.00     78      0      0	 20000
+    0  57091  57091  0.00      0      0      0	 25786
+    0  74385  75089  0.00    697     13     26	 20000
+    0  51048  51072  0.00     13      1      0	 20000
+    0  43885  43892  0.00      0      0      0	 20000
+Submitted = 688176 Completed write count = 664541 Completed Read Count = 0 Total = 664532
+Comitted = 663652 Total Aborts = 856 Total RqAborts = 14 Total Xaborts = 33244 Total Commit Aborts = 870 Random aborts = 6 FallBehindAborts = 26
+Thread count = 8
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  43778  43795  0.00      0      0      0	 20000
+    0  78434  80618  0.00   2137     50     31	 20000
+    0  77324  80391  0.00   3041     28     16	 20000
+    0  75551  81380  0.00   5670    158     41	 20000
+    0  76209  76331  0.00    119      5      3	 20000
+    0  79149  79590  0.00    402     17      1	 20000
+    0  66384  71965  0.00   5338    241     44	 20000
+    0  81529  81506  0.00      0      0      0	 20000
+    0  44602  45211  0.00    558     45      5	 20000
+    0  54119  54107  0.00      0      0      0	 20000
+Submitted = 703798 Completed write count = 694918 Completed Read Count = 0 Total = 694912
+Comitted = 677094 Total Aborts = 17265 Total RqAborts = 544 Total Xaborts = 131207 Total Commit Aborts = 17809 Random aborts = 6 FallBehindAborts = 141
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  41234  41265  0.00      0      0      0	 20000
+    0  75664  78863  0.00   3163     52     52	 20000
+    0  79194  79196  0.00      0      0      0	 20000
+    0  75533  80413  0.00   4797     72     25	 20000
+    0  75437  75821  0.00    359     23      5	 20001
+    0  75723  78903  0.00   3083    114      9	 20000
+    0  67593  69311  0.00   1706     85     16	 20984
+    0  78634  78628  0.00      0      0      0	 20000
+    0  49388  49416  0.00     19      3      0	 21786
+    0  66840  66885  0.00     56      3      0	 20001
+Submitted = 715162 Completed write count = 706553 Completed Read Count = 0 Total = 706545
+Comitted = 693009 Total Aborts = 13183 Total RqAborts = 352 Total Xaborts = 153682 Total Commit Aborts = 13535 Random aborts = 7 FallBehindAborts = 107
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  42370  42398  0.00      0      0      0	 20000
+    0  77171  80273  0.00   3080     43     43	 20000
+    0  78825  81131  0.00   2287     12      6	 20000
+    0  76833  80488  0.00   3605     46     16	 20000
+    0  73861  76102  0.00   2203     38      7	 20000
+    0  80277  80294  0.00      8      0      0	 20000
+    0  63025  63058  0.00     39      4      0	 21532
+    0  80211  80215  0.00      0      0      0	 20000
+    0  28913  50374  0.00  20630    841    133	 20000
+    0  33037  33047  0.00      0      0      0	 24309
+Submitted = 674897 Completed write count = 679332 Completed Read Count = 0 Total = 679332
+Comitted = 646469 Total Aborts = 31852 Total RqAborts = 984 Total Xaborts = 122195 Total Commit Aborts = 32836 Random aborts = 6 FallBehindAborts = 205
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  45917  45953  0.00      0      0      0	 20000
+    0  79459  81710  0.00   2206     50     41	 20000
+    0  81635  81818  0.00    187      0      1	 20000
+    0  83101  83101  0.00      0      0      0	 20001
+    0  76253  78187  0.00   1920     20      3	 20000
+    0  81327  81469  0.00    125      0      0	 20001
+    0  71299  72015  0.00    720     12      6	 20000
+    0  79464  81911  0.00   2390     73     13	 20000
+    0  33249  33262  0.00      0      0      0	 21438
+    0  46917  46922  0.00      0      0      0	 23169
+Submitted = 720469 Completed write count = 696214 Completed Read Count = 0 Total = 696198
+Comitted = 688483 Total Aborts = 7548 Total RqAborts = 155 Total Xaborts = 143304 Total Commit Aborts = 7703 Random aborts = 6 FallBehindAborts = 64
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  43052  43075  0.00      0      0      0	 20000
+    0  77533  78371  0.00    824     24      1	 20001
+    0  77099  77093  0.00      0      0      0	 20000
+    0  75568  78031  0.00   2422     21      5	 20000
+    0  73078  74216  0.00   1138      9      2	 20000
+    0  74871  77383  0.00   2480     32      1	 20000
+    0  68879  68865  0.00      0      0      0	 20000
+    0  76778  76846  0.00     59      0      0	 20000
+    0  54909  55548  0.00    785     17      2	 24928
+    0  48921  48921  0.00      0      0      0	 20000
+Submitted = 709345 Completed write count = 692068 Completed Read Count = 0 Total = 692058
+Comitted = 684242 Total Aborts = 7708 Total RqAborts = 103 Total Xaborts = 124618 Total Commit Aborts = 7811 Random aborts = 6 FallBehindAborts = 11
+Thread count = 12
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  45781  45798  0.00      0      0      0	 20000
+    0  61738  83799  0.00  21924    119     28	 20000
+    0  72633  83323  0.00  10631     78     38	 20000
+    0  59993  82136  0.00  21902    228     62	 20000
+    0  48334  79247  0.00  32345    275     71	 21099
+    0  28758  82864  0.00  53541    557     98	 20001
+    0  11589  83730  0.00  71348    808    126	 20000
+    0  59259  82516  0.00  22982    267     33	 20001
+    0  46261  84107  0.00  37457    395     71	 20000
+    0  67142  67139  0.00      0      0      0	 20000
+Submitted = 603910 Completed write count = 779054 Completed Read Count = 0 Total = 779044
+Comitted = 504174 Total Aborts = 272130 Total RqAborts = 2727 Total Xaborts = 335152 Total Commit Aborts = 274857 Random aborts = 7 FallBehindAborts = 527
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  43929  43939  0.00      0      0      0	 20000
+    0  64966  81190  0.00  16172     39     28	 20001
+    0  76710  81900  0.00   5174     28     15	 20000
+    0  71709  81293  0.00   9557     17      6	 20000
+    0  75059  76099  0.00   1038      3      1	 20000
+    0  41808  79497  0.00  37585    108     62	 20000
+    0  27325  78623  0.00  51017    266     75	 20000
+    0  73797  73791  0.00      0      0      0	 20000
+    0  49178  80414  0.00  30973    260     51	 20000
+    0  30494  80624  0.00  49740    405     50	 20001
+Submitted = 631574 Completed write count = 757406 Completed Read Count = 0 Total = 757398
+Comitted = 555002 Total Aborts = 201256 Total RqAborts = 1126 Total Xaborts = 309005 Total Commit Aborts = 202382 Random aborts = 7 FallBehindAborts = 288
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  42989  43008  0.00      0      0      0	 20000
+    0  76975  80063  0.00   3059      6      7	 20000
+    0  77806  79775  0.00   1999      2      7	 20000
+    0  10524  78905  0.00  68175    195    109	 20000
+    0  44052  78595  0.00  34349    193     51	 20000
+    0  44507  75022  0.00  30253    271     54	 20000
+    0  13665  77981  0.00  63871    443    105	 20000
+    0  76504  76511  0.00      0      0      0	 20000
+    0  66594  72468  0.00   5824     57     10	 20000
+    0  75834  78361  0.00   2482     45     12	 20000
+Submitted = 614715 Completed write count = 740710 Completed Read Count = 0 Total = 740695
+Comitted = 529468 Total Aborts = 210012 Total RqAborts = 1212 Total Xaborts = 317172 Total Commit Aborts = 211224 Random aborts = 7 FallBehindAborts = 355
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  44084  44114  0.00      0      0      0	 20000
+    0  58873  81158  0.00  22248     51     16	 20000
+    0  60079  80994  0.00  20873     44     13	 20001
+    0   9155  82042  0.00  72419    452    127	 20001
+    0  56474  80936  0.00  24312    173     60	 20001
+    0  77410  77439  0.00     13      5      0	 20000
+    0  56704  80381  0.00  23512    176     44	 20001
+    0  69188  80235  0.00  11022     30      9	 20000
+    0  25496  74381  0.00  48524    343     97	 20000
+    0  72237  79717  0.00   7453     44      2	 20000
+Submitted = 622129 Completed write count = 761446 Completed Read Count = 0 Total = 761433
+Comitted = 529751 Total Aborts = 230376 Total RqAborts = 1318 Total Xaborts = 316026 Total Commit Aborts = 231694 Random aborts = 7 FallBehindAborts = 368
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  44664  44700  0.00      0      0      0	 20000
+    0  64725  81993  0.00  17243     51     23	 20000
+    0  74747  82285  0.00   7500     32      8	 20001
+    0  38722  81877  0.00  42833    314     69	 20000
+    0  78281  78326  0.00     39      0      0	 20000
+    0  40008  79950  0.00  39645    315     50	 20000
+    0  70732  80995  0.00  10141    119     17	 20000
+    0  71625  75406  0.00   3759     17      2	 20000
+    0  51631  79760  0.00  27948    177     37	 20000
+    0  69641  81728  0.00  11968    135     18	 20000
+Submitted = 671185 Completed write count = 767049 Completed Read Count = 0 Total = 767041
+Comitted = 604804 Total Aborts = 161076 Total RqAborts = 1160 Total Xaborts = 366043 Total Commit Aborts = 162236 Random aborts = 7 FallBehindAborts = 224
+Client count = 5000
+Thread count = 2
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  27829  27842  0.00      0      0      0	 20000
+    0  72213  72231  0.00     13      0      0	 20001
+    0  73223  73542  0.00    311      6     21	 20000
+    0  73348  73388  0.00     40      0      3	 20000
+    0  69034  69044  0.00     13      0      0	 20000
+    0  74938  74943  0.00      0      0      0	 20000
+    0  72874  73305  0.00    415      5     11	 20000
+    0  55062  55080  0.00     26      0      0	 20000
+    0  74076  74070  0.00      0      0      0	 20001
+    0  45187  45270  0.00     72      1      1	 20000
+Submitted = 673515 Completed write count = 638747 Completed Read Count = 0 Total = 638731
+Comitted = 637822 Total Aborts = 890 Total RqAborts = 12 Total Xaborts = 510 Total Commit Aborts = 902 Random aborts = 6 FallBehindAborts = 36
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  26062  26071  0.00      0      0      0	 20000
+    0  69650  69648  0.00      0      0      0	 20000
+    0  68792  69310  0.00    495     17     21	 20000
+    0  69816  69956  0.00    140      0     15	 20000
+    0  66472  66497  0.00     12      0      0	 20000
+    0  71096  71089  0.00      0      0      0	 20000
+    0  70672  70805  0.00    138      4     13	 20000
+    0  63926  64043  0.00    123      0      3	 20000
+    0  68723  68737  0.00      0      0      0	 20000
+    0  44434  44501  0.00     56      1      4	 20000
+Submitted = 651140 Completed write count = 620685 Completed Read Count = 0 Total = 620675
+Comitted = 619694 Total Aborts = 964 Total RqAborts = 22 Total Xaborts = 647 Total Commit Aborts = 986 Random aborts = 6 FallBehindAborts = 56
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  24120  24129  0.00      0      0      0	 20000
+    0  70026  70037  0.00      0      0      0	 20001
+    0  71369  71581  0.00    209      2     16	 20000
+    0  71567  71582  0.00     12      0      0	 20001
+    0  67294  67511  0.00    221      4     12	 20000
+    0  67918  67925  0.00      0      0      0	 20000
+    0  69106  69137  0.00     42      0      1	 20000
+    0  62529  62578  0.00     38      0      2	 20000
+    0  66562  66546  0.00      0      0      0	 20000
+    0  51088  51146  0.00     62      1      0	 23637
+Submitted = 686144 Completed write count = 631482 Completed Read Count = 0 Total = 631482
+Comitted = 630878 Total Aborts = 584 Total RqAborts = 7 Total Xaborts = 588 Total Commit Aborts = 591 Random aborts = 6 FallBehindAborts = 31
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  24313  24343  0.00      0      0      0	 20001
+    0  71590  71581  0.00      0      0      0	 20001
+    0  71462  71474  0.00     10      0      0	 20000
+    0  73097  73344  0.00    243      9      5	 20000
+    0  66600  66776  0.00    175      2     13	 20015
+    0  72450  72447  0.00      0      0      0	 20000
+    0  69672  70443  0.00    744     24     28	 20001
+    0  53092  53130  0.00     51      1      1	 20000
+    0  70817  70827  0.00      0      0      0	 20000
+    0  46238  46332  0.00     96      4      3	 20000
+Submitted = 677114 Completed write count = 620791 Completed Read Count = 0 Total = 620776
+Comitted = 619417 Total Aborts = 1319 Total RqAborts = 40 Total Xaborts = 577 Total Commit Aborts = 1359 Random aborts = 6 FallBehindAborts = 50
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  27899  27926  0.00      0      0      0	 20000
+    0  73333  73501  0.00    175      4      3	 20001
+    0  72883  72882  0.00      0      0      0	 20000
+    0  73783  73835  0.00     50      0      4	 20000
+    0  68973  69109  0.00    135      3      5	 20001
+    0  74549  74550  0.00      0      0      0	 20000
+    0  74979  75015  0.00     29      1      4	 20000
+    0  53157  53872  0.00    697     14     35	 20000
+    0  72959  72952  0.00      0      0      0	 20000
+    0  36175  36201  0.00     29      0      0	 25391
+Submitted = 671602 Completed write count = 639651 Completed Read Count = 0 Total = 639641
+Comitted = 638501 Total Aborts = 1115 Total RqAborts = 22 Total Xaborts = 1079 Total Commit Aborts = 1137 Random aborts = 6 FallBehindAborts = 51
+Thread count = 4
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  28777  28793  0.00      0      0      0	 20000
+    0  77224  77300  0.00     61      1      2	 20000
+    0  78996  78981  0.00      0      0      0	 20000
+    0  77690  77827  0.00    127      3      3	 20000
+    0  74490  74524  0.00     45      1      0	 20000
+    0  78086  78112  0.00     21      0      1	 20000
+    0  77385  77403  0.00      0      0      0	 20000
+    0  71380  71394  0.00     38      1      0	 20000
+    0  49473  49588  0.00    108      1      0	 22017
+    0  48181  48173  0.00      0      0      0	 20000
+Submitted = 700720 Completed write count = 667128 Completed Read Count = 0 Total = 667116
+Comitted = 666694 Total Aborts = 400 Total RqAborts = 7 Total Xaborts = 29853 Total Commit Aborts = 407 Random aborts = 6 FallBehindAborts = 6
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  29541  29574  0.00      0      0      0	 20000
+    0  78025  78503  0.00    472     15     15	 20000
+    0  79902  79892  0.00      0      0      0	 20000
+    0  80132  80212  0.00     76      1      0	 20000
+    0  75764  75917  0.00    157      3      2	 20000
+    0  78373  78779  0.00    377      9     11	 20001
+    0  79382  79456  0.00     80      1      1	 20001
+    0  60833  60835  0.00      0      0      0	 20000
+    0  55862  55990  0.00    142      2      1	 20000
+    0  38224  38230  0.00      0      0      0	 20000
+Submitted = 697172 Completed write count = 657413 Completed Read Count = 0 Total = 657403
+Comitted = 656068 Total Aborts = 1304 Total RqAborts = 31 Total Xaborts = 32115 Total Commit Aborts = 1335 Random aborts = 6 FallBehindAborts = 30
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  32021  32042  0.00      0      0      0	 20000
+    0  79820  80395  0.00    565     21     24	 20000
+    0  81960  81984  0.00      0      0      0	 20000
+    0  80727  80764  0.00     38      1      1	 20000
+    0  78199  78507  0.00    318      6      5	 20001
+    0  83209  83248  0.00     33      1      1	 20000
+    0  63858  63907  0.00     61      1      0	 20000
+    0  80736  80733  0.00      0      0      0	 20001
+    0  53592  53602  0.00      7      1      0	 20000
+    0  43882  43899  0.00      0      0      0	 21289
+Submitted = 716774 Completed write count = 681920 Completed Read Count = 0 Total = 681920
+Comitted = 680842 Total Aborts = 1022 Total RqAborts = 31 Total Xaborts = 33238 Total Commit Aborts = 1053 Random aborts = 6 FallBehindAborts = 31
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  28623  28645  0.00      0      0      0	 20000
+    0  73360  76394  0.00   2906    124    106	 20000
+    0  77132  78338  0.00   1148     72     54	 20000
+    0  76600  76620  0.00     20      1      0	 20000
+    0  72142  72348  0.00    188      6      2	 20000
+    0  78078  78132  0.00     67      1      0	 20000
+    0  76811  76815  0.00      0      0      0	 20001
+    0  70715  70742  0.00     14      0      0	 20000
+    0  52498  52514  0.00     12      0      0	 20000
+    0  58474  58474  0.00      0      0      0	 20437
+Submitted = 704986 Completed write count = 670328 Completed Read Count = 0 Total = 670317
+Comitted = 665742 Total Aborts = 4355 Total RqAborts = 204 Total Xaborts = 33625 Total Commit Aborts = 4559 Random aborts = 6 FallBehindAborts = 162
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  28995  29027  0.00      0      0      0	 20001
+    0  74479  74487  0.00     22      0      0	 20000
+    0  77190  77181  0.00      0      0      0	 20000
+    0  77015  77182  0.00    141      5      7	 20000
+    0  73362  73390  0.00     45      0      0	 20000
+    0  75747  75877  0.00    112      4      1	 20000
+    0  75888  75873  0.00      0      0      0	 20000
+    0  67537  67555  0.00     15      0      0	 20000
+    0  51765  51782  0.00      6      0      0	 21431
+    0  43535  43522  0.00      0      0      0	 20000
+Submitted = 685151 Completed write count = 649604 Completed Read Count = 0 Total = 649593
+Comitted = 649244 Total Aborts = 341 Total RqAborts = 9 Total Xaborts = 32346 Total Commit Aborts = 350 Random aborts = 6 FallBehindAborts = 8
+Thread count = 8
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  31778  31795  0.00      0      0      0	 20000
+    0  78040  80135  0.00   2046     48     50	 20008
+    0  82166  82177  0.00      0      0      0	 20000
+    0  76740  83514  0.00   6613    185     57	 20000
+    0  73515  76740  0.00   3110     89     16	 20000
+    0  69763  81215  0.00  11011    462     59	 20000
+    0  75332  75483  0.00    134     11      4	 20000
+    0  80240  80234  0.00      0      0      0	 20000
+    0  57760  58706  0.00    917     55     22	 20742
+    0  35092  35094  0.00      0      0      0	 23808
+Submitted = 714932 Completed write count = 693986 Completed Read Count = 0 Total = 693986
+Comitted = 669283 Total Aborts = 23831 Total RqAborts = 850 Total Xaborts = 129436 Total Commit Aborts = 24681 Random aborts = 6 FallBehindAborts = 208
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  30998  31024  0.00      0      0      0	 20000
+    0  77644  81924  0.00   4191     95     71	 20001
+    0  82045  82041  0.00      0      0      0	 20000
+    0  81355  81552  0.00    201      3      0	 20000
+    0  75577  75596  0.00      4      2      0	 20000
+    0  79406  80102  0.00    680     12      2	 20000
+    0  74073  74136  0.00     74      0      0	 20000
+    0  80851  80843  0.00      0      0      0	 20000
+    0  44741  44827  0.00     63      5      0	 20000
+    0  44632  44621  0.00      0      0      0	 20000
+Submitted = 711135 Completed write count = 676700 Completed Read Count = 0 Total = 676686
+Comitted = 671348 Total Aborts = 5213 Total RqAborts = 117 Total Xaborts = 113253 Total Commit Aborts = 5330 Random aborts = 6 FallBehindAborts = 73
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  26729  26748  0.00      0      0      0	 20000
+    0  74054  76925  0.00   2850     26     18	 20000
+    0  74481  79105  0.00   4567     56     43	 20001
+    0  78927  78964  0.00     35      0      0	 20000
+    0  74458  74574  0.00    111      1      0	 20000
+    0  77183  77306  0.00    123      3      0	 20000
+    0  71855  71869  0.00      0      0      0	 21302
+    0  76445  78604  0.00   2103     79     10	 20000
+    0  42795  49204  0.00   6301    226     69	 20427
+    0  61905  61891  0.00      0      0      0	 20000
+Submitted = 711271 Completed write count = 680963 Completed Read Count = 0 Total = 680953
+Comitted = 664470 Total Aborts = 16090 Total RqAborts = 391 Total Xaborts = 122381 Total Commit Aborts = 16481 Random aborts = 6 FallBehindAborts = 140
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  32266  32291  0.00      0      0      0	 20001
+    0  78584  78612  0.00     33      0      0	 20000
+    0  80984  80975  0.00      0      0      0	 20000
+    0  79110  79272  0.00    149      1      2	 20000
+    0  75050  75510  0.00    461      7      4	 20000
+    0  77806  79697  0.00   1863     20     19	 20000
+    0  73125  73261  0.00    159      0      0	 20359
+    0  80013  80040  0.00      0      0      0	 20000
+    0  48188  50274  0.00   2088     17     20	 20000
+    0  44944  44939  0.00      0      0      0	 20000
+Submitted = 712682 Completed write count = 676213 Completed Read Count = 0 Total = 676199
+Comitted = 671392 Total Aborts = 4753 Total RqAborts = 45 Total Xaborts = 121743 Total Commit Aborts = 4798 Random aborts = 6 FallBehindAborts = 45
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  29053  29076  0.00      0      0      0	 20000
+    0  73459  79189  0.00   5600    130     64	 20001
+    0  73949  79458  0.00   5251    261     42	 20000
+    0  79943  79979  0.00     48      0      0	 20000
+    0  77519  77743  0.00    206      9      0	 20001
+    0  79865  81211  0.00   1288     60      4	 20000
+    0  71713  74753  0.00   3064    124     19	 21012
+    0  80420  80815  0.00    368     26      0	 20001
+    0  41654  51299  0.00   9290    366     99	 20000
+    0  42064  42072  0.00      0      0      0	 26542
+Submitted = 715890 Completed write count = 693154 Completed Read Count = 0 Total = 693154
+Comitted = 667041 Total Aborts = 25115 Total RqAborts = 976 Total Xaborts = 146381 Total Commit Aborts = 26091 Random aborts = 6 FallBehindAborts = 228
+Thread count = 12
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  32168  32201  0.00      0      0      0	 20000
+    0  69845  83059  0.00  13183     37     24	 20000
+    0  76085  83024  0.00   6903     42     10	 20000
+    0  12500  83193  0.00  70069    625    102	 20000
+    0  49300  83587  0.00  33929    352     73	 20000
+    0  69137  78748  0.00   9530     92     17	 20000
+    0  66245  81938  0.00  15476    203     36	 20000
+    0  74790  74772  0.00      0      0      0	 20000
+    0  10890  79712  0.00  69121    532    110	 20244
+    0  58038  79229  0.00  21046    147     14	 20001
+Submitted = 661360 Completed write count = 760470 Completed Read Count = 0 Total = 760461
+Comitted = 519176 Total Aborts = 239257 Total RqAborts = 2030 Total Xaborts = 319326 Total Commit Aborts = 241287 Random aborts = 7 FallBehindAborts = 386
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  30434  30453  0.00      0      0      0	 20006
+    0  82179  84563  0.00   2388      7      1	 20000
+    0  84992  85009  0.00      3      0      0	 20000
+    0  51463  85128  0.00  33513    164     38	 20000
+    0  35882  79569  0.00  43178    488    131	 20000
+    0  67316  82915  0.00  15411    208     28	 20000
+    0  57004  83634  0.00  26387    232     35	 20000
+    0  39401  76824  0.00  37096    350     79	 20000
+    0  60993  82967  0.00  21726    228     38	 20000
+    0  35687  83736  0.00  47546    510     85	 20000
+Submitted = 668163 Completed write count = 774849 Completed Read Count = 0 Total = 774840
+Comitted = 545402 Total Aborts = 227248 Total RqAborts = 2187 Total Xaborts = 315726 Total Commit Aborts = 229435 Random aborts = 7 FallBehindAborts = 435
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  30278  30302  0.00      0      0      0	 20000
+    0  71360  82207  0.00  10819     37     30	 20000
+    0  13627  83973  0.00  69675    656    134	 20000
+    0  84047  84087  0.00     37      2      0	 20000
+    0  69217  83823  0.00  14436    190     23	 20001
+    0  42070  79137  0.00  36643    405     48	 20000
+    0  65387  83188  0.00  17703    102     28	 20000
+    0  74916  75657  0.00    736     13      0	 20000
+    0  78426  83107  0.00   4620     46      4	 20000
+    0  36189  82561  0.00  45894    494     85	 20000
+Submitted = 686122 Completed write count = 768071 Completed Read Count = 0 Total = 768059
+Comitted = 565544 Total Aborts = 200563 Total RqAborts = 1945 Total Xaborts = 314431 Total Commit Aborts = 202508 Random aborts = 7 FallBehindAborts = 352
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  29727  29749  0.00      0      0      0	 20001
+    0  71497  80717  0.00   9195     18     16	 20000
+    0  67094  81300  0.00  14113     93     25	 20000
+    0  80585  82785  0.00   2200     19      1	 20000
+    0  40728  77132  0.00  36125    249    102	 20000
+    0  52889  79950  0.00  26812    282     38	 20000
+    0  64917  80364  0.00  15292    147     51	 20000
+    0  71353  73814  0.00   2441     15      5	 20001
+    0  49030  80355  0.00  31094    213     31	 20000
+    0  56978  79801  0.00  22637    219     32	 20000
+Submitted = 693788 Completed write count = 745998 Completed Read Count = 0 Total = 745993
+Comitted = 584825 Total Aborts = 159909 Total RqAborts = 1255 Total Xaborts = 300829 Total Commit Aborts = 161164 Random aborts = 7 FallBehindAborts = 301
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+    0  31792  31810  0.00      0      0      0	 20000
+    0  76152  82971  0.00   6796     19     15	 20000
+    0  83588  83589  0.00      0      0      0	 20000
+    0  83392  83400  0.00      6      0      0	 20000
+    0  79077  79203  0.00    141      0      0	 20001
+    0  68330  81932  0.00  13572     23     10	 20000
+    0  59334  66872  0.00   8534     18      7	 22682
+    0  81589  82148  0.00    546      4      0	 20000
+    0  10143  80568  0.00  69935    485    116	 20000
+    0  37012  59360  0.00  25984    200     72	 23439
+Submitted = 718851 Completed write count = 751032 Completed Read Count = 0 Total = 751032
+Comitted = 624735 Total Aborts = 125514 Total RqAborts = 749 Total Xaborts = 314791 Total Commit Aborts = 126263 Random aborts = 7 FallBehindAborts = 220
