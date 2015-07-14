@@ -342,8 +342,21 @@ public class Tpcc extends STMService {
 	protected void delivery(ClientRequest cRequest, int count, boolean retry, int Tid) {
 		int success = 0;
 		RequestId requestId = cRequest.getRequestId();
+		
+		Random randomGenerator = new Random();
+		int randomInt = randomGenerator.nextInt(100);
+		int tw_id = 0;
+		if(randomInt < 15)
+		{
+			tw_id = random.nextInt(this.NUM_WAREHOUSES); 
+		}	
+		else
+		{
+			tw_id = random.nextInt(maxW - minW) + minW;
+		}
+		final int w_id = tw_id;
 		final String myid = "w_"
-				+ Integer.toString(random.nextInt(maxW - minW) + minW);
+				+ Integer.toString(w_id);
 
 	 
 		//System.out.println("delivery: " + myid);
@@ -495,7 +508,19 @@ public class Tpcc extends STMService {
 
 		int success = 0;
 		RequestId requestId = cRequest.getRequestId();
-		final int w_id = random.nextInt(maxW - minW) + minW;
+		Random randomGenerator = new Random();
+		int randomInt = randomGenerator.nextInt(100);
+		int tw_id = 0;
+		if(randomInt < 15)
+		{
+			tw_id = random.nextInt(this.NUM_WAREHOUSES); 
+		}	
+		else
+		{
+			 tw_id = random.nextInt(maxW - minW) + minW;
+		}
+		final int w_id = tw_id;
+		//final int w_id = random.nextInt(maxW - minW) + minW;
 		final String myid = "w_" + Integer.toString(w_id);
 
 		 //System.out.println("order: " + myid);
@@ -608,8 +633,19 @@ public class Tpcc extends STMService {
 		RequestId requestId = cRequest.getRequestId();
 		final float h_amount = (float) (random.nextInt(500000) * 0.01);
 
-		final int w_id = random.nextInt(maxW - minW) + minW;
 
+		Random randomGenerator = new Random();
+		int randomInt = randomGenerator.nextInt(100);
+		int tw_id = 0;
+		if(randomInt < 15)
+		{
+			tw_id = random.nextInt(this.NUM_WAREHOUSES); 
+		}	
+		else
+		{
+			tw_id = random.nextInt(maxW - minW) + minW;
+		}
+		final int w_id = tw_id;
 		final String myid = "w_" + Integer.toString(w_id);
 		final int c_id = random.nextInt(NUM_CUSTOMERS_PER_D);
 		final String cmyid = myid + "_c_" + Integer.toString(c_id);
