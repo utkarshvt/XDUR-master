@@ -541,7 +541,7 @@ class ProposerImpl implements Proposer {
             instance.getAccepts().set(ProcessDescriptor.getInstance().localId);
             // Do not send propose message to self.
             // Npt clearing the proposer, switch for test 
-	    //destinations.clear(ProcessDescriptor.getInstance().localId);
+	    destinations.clear(ProcessDescriptor.getInstance().localId);
 
             proposeRetransmitters.put(instance.getId(),
                     retransmitter.startTransmitting(message, destinations));

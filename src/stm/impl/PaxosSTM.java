@@ -430,7 +430,7 @@ public class PaxosSTM {
 			}*/
 			sharedObjectRegistry.updateCompletedObject(objId, null);
 		//	System.out.println("After setting to null, ownerof object " + objId + " is " + sharedObjectRegistry.getOwner(objId));
-			abortedObjectMap.put(objId,new AbortEntry(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()));
+			//abortedObjectMap.put(objId,new AbortEntry(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()));
 		}
 	
 		return true;
@@ -597,7 +597,7 @@ public class PaxosSTM {
 		
 		TransactionContext context = requestIdContextMap.get(Id);
 		int Tid = context.getTransactionId();
-	//	System.out.println("Call XCommit for tx = " + Tid);
+		//System.out.println("Call XCommit for tx = " + Tid);
 		int index = (Tid - 1) % MaxSpec;
 		int min_Tid = 1;
 		int lastXCommitted = 0;
@@ -610,7 +610,7 @@ public class PaxosSTM {
 		}	
 		
 		lastXCommitted = lastXCommit.get();
-	//	System.out.println("XCommiting tx = " + Tid + "Waiting for comp rule" + "last X was " + lastXCommitted);
+		//System.out.println("XCommiting tx = " + Tid + "Waiting for comp rule" + "last X was " + lastXCommitted);
 		/* Comp rule, waiting for the last transaction */
 		while(lastXCommitted != (Tid - 1))
 		{

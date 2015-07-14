@@ -1,0 +1,200 @@
+#+1436532506
+ssh h0.xdur.HyflowTM
+#+1436534440
+ssh h0.xdur.HyflowTM
+#+1436584554
+ssh h0.xdur.HyflowTM
+#+1436621809
+ssh h2.xdur.HyflowTM
+#+1436680795
+ls /proj/HyflowTM/sachin/
+#+1436680807
+ls /proj/HyflowTM/sachin/oldArchie/
+#+1436680841
+vim /proj/HyflowTM/sachin/oldArchie/runTpcc_script.sh
+#+1436681106
+vim /proj/HyflowTM/sachin/oldArchie/runBank_script.sh
+#+1436681315
+ls /proj/HyflowTM/sachin/oldArchie/
+#+1436681348
+vim /proj/HyflowTM/sachin/oldArchie/tpccServer.sh
+#+1436681433
+ls /proj/HyflowTM/sachin/oldArchie/
+#+1436681464
+ls /proj/HyflowTM/sachin/oldArchie/testlogs/
+#+1436681473
+vim /proj/HyflowTM/sachin/oldArchie/testlogs
+#+1436681478
+ls /proj/HyflowTM/sachin/oldArchie/testlogs/
+#+1436681484
+ls /proj/HyflowTM/sachin/oldArchie/
+#+1436681515
+ls /proj/HyflowTM/sachin/oldArchie/11_paxos.properties
+#+1436681523
+vim /proj/HyflowTM/sachin/oldArchie/11_paxos.properties
+#+1436681693
+ls /proj/HyflowTM/sachin/
+#+1436681707
+ls /proj/HyflowTM/sachin/newArchie
+#+1436681727
+vim /proj/HyflowTM/sachin/newArchie/script_probe.sh
+#+1436681769
+vim /proj/HyflowTM/sachin/newArchie/stop_script.sh
+#+1436705375
+vim /proj/HyflowTM/sachin/newArchie/script_probe.sh
+#+1436705409
+vim /proj/HyflowTM/sachin/newArchie/runBank_script.sh
+#+1436705446
+vim /proj/HyflowTM/sachin/newArchie/script_probe.sh
+#+1436705623
+ls /proj/HyflowTM/sachin/newArchie/
+#+1436705670
+vim /proj/HyflowTM/sachin/newArchie/script_probe.sh
+#+1436705910
+vim /proj/HyflowTM/sachin/newArchie/stop_script.sh
+#+1436705993
+vim /proj/HyflowTM/sachin/newArchie/runBank_script.sh
+#+1436706102
+vim /proj/HyflowTM/sachin/newArchie/stop_script.sh
+#+1436713771
+vim /proj/HyflowTM/sachin/newArchie/script_probe.sh
+#+1436721802
+cd /proj/HyflowTM/utkarsh/
+#+1436721804
+cd XDUR-master/
+#+1436721805
+ls
+#+1436721809
+cd testlogs/
+#+1436721810
+ls
+#+1436721812
+ll
+#+1436721814
+ll
+#+1436721815
+ls
+#+1436721834
+ls
+#+1436721837
+cd ..
+#+1436721838
+ls
+#+1436721853
+vim tpccServer.sh
+#+1436721878
+ls testlogs/
+#+1436721886
+ls
+#+1436721924
+vim tpccServer.sh
+#+1436722043
+ls testlogs/
+#+1436722047
+ls
+#+1436722107
+./tpccServer.sh 0 10 1000 4 0 0
+#+1436722127
+vim tpccServer.sh
+#+1436722170
+ls
+#+1436722181
+./tpccServer.sh 0 10 1000 4 0 0 1000 1000 4
+#+1436722191
+vim tpccServer.sh
+#+1436722256
+ssh h0.xdur.HyflowTM
+#+1436722295
+ssh h1.xdur.HyflowTM
+#+1436722322
+ssh h0.xdur.HyflowTM
+#+1436723444
+ssh h2.xdur.HyflowTM
+#+1436723465
+exit
+#+1436723529
+ps -ef | grep java
+#+1436723970
+ps -ef | grep java
+#+1436724140
+ps -ef | grep java
+#+1436724146
+exit
+#+1436724153
+ps -ef | grep java
+#+1436724179
+ps -ef | grep java
+#+1436724452
+ps -ef | grep java
+#+1436724605
+ls /proj/HyflowTM/utkarsh/XDUR-master/testlogs/
+#+1436724638
+vim script_probe.sh
+#+1436724659
+ls /proj/HyflowTM/utkarsh/XDUR-master/runTpcc_script.sh
+#+1436724665
+vim /proj/HyflowTM/utkarsh/XDUR-master/runTpcc_script.sh
+#+1436724675
+vim /proj/HyflowTM/utkarsh/XDUR-master/tpccServer.sh
+#+1436724829
+vim /proj/HyflowTM/sachin/archie/script_probe.sh
+#+1436724869
+vim /proj/HyflowTM/sachin/archie/tpccServer.sh
+#+1436725348
+vim /proj/HyflowTM/utkarsh/XDUR-master/tpccServer.sh
+#+1436725448
+pkill -9 java
+#+1436725450
+exit
+#+1436725459
+pkill -9 java
+#+1436725531
+vim /proj/HyflowTM/utkarsh/XDUR-master/testlogs/0.txt
+#+1436725541
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/0.txt
+#+1436725545
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/1.txt
+#+1436725552
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/2.txt
+#+1436726220
+pkill -9 java
+#+1436726223
+exit
+#+1436726237
+pkill -9 java
+#+1436726282
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/2.txt
+#+1436726285
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/1.txt
+#+1436726289
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/0.txt
+#+1436726293
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/1.txt
+#+1436726304
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/2.txt
+#+1436726315
+ls /proj/HyflowTM/utkarsh/XDUR-master/testlogs/
+#+1436726318
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/2.txt
+#+1436726334
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/1.txt
+#+1436726347
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/2.txt
+#+1436726349
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/2.txt
+#+1436726351
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/2.txt
+#+1436726355
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/0.txt
+#+1436726381
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/0.txt
+#+1436726394
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/1.txt
+#+1436726400
+cat /proj/HyflowTM/utkarsh/XDUR-master/testlogs/0.txt
+#+1436726472
+pkill -9 java
+#+1436726476
+exit
+#+1436726680
+exit

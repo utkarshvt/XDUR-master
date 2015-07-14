@@ -1,5 +1,0 @@
-Object count = 
-Client count = 1000
-Thread count = 2
-Invalid arguments. Usage:
-   java lsr.paxos.Replica <replicaID> <Number Of Warehouses - 20> <Number Of Items - 5000> <Number of Read-Threads> <readPercentage> <tpccProfile> <clientCount> <#reqs>

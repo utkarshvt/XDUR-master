@@ -130,17 +130,18 @@ public class Tpcc extends STMService {
 			System.out
 					.println("Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time");
 			try {
-				Thread.sleep(20000);
+				Thread.sleep(10000);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			// Sample time is 20 seconds
-			while (count < 12) {
+			System.out.println(" ");
+			while (count < 10) {
 				startRead = System.currentTimeMillis();
 
 				try {
-					Thread.sleep(20000);
+					Thread.sleep(10000);
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -164,11 +165,11 @@ public class Tpcc extends STMService {
 				//System.out.println("Submitted = " + submitcount + " Completed write count = " + completedCount + " Completed Read Count = " + readCount + " Total = " + totalCount);
 				//System.out.println("Readcount = " + client.getReadCount() + " WriteCount = " + client.getWriteCount());
 				System.out.format("%5d  %5d  %5d  %4.2f  %5d  %5d  %5d	%6d\n",
-						((localReadCount - lastReadCount) * 20000)
+						((localReadCount - lastReadCount) * 10000)
 								/ (endRead - startRead),
-						((localWriteCount - lastWriteCount) * 20000)
+						((localWriteCount - lastWriteCount) * 10000)
 								/ (endRead - startRead),
-						((localCompletedCount - lastCompletedCount) * 20000)
+						((localCompletedCount - lastCompletedCount) * 10000)
 								/ (endRead - startRead),
 						client.getWriteLatency(),
 						(localAbortCount - lastAbortCount),
@@ -189,6 +190,13 @@ public class Tpcc extends STMService {
 			//double ratio = (double)(localRqAbortCount / triggers);
 			System.out.println("Submitted = " + submitcount + " Completed write count = " + completedCount + " Completed Read Count = " + readCount + " Total = " + totalCount);
 			System.out.println("Comitted = " + committedCount + " Total Aborts = " + abortedCount + " Total RqAborts = " + localRqAbortCount + " Total Xaborts = " + localXAbortCount + " Total Commit Aborts = " + (abortedCount + localRqAbortCount) + " Random aborts = " +  randomabortCount + " FallBehindAborts = " + FallBehindAbort + " AbortTriggers = " + triggers) ;				  			  //System.out.format("RqAborts per abort = %4.4f\n",(double)(localRqAbortCount / triggers));
+			try {
+                                Thread.sleep(10000);
+                        } catch (InterruptedException e1) {
+                                // TODO Auto-generated catch block
+                                e1.printStackTrace();
+                        }
+
 			System.exit(0);
 		}
 	}
@@ -261,16 +269,28 @@ public class Tpcc extends STMService {
 		this.localId = ProcessDescriptor.getInstance().localId;
 		this.numReplicas = ProcessDescriptor.getInstance().numReplicas;
 
+		
 		this.accessibleObjects = this.NUM_ITEMS / numReplicas;
 		this.min = this.accessibleObjects * this.localId;
 		this.max = (this.accessibleObjects * (this.localId + 1));
-		// System.out.println("O:" + this.accessibleObjects + "M:" + this.max +
-		// "m:" + this.min);
+		
 
+		/*this.accessibleObjects = this.NUM_ITEMS;
+		this.min = this.accessibleObjects * 0;
+		this.max = (this.accessibleObjects *1);*/
+		// System.out.println("O:" + this.accessibleObjects + "M:" + this.max +
+		// "m:" + this.min);0 
+
+		
 		this.accessibleWarehouses = this.NUM_WAREHOUSES / numReplicas;
 		this.minW = this.accessibleWarehouses * this.localId;
 		this.maxW = (this.accessibleWarehouses * (this.localId + 1));
-
+		
+		/*
+		this.accessibleWarehouses = this.NUM_WAREHOUSES;
+		this.minW = this.accessibleWarehouses * 0;
+		this.maxW = (this.accessibleWarehouses * 1);
+		*/
 		// System.out.println("O:" + this.accessibleWarehouses + "M:" +
 		// this.maxW +
 		// "m:" + this.minW);
@@ -770,8 +790,15 @@ public class Tpcc extends STMService {
 			}
 		}*/
 		//System.out.println("ClientId = " + request.getRequestId().getClientId() + " Seq = " + request.getRequestId().getSeqNumber());
-		requestIdRequestMap.put(request.getRequestId(),request);
-		stmInstance.xqueue(request);
+		if(request == null)
+		{	//System.out.println("Request is null");
+		
+		}
+		else
+		{
+			requestIdRequestMap.put(request.getRequestId(),request);
+			stmInstance.xqueue(request);
+		}
 	}
 
 	/**
@@ -840,6 +867,7 @@ public class Tpcc extends STMService {
 		// RequestId requestId = cRequest.getRequestId();
 
 		// Validate read set first
+		//System.out.println("Commiting transaction");
 		Random randomGenerator = new Random();
 		int randomInt = randomGenerator.nextInt(100);
 		int abortflag = 0;
@@ -855,7 +883,7 @@ public class Tpcc extends STMService {
 		if(step != 0)
 		{
 			if((abortLimit % step) == 0)
-				abort_random = true;
+				abort_random = false;
 		}
 		//System.out.println("Objects before commit");
 		//stmInstance.printRWSets(ctx);
@@ -865,7 +893,7 @@ public class Tpcc extends STMService {
 			committedCount++;
 			//System.out.println("Objects after commit");
                 	//stmInstance.printRWSets(ctx);
-			stmInstance.updateAbortMap(ctx);
+			//stmInstance.updateAbortMap(ctx);
 		} else {
 			// Isn;t it needed to remove the previous content
 			if(abort_random == true)
@@ -898,7 +926,7 @@ public class Tpcc extends STMService {
 			//System.out.println("Xcommit queue size is = " + stmInstance.getXCommitQueueSize());
 			//stmInstance.printabortedObjects();
 			abortedCount++;
-			stmInstance.abortXcomitted();
+			//stmInstance.abortXcomitted();
 			return;
 		}
 		// committedCount++;
@@ -1486,7 +1514,7 @@ public class Tpcc extends STMService {
 									orderStatus(request, count, retry, 0);
 									try
                                                                         {
-                                                                         //	System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                                                         	//System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
 										barrier.await();
 									}
 									catch(InterruptedException ex)
@@ -1509,7 +1537,7 @@ public class Tpcc extends STMService {
 									stockLevel(request, count, retry, 0);
 									try
                                                                         {
-                                                                        //        System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                                                                //System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
                                                                                 barrier.await();
                                                                         }
                                                                         catch(InterruptedException ex)
@@ -1555,7 +1583,7 @@ public class Tpcc extends STMService {
 									stmInstance.addToCompletedBatch(request, writenum );
 									try
                                                                         {
-                                                                      //          System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                                                               // System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
                                                                                 barrier.await();
                                                                         }
                                                                         catch(InterruptedException ex)
@@ -1591,7 +1619,7 @@ public class Tpcc extends STMService {
 									//stmInstance.onExecuteComplete(request);
 									try
                                                                         {
-                                                                    //            System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                                                                //System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
                                                                                 barrier.await();
                                                                         }
                                                                         catch(InterruptedException ex)
