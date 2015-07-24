@@ -21,7 +21,7 @@ public class BankServer {
 
 	public static void main(String[] args) throws IOException,
 			InterruptedException, ExecutionException, ReplicationException {
-		if (args.length < 7 || args.length > 7) {
+		if (args.length < 8 || args.length > 8) {
 			usage();
 			System.exit(1);
 		}
@@ -32,6 +32,7 @@ public class BankServer {
 		int clientCount = Integer.parseInt(args[4]);
 		int requests = Integer.parseInt(args[5]);
 		int MaxSpec = Integer.parseInt(args[6]);
+		int sharepercent = Integer.parseInt(args[7]);
 	
 		Configuration process = new Configuration();
 		Bank bank = new Bank();
@@ -41,7 +42,7 @@ public class BankServer {
 
 		PaxosSTM stmInstance = new PaxosSTM(sharedObjectRegistry,
 				readThreadCount, MaxSpec);
-		bank.init(objectsCount, sharedObjectRegistry, stmInstance, MaxSpec);		
+		bank.init(objectsCount, sharedObjectRegistry, stmInstance, MaxSpec, sharepercent);		
 
 		Replica replica = new Replica(process, localId, bank);
 		bank.setReplica(replica);
@@ -64,6 +65,6 @@ public class BankServer {
 		System.out.println("Invalid arguments. Usage:\n"
 				+ "   java lsr.paxos.Replica <replicaID> "
 				+ "<Number Of Object> <Number of Read-Threads> <read%> <clients> <requests>"
-				+ "<% of Cross Partion access");
+				+ "<% of Cross Partion access> <Number of write threads>");
 	}
 }

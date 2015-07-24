@@ -67,6 +67,8 @@ public class Manager extends STMService {
 	private int numReplicas;
 	private int accessibleObjects;
 
+	private int completedCount = 0;
+
 	/*************************************************************************
 	 * This class is only for taking the readings from the experiment. The
 	 * sampling thread is triggered when read/write count reaches a particular
@@ -700,49 +702,72 @@ public class Manager extends STMService {
 		}
 
 		boolean isFound = false;
-
-		for (int n = 0; n < numQuery; n++) {
-			int t = types[n];
-			int id = ids[n];
-			int price = -1;
-			if (t == Vacation.RESERVATION_CAR) {
-				if (queryCar(id, requestId, retry) >= 0) {
-					price = queryCarPrice(id, requestId, retry);
-				}
-			} else if (t == Vacation.RESERVATION_FLIGHT) {
-				if (queryFlight(id, requestId, retry) >= 0) {
-					price = queryFlightPrice(id, requestId, retry);
-				}
-			} else if (t == Vacation.RESERVATION_ROOM) {
-				if (queryRoom(id, requestId, retry) >= 0) {
-					price = queryRoomPrice(id, requestId, retry);
-				}
-			}
-			if (price > maxPrices[t]) {
-				maxPrices[t] = price;
-				maxIds[t] = id;
-				isFound = true;
-			}
-		} /* for n */
-		if (isFound) {
-			addCustomer(customerId, requestId, retry);
-		}
-		if (maxIds[Vacation.RESERVATION_CAR] > 0) {
-			reserveCar(customerId, maxIds[Vacation.RESERVATION_CAR], requestId,
-					retry);
-		}
-		if (maxIds[Vacation.RESERVATION_FLIGHT] > 0) {
-			reserveFlight(customerId, maxIds[Vacation.RESERVATION_FLIGHT],
-					requestId, retry);
-		}
-		if (maxIds[Vacation.RESERVATION_ROOM] > 0) {
-			reserveRoom(customerId, maxIds[Vacation.RESERVATION_ROOM],
-					requestId, retry);
-		}
-
+		boolean xretry = true;
 		byte[] result = new byte[4];
+		while(xretry == true)
+		{
+			xretry = false;
+		
+			for (int n = 0; n < numQuery; n++) 
+			{
+				int t = types[n];
+				int id = ids[n];
+				int price = -1;
+				if (t == Vacation.RESERVATION_CAR) 
+				{
+					if (queryCar(id, requestId, retry) >= 0) 
+					{
+						price = queryCarPrice(id, requestId, retry);
+					}
+				} 
+				else if (t == Vacation.RESERVATION_FLIGHT) 
+				{
+					if (queryFlight(id, requestId, retry) >= 0) 
+					{
+						price = queryFlightPrice(id, requestId, retry);
+					}
+				} 
+				else if (t == Vacation.RESERVATION_ROOM) 
+				{
+					if (queryRoom(id, requestId, retry) >= 0) 
+					{
+						price = queryRoomPrice(id, requestId, retry);
+					}
+				}
+				if (price > maxPrices[t]) 
+				{
+					maxPrices[t] = price;
+					maxIds[t] = id;
+					isFound = true;
+				}
+			} /* for n */
+			if (isFound) 
+			{
+				addCustomer(customerId, requestId, retry);
+			}
+			if (maxIds[Vacation.RESERVATION_CAR] > 0) 
+			{
+				reserveCar(customerId, maxIds[Vacation.RESERVATION_CAR], requestId,
+					retry);
+			}
+			if (maxIds[Vacation.RESERVATION_FLIGHT] > 0) 
+			{
+				reserveFlight(customerId, maxIds[Vacation.RESERVATION_FLIGHT],
+						requestId, retry);
+			}
+			if (maxIds[Vacation.RESERVATION_ROOM] > 0) 
+			{
+				reserveRoom(customerId, maxIds[Vacation.RESERVATION_ROOM],
+						requestId, retry);
+			}
 
-		stmInstance.updateUnCommittedSharedCopy(requestId);
+			//byte[] result = new byte[4];
+
+			if((xretry == false) && (stmInstance.XCommitTransaction(requestId)))
+                        	completedCount++;
+                	else
+                        	xretry = true;
+		}
 		// stmInstance.onCommit(request);
 		return result;
 	}

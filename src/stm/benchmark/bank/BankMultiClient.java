@@ -102,7 +102,7 @@ public class BankMultiClient {
             			
             			synchronized(requestId) {
             				bank.executeReadRequest(request);
-            				//requestId.wait(300);
+            				requestId.wait(3000);
             			}
                         
                         this.readLatency += System.currentTimeMillis() - start;
@@ -117,7 +117,7 @@ public class BankMultiClient {
             			synchronized(requestId) {
             				bank.executeRequest(request, false);
 //            				System.out.print(":");
-            				//requestId.wait(300);
+            				requestId.wait(3000);
 //            				System.out.print("+");
             			}                        
                         this.writeLatency += System.currentTimeMillis() - start;
