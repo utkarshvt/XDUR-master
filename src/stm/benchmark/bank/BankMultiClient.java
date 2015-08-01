@@ -112,7 +112,6 @@ public class BankMultiClient {
                 		requestId = request.getRequestId();
                 		pendingClientRequestMap.put(requestId.getClientId(),
     							requestId);
-                		
                 		writeCount++;
             			synchronized(requestId) {
             				bank.executeRequest(request, false);

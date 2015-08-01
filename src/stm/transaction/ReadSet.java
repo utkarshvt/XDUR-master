@@ -1,28 +1,35 @@
 package stm.transaction;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ReadSet {
-    public ConcurrentHashMap<String, AbstractObject> readset;
+    public ArrayList<ReadSetObject> readset;
     
     public ReadSet() {
-    	readset = new ConcurrentHashMap<String, AbstractObject>();
+    	readset = new ArrayList<ReadSetObject>();
     }
     
-    public void addToReadSet(String objId, AbstractObject object) {
-    	readset.put(objId, object);
+    public void addToReadSet(int objId, AbstractObject object) {
+    	
+	ReadSetObject readObj = new ReadSetObject (objId,object.getVersion());
+	if(readset.contains(readObj))
+		return;
+	
+	readset.add(readObj);
     }
     
-    public Map<String, AbstractObject> getReadSet() {
+    public ArrayList<ReadSetObject> getReadSet() {
     	return readset;
     }
 
 
-    public void remove(String objId)
+    public void remove(int objId)
     {
-       readset.remove(objId);
+       	ReadSetObject readObj = new ReadSetObject (objId,0);
+	readset.remove(readObj);
     }
 
 

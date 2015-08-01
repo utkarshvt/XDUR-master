@@ -80,6 +80,7 @@ public class TpccMultiClient {
 							request = new ClientRequest(nextRequestId(),
 									reqBytes);
 							requestId = request.getRequestId();
+								
 							pendingClientRequestMap.put(
 									requestId.getClientId(), requestId);
 
@@ -118,6 +119,7 @@ public class TpccMultiClient {
 							request = new ClientRequest(nextRequestId(),
 									reqBytes);
 							requestId = request.getRequestId();
+							
 							pendingClientRequestMap.put(
 									requestId.getClientId(), requestId);
 
@@ -137,7 +139,6 @@ public class TpccMultiClient {
 							requestId = request.getRequestId();
 							pendingClientRequestMap.put(
 									requestId.getClientId(), requestId);
-
 							writeCount++;
 
 							synchronized (requestId) {

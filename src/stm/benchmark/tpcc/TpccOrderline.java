@@ -14,7 +14,7 @@ public class TpccOrderline extends AbstractObject implements java.io.Serializabl
 	
 	private Random random = new Random();
 	
-	private String id;
+	private int id;
 
 	private int genAmount(int a){
 		if (a < 2101) return 0; 
@@ -28,7 +28,7 @@ public class TpccOrderline extends AbstractObject implements java.io.Serializabl
 		// no argument constructor for kryo serialization	
 	}
 	
-	public TpccOrderline(String id) {
+	public TpccOrderline(int id) {
 
 		this.id = id;
 		
@@ -40,12 +40,12 @@ public class TpccOrderline extends AbstractObject implements java.io.Serializabl
 		this.OL_DIST_INFO = Integer.toString(random.nextInt(100));
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	public TpccOrderline deepcopy() {
-		TpccOrderline newObject = new TpccOrderline("");
+		TpccOrderline newObject = new TpccOrderline(0);
 		newObject.id = this.id;
 		newObject.OL_I_ID = this.OL_I_ID;
 		newObject.OL_SUPPLY_W_ID = this.OL_SUPPLY_W_ID;

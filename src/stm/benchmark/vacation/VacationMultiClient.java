@@ -12,7 +12,7 @@ import lsr.common.RequestId;
 import lsr.paxos.ReplicationException;
 import lsr.paxos.replica.IdGenerator;
 import lsr.paxos.replica.SimpleIdGenerator;
-
+/*
 public class VacationMultiClient {
 	private Vector<ClientThread> clients = new Vector<ClientThread>();
     private final int clientCount;
@@ -160,4 +160,4 @@ public class VacationMultiClient {
 			}
 		}
 	}
-}
+}*/

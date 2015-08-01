@@ -5,17 +5,17 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class WriteSet {
-	public ConcurrentHashMap<String, AbstractObject> writeset;
+	public ConcurrentHashMap<Integer, AbstractObject> writeset;
 
 	public WriteSet() {
-		writeset = new ConcurrentHashMap<String, AbstractObject>();
+		writeset = new ConcurrentHashMap<Integer, AbstractObject>();
 	}
 	
-	public AbstractObject getobject(String objId) {
+	public AbstractObject getobject(int objId) {
 		return writeset.get(objId);
 	}
 	
-	public void addToWriteSet(String objId, AbstractObject object) {
+	public void addToWriteSet(int objId, AbstractObject object) {
 		writeset.put(objId, object);
 	}
 	
@@ -23,11 +23,11 @@ public class WriteSet {
 		return writeset.get(objIndex).getVersion();
 	}
 	
-	public Map<String, AbstractObject> getWriteSet() {
+	public Map<Integer, AbstractObject> getWriteSet() {
 		return writeset;
 	}
 
-	public void remove(String objId)
+	public void remove(int objId)
 	{
 		writeset.remove(objId);
 	}

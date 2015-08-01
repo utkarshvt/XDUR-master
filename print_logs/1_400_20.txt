@@ -1,0 +1,1690 @@
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2022
+Connections = 3
+ &  
+    0      0      0  0.00      0      0      0	 10000
+Accessed out of range warehouse 
+payment: Tid = 1 Th id = 1 rwid = 216 Warehouse ID = 1446936 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 3 Th id = 3 rwid = 234 Warehouse ID = 1567014 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 5 Th id = 5 rwid = 257 Warehouse ID = 1720447 W_Count = 10
+payment: Tid = 6 Th id = 6 rwid = 261 Warehouse ID = 1747131 W_Count = 10
+payment: Tid = 2 Th id = 2 rwid = 227 Warehouse ID = 1520317 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 8 Th id = 8 rwid = 282 Warehouse ID = 1887222 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 7 Th id = 7 rwid = 278 Warehouse ID = 1860538 W_Count = 10
+payment: Tid = 4 Th id = 4 rwid = 246 Warehouse ID = 1647066 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 9 Th id = 9 rwid = 299 Warehouse ID = 2000629 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 10 Th id = 10 rwid = 305 Warehouse ID = 2040655 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 12 Th id = 12 rwid = 327 Warehouse ID = 2187417 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 13 Th id = 13 rwid = 334 Warehouse ID = 2234114 W_Count = 10
+payment: Tid = 11 Th id = 11 rwid = 319 Warehouse ID = 2134049 W_Count = 10
+payment: Tid = 19 Th id = 19 rwid = 394 Warehouse ID = 2634374 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 20 Th id = 0 rwid = 208 Warehouse ID = 1393568 W_Count = 10
+payment: Tid = 14 Th id = 14 rwid = 345 Warehouse ID = 2307495 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 17 Th id = 17 rwid = 374 Warehouse ID = 2500954 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 16 Th id = 16 rwid = 368 Warehouse ID = 2460928 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 15 Th id = 15 rwid = 353 Warehouse ID = 2360863 W_Count = 10
+payment: Tid = 18 Th id = 18 rwid = 387 Warehouse ID = 2587677 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 21 Th id = 1 rwid = 217 Warehouse ID = 1453607 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 22 Th id = 2 rwid = 226 Warehouse ID = 1513646 W_Count = 10
+payment: Tid = 23 Th id = 3 rwid = 233 Warehouse ID = 1560343 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 24 Th id = 4 rwid = 244 Warehouse ID = 1633724 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 25 Th id = 5 rwid = 251 Warehouse ID = 1680421 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 26 Th id = 6 rwid = 268 Warehouse ID = 1793828 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 27 Th id = 7 rwid = 273 Warehouse ID = 1827183 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 28 Th id = 8 rwid = 284 Warehouse ID = 1900564 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 29 Th id = 9 rwid = 298 Warehouse ID = 1993958 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 30 Th id = 10 rwid = 302 Warehouse ID = 2020642 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 31 Th id = 11 rwid = 313 Warehouse ID = 2094023 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 32 Th id = 12 rwid = 320 Warehouse ID = 2140720 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 33 Th id = 13 rwid = 330 Warehouse ID = 2207430 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 35 Th id = 15 rwid = 359 Warehouse ID = 2400889 W_Count = 10
+payment: Tid = 34 Th id = 14 rwid = 343 Warehouse ID = 2294153 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 37 Th id = 17 rwid = 372 Warehouse ID = 2487612 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 39 Th id = 19 rwid = 395 Warehouse ID = 2641045 W_Count = 10
+payment: Tid = 36 Th id = 16 rwid = 364 Warehouse ID = 2434244 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 40 Th id = 0 rwid = 208 Warehouse ID = 1393568 W_Count = 10
+payment: Tid = 38 Th id = 18 rwid = 387 Warehouse ID = 2587677 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 41 Th id = 1 rwid = 212 Warehouse ID = 1420252 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 42 Th id = 2 rwid = 222 Warehouse ID = 1486962 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 43 Th id = 3 rwid = 230 Warehouse ID = 1540330 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 45 Th id = 5 rwid = 258 Warehouse ID = 1727118 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 44 Th id = 4 rwid = 248 Warehouse ID = 1660408 W_Count = 10
+payment: Tid = 46 Th id = 6 rwid = 268 Warehouse ID = 1793828 W_Count = 10
+payment: Tid = 47 Th id = 7 rwid = 270 Warehouse ID = 1807170 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 48 Th id = 8 rwid = 281 Warehouse ID = 1880551 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 51 Th id = 11 rwid = 317 Warehouse ID = 2120707 W_Count = 10
+payment: Tid = 49 Th id = 9 rwid = 292 Warehouse ID = 1953932 W_Count = 10
+payment: Tid = 50 Th id = 10 rwid = 304 Warehouse ID = 2033984 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 52 Th id = 12 rwid = 323 Warehouse ID = 2160733 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 53 Th id = 13 rwid = 334 Warehouse ID = 2234114 W_Count = 10
+payment: Tid = 57 Th id = 17 rwid = 373 Warehouse ID = 2494283 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 54 Th id = 14 rwid = 340 Warehouse ID = 2274140 W_Count = 10
+payment: Tid = 55 Th id = 15 rwid = 351 Warehouse ID = 2347521 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 58 Th id = 18 rwid = 385 Warehouse ID = 2574335 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 59 Th id = 19 rwid = 393 Warehouse ID = 2627703 W_Count = 10
+payment: Tid = 63 Th id = 3 rwid = 237 Warehouse ID = 1587027 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 64 Th id = 4 rwid = 246 Warehouse ID = 1647066 W_Count = 10
+payment: Tid = 61 Th id = 1 rwid = 213 Warehouse ID = 1426923 W_Count = 10
+payment: Tid = 60 Th id = 0 rwid = 205 Warehouse ID = 1373555 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 62 Th id = 2 rwid = 225 Warehouse ID = 1506975 W_Count = 10
+payment: Tid = 56 Th id = 16 rwid = 369 Warehouse ID = 2467599 W_Count = 10
+payment: Tid = 75 Th id = 15 rwid = 355 Warehouse ID = 2374205 W_Count = 10
+payment: Tid = 74 Th id = 14 rwid = 345 Warehouse ID = 2307495 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 72 Th id = 12 rwid = 326 Warehouse ID = 2180746 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 71 Th id = 11 rwid = 319 Warehouse ID = 2134049 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 68 Th id = 8 rwid = 282 Warehouse ID = 1887222 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 65 Th id = 5 rwid = 254 Warehouse ID = 1700434 W_Count = 10
+payment: Tid = 66 Th id = 6 rwid = 268 Warehouse ID = 1793828 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 77 Th id = 17 rwid = 375 Warehouse ID = 2507625 W_Count = 10
+payment: Tid = 67 Th id = 7 rwid = 273 Warehouse ID = 1827183 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 69 Th id = 9 rwid = 292 Warehouse ID = 1953932 W_Count = 10
+payment: Tid = 70 Th id = 10 rwid = 309 Warehouse ID = 2067339 W_Count = 10
+payment: Tid = 73 Th id = 13 rwid = 338 Warehouse ID = 2260798 W_Count = 10
+payment: Tid = 76 Th id = 16 rwid = 368 Warehouse ID = 2460928 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 78 Th id = 18 rwid = 384 Warehouse ID = 2567664 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 79 Th id = 19 rwid = 391 Warehouse ID = 2614361 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 80 Th id = 0 rwid = 207 Warehouse ID = 1386897 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 81 Th id = 1 rwid = 211 Warehouse ID = 1413581 W_Count = 10
+payment: Tid = 84 Th id = 4 rwid = 241 Warehouse ID = 1613711 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 83 Th id = 3 rwid = 237 Warehouse ID = 1587027 W_Count = 10
+payment: Tid = 82 Th id = 2 rwid = 221 Warehouse ID = 1480291 W_Count = 10
+payment: Tid = 85 Th id = 5 rwid = 254 Warehouse ID = 1700434 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 86 Th id = 6 rwid = 263 Warehouse ID = 1760473 W_Count = 10
+payment: Tid = 87 Th id = 7 rwid = 277 Warehouse ID = 1853867 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 88 Th id = 8 rwid = 288 Warehouse ID = 1927248 W_Count = 10
+payment: Tid = 89 Th id = 9 rwid = 294 Warehouse ID = 1967274 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 90 Th id = 10 rwid = 307 Warehouse ID = 2053997 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 91 Th id = 11 rwid = 317 Warehouse ID = 2120707 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 92 Th id = 12 rwid = 327 Warehouse ID = 2187417 W_Count = 10
+payment: Tid = 93 Th id = 13 rwid = 336 Warehouse ID = 2247456 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 94 Th id = 14 rwid = 349 Warehouse ID = 2334179 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 95 Th id = 15 rwid = 356 Warehouse ID = 2380876 W_Count = 10
+payment: Tid = 97 Th id = 17 rwid = 378 Warehouse ID = 2527638 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 99 Th id = 19 rwid = 394 Warehouse ID = 2634374 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 96 Th id = 16 rwid = 363 Warehouse ID = 2427573 W_Count = 10
+payment: Tid = 98 Th id = 18 rwid = 384 Warehouse ID = 2567664 W_Count = 10
+payment: Tid = 100 Th id = 0 rwid = 201 Warehouse ID = 1346871 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 101 Th id = 1 rwid = 214 Warehouse ID = 1433594 W_Count = 10
+payment: Tid = 103 Th id = 3 rwid = 234 Warehouse ID = 1567014 W_Count = 10
+payment: Tid = 102 Th id = 2 rwid = 224 Warehouse ID = 1500304 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 104 Th id = 4 rwid = 246 Warehouse ID = 1647066 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 105 Th id = 5 rwid = 252 Warehouse ID = 1687092 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 106 Th id = 6 rwid = 263 Warehouse ID = 1760473 W_Count = 10
+payment: Tid = 108 Th id = 8 rwid = 283 Warehouse ID = 1893893 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 109 Th id = 9 rwid = 297 Warehouse ID = 1987287 W_Count = 10
+payment: Tid = 107 Th id = 7 rwid = 272 Warehouse ID = 1820512 W_Count = 10
+payment: Tid = 110 Th id = 10 rwid = 307 Warehouse ID = 2053997 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 111 Th id = 11 rwid = 314 Warehouse ID = 2100694 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 112 Th id = 12 rwid = 328 Warehouse ID = 2194088 W_Count = 10
+payment: Tid = 113 Th id = 13 rwid = 336 Warehouse ID = 2247456 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 115 Th id = 15 rwid = 353 Warehouse ID = 2360863 W_Count = 10
+payment: Tid = 116 Th id = 16 rwid = 363 Warehouse ID = 2427573 W_Count = 10
+payment: Tid = 117 Th id = 17 rwid = 376 Warehouse ID = 2514296 W_Count = 10
+payment: Tid = 114 Th id = 14 rwid = 348 Warehouse ID = 2327508 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 118 Th id = 18 rwid = 383 Warehouse ID = 2560993 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 119 Th id = 19 rwid = 391 Warehouse ID = 2614361 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 120 Th id = 0 rwid = 208 Warehouse ID = 1393568 W_Count = 10
+payment: Tid = 122 Th id = 2 rwid = 223 Warehouse ID = 1493633 W_Count = 10
+payment: Tid = 121 Th id = 1 rwid = 211 Warehouse ID = 1413581 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 125 Th id = 5 rwid = 250 Warehouse ID = 1673750 W_Count = 10
+payment: Tid = 123 Th id = 3 rwid = 238 Warehouse ID = 1593698 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 127 Th id = 7 rwid = 274 Warehouse ID = 1833854 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 124 Th id = 4 rwid = 248 Warehouse ID = 1660408 W_Count = 10
+payment: Tid = 128 Th id = 8 rwid = 284 Warehouse ID = 1900564 W_Count = 10
+payment: Tid = 126 Th id = 6 rwid = 263 Warehouse ID = 1760473 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 129 Th id = 9 rwid = 290 Warehouse ID = 1940590 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 131 Th id = 11 rwid = 314 Warehouse ID = 2100694 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 130 Th id = 10 rwid = 308 Warehouse ID = 2060668 W_Count = 10
+payment: Tid = 132 Th id = 12 rwid = 326 Warehouse ID = 2180746 W_Count = 10
+payment: Tid = 133 Th id = 13 rwid = 333 Warehouse ID = 2227443 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 135 Th id = 15 rwid = 358 Warehouse ID = 2394218 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 134 Th id = 14 rwid = 340 Warehouse ID = 2274140 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 136 Th id = 16 rwid = 366 Warehouse ID = 2447586 W_Count = 10
+payment: Tid = 137 Th id = 17 rwid = 373 Warehouse ID = 2494283 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 138 Th id = 18 rwid = 386 Warehouse ID = 2581006 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 139 Th id = 19 rwid = 399 Warehouse ID = 2667729 W_Count = 10
+payment: Tid = 140 Th id = 0 rwid = 206 Warehouse ID = 1380226 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 141 Th id = 1 rwid = 210 Warehouse ID = 1406910 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 144 Th id = 4 rwid = 246 Warehouse ID = 1647066 W_Count = 10
+payment: Tid = 142 Th id = 2 rwid = 229 Warehouse ID = 1533659 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 147 Th id = 7 rwid = 272 Warehouse ID = 1820512 W_Count = 10
+payment: Tid = 145 Th id = 5 rwid = 259 Warehouse ID = 1733789 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 146 Th id = 6 rwid = 269 Warehouse ID = 1800499 W_Count = 10
+payment: Tid = 143 Th id = 3 rwid = 230 Warehouse ID = 1540330 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 153 Th id = 13 rwid = 334 Warehouse ID = 2234114 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 152 Th id = 12 rwid = 320 Warehouse ID = 2140720 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 148 Th id = 8 rwid = 286 Warehouse ID = 1913906 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 149 Th id = 9 rwid = 293 Warehouse ID = 1960603 W_Count = 10
+payment: Tid = 150 Th id = 10 rwid = 302 Warehouse ID = 2020642 W_Count = 10
+payment: Tid = 151 Th id = 11 rwid = 312 Warehouse ID = 2087352 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 154 Th id = 14 rwid = 343 Warehouse ID = 2294153 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 155 Th id = 15 rwid = 354 Warehouse ID = 2367534 W_Count = 10
+payment: Tid = 156 Th id = 16 rwid = 365 Warehouse ID = 2440915 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 157 Th id = 17 rwid = 377 Warehouse ID = 2520967 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 158 Th id = 18 rwid = 381 Warehouse ID = 2547651 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 159 Th id = 19 rwid = 395 Warehouse ID = 2641045 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 160 Th id = 0 rwid = 209 Warehouse ID = 1400239 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 163 Th id = 3 rwid = 232 Warehouse ID = 1553672 W_Count = 10
+payment: Tid = 161 Th id = 1 rwid = 214 Warehouse ID = 1433594 W_Count = 10
+payment: Tid = 166 Th id = 6 rwid = 262 Warehouse ID = 1753802 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 165 Th id = 5 rwid = 257 Warehouse ID = 1720447 W_Count = 10
+payment: Tid = 164 Th id = 4 rwid = 241 Warehouse ID = 1613711 W_Count = 10
+payment: Tid = 162 Th id = 2 rwid = 224 Warehouse ID = 1500304 W_Count = 10
+payment: Tid = 167 Th id = 7 rwid = 279 Warehouse ID = 1867209 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 168 Th id = 8 rwid = 283 Warehouse ID = 1893893 W_Count = 10
+payment: Tid = 170 Th id = 10 rwid = 301 Warehouse ID = 2013971 W_Count = 10
+payment: Tid = 169 Th id = 9 rwid = 295 Warehouse ID = 1973945 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 171 Th id = 11 rwid = 316 Warehouse ID = 2114036 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 174 Th id = 14 rwid = 346 Warehouse ID = 2314166 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 176 Th id = 16 rwid = 366 Warehouse ID = 2447586 W_Count = 10
+payment: Tid = 175 Th id = 15 rwid = 350 Warehouse ID = 2340850 W_Count = 10
+payment: Tid = 172 Th id = 12 rwid = 329 Warehouse ID = 2200759 W_Count = 10
+payment: Tid = 173 Th id = 13 rwid = 335 Warehouse ID = 2240785 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 177 Th id = 17 rwid = 371 Warehouse ID = 2480941 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 183 Th id = 3 rwid = 238 Warehouse ID = 1593698 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 179 Th id = 19 rwid = 390 Warehouse ID = 2607690 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 180 Th id = 0 rwid = 208 Warehouse ID = 1393568 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 181 Th id = 1 rwid = 219 Warehouse ID = 1466949 W_Count = 10
+payment: Tid = 178 Th id = 18 rwid = 384 Warehouse ID = 2567664 W_Count = 10
+payment: Tid = 182 Th id = 2 rwid = 222 Warehouse ID = 1486962 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 184 Th id = 4 rwid = 240 Warehouse ID = 1607040 W_Count = 10
+payment: Tid = 185 Th id = 5 rwid = 255 Warehouse ID = 1707105 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 187 Th id = 7 rwid = 276 Warehouse ID = 1847196 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 191 Th id = 11 rwid = 318 Warehouse ID = 2127378 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 188 Th id = 8 rwid = 287 Warehouse ID = 1920577 W_Count = 10
+payment: Tid = 190 Th id = 10 rwid = 309 Warehouse ID = 2067339 W_Count = 10
+payment: Tid = 189 Th id = 9 rwid = 298 Warehouse ID = 1993958 W_Count = 10
+payment: Tid = 192 Th id = 12 rwid = 325 Warehouse ID = 2174075 W_Count = 10
+payment: Tid = 193 Th id = 13 rwid = 330 Warehouse ID = 2207430 W_Count = 10
+payment: Tid = 194 Th id = 14 rwid = 347 Warehouse ID = 2320837 W_Count = 10
+payment: Tid = 186 Th id = 6 rwid = 264 Warehouse ID = 1767144 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 195 Th id = 15 rwid = 356 Warehouse ID = 2380876 W_Count = 10
+payment: Tid = 197 Th id = 17 rwid = 378 Warehouse ID = 2527638 W_Count = 10
+payment: Tid = 198 Th id = 18 rwid = 383 Warehouse ID = 2560993 W_Count = 10
+payment: Tid = 196 Th id = 16 rwid = 368 Warehouse ID = 2460928 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 200 Th id = 0 rwid = 202 Warehouse ID = 1353542 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 199 Th id = 19 rwid = 398 Warehouse ID = 2661058 W_Count = 10
+payment: Tid = 201 Th id = 1 rwid = 214 Warehouse ID = 1433594 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 205 Th id = 5 rwid = 254 Warehouse ID = 1700434 W_Count = 10
+payment: Tid = 203 Th id = 3 rwid = 232 Warehouse ID = 1553672 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 204 Th id = 4 rwid = 247 Warehouse ID = 1653737 W_Count = 10
+payment: Tid = 202 Th id = 2 rwid = 225 Warehouse ID = 1506975 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 206 Th id = 6 rwid = 264 Warehouse ID = 1767144 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 207 Th id = 7 rwid = 270 Warehouse ID = 1807170 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 210 Th id = 10 rwid = 308 Warehouse ID = 2060668 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 211 Th id = 11 rwid = 319 Warehouse ID = 2134049 W_Count = 10
+payment: Tid = 212 Th id = 12 rwid = 324 Warehouse ID = 2167404 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 215 Th id = 15 rwid = 350 Warehouse ID = 2340850 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 217 Th id = 17 rwid = 374 Warehouse ID = 2500954 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 208 Th id = 8 rwid = 287 Warehouse ID = 1920577 W_Count = 10
+payment: Tid = 213 Th id = 13 rwid = 338 Warehouse ID = 2260798 W_Count = 10
+payment: Tid = 214 Th id = 14 rwid = 349 Warehouse ID = 2334179 W_Count = 10
+payment: Tid = 216 Th id = 16 rwid = 368 Warehouse ID = 2460928 W_Count = 10
+payment: Tid = 218 Th id = 18 rwid = 387 Warehouse ID = 2587677 W_Count = 10
+payment: Tid = 209 Th id = 9 rwid = 299 Warehouse ID = 2000629 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 220 Th id = 0 rwid = 205 Warehouse ID = 1373555 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 219 Th id = 19 rwid = 395 Warehouse ID = 2641045 W_Count = 10
+payment: Tid = 221 Th id = 1 rwid = 212 Warehouse ID = 1420252 W_Count = 10
+payment: Tid = 223 Th id = 3 rwid = 235 Warehouse ID = 1573685 W_Count = 10
+payment: Tid = 224 Th id = 4 rwid = 246 Warehouse ID = 1647066 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 222 Th id = 2 rwid = 228 Warehouse ID = 1526988 W_Count = 10
+payment: Tid = 225 Th id = 5 rwid = 258 Warehouse ID = 1727118 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 228 Th id = 8 rwid = 281 Warehouse ID = 1880551 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 227 Th id = 7 rwid = 276 Warehouse ID = 1847196 W_Count = 10
+payment: Tid = 226 Th id = 6 rwid = 260 Warehouse ID = 1740460 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 231 Th id = 11 rwid = 312 Warehouse ID = 2087352 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 232 Th id = 12 rwid = 322 Warehouse ID = 2154062 W_Count = 10
+payment: Tid = 229 Th id = 9 rwid = 294 Warehouse ID = 1967274 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 240 Th id = 0 rwid = 205 Warehouse ID = 1373555 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 237 Th id = 17 rwid = 379 Warehouse ID = 2534309 W_Count = 10
+payment: Tid = 234 Th id = 14 rwid = 347 Warehouse ID = 2320837 W_Count = 10
+payment: Tid = 233 Th id = 13 rwid = 338 Warehouse ID = 2260798 W_Count = 10
+payment: Tid = 235 Th id = 15 rwid = 354 Warehouse ID = 2367534 W_Count = 10
+payment: Tid = 236 Th id = 16 rwid = 362 Warehouse ID = 2420902 W_Count = 10
+payment: Tid = 230 Th id = 10 rwid = 309 Warehouse ID = 2067339 W_Count = 10
+payment: Tid = 238 Th id = 18 rwid = 387 Warehouse ID = 2587677 W_Count = 10
+payment: Tid = 239 Th id = 19 rwid = 394 Warehouse ID = 2634374 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 241 Th id = 1 rwid = 218 Warehouse ID = 1460278 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 245 Th id = 5 rwid = 259 Warehouse ID = 1733789 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 242 Th id = 2 rwid = 224 Warehouse ID = 1500304 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 246 Th id = 6 rwid = 261 Warehouse ID = 1747131 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 243 Th id = 3 rwid = 233 Warehouse ID = 1560343 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 253 Th id = 13 rwid = 334 Warehouse ID = 2234114 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 254 Th id = 14 rwid = 349 Warehouse ID = 2334179 W_Count = 10
+payment: Tid = 247 Th id = 7 rwid = 279 Warehouse ID = 1867209 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 252 Th id = 12 rwid = 329 Warehouse ID = 2200759 W_Count = 10
+payment: Tid = 251 Th id = 11 rwid = 316 Warehouse ID = 2114036 W_Count = 10
+payment: Tid = 250 Th id = 10 rwid = 302 Warehouse ID = 2020642 W_Count = 10
+payment: Tid = 248 Th id = 8 rwid = 285 Warehouse ID = 1907235 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 249 Th id = 9 rwid = 298 Warehouse ID = 1993958 W_Count = 10
+payment: Tid = 244 Th id = 4 rwid = 241 Warehouse ID = 1613711 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 261 Th id = 1 rwid = 211 Warehouse ID = 1413581 W_Count = 10
+payment: Tid = 259 Th id = 19 rwid = 390 Warehouse ID = 2607690 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 260 Th id = 0 rwid = 205 Warehouse ID = 1373555 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 258 Th id = 18 rwid = 389 Warehouse ID = 2601019 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 257 Th id = 17 rwid = 378 Warehouse ID = 2527638 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 255 Th id = 15 rwid = 359 Warehouse ID = 2400889 W_Count = 10
+payment: Tid = 256 Th id = 16 rwid = 368 Warehouse ID = 2460928 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 262 Th id = 2 rwid = 221 Warehouse ID = 1480291 W_Count = 10
+payment: Tid = 263 Th id = 3 rwid = 239 Warehouse ID = 1600369 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 264 Th id = 4 rwid = 249 Warehouse ID = 1667079 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 273 Th id = 13 rwid = 336 Warehouse ID = 2247456 W_Count = 10
+payment: Tid = 266 Th id = 6 rwid = 261 Warehouse ID = 1747131 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 271 Th id = 11 rwid = 316 Warehouse ID = 2114036 W_Count = 10
+payment: Tid = 267 Th id = 7 rwid = 275 Warehouse ID = 1840525 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 265 Th id = 5 rwid = 257 Warehouse ID = 1720447 W_Count = 10
+payment: Tid = 268 Th id = 8 rwid = 281 Warehouse ID = 1880551 W_Count = 10
+payment: Tid = 269 Th id = 9 rwid = 295 Warehouse ID = 1973945 W_Count = 10
+payment: Tid = 270 Th id = 10 rwid = 303 Warehouse ID = 2027313 W_Count = 10
+payment: Tid = 272 Th id = 12 rwid = 323 Warehouse ID = 2160733 W_Count = 10
+payment: Tid = 282 Th id = 2 rwid = 223 Warehouse ID = 1493633 W_Count = 10
+payment: Tid = 280 Th id = 0 rwid = 208 Warehouse ID = 1393568 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 283 Th id = 3 rwid = 230 Warehouse ID = 1540330 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 277 Th id = 17 rwid = 379 Warehouse ID = 2534309 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 279 Th id = 19 rwid = 398 Warehouse ID = 2661058 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 278 Th id = 18 rwid = 382 Warehouse ID = 2554322 W_Count = 10
+payment: Tid = 274 Th id = 14 rwid = 342 Warehouse ID = 2287482 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 276 Th id = 16 rwid = 362 Warehouse ID = 2420902 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 284 Th id = 4 rwid = 240 Warehouse ID = 1607040 W_Count = 10
+payment: Tid = 281 Th id = 1 rwid = 211 Warehouse ID = 1413581 W_Count = 10
+payment: Tid = 275 Th id = 15 rwid = 354 Warehouse ID = 2367534 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 285 Th id = 5 rwid = 250 Warehouse ID = 1673750 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 288 Th id = 8 rwid = 285 Warehouse ID = 1907235 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 287 Th id = 7 rwid = 270 Warehouse ID = 1807170 W_Count = 10
+payment: Tid = 293 Th id = 13 rwid = 334 Warehouse ID = 2234114 W_Count = 10
+payment: Tid = 291 Th id = 11 rwid = 315 Warehouse ID = 2107365 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 292 Th id = 12 rwid = 327 Warehouse ID = 2187417 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 286 Th id = 6 rwid = 261 Warehouse ID = 1747131 W_Count = 10
+payment: Tid = 290 Th id = 10 rwid = 304 Warehouse ID = 2033984 W_Count = 10
+payment: Tid = 289 Th id = 9 rwid = 296 Warehouse ID = 1980616 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 295 Th id = 15 rwid = 357 Warehouse ID = 2387547 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 294 Th id = 14 rwid = 342 Warehouse ID = 2287482 W_Count = 10
+payment: Tid = 296 Th id = 16 rwid = 363 Warehouse ID = 2427573 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 302 Th id = 2 rwid = 221 Warehouse ID = 1480291 W_Count = 10
+payment: Tid = 301 Th id = 1 rwid = 215 Warehouse ID = 1440265 W_Count = 10
+payment: Tid = 299 Th id = 19 rwid = 391 Warehouse ID = 2614361 W_Count = 10
+payment: Tid = 297 Th id = 17 rwid = 372 Warehouse ID = 2487612 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 300 Th id = 0 rwid = 204 Warehouse ID = 1366884 W_Count = 10
+payment: Tid = 304 Th id = 4 rwid = 244 Warehouse ID = 1633724 W_Count = 10
+payment: Tid = 303 Th id = 3 rwid = 238 Warehouse ID = 1593698 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 305 Th id = 5 rwid = 255 Warehouse ID = 1707105 W_Count = 10
+payment: Tid = 298 Th id = 18 rwid = 384 Warehouse ID = 2567664 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 306 Th id = 6 rwid = 263 Warehouse ID = 1760473 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 307 Th id = 7 rwid = 271 Warehouse ID = 1813841 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 308 Th id = 8 rwid = 286 Warehouse ID = 1913906 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 311 Th id = 11 rwid = 312 Warehouse ID = 2087352 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 312 Th id = 12 rwid = 323 Warehouse ID = 2160733 W_Count = 10
+payment: Tid = 309 Th id = 9 rwid = 299 Warehouse ID = 2000629 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 313 Th id = 13 rwid = 333 Warehouse ID = 2227443 W_Count = 10
+payment: Tid = 315 Th id = 15 rwid = 357 Warehouse ID = 2387547 W_Count = 10
+payment: Tid = 314 Th id = 14 rwid = 345 Warehouse ID = 2307495 W_Count = 10
+payment: Tid = 310 Th id = 10 rwid = 303 Warehouse ID = 2027313 W_Count = 10
+payment: Tid = 316 Th id = 16 rwid = 366 Warehouse ID = 2447586 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 317 Th id = 17 rwid = 372 Warehouse ID = 2487612 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 318 Th id = 18 rwid = 387 Warehouse ID = 2587677 W_Count = 10
+payment: Tid = 319 Th id = 19 rwid = 394 Warehouse ID = 2634374 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 322 Th id = 2 rwid = 220 Warehouse ID = 1473620 W_Count = 10
+payment: Tid = 321 Th id = 1 rwid = 211 Warehouse ID = 1413581 W_Count = 10
+payment: Tid = 320 Th id = 0 rwid = 202 Warehouse ID = 1353542 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 325 Th id = 5 rwid = 256 Warehouse ID = 1713776 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 326 Th id = 6 rwid = 263 Warehouse ID = 1760473 W_Count = 10
+payment: Tid = 329 Th id = 9 rwid = 294 Warehouse ID = 1967274 W_Count = 10
+payment: Tid = 327 Th id = 7 rwid = 275 Warehouse ID = 1840525 W_Count = 10
+payment: Tid = 323 Th id = 3 rwid = 232 Warehouse ID = 1553672 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 324 Th id = 4 rwid = 244 Warehouse ID = 1633724 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 330 Th id = 10 rwid = 307 Warehouse ID = 2053997 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 333 Th id = 13 rwid = 339 Warehouse ID = 2267469 W_Count = 10
+payment: Tid = 331 Th id = 11 rwid = 312 Warehouse ID = 2087352 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 328 Th id = 8 rwid = 284 Warehouse ID = 1900564 W_Count = 10
+payment: Tid = 332 Th id = 12 rwid = 327 Warehouse ID = 2187417 W_Count = 10
+payment: Tid = 338 Th id = 18 rwid = 389 Warehouse ID = 2601019 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 334 Th id = 14 rwid = 343 Warehouse ID = 2294153 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 335 Th id = 15 rwid = 350 Warehouse ID = 2340850 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 337 Th id = 17 rwid = 372 Warehouse ID = 2487612 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 343 Th id = 3 rwid = 233 Warehouse ID = 1560343 W_Count = 10
+payment: Tid = 339 Th id = 19 rwid = 391 Warehouse ID = 2614361 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 342 Th id = 2 rwid = 229 Warehouse ID = 1533659 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 346 Th id = 6 rwid = 260 Warehouse ID = 1740460 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 347 Th id = 7 rwid = 277 Warehouse ID = 1853867 W_Count = 10
+payment: Tid = 341 Th id = 1 rwid = 213 Warehouse ID = 1426923 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 345 Th id = 5 rwid = 257 Warehouse ID = 1720447 W_Count = 10
+payment: Tid = 344 Th id = 4 rwid = 243 Warehouse ID = 1627053 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 336 Th id = 16 rwid = 367 Warehouse ID = 2454257 W_Count = 10
+payment: Tid = 350 Th id = 10 rwid = 307 Warehouse ID = 2053997 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 348 Th id = 8 rwid = 285 Warehouse ID = 1907235 W_Count = 10
+payment: Tid = 349 Th id = 9 rwid = 293 Warehouse ID = 1960603 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 340 Th id = 0 rwid = 207 Warehouse ID = 1386897 W_Count = 10
+payment: Tid = 352 Th id = 12 rwid = 323 Warehouse ID = 2160733 W_Count = 10
+payment: Tid = 351 Th id = 11 rwid = 318 Warehouse ID = 2127378 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 353 Th id = 13 rwid = 334 Warehouse ID = 2234114 W_Count = 10
+payment: Tid = 355 Th id = 15 rwid = 356 Warehouse ID = 2380876 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 354 Th id = 14 rwid = 345 Warehouse ID = 2307495 W_Count = 10
+payment: Tid = 356 Th id = 16 rwid = 362 Warehouse ID = 2420902 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 357 Th id = 17 rwid = 370 Warehouse ID = 2474270 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 359 Th id = 19 rwid = 397 Warehouse ID = 2654387 W_Count = 10
+payment: Tid = 358 Th id = 18 rwid = 382 Warehouse ID = 2554322 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 362 Th id = 2 rwid = 229 Warehouse ID = 1533659 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 360 Th id = 0 rwid = 205 Warehouse ID = 1373555 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 363 Th id = 3 rwid = 239 Warehouse ID = 1600369 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 364 Th id = 4 rwid = 241 Warehouse ID = 1613711 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 368 Th id = 8 rwid = 287 Warehouse ID = 1920577 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 365 Th id = 5 rwid = 250 Warehouse ID = 1673750 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 366 Th id = 6 rwid = 269 Warehouse ID = 1800499 W_Count = 10
+payment: Tid = 361 Th id = 1 rwid = 215 Warehouse ID = 1440265 W_Count = 10
+payment: Tid = 367 Th id = 7 rwid = 278 Warehouse ID = 1860538 W_Count = 10
+payment: Tid = 369 Th id = 9 rwid = 299 Warehouse ID = 2000629 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 370 Th id = 10 rwid = 309 Warehouse ID = 2067339 W_Count = 10
+payment: Tid = 380 Th id = 0 rwid = 207 Warehouse ID = 1386897 W_Count = 10
+payment: Tid = 376 Th id = 16 rwid = 366 Warehouse ID = 2447586 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 379 Th id = 19 rwid = 393 Warehouse ID = 2627703 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 375 Th id = 15 rwid = 356 Warehouse ID = 2380876 W_Count = 10
+payment: Tid = 374 Th id = 14 rwid = 342 Warehouse ID = 2287482 W_Count = 10
+payment: Tid = 373 Th id = 13 rwid = 339 Warehouse ID = 2267469 W_Count = 10
+payment: Tid = 371 Th id = 11 rwid = 312 Warehouse ID = 2087352 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 377 Th id = 17 rwid = 373 Warehouse ID = 2494283 W_Count = 10
+payment: Tid = 378 Th id = 18 rwid = 387 Warehouse ID = 2587677 W_Count = 10
+payment: Tid = 383 Th id = 3 rwid = 235 Warehouse ID = 1573685 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 382 Th id = 2 rwid = 228 Warehouse ID = 1526988 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 372 Th id = 12 rwid = 329 Warehouse ID = 2200759 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 381 Th id = 1 rwid = 217 Warehouse ID = 1453607 W_Count = 10
+payment: Tid = 384 Th id = 4 rwid = 244 Warehouse ID = 1633724 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 385 Th id = 5 rwid = 250 Warehouse ID = 1673750 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 386 Th id = 6 rwid = 269 Warehouse ID = 1800499 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 390 Th id = 10 rwid = 307 Warehouse ID = 2053997 W_Count = 10
+payment: Tid = 389 Th id = 9 rwid = 291 Warehouse ID = 1947261 W_Count = 10
+payment: Tid = 388 Th id = 8 rwid = 287 Warehouse ID = 1920577 W_Count = 10
+payment: Tid = 387 Th id = 7 rwid = 273 Warehouse ID = 1827183 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 393 Th id = 13 rwid = 338 Warehouse ID = 2260798 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 391 Th id = 11 rwid = 310 Warehouse ID = 2074010 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 396 Th id = 16 rwid = 366 Warehouse ID = 2447586 W_Count = 10
+payment: Tid = 395 Th id = 15 rwid = 355 Warehouse ID = 2374205 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 392 Th id = 12 rwid = 326 Warehouse ID = 2180746 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 400 Th id = 0 rwid = 209 Warehouse ID = 1400239 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 397 Th id = 17 rwid = 373 Warehouse ID = 2494283 W_Count = 10
+payment: Tid = 394 Th id = 14 rwid = 348 Warehouse ID = 2327508 W_Count = 10
+payment: Tid = 398 Th id = 18 rwid = 387 Warehouse ID = 2587677 W_Count = 10
+payment: Tid = 399 Th id = 19 rwid = 396 Warehouse ID = 2647716 W_Count = 10
+payment: Tid = 401 Th id = 1 rwid = 216 Warehouse ID = 1446936 W_Count = 10
+payment: Tid = 402 Th id = 2 rwid = 227 Warehouse ID = 1520317 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 403 Th id = 3 rwid = 234 Warehouse ID = 1567014 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 406 Th id = 6 rwid = 263 Warehouse ID = 1760473 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 405 Th id = 5 rwid = 252 Warehouse ID = 1687092 W_Count = 10
+payment: Tid = 407 Th id = 7 rwid = 271 Warehouse ID = 1813841 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 413 Th id = 13 rwid = 333 Warehouse ID = 2227443 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 412 Th id = 12 rwid = 329 Warehouse ID = 2200759 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 410 Th id = 10 rwid = 301 Warehouse ID = 2013971 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 409 Th id = 9 rwid = 297 Warehouse ID = 1987287 W_Count = 10
+payment: Tid = 411 Th id = 11 rwid = 312 Warehouse ID = 2087352 W_Count = 10
+payment: Tid = 414 Th id = 14 rwid = 341 Warehouse ID = 2280811 W_Count = 10
+payment: Tid = 415 Th id = 15 rwid = 350 Warehouse ID = 2340850 W_Count = 10
+payment: Tid = 416 Th id = 16 rwid = 368 Warehouse ID = 2460928 W_Count = 10
+payment: Tid = 404 Th id = 4 rwid = 243 Warehouse ID = 1627053 W_Count = 10
+payment: Tid = 408 Th id = 8 rwid = 286 Warehouse ID = 1913906 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 417 Th id = 17 rwid = 378 Warehouse ID = 2527638 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 426 Th id = 6 rwid = 265 Warehouse ID = 1773815 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 418 Th id = 18 rwid = 388 Warehouse ID = 2594348 W_Count = 10
+payment: Tid = 420 Th id = 0 rwid = 208 Warehouse ID = 1393568 W_Count = 10
+payment: Tid = 419 Th id = 19 rwid = 397 Warehouse ID = 2654387 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 436 Th id = 16 rwid = 366 Warehouse ID = 2447586 W_Count = 10
+payment: Tid = 432 Th id = 12 rwid = 324 Warehouse ID = 2167404 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 435 Th id = 15 rwid = 350 Warehouse ID = 2340850 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 433 Th id = 13 rwid = 336 Warehouse ID = 2247456 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 431 Th id = 11 rwid = 317 Warehouse ID = 2120707 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 429 Th id = 9 rwid = 292 Warehouse ID = 1953932 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 430 Th id = 10 rwid = 300 Warehouse ID = 2007300 W_Count = 10
+payment: Tid = 421 Th id = 1 rwid = 218 Warehouse ID = 1460278 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 422 Th id = 2 rwid = 225 Warehouse ID = 1506975 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 423 Th id = 3 rwid = 236 Warehouse ID = 1580356 W_Count = 10
+payment: Tid = 424 Th id = 4 rwid = 242 Warehouse ID = 1620382 W_Count = 10
+payment: Tid = 428 Th id = 8 rwid = 281 Warehouse ID = 1880551 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 437 Th id = 17 rwid = 370 Warehouse ID = 2474270 W_Count = 10
+payment: Tid = 427 Th id = 7 rwid = 270 Warehouse ID = 1807170 W_Count = 10
+payment: Tid = 434 Th id = 14 rwid = 349 Warehouse ID = 2334179 W_Count = 10
+payment: Tid = 425 Th id = 5 rwid = 250 Warehouse ID = 1673750 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 440 Th id = 0 rwid = 208 Warehouse ID = 1393568 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 441 Th id = 1 rwid = 213 Warehouse ID = 1426923 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 438 Th id = 18 rwid = 384 Warehouse ID = 2567664 W_Count = 10
+payment: Tid = 442 Th id = 2 rwid = 226 Warehouse ID = 1513646 W_Count = 10
+payment: Tid = 444 Th id = 4 rwid = 245 Warehouse ID = 1640395 W_Count = 10
+payment: Tid = 443 Th id = 3 rwid = 237 Warehouse ID = 1587027 W_Count = 10
+payment: Tid = 439 Th id = 19 rwid = 391 Warehouse ID = 2614361 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 445 Th id = 5 rwid = 257 Warehouse ID = 1720447 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 450 Th id = 10 rwid = 304 Warehouse ID = 2033984 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 446 Th id = 6 rwid = 264 Warehouse ID = 1767144 W_Count = 10
+payment: Tid = 448 Th id = 8 rwid = 289 Warehouse ID = 1933919 W_Count = 10
+payment: Tid = 457 Th id = 17 rwid = 379 Warehouse ID = 2534309 W_Count = 10
+payment: Tid = 455 Th id = 15 rwid = 354 Warehouse ID = 2367534 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 456 Th id = 16 rwid = 366 Warehouse ID = 2447586 W_Count = 10
+payment: Tid = 449 Th id = 9 rwid = 293 Warehouse ID = 1960603 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 453 Th id = 13 rwid = 335 Warehouse ID = 2240785 W_Count = 10
+payment: Tid = 447 Th id = 7 rwid = 275 Warehouse ID = 1840525 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 451 Th id = 11 rwid = 317 Warehouse ID = 2120707 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 452 Th id = 12 rwid = 321 Warehouse ID = 2147391 W_Count = 10
+payment: Tid = 454 Th id = 14 rwid = 343 Warehouse ID = 2294153 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 458 Th id = 18 rwid = 387 Warehouse ID = 2587677 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 459 Th id = 19 rwid = 398 Warehouse ID = 2661058 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 466 Th id = 6 rwid = 262 Warehouse ID = 1753802 W_Count = 10
+payment: Tid = 463 Th id = 3 rwid = 232 Warehouse ID = 1553672 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 465 Th id = 5 rwid = 253 Warehouse ID = 1693763 W_Count = 10
+payment: Tid = 462 Th id = 2 rwid = 228 Warehouse ID = 1526988 W_Count = 10
+payment: Tid = 460 Th id = 0 rwid = 205 Warehouse ID = 1373555 W_Count = 10
+payment: Tid = 464 Th id = 4 rwid = 246 Warehouse ID = 1647066 W_Count = 10
+payment: Tid = 461 Th id = 1 rwid = 210 Warehouse ID = 1406910 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 467 Th id = 7 rwid = 276 Warehouse ID = 1847196 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 468 Th id = 8 rwid = 289 Warehouse ID = 1933919 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 470 Th id = 10 rwid = 309 Warehouse ID = 2067339 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 474 Th id = 14 rwid = 342 Warehouse ID = 2287482 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 475 Th id = 15 rwid = 351 Warehouse ID = 2347521 W_Count = 10
+payment: Tid = 472 Th id = 12 rwid = 329 Warehouse ID = 2200759 W_Count = 10
+payment: Tid = 471 Th id = 11 rwid = 313 Warehouse ID = 2094023 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 473 Th id = 13 rwid = 331 Warehouse ID = 2214101 W_Count = 10
+payment: Tid = 469 Th id = 9 rwid = 291 Warehouse ID = 1947261 W_Count = 10
+payment: Tid = 476 Th id = 16 rwid = 363 Warehouse ID = 2427573 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 482 Th id = 2 rwid = 224 Warehouse ID = 1500304 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 477 Th id = 17 rwid = 372 Warehouse ID = 2487612 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 479 Th id = 19 rwid = 391 Warehouse ID = 2614361 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 480 Th id = 0 rwid = 208 Warehouse ID = 1393568 W_Count = 10
+payment: Tid = 481 Th id = 1 rwid = 219 Warehouse ID = 1466949 W_Count = 10
+payment: Tid = 484 Th id = 4 rwid = 246 Warehouse ID = 1647066 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 485 Th id = 5 rwid = 256 Warehouse ID = 1713776 W_Count = 10
+payment: Tid = 483 Th id = 3 rwid = 233 Warehouse ID = 1560343 W_Count = 10
+payment: Tid = 486 Th id = 6 rwid = 264 Warehouse ID = 1767144 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 488 Th id = 8 rwid = 281 Warehouse ID = 1880551 W_Count = 10
+payment: Tid = 478 Th id = 18 rwid = 383 Warehouse ID = 2560993 W_Count = 10
+payment: Tid = 487 Th id = 7 rwid = 276 Warehouse ID = 1847196 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 490 Th id = 10 rwid = 302 Warehouse ID = 2020642 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 491 Th id = 11 rwid = 314 Warehouse ID = 2100694 W_Count = 10
+payment: Tid = 489 Th id = 9 rwid = 291 Warehouse ID = 1947261 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 497 Th id = 17 rwid = 370 Warehouse ID = 2474270 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 496 Th id = 16 rwid = 362 Warehouse ID = 2420902 W_Count = 10
+payment: Tid = 492 Th id = 12 rwid = 329 Warehouse ID = 2200759 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 495 Th id = 15 rwid = 359 Warehouse ID = 2400889 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 494 Th id = 14 rwid = 340 Warehouse ID = 2274140 W_Count = 10
+payment: Tid = 498 Th id = 18 rwid = 389 Warehouse ID = 2601019 W_Count = 10
+payment: Tid = 506 Th id = 6 rwid = 267 Warehouse ID = 1787157 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 505 Th id = 5 rwid = 250 Warehouse ID = 1673750 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 507 Th id = 7 rwid = 271 Warehouse ID = 1813841 W_Count = 10
+payment: Tid = 499 Th id = 19 rwid = 393 Warehouse ID = 2627703 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 504 Th id = 4 rwid = 245 Warehouse ID = 1640395 W_Count = 10
+payment: Tid = 502 Th id = 2 rwid = 228 Warehouse ID = 1526988 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 500 Th id = 0 rwid = 204 Warehouse ID = 1366884 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 503 Th id = 3 rwid = 234 Warehouse ID = 1567014 W_Count = 10
+payment: Tid = 508 Th id = 8 rwid = 287 Warehouse ID = 1920577 W_Count = 10
+payment: Tid = 493 Th id = 13 rwid = 337 Warehouse ID = 2254127 W_Count = 10
+payment: Tid = 501 Th id = 1 rwid = 214 Warehouse ID = 1433594 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 510 Th id = 10 rwid = 308 Warehouse ID = 2060668 W_Count = 10
+payment: Tid = 509 Th id = 9 rwid = 296 Warehouse ID = 1980616 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 511 Th id = 11 rwid = 313 Warehouse ID = 2094023 W_Count = 10
+payment: Tid = 512 Th id = 12 rwid = 324 Warehouse ID = 2167404 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 513 Th id = 13 rwid = 330 Warehouse ID = 2207430 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 515 Th id = 15 rwid = 355 Warehouse ID = 2374205 W_Count = 10
+payment: Tid = 516 Th id = 16 rwid = 369 Warehouse ID = 2467599 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 520 Th id = 0 rwid = 206 Warehouse ID = 1380226 W_Count = 10
+payment: Tid = 517 Th id = 17 rwid = 373 Warehouse ID = 2494283 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 514 Th id = 14 rwid = 346 Warehouse ID = 2314166 W_Count = 10
+payment: Tid = 518 Th id = 18 rwid = 384 Warehouse ID = 2567664 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 527 Th id = 7 rwid = 274 Warehouse ID = 1833854 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 531 Th id = 11 rwid = 310 Warehouse ID = 2074010 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 529 Th id = 9 rwid = 291 Warehouse ID = 1947261 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 530 Th id = 10 rwid = 301 Warehouse ID = 2013971 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 525 Th id = 5 rwid = 254 Warehouse ID = 1700434 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 524 Th id = 4 rwid = 243 Warehouse ID = 1627053 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 519 Th id = 19 rwid = 391 Warehouse ID = 2614361 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 522 Th id = 2 rwid = 223 Warehouse ID = 1493633 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 539 Th id = 19 rwid = 399 Warehouse ID = 2667729 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 537 Th id = 17 rwid = 372 Warehouse ID = 2487612 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 536 Th id = 16 rwid = 365 Warehouse ID = 2440915 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 535 Th id = 15 rwid = 358 Warehouse ID = 2394218 W_Count = 10
+payment: Tid = 523 Th id = 3 rwid = 230 Warehouse ID = 1540330 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 526 Th id = 6 rwid = 263 Warehouse ID = 1760473 W_Count = 10
+payment: Tid = 528 Th id = 8 rwid = 289 Warehouse ID = 1933919 W_Count = 10
+payment: Tid = 532 Th id = 12 rwid = 323 Warehouse ID = 2160733 W_Count = 10
+payment: Tid = 533 Th id = 13 rwid = 332 Warehouse ID = 2220772 W_Count = 10
+payment: Tid = 534 Th id = 14 rwid = 347 Warehouse ID = 2320837 W_Count = 10
+payment: Tid = 538 Th id = 18 rwid = 382 Warehouse ID = 2554322 W_Count = 10
+payment: Tid = 540 Th id = 0 rwid = 205 Warehouse ID = 1373555 W_Count = 10
+payment: Tid = 521 Th id = 1 rwid = 215 Warehouse ID = 1440265 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 541 Th id = 1 rwid = 213 Warehouse ID = 1426923 W_Count = 10
+payment: Tid = 542 Th id = 2 rwid = 225 Warehouse ID = 1506975 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 545 Th id = 5 rwid = 258 Warehouse ID = 1727118 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 550 Th id = 10 rwid = 305 Warehouse ID = 2040655 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 549 Th id = 9 rwid = 291 Warehouse ID = 1947261 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 548 Th id = 8 rwid = 283 Warehouse ID = 1893893 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 547 Th id = 7 rwid = 271 Warehouse ID = 1813841 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 546 Th id = 6 rwid = 262 Warehouse ID = 1753802 W_Count = 10
+payment: Tid = 543 Th id = 3 rwid = 234 Warehouse ID = 1567014 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 558 Th id = 18 rwid = 389 Warehouse ID = 2601019 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 557 Th id = 17 rwid = 373 Warehouse ID = 2494283 W_Count = 10
+payment: Tid = 556 Th id = 16 rwid = 366 Warehouse ID = 2447586 W_Count = 10
+payment: Tid = 552 Th id = 12 rwid = 325 Warehouse ID = 2174075 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 551 Th id = 11 rwid = 310 Warehouse ID = 2074010 W_Count = 10
+payment: Tid = 544 Th id = 4 rwid = 240 Warehouse ID = 1607040 W_Count = 10
+payment: Tid = 553 Th id = 13 rwid = 335 Warehouse ID = 2240785 W_Count = 10
+payment: Tid = 555 Th id = 15 rwid = 352 Warehouse ID = 2354192 W_Count = 10
+payment: Tid = 554 Th id = 14 rwid = 344 Warehouse ID = 2300824 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 563 Th id = 3 rwid = 235 Warehouse ID = 1573685 W_Count = 10
+payment: Tid = 559 Th id = 19 rwid = 390 Warehouse ID = 2607690 W_Count = 10
+payment: Tid = 560 Th id = 0 rwid = 204 Warehouse ID = 1366884 W_Count = 10
+payment: Tid = 562 Th id = 2 rwid = 226 Warehouse ID = 1513646 W_Count = 10
+payment: Tid = 561 Th id = 1 rwid = 218 Warehouse ID = 1460278 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 566 Th id = 6 rwid = 266 Warehouse ID = 1780486 W_Count = 10
+payment: Tid = 564 Th id = 4 rwid = 246 Warehouse ID = 1647066 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 565 Th id = 5 rwid = 256 Warehouse ID = 1713776 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 585 Th id = 5 rwid = 259 Warehouse ID = 1733789 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 583 Th id = 3 rwid = 234 Warehouse ID = 1567014 W_Count = 10
+payment: Tid = 582 Th id = 2 rwid = 224 Warehouse ID = 1500304 W_Count = 10
+payment: Tid = 567 Th id = 7 rwid = 279 Warehouse ID = 1867209 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 581 Th id = 1 rwid = 218 Warehouse ID = 1460278 W_Count = 10
+payment: Tid = 577 Th id = 17 rwid = 371 Warehouse ID = 2480941 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 578 Th id = 18 rwid = 382 Warehouse ID = 2554322 W_Count = 10
+payment: Tid = 576 Th id = 16 rwid = 365 Warehouse ID = 2440915 W_Count = 10
+payment: Tid = 570 Th id = 10 rwid = 309 Warehouse ID = 2067339 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 574 Th id = 14 rwid = 344 Warehouse ID = 2300824 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 575 Th id = 15 rwid = 358 Warehouse ID = 2394218 W_Count = 10
+payment: Tid = 572 Th id = 12 rwid = 328 Warehouse ID = 2194088 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 573 Th id = 13 rwid = 330 Warehouse ID = 2207430 W_Count = 10
+payment: Tid = 571 Th id = 11 rwid = 315 Warehouse ID = 2107365 W_Count = 10
+payment: Tid = 569 Th id = 9 rwid = 299 Warehouse ID = 2000629 W_Count = 10
+payment: Tid = 580 Th id = 0 rwid = 205 Warehouse ID = 1373555 W_Count = 10
+payment: Tid = 579 Th id = 19 rwid = 395 Warehouse ID = 2641045 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 584 Th id = 4 rwid = 247 Warehouse ID = 1653737 W_Count = 10
+payment: Tid = 586 Th id = 6 rwid = 262 Warehouse ID = 1753802 W_Count = 10
+payment: Tid = 568 Th id = 8 rwid = 286 Warehouse ID = 1913906 W_Count = 10
+payment: Tid = 587 Th id = 7 rwid = 271 Warehouse ID = 1813841 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 588 Th id = 8 rwid = 285 Warehouse ID = 1907235 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 594 Th id = 14 rwid = 345 Warehouse ID = 2307495 W_Count = 10
+payment: Tid = 591 Th id = 11 rwid = 318 Warehouse ID = 2127378 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 593 Th id = 13 rwid = 338 Warehouse ID = 2260798 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 589 Th id = 9 rwid = 295 Warehouse ID = 1973945 W_Count = 10
+payment: Tid = 592 Th id = 12 rwid = 325 Warehouse ID = 2174075 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 595 Th id = 15 rwid = 353 Warehouse ID = 2360863 W_Count = 10
+payment: Tid = 596 Th id = 16 rwid = 363 Warehouse ID = 2427573 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 590 Th id = 10 rwid = 308 Warehouse ID = 2060668 W_Count = 10
+payment: Tid = 601 Th id = 1 rwid = 210 Warehouse ID = 1406910 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 597 Th id = 17 rwid = 378 Warehouse ID = 2527638 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 598 Th id = 18 rwid = 388 Warehouse ID = 2594348 W_Count = 10
+payment: Tid = 599 Th id = 19 rwid = 395 Warehouse ID = 2641045 W_Count = 10
+payment: Tid = 600 Th id = 0 rwid = 205 Warehouse ID = 1373555 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 602 Th id = 2 rwid = 220 Warehouse ID = 1473620 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 603 Th id = 3 rwid = 231 Warehouse ID = 1547001 W_Count = 10
+payment: Tid = 609 Th id = 9 rwid = 295 Warehouse ID = 1973945 W_Count = 10
+payment: Tid = 605 Th id = 5 rwid = 253 Warehouse ID = 1693763 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 604 Th id = 4 rwid = 249 Warehouse ID = 1667079 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 607 Th id = 7 rwid = 274 Warehouse ID = 1833854 W_Count = 10
+payment: Tid = 608 Th id = 8 rwid = 289 Warehouse ID = 1933919 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 617 Th id = 17 rwid = 371 Warehouse ID = 2480941 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 616 Th id = 16 rwid = 361 Warehouse ID = 2414231 W_Count = 10
+payment: Tid = 611 Th id = 11 rwid = 316 Warehouse ID = 2114036 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 614 Th id = 14 rwid = 343 Warehouse ID = 2294153 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 615 Th id = 15 rwid = 358 Warehouse ID = 2394218 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 610 Th id = 10 rwid = 303 Warehouse ID = 2027313 W_Count = 10
+payment: Tid = 613 Th id = 13 rwid = 334 Warehouse ID = 2234114 W_Count = 10
+payment: Tid = 612 Th id = 12 rwid = 324 Warehouse ID = 2167404 W_Count = 10
+payment: Tid = 606 Th id = 6 rwid = 265 Warehouse ID = 1773815 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 619 Th id = 19 rwid = 395 Warehouse ID = 2641045 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 620 Th id = 0 rwid = 208 Warehouse ID = 1393568 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 626 Th id = 6 rwid = 266 Warehouse ID = 1780486 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 625 Th id = 5 rwid = 257 Warehouse ID = 1720447 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 624 Th id = 4 rwid = 240 Warehouse ID = 1607040 W_Count = 10
+payment: Tid = 622 Th id = 2 rwid = 224 Warehouse ID = 1500304 W_Count = 10
+payment: Tid = 623 Th id = 3 rwid = 237 Warehouse ID = 1587027 W_Count = 10
+payment: Tid = 618 Th id = 18 rwid = 389 Warehouse ID = 2601019 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 632 Th id = 12 rwid = 321 Warehouse ID = 2147391 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 629 Th id = 9 rwid = 293 Warehouse ID = 1960603 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 627 Th id = 7 rwid = 277 Warehouse ID = 1853867 W_Count = 10
+payment: Tid = 621 Th id = 1 rwid = 216 Warehouse ID = 1446936 W_Count = 10
+payment: Tid = 628 Th id = 8 rwid = 280 Warehouse ID = 1873880 W_Count = 10
+payment: Tid = 630 Th id = 10 rwid = 305 Warehouse ID = 2040655 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 631 Th id = 11 rwid = 313 Warehouse ID = 2094023 W_Count = 10
+payment: Tid = 638 Th id = 18 rwid = 388 Warehouse ID = 2594348 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 637 Th id = 17 rwid = 378 Warehouse ID = 2527638 W_Count = 10
+payment: Tid = 634 Th id = 14 rwid = 347 Warehouse ID = 2320837 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 635 Th id = 15 rwid = 352 Warehouse ID = 2354192 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 633 Th id = 13 rwid = 333 Warehouse ID = 2227443 W_Count = 10
+payment: Tid = 636 Th id = 16 rwid = 368 Warehouse ID = 2460928 W_Count = 10
+payment: Tid = 648 Th id = 8 rwid = 283 Warehouse ID = 1893893 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 645 Th id = 5 rwid = 259 Warehouse ID = 1733789 W_Count = 10
+payment: Tid = 640 Th id = 0 rwid = 202 Warehouse ID = 1353542 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 644 Th id = 4 rwid = 249 Warehouse ID = 1667079 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 642 Th id = 2 rwid = 225 Warehouse ID = 1506975 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 641 Th id = 1 rwid = 213 Warehouse ID = 1426923 W_Count = 10
+payment: Tid = 643 Th id = 3 rwid = 232 Warehouse ID = 1553672 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 649 Th id = 9 rwid = 293 Warehouse ID = 1960603 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 656 Th id = 16 rwid = 365 Warehouse ID = 2440915 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 650 Th id = 10 rwid = 306 Warehouse ID = 2047326 W_Count = 10
+payment: Tid = 646 Th id = 6 rwid = 262 Warehouse ID = 1753802 W_Count = 10
+payment: Tid = 647 Th id = 7 rwid = 274 Warehouse ID = 1833854 W_Count = 10
+payment: Tid = 651 Th id = 11 rwid = 317 Warehouse ID = 2120707 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 658 Th id = 18 rwid = 381 Warehouse ID = 2547651 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 657 Th id = 17 rwid = 376 Warehouse ID = 2514296 W_Count = 10
+payment: Tid = 654 Th id = 14 rwid = 341 Warehouse ID = 2280811 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 655 Th id = 15 rwid = 357 Warehouse ID = 2387547 W_Count = 10
+payment: Tid = 652 Th id = 12 rwid = 323 Warehouse ID = 2160733 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 639 Th id = 19 rwid = 398 Warehouse ID = 2661058 W_Count = 10
+payment: Tid = 653 Th id = 13 rwid = 331 Warehouse ID = 2214101 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 661 Th id = 1 rwid = 219 Warehouse ID = 1466949 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 659 Th id = 19 rwid = 395 Warehouse ID = 2641045 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 663 Th id = 3 rwid = 233 Warehouse ID = 1560343 W_Count = 10
+payment: Tid = 664 Th id = 4 rwid = 247 Warehouse ID = 1653737 W_Count = 10
+payment: Tid = 660 Th id = 0 rwid = 202 Warehouse ID = 1353542 W_Count = 10
+payment: Tid = 662 Th id = 2 rwid = 220 Warehouse ID = 1473620 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 665 Th id = 5 rwid = 259 Warehouse ID = 1733789 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 666 Th id = 6 rwid = 266 Warehouse ID = 1780486 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 667 Th id = 7 rwid = 272 Warehouse ID = 1820512 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 668 Th id = 8 rwid = 287 Warehouse ID = 1920577 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 669 Th id = 9 rwid = 295 Warehouse ID = 1973945 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 671 Th id = 11 rwid = 316 Warehouse ID = 2114036 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 673 Th id = 13 rwid = 333 Warehouse ID = 2227443 W_Count = 10
+payment: Tid = 670 Th id = 10 rwid = 308 Warehouse ID = 2060668 W_Count = 10
+payment: Tid = 672 Th id = 12 rwid = 321 Warehouse ID = 2147391 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 675 Th id = 15 rwid = 350 Warehouse ID = 2340850 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 677 Th id = 17 rwid = 379 Warehouse ID = 2534309 W_Count = 10
+payment: Tid = 674 Th id = 14 rwid = 344 Warehouse ID = 2300824 W_Count = 10
+payment: Tid = 676 Th id = 16 rwid = 364 Warehouse ID = 2434244 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 680 Th id = 0 rwid = 201 Warehouse ID = 1346871 W_Count = 10
+payment: Tid = 678 Th id = 18 rwid = 387 Warehouse ID = 2587677 W_Count = 10
+payment: Tid = 679 Th id = 19 rwid = 390 Warehouse ID = 2607690 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 681 Th id = 1 rwid = 211 Warehouse ID = 1413581 W_Count = 10
+payment: Tid = 683 Th id = 3 rwid = 231 Warehouse ID = 1547001 W_Count = 10
+payment: Tid = 682 Th id = 2 rwid = 225 Warehouse ID = 1506975 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 684 Th id = 4 rwid = 243 Warehouse ID = 1627053 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 685 Th id = 5 rwid = 252 Warehouse ID = 1687092 W_Count = 10
+payment: Tid = 686 Th id = 6 rwid = 266 Warehouse ID = 1780486 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 687 Th id = 7 rwid = 273 Warehouse ID = 1827183 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 688 Th id = 8 rwid = 281 Warehouse ID = 1880551 W_Count = 10
+payment: Tid = 689 Th id = 9 rwid = 294 Warehouse ID = 1967274 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 690 Th id = 10 rwid = 307 Warehouse ID = 2053997 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 693 Th id = 13 rwid = 330 Warehouse ID = 2207430 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 697 Th id = 17 rwid = 372 Warehouse ID = 2487612 W_Count = 10
+payment: Tid = 694 Th id = 14 rwid = 349 Warehouse ID = 2334179 W_Count = 10
+payment: Tid = 695 Th id = 15 rwid = 357 Warehouse ID = 2387547 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 691 Th id = 11 rwid = 310 Warehouse ID = 2074010 W_Count = 10
+payment: Tid = 696 Th id = 16 rwid = 363 Warehouse ID = 2427573 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 707 Th id = 7 rwid = 274 Warehouse ID = 1833854 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 706 Th id = 6 rwid = 260 Warehouse ID = 1740460 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 703 Th id = 3 rwid = 239 Warehouse ID = 1600369 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 702 Th id = 2 rwid = 225 Warehouse ID = 1506975 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 699 Th id = 19 rwid = 392 Warehouse ID = 2621032 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 692 Th id = 12 rwid = 329 Warehouse ID = 2200759 W_Count = 10
+payment: Tid = 698 Th id = 18 rwid = 380 Warehouse ID = 2540980 W_Count = 10
+payment: Tid = 700 Th id = 0 rwid = 206 Warehouse ID = 1380226 W_Count = 10
+payment: Tid = 701 Th id = 1 rwid = 216 Warehouse ID = 1446936 W_Count = 10
+payment: Tid = 704 Th id = 4 rwid = 240 Warehouse ID = 1607040 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 705 Th id = 5 rwid = 254 Warehouse ID = 1700434 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 711 Th id = 11 rwid = 312 Warehouse ID = 2087352 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 709 Th id = 9 rwid = 294 Warehouse ID = 1967274 W_Count = 10
+payment: Tid = 710 Th id = 10 rwid = 302 Warehouse ID = 2020642 W_Count = 10
+payment: Tid = 712 Th id = 12 rwid = 327 Warehouse ID = 2187417 W_Count = 10
+payment: Tid = 713 Th id = 13 rwid = 334 Warehouse ID = 2234114 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 715 Th id = 15 rwid = 356 Warehouse ID = 2380876 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 708 Th id = 8 rwid = 288 Warehouse ID = 1927248 W_Count = 10
+payment: Tid = 714 Th id = 14 rwid = 342 Warehouse ID = 2287482 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 716 Th id = 16 rwid = 365 Warehouse ID = 2440915 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 717 Th id = 17 rwid = 379 Warehouse ID = 2534309 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 718 Th id = 18 rwid = 385 Warehouse ID = 2574335 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 719 Th id = 19 rwid = 398 Warehouse ID = 2661058 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 720 Th id = 0 rwid = 205 Warehouse ID = 1373555 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 721 Th id = 1 rwid = 211 Warehouse ID = 1413581 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 722 Th id = 2 rwid = 226 Warehouse ID = 1513646 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 723 Th id = 3 rwid = 234 Warehouse ID = 1567014 W_Count = 10
+payment: Tid = 724 Th id = 4 rwid = 240 Warehouse ID = 1607040 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 728 Th id = 8 rwid = 289 Warehouse ID = 1933919 W_Count = 10
+payment: Tid = 726 Th id = 6 rwid = 267 Warehouse ID = 1787157 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 731 Th id = 11 rwid = 310 Warehouse ID = 2074010 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 730 Th id = 10 rwid = 309 Warehouse ID = 2067339 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 729 Th id = 9 rwid = 290 Warehouse ID = 1940590 W_Count = 10
+payment: Tid = 725 Th id = 5 rwid = 257 Warehouse ID = 1720447 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 727 Th id = 7 rwid = 270 Warehouse ID = 1807170 W_Count = 10
+payment: Tid = 732 Th id = 12 rwid = 327 Warehouse ID = 2187417 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 733 Th id = 13 rwid = 333 Warehouse ID = 2227443 W_Count = 10
+payment: Tid = 734 Th id = 14 rwid = 341 Warehouse ID = 2280811 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 735 Th id = 15 rwid = 351 Warehouse ID = 2347521 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 737 Th id = 17 rwid = 378 Warehouse ID = 2527638 W_Count = 10
+payment: Tid = 736 Th id = 16 rwid = 369 Warehouse ID = 2467599 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 738 Th id = 18 rwid = 384 Warehouse ID = 2567664 W_Count = 10
+payment: Tid = 739 Th id = 19 rwid = 393 Warehouse ID = 2627703 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 740 Th id = 0 rwid = 205 Warehouse ID = 1373555 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 742 Th id = 2 rwid = 226 Warehouse ID = 1513646 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 741 Th id = 1 rwid = 218 Warehouse ID = 1460278 W_Count = 10
+payment: Tid = 743 Th id = 3 rwid = 238 Warehouse ID = 1593698 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 744 Th id = 4 rwid = 243 Warehouse ID = 1627053 W_Count = 10
+payment: Tid = 745 Th id = 5 rwid = 255 Warehouse ID = 1707105 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 746 Th id = 6 rwid = 260 Warehouse ID = 1740460 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 747 Th id = 7 rwid = 270 Warehouse ID = 1807170 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 748 Th id = 8 rwid = 280 Warehouse ID = 1873880 W_Count = 10
+payment: Tid = 750 Th id = 10 rwid = 306 Warehouse ID = 2047326 W_Count = 10
+payment: Tid = 749 Th id = 9 rwid = 295 Warehouse ID = 1973945 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 751 Th id = 11 rwid = 312 Warehouse ID = 2087352 W_Count = 10
+payment: Tid = 752 Th id = 12 rwid = 324 Warehouse ID = 2167404 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 753 Th id = 13 rwid = 337 Warehouse ID = 2254127 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 754 Th id = 14 rwid = 345 Warehouse ID = 2307495 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 755 Th id = 15 rwid = 350 Warehouse ID = 2340850 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 756 Th id = 16 rwid = 369 Warehouse ID = 2467599 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 757 Th id = 17 rwid = 376 Warehouse ID = 2514296 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 758 Th id = 18 rwid = 382 Warehouse ID = 2554322 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 759 Th id = 19 rwid = 392 Warehouse ID = 2621032 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 760 Th id = 0 rwid = 208 Warehouse ID = 1393568 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 761 Th id = 1 rwid = 210 Warehouse ID = 1406910 W_Count = 10
+payment: Tid = 762 Th id = 2 rwid = 223 Warehouse ID = 1493633 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 763 Th id = 3 rwid = 239 Warehouse ID = 1600369 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 764 Th id = 4 rwid = 242 Warehouse ID = 1620382 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 765 Th id = 5 rwid = 259 Warehouse ID = 1733789 W_Count = 10
+payment: Tid = 766 Th id = 6 rwid = 266 Warehouse ID = 1780486 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 769 Th id = 9 rwid = 292 Warehouse ID = 1953932 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 767 Th id = 7 rwid = 272 Warehouse ID = 1820512 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 771 Th id = 11 rwid = 315 Warehouse ID = 2107365 W_Count = 10
+payment: Tid = 768 Th id = 8 rwid = 289 Warehouse ID = 1933919 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 772 Th id = 12 rwid = 321 Warehouse ID = 2147391 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 770 Th id = 10 rwid = 308 Warehouse ID = 2060668 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 776 Th id = 16 rwid = 367 Warehouse ID = 2454257 W_Count = 10
+payment: Tid = 774 Th id = 14 rwid = 348 Warehouse ID = 2327508 W_Count = 10
+payment: Tid = 775 Th id = 15 rwid = 356 Warehouse ID = 2380876 W_Count = 10
+payment: Tid = 777 Th id = 17 rwid = 374 Warehouse ID = 2500954 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 773 Th id = 13 rwid = 339 Warehouse ID = 2267469 W_Count = 10
+payment: Tid = 778 Th id = 18 rwid = 386 Warehouse ID = 2581006 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 783 Th id = 3 rwid = 230 Warehouse ID = 1540330 W_Count = 10
+payment: Tid = 779 Th id = 19 rwid = 390 Warehouse ID = 2607690 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 782 Th id = 2 rwid = 225 Warehouse ID = 1506975 W_Count = 10
+payment: Tid = 784 Th id = 4 rwid = 249 Warehouse ID = 1667079 W_Count = 10
+payment: Tid = 785 Th id = 5 rwid = 256 Warehouse ID = 1713776 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 787 Th id = 7 rwid = 278 Warehouse ID = 1860538 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 781 Th id = 1 rwid = 210 Warehouse ID = 1406910 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 788 Th id = 8 rwid = 286 Warehouse ID = 1913906 W_Count = 10
+payment: Tid = 789 Th id = 9 rwid = 290 Warehouse ID = 1940590 W_Count = 10
+payment: Tid = 790 Th id = 10 rwid = 300 Warehouse ID = 2007300 W_Count = 10
+payment: Tid = 791 Th id = 11 rwid = 317 Warehouse ID = 2120707 W_Count = 10
+payment: Tid = 780 Th id = 0 rwid = 208 Warehouse ID = 1393568 W_Count = 10
+payment: Tid = 786 Th id = 6 rwid = 265 Warehouse ID = 1773815 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 792 Th id = 12 rwid = 328 Warehouse ID = 2194088 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 793 Th id = 13 rwid = 339 Warehouse ID = 2267469 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 796 Th id = 16 rwid = 368 Warehouse ID = 2460928 W_Count = 10
+payment: Tid = 794 Th id = 14 rwid = 340 Warehouse ID = 2274140 W_Count = 10
+payment: Tid = 795 Th id = 15 rwid = 356 Warehouse ID = 2380876 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 797 Th id = 17 rwid = 372 Warehouse ID = 2487612 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 800 Th id = 0 rwid = 202 Warehouse ID = 1353542 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 808 Th id = 8 rwid = 285 Warehouse ID = 1907235 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 807 Th id = 7 rwid = 278 Warehouse ID = 1860538 W_Count = 10
+payment: Tid = 803 Th id = 3 rwid = 231 Warehouse ID = 1547001 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 801 Th id = 1 rwid = 211 Warehouse ID = 1413581 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 802 Th id = 2 rwid = 221 Warehouse ID = 1480291 W_Count = 10
+payment: Tid = 798 Th id = 18 rwid = 385 Warehouse ID = 2574335 W_Count = 10
+payment: Tid = 804 Th id = 4 rwid = 240 Warehouse ID = 1607040 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 812 Th id = 12 rwid = 327 Warehouse ID = 2187417 W_Count = 10
+payment: Tid = 805 Th id = 5 rwid = 256 Warehouse ID = 1713776 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 809 Th id = 9 rwid = 294 Warehouse ID = 1967274 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 806 Th id = 6 rwid = 269 Warehouse ID = 1800499 W_Count = 10
+payment: Tid = 799 Th id = 19 rwid = 394 Warehouse ID = 2634374 W_Count = 10
+payment: Tid = 810 Th id = 10 rwid = 305 Warehouse ID = 2040655 W_Count = 10
+payment: Tid = 811 Th id = 11 rwid = 318 Warehouse ID = 2127378 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 815 Th id = 15 rwid = 357 Warehouse ID = 2387547 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 814 Th id = 14 rwid = 343 Warehouse ID = 2294153 W_Count = 10
+payment: Tid = 813 Th id = 13 rwid = 331 Warehouse ID = 2214101 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 816 Th id = 16 rwid = 361 Warehouse ID = 2414231 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 819 Th id = 19 rwid = 393 Warehouse ID = 2627703 W_Count = 10
+payment: Tid = 818 Th id = 18 rwid = 384 Warehouse ID = 2567664 W_Count = 10
+payment: Tid = 821 Th id = 1 rwid = 211 Warehouse ID = 1413581 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 822 Th id = 2 rwid = 229 Warehouse ID = 1533659 W_Count = 10
+payment: Tid = 817 Th id = 17 rwid = 377 Warehouse ID = 2520967 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 823 Th id = 3 rwid = 231 Warehouse ID = 1547001 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 824 Th id = 4 rwid = 248 Warehouse ID = 1660408 W_Count = 10
+payment: Tid = 825 Th id = 5 rwid = 254 Warehouse ID = 1700434 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 828 Th id = 8 rwid = 287 Warehouse ID = 1920577 W_Count = 10
+payment: Tid = 827 Th id = 7 rwid = 273 Warehouse ID = 1827183 W_Count = 10
+payment: Tid = 826 Th id = 6 rwid = 269 Warehouse ID = 1800499 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 829 Th id = 9 rwid = 291 Warehouse ID = 1947261 W_Count = 10
+payment: Tid = 831 Th id = 11 rwid = 312 Warehouse ID = 2087352 W_Count = 10
+Accessed out of range warehouse 
+Accessed out of range warehouse 
+payment: Tid = 832 Th id = 12 rwid = 328 Warehouse ID = 2194088 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 830 Th id = 10 rwid = 303 Warehouse ID = 2027313 W_Count = 10
+payment: Tid = 833 Th id = 13 rwid = 338 Warehouse ID = 2260798 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 835 Th id = 15 rwid = 358 Warehouse ID = 2394218 W_Count = 10
+payment: Tid = 834 Th id = 14 rwid = 343 Warehouse ID = 2294153 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 838 Th id = 18 rwid = 383 Warehouse ID = 2560993 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 837 Th id = 17 rwid = 374 Warehouse ID = 2500954 W_Count = 10
+Accessed out of range warehouse 
+payment: Tid = 839 Th id = 19 rwid = 393 Warehouse ID = 2627703 W_Count = 10
+payment: Tid = 836 Th id = 16 rwid = 360 Warehouse ID = 2407560 W_Count = 10
+    0    143     81  0.00      0      0      0	 10000
+    0      0      0  0.00      0      0      0	 10000
+    0      0      0  0.00      0      0      0	 10000
+    0      0      0  0.00      0      0      0	 10000
+    0      0      0  0.00      0      0      0	 10001
+    0      0      0  0.00      0      0      0	 12386
+Submitted = 8154 Completed write count = 819 Completed Read Count = 0 Total = 819
+Comitted = 1436 Total Aborts = 0 Total RqAborts = 0 Total Xaborts = 0 Total Commit Aborts = 0 Random aborts = 0 FallBehindAborts = 0 AbortTriggers = 0
+Closed

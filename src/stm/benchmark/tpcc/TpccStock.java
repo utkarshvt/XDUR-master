@@ -22,7 +22,7 @@ public class TpccStock extends AbstractObject implements java.io.Serializable {
 	public String S_DATA;
 	private Random random = new Random();
 	
-	private String id;
+	private int id;
 	
 	private String genData(){
 		if (random.nextInt(100) < 10) {
@@ -37,7 +37,7 @@ public class TpccStock extends AbstractObject implements java.io.Serializable {
 		// no argument constructor for kryo serialization	
 	}
 
-	public TpccStock(String id) {
+	public TpccStock(int id) {
 
 		this.id = id;
 
@@ -59,12 +59,12 @@ public class TpccStock extends AbstractObject implements java.io.Serializable {
 		
 	}
 
-	public String getId() {
+	public int  getId() {
 		return id;
 	}
 	
 	public TpccStock deepcopy() {
-		TpccStock newObject = new TpccStock("");
+		TpccStock newObject = new TpccStock(0);
 		newObject.id = this.id;
 		newObject.S_QUANTITY = this.S_QUANTITY;
 		newObject.S_DIST_01 = this.S_DIST_01;

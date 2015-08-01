@@ -31,8 +31,8 @@ public class BankServer {
 		int readPercentage = Integer.parseInt(args[3]);
 		int clientCount = Integer.parseInt(args[4]);
 		int requests = Integer.parseInt(args[5]);
-		int MaxSpec = Integer.parseInt(args[6]);
-		int sharepercent = Integer.parseInt(args[7]);
+		int sharepercent = Integer.parseInt(args[6]);
+		int MaxSpec = Integer.parseInt(args[7]);
 	
 		Configuration process = new Configuration();
 		Bank bank = new Bank();

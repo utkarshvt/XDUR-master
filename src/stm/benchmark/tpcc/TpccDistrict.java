@@ -18,13 +18,13 @@ public class TpccDistrict extends AbstractObject implements java.io.Serializable
 	public int D_NEXT_O_ID;
 	private Random random = new Random();
 	
-	private String id;
+	private int id;
 
 	public TpccDistrict() {
 		// no argument constructor for kryo serialization	
 	}
 
-	public TpccDistrict(String id) {
+	public TpccDistrict(int id) {
 
 		this.id = id;
 
@@ -39,12 +39,12 @@ public class TpccDistrict extends AbstractObject implements java.io.Serializable
 		this.D_NEXT_O_ID = 3001;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 	
 	public TpccDistrict deepcopy() {
-		TpccDistrict newObject = new TpccDistrict("");
+		TpccDistrict newObject = new TpccDistrict(0);
 		newObject.id = this.id;
 		newObject.D_NAME = this.D_NAME;
 		newObject.D_STREET_1 = this.D_STREET_1;

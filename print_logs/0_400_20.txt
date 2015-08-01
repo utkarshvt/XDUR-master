@@ -1,0 +1,13 @@
+Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time
+Opening port:2021
+Connections = 3
+ &  &  
+    0      0      0  0.00      0      0      0	 10000
+    0   6611   5119  0.00      0      0      0	 10000
+    0  18758  10293  0.00      0      0      0	 10000
+    0  18379  10097  0.00      0      0      0	 10001
+    0  18269  10168  0.00      0      0      0	 10000
+    0  17131   9332  0.00      0      0      0	 10000
+    0  18870   9585  0.00      0      0      0	 10001
+Submitted = 545984 Completed write count = 545982 Completed Read Count = 0 Total = 545982
+Comitted = 980250 Total Aborts = 0 Total RqAborts = 0 Total Xaborts = 0 Total Commit Aborts = 0 Random aborts = 0 FallBehindAborts = 0 AbortTriggers = 0

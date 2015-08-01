@@ -12,21 +12,21 @@ public class SharedObjectRegistry {
 	// registered to this registry after they are created. This also serves as
 	// the stable copy of objects.
 	
-	private ConcurrentMap<String, SharedObject> registry;
+	private ConcurrentMap<Integer, SharedObject> registry;
 	private volatile int snapshot;
 	private int MaxSpec;
 	
 	public SharedObjectRegistry(int capacity, int MaxSpec) {
-		registry = new ConcurrentHashMap<String, SharedObject>(capacity);
+		registry = new ConcurrentHashMap<Integer, SharedObject>(capacity);
 		snapshot = 0;
 		this.MaxSpec = MaxSpec;
 	}
 	
-	public void registerObjects(String Id, AbstractObject object, int MaxSpec) {
+	public void registerObjects(int Id, AbstractObject object, int MaxSpec) {
 		registry.put(Id, new SharedObject(object, MaxSpec));
 	}
 	
-	public AbstractObject getObject(String Id, String mode, int transactionSnapshot, boolean retry) {
+	public AbstractObject getObject(int Id, String mode, int transactionSnapshot, boolean retry) {
 
 		AbstractObject object = null;
 		if(mode == "rw") {
@@ -52,7 +52,7 @@ public class SharedObjectRegistry {
 		}
 	}
 	
-	public AbstractObject getXObject(String Id, String mode, int transactionSnapshot, PaxosSTM stmInstance, int Tid, boolean retry) {
+	public AbstractObject getXObject(int Id, String mode, int transactionSnapshot, PaxosSTM stmInstance, int Tid, boolean retry) {
 
 		AbstractObject object = null;
 		SharedObject shared = null;
@@ -70,19 +70,20 @@ public class SharedObjectRegistry {
 				
 				shared = registry.get(Id);
 				//System.out.println("GetXObject Trasaction " + Tid + "trying to be the owner of " + Id + "Current owner = " + shared.getOwner());
-				shared.lock_object(Tid);
+				//shared.lock_object(Tid);
 			//	System.out.println("GetXObject Trasaction " + Tid + "Locked " + Id);
 				/* Check if still the owner */
+				/*
 				if(shared.getOwner() != Tid)
 				{	
 					/* SInce we are no longer the owner, we needn't bother with resetting the owner field*/
-					stmInstance.SetAbortArray(Tid);
+				/*	stmInstance.SetAbortArray(Tid);
 					return null;
 				}
-				readers = shared.getReaderArray();
-				stmInstance.XabortReaders(readers, Tid);
+				stmInstance.XabortReaders(Id, Tid);
 				if(stmInstance.CheckXaborted(Tid) == true)
-					return null;
+					return null;*/
+
 				object = shared.getLatestCompletedObject();
 			}
 			if(object != null) {
@@ -103,7 +104,7 @@ public class SharedObjectRegistry {
 		}
 	}
 	
-	public AbstractObject getLatestCommittedObject(String Id) {
+	public AbstractObject getLatestCommittedObject(int Id) {
 		return registry.get(Id).getLatestCommittedObject();
 	}
 	
@@ -120,43 +121,47 @@ public class SharedObjectRegistry {
 		return registry.size();
 	}
 	
-	public void updateCompletedObject(String Id, AbstractObject object) {	
+	public void updateCompletedObject(int Id, AbstractObject object) {	
 		registry.get(Id).updateCompletedObject(object);
 	}
 	
-	public void updateObject(String Id, AbstractObject object, int timeStamp) {	
+	public void updateObject(int Id, AbstractObject object, int timeStamp) {	
 		registry.get(Id).updateCommittedObject(object, timeStamp);
 	}
 
-	public int[] getReaderArray(String Id)
+	public int[] getReaderArray(int Id)
 	{
 		return registry.get(Id).getReaderArray();
 	}
-	public void clearReader(String Id, int Tid)
+	public void clearReader(int Id, int Tid)
         {
               registry.get(Id).clearReader(Tid);
         }
 
-	public int getOwner(String Id)
+	public int getOwner(int Id)
         {
                 return (registry.get(Id).getOwner());
         }
 
-	public void clearOwner(String Id)
+	public void clearOwner(int Id)
         {
                 registry.get(Id).clearOwner();
         }
 	
 
-	public boolean compareAndSetOwner(String Id, int prev,int  curr)
+	public boolean compareAndSetOwner(int Id, int prev,int  curr)
         {
                 return(registry.get(Id).compareAndSetOwner(prev,curr));
         }
 
-	public void setReader(String Id, int Tid)
+	public void setReader(int Id, int Tid)
         {
                 registry.get(Id).setReader(Tid);
         }
 	
+	public long getVersion(int Id)
+	{
+		return registry.get(Id).getVersion();
+	}	
 
 }

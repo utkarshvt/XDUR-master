@@ -45,7 +45,17 @@ public class SharedObject {
 		committedObjects.addCommittedObject(object, timeStamp);
 	}
 
-	
+	public long getVersion()
+	{
+		AbstractObject object = getLatestCompletedObject();
+		if(object == null)
+		{
+			object = getLatestCommittedObject();
+		}
+		
+		return object.getVersion();
+	}
+				
 
 	public void lock_object(int caller)
         {
