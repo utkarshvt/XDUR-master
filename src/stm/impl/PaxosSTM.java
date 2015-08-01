@@ -1,6 +1,7 @@
 package stm.impl;
 
 import java.lang.Object;
+import java.util.*;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -22,6 +23,7 @@ import java.lang.Integer ;
 
 import stm.transaction.AbstractObject;
 import stm.transaction.TransactionContext;
+import stm.transaction.ReadSetObject;
 import stm.impl.GlobalCommitManager;
 import stm.impl.executors.ReadTransactionExecutor;
 import stm.impl.executors.WriteTransactionExecutor;
@@ -29,6 +31,7 @@ import lsr.common.ClientRequest;
 import lsr.common.Request;
 import lsr.common.RequestId;
 import lsr.service.STMService;
+
 
 public class PaxosSTM {
 	
@@ -51,7 +54,7 @@ public class PaxosSTM {
 	private ConcurrentHashMap<RequestId, Integer> requestSnapshotMap;
 
 	/* Map to gather aborted Object Ids */
-	private ConcurrentHashMap<String, AbortEntry> abortedObjectMap;
+	private ConcurrentHashMap<Integer, AbortEntry> abortedObjectMap;
 	
 	private BlockingQueue<ClientRequest> XQueue = new LinkedBlockingQueue<ClientRequest>();
 	
@@ -88,7 +91,7 @@ public class PaxosSTM {
 		readExecutor = new ReadTransactionExecutor(readThreadCount);
 		requestIdContextMap = new ConcurrentHashMap<RequestId, TransactionContext>();
 		requestSnapshotMap = new ConcurrentHashMap<RequestId, Integer>();
-		abortedObjectMap = new  ConcurrentHashMap<String, AbortEntry>();
+		abortedObjectMap = new  ConcurrentHashMap<Integer, AbortEntry>();
 		BatchSize = 0;
 		}
 	
@@ -194,7 +197,7 @@ public class PaxosSTM {
 	 * @param objectMode
 	 * @return Abstractobject
 	 */
-	public AbstractObject open(String objId, String txMode, RequestId requestId, 
+	public AbstractObject open(int objId, String txMode, RequestId requestId, 
 			String objectAccessMode, boolean retry, int Tid) {
 		// Create the context for the request Id if it was not created before
 		createTransactionContext(requestId, Tid);
@@ -230,7 +233,7 @@ public class PaxosSTM {
 
 			// increment the object version right away -- just for matching validation for read/write objects
 			System.out.println("Open called");
-			object.incrementVersion();
+			//object.incrementVersion();
 			return object;
 		}
 	}
@@ -247,7 +250,7 @@ public class PaxosSTM {
 	 * @param objectMode
 	 * @return Abstractobject
 	 */
-	public AbstractObject Xopen(String objId, String txMode, RequestId requestId, 
+	public AbstractObject Xopen(int objId, String txMode, RequestId requestId, 
 			String objectAccessMode, boolean retry, int pTid) {
 		// Create the context for the request Id if it was not created before
 		createXTransactionContext(requestId, pTid);
@@ -341,9 +344,9 @@ public class PaxosSTM {
 		// Update the non-committed but completed object copy with the 
 		// Write-set of this transaction - Request ID
 		TransactionContext context = requestIdContextMap.get(requestId);
-		Map<String, AbstractObject> writeset = context.getWriteSet();
-		for(Map.Entry<String, AbstractObject> entry: writeset.entrySet()) {
-			String objId = entry.getKey();
+		Map<Integer, AbstractObject> writeset = context.getWriteSet();
+		for(Map.Entry<Integer, AbstractObject> entry: writeset.entrySet()) {
+			int objId = entry.getKey();
 			AbstractObject object = entry.getValue();
 			sharedObjectRegistry.updateCompletedObject(objId, object);
 		}
@@ -355,19 +358,19 @@ public class PaxosSTM {
 			return false;
 		}
 
-		Map<String, AbstractObject> readset = context.getReadSet();
-		for(Map.Entry<String, AbstractObject> entry: readset.entrySet()) {
-			String objId = entry.getKey();
-			AbstractObject object = entry.getValue();
+		ArrayList<ReadSetObject> readset = context.getReadSet();
+		for(ReadSetObject entry : readset) {
+			int objId = entry.objId;
+			long objVersion = entry.version;
 		
 			//System.out.println(" Validate: " + objId + " " + sharedObjectRegistry.getLatestCommittedObject(objId).hashCode() + " ");				
-			if(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() != (object.getVersion()-1)) {
+			if(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() != (objVersion - 1)) {
 				//System.out.print(" Validate: " + objId + " " + sharedObjectRegistry.getLatestCommittedObject(objId).hashCode() + " ");
-				if((object.getVersion()) < (sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()))
+				if(objVersion < (sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()))
 					fallBehindAbort++;
-				/*System.out.println("Failed for comparing version " + objId + " " + 
-										sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() + " != " + 
-											(object.getVersion()-1)); */
+				//System.out.println("Failed for comparing version " + objId + " " + 
+				//						sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() + " != " + 
+				//							(objVersion - 1));
 				
 				//sharedObjectRegistry.updateCompletedObject(objId, null);
 				return false;
@@ -379,18 +382,18 @@ public class PaxosSTM {
 	
 	public void printRWSets(TransactionContext context)
 	{
-		Map<String, AbstractObject> readset = context.getReadSet();
-                for(Map.Entry<String, AbstractObject> entry: readset.entrySet()) {
-                        String objId = entry.getKey();
-                        AbstractObject object = entry.getValue();
+		 ArrayList<ReadSetObject> readset = context.getReadSet();
+                 for(ReadSetObject entry : readset) {
+                        int objId = entry.objId;
+                        long objVersion = entry.version;
 			System.out.println( "Readset object version " + objId + " " +
                                                                         sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() + " != " +
-										 (object.getVersion()));
+										 objVersion);
 		}
 		
-		Map<String, AbstractObject> writeset = context.getWriteSet();
-                for(Map.Entry<String, AbstractObject> entry: writeset.entrySet()) {
-                        String objId = entry.getKey();
+		Map<Integer, AbstractObject> writeset = context.getWriteSet();
+                for(Map.Entry<Integer, AbstractObject> entry: writeset.entrySet()) {
+                        int objId = entry.getKey();
                         AbstractObject object = entry.getValue();
                         System.out.println( "Writeset object version " + objId + " " +
                                                                         sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() + " != " +
@@ -407,9 +410,9 @@ public class PaxosSTM {
 			return false;
 		}
 
-		Map<String, AbstractObject> writeset = context.getWriteSet();
-		for(Map.Entry<String, AbstractObject> entry: writeset.entrySet()) {
-			String objId = entry.getKey();
+		Map<Integer, AbstractObject> writeset = context.getWriteSet();
+		for(Map.Entry<Integer, AbstractObject> entry: writeset.entrySet()) {
+			int objId = entry.getKey();
 			AbstractObject object = entry.getValue();
 		
 			//System.out.println(" Validate: " + objId + " " + sharedObjectRegistry.getLatestCommittedObject(objId).hashCode() + " ");				
@@ -430,7 +433,7 @@ public class PaxosSTM {
 			}*/
 			sharedObjectRegistry.updateCompletedObject(objId, null);
 		//	System.out.println("After setting to null, ownerof object " + objId + " is " + sharedObjectRegistry.getOwner(objId));
-			//abortedObjectMap.put(objId,new AbortEntry(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()));
+			abortedObjectMap.put(objId,new AbortEntry(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()));
 		}
 	
 		return true;
@@ -457,9 +460,9 @@ public class PaxosSTM {
                         return;
                 }
 
-                Map<String, AbstractObject> writeset = context.getWriteSet();
-                for(Map.Entry<String, AbstractObject> entry: writeset.entrySet()) {
-                        String objId = entry.getKey();
+                Map<Integer, AbstractObject> writeset = context.getWriteSet();
+                for(Map.Entry<Integer, AbstractObject> entry: writeset.entrySet()) {
+                        int objId = entry.getKey();
                 	if(abortedObjectMap.containsKey(objId))
 			{
 				if(abortedObjectMap.get(objId).getVersion() == (sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() - 1))
@@ -486,9 +489,9 @@ public class PaxosSTM {
 	public void printabortedObjects()
 	{
 		
-		Map<String,AbortEntry> abortset = abortedObjectMap;	
-		for(Map.Entry<String, AbortEntry> entry: abortset.entrySet()) {
-			String objId = entry.getKey();
+		Map<Integer,AbortEntry> abortset = abortedObjectMap;	
+		for(Map.Entry<Integer, AbortEntry> entry: abortset.entrySet()) {
+			int objId = entry.getKey();
 			System.out.println(" Checking : " + objId );
 		}
 
@@ -496,13 +499,13 @@ public class PaxosSTM {
 	public boolean updateSharedObject(TransactionContext context) {
 		boolean commit = true;
 		
-		Map<String, AbstractObject> writeset = context.getWriteSet();
+		Map<Integer, AbstractObject> writeset = context.getWriteSet();
 		
 		int timeStamp = sharedObjectRegistry.getNextSnapshot();
 		// Update all shared objects with shadowcopy object values and versions 
 		// Acquire lock over all objects - for multithreaded STM
 
-		for(Map.Entry<String, AbstractObject> entry: writeset.entrySet()) {
+		for(Map.Entry<Integer, AbstractObject> entry: writeset.entrySet()) {
 			// update all objects
 			sharedObjectRegistry.updateObject(entry.getKey(), entry.getValue(), timeStamp);
 		}
@@ -552,26 +555,28 @@ public class PaxosSTM {
 		//System.out.println("Tranaction Aborted " + Tid);
 		TransactionContext context = requestIdContextMap.get(Id);
 		/* Clear the readset and writeset of the Transaction Context */
-	  	Map<String, AbstractObject> readset = context.getReadSet();
-                Map<String, AbstractObject> writeset = context.getWriteSet();
+                ArrayList<ReadSetObject> readset = context.getReadSet();
+
+		Map<Integer, AbstractObject> writeset = context.getWriteSet();
 		if(!readset.isEmpty())
 		{	
-			for(Map.Entry<String, AbstractObject> entry: readset.entrySet()) 
-			{
-				String objId = entry.getKey();
-				context.readsetremove(objId);
+			for(Iterator<ReadSetObject> iter = readset.iterator(); iter.hasNext();) {
+                        
+				ReadSetObject entry = iter.next();
+				int objId = entry.objId;
 				sharedObjectRegistry.clearReader(objId,Tid);
 				if(sharedObjectRegistry.getOwner(objId) == Tid)
 				{
 					sharedObjectRegistry.compareAndSetOwner(objId,Tid,0);
 				}
+				iter.remove();
 			}
 		}
 		if(!writeset.isEmpty())
 		{
-			for(Map.Entry<String, AbstractObject> entry: writeset.entrySet()) 
+			for(Map.Entry<Integer, AbstractObject> entry: writeset.entrySet()) 
 			{
-				String objId = entry.getKey();
+				int objId = entry.getKey();
                         	//AbstractObject object = entry.getValue();
 		       		// sharedObjectRegistry.updateCompletedObject(objId, null);
 		       		context.writesetremove(objId);	
@@ -666,10 +671,10 @@ public class PaxosSTM {
 		
 	
 		/* Update the completedobject copy */
-		Map<String, AbstractObject> writeset = context.getWriteSet();
-		for(Map.Entry<String, AbstractObject> entry: writeset.entrySet()) 
+		Map<Integer, AbstractObject> writeset = context.getWriteSet();
+		for(Map.Entry<Integer, AbstractObject> entry: writeset.entrySet()) 
 		{
-			String objId = entry.getKey();
+			int objId = entry.getKey();
 			AbstractObject object = entry.getValue();
 			object.incrementVersion();
 			//System.out.println("Freeing ObjId WriteSet = " + objId + " TransactionId = " + Tid + " Version = " + object.getVersion());
@@ -682,17 +687,22 @@ public class PaxosSTM {
 			sharedObjectRegistry.clearOwner(objId);		
 		}
 		/* Release the readset objects */
-		Map<String, AbstractObject> readset = context.getReadSet();
-                for(Map.Entry<String, AbstractObject> entry: readset.entrySet()) 
-                {
-                        String objId = entry.getKey();
-                        AbstractObject object = entry.getValue();
+                ArrayList<ReadSetObject> readset = context.getReadSet();
+                for (int i = 0; i < readset.size(); i++) {
+                        
+			ReadSetObject entry = readset.get(i);
+			int objId = entry.objId;
+			/* Incrementing the readset entry's version */
+			entry.version++;
+			
+			readset.set(i,entry);
         		/* May have been already freed in the writeset, thus the check is needed */
 			if(sharedObjectRegistry.getOwner(objId) == Tid)
                         {
 				//System.out.println("Freeing ObjId Readset = " + objId + " TransactionId = " + Tid);
-				object.incrementVersion();
-                        	//System.out.println("Freeing ObjId Readset = " + objId + " TransactionId = " + Tid + " Version = " + object.getVersion());
+                        	//object.incrementVersion();
+				//System.out.println("Freeing ObjId Readset = " + objId + " TransactionId = " + Tid + " Version = " + object.getVersion());
+				
 				sharedObjectRegistry.clearReader(objId, Tid);
 				if(!sharedObjectRegistry.compareAndSetOwner(objId,Tid,0))
 					System.out.println("Readset ownership violated");
@@ -831,12 +841,12 @@ public class PaxosSTM {
 		return  globalCommitManager.getrQueueSize();
 	}
 
-	public boolean abortedObjectMapcontainsKey(String ObjId)
+	public boolean abortedObjectMapcontainsKey(int ObjId)
 	{
 		return this.abortedObjectMap.containsKey(ObjId);
 	}
 
-	public void abortedObjectMapadd(String ObjId)
+	public void abortedObjectMapadd(int ObjId)
 	{
 		abortedObjectMap.put(ObjId,new AbortEntry());
 	}

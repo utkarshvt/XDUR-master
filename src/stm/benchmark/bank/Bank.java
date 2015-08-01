@@ -20,6 +20,7 @@ import lsr.paxos.replica.SnapshotListener;
 import lsr.service.STMService;
 import stm.impl.PaxosSTM;
 import stm.impl.SharedObjectRegistry;
+import stm.transaction.ReadSetObject;
 import stm.transaction.AbstractObject;
 import stm.transaction.TransactionContext;
 import stm.benchmark.bank.Account;
@@ -217,11 +218,20 @@ public class Bank extends STMService {
 			SharedObjectRegistry sharedObjectRegistry, PaxosSTM stmInstance, int MaxSpec, int shared) {
 		this.sharedObjectRegistry = sharedObjectRegistry;
 		this.numAccounts = numAccounts;
+		/*
 		for (int i = 0; i < this.numAccounts; i++) {
 			String accountId = ACCOUNT_PREFIX + Integer.toString(i);
 			Account account = new Account(INITIAL_BALANCE, accountId);
 			this.sharedObjectRegistry.registerObjects(accountId, account, MaxSpec);
 		}
+		*/
+		/* Using integer object Ids in Bank */
+		
+		for (int i = 0; i < this.numAccounts; i++) {
+                        int accountId = i;
+                        Account account = new Account(INITIAL_BALANCE, accountId);
+                        this.sharedObjectRegistry.registerObjects(accountId, account, MaxSpec);
+                }
 
 		this.sharedpercent = shared;
 		this.stmInstance = stmInstance;
@@ -272,8 +282,8 @@ public class Bank extends STMService {
 		// Multiversion - Take object copy according to Tx type
 		//System.out.println("Eneter getBalance");
 		Account srcAccount, dstAccount;
-		String srcId = ACCOUNT_PREFIX + Integer.toString(src);
-		String dstId = ACCOUNT_PREFIX + Integer.toString(dst);
+		int srcId = src;
+		int dstId = dst;
 
 		RequestId requestId = cRequest.getRequestId();
 		srcAccount = (Account) stmInstance.open(srcId, "r", requestId, "r",
@@ -309,8 +319,8 @@ public class Bank extends STMService {
 
 		Integer success = 0;
 
-		String srcId = ACCOUNT_PREFIX + Integer.toString(src);
-		String dstId = ACCOUNT_PREFIX + Integer.toString(dst);
+		int srcId = src;
+		int dstId = dst;
 
 		// Multi version - Take object copy from completed but not committed if
 		// present
@@ -586,8 +596,7 @@ public class Bank extends STMService {
 		int sum = 0;
 		for (int i = 0; i < sharedObjectRegistry.getCapacity(); i++) {
 			Account account = (Account) sharedObjectRegistry
-					.getLatestCommittedObject(ACCOUNT_PREFIX
-							+ Integer.toString(i));
+					.getLatestCommittedObject(i);
 			sum += account.getAmount();
 			System.out.println("Account[" + i + "] = " + account.getAmount());
 		}
@@ -612,8 +621,8 @@ public class Bank extends STMService {
 	
 	@Override
 	public byte[] serializeTransactionContext(TransactionContext ctx) {
-		Map<String, AbstractObject> readset = ctx.getReadSet();
-		Map<String, AbstractObject> writeset = ctx.getWriteSet();
+		ArrayList<ReadSetObject> readset = ctx.getReadSet();
+		Map<Integer, AbstractObject> writeset = ctx.getWriteSet();
 
 		int packetSize = 4 + (readset.size() * 12) + 4
 				+ (writeset.size() * 16);
@@ -621,21 +630,21 @@ public class Bank extends STMService {
 
 		bb.putInt(4 + packetSize);
 		bb.putInt(readset.size());
-		for (Map.Entry<String, AbstractObject> entry : readset.entrySet()) {
-			String id = entry.getKey();
-			id = id.replace("account_", "");
+		for (ReadSetObject entry : readset) {
+			int id = entry.objId;
+			//id = id.replace("account_", "");
 
-			bb.putInt(Integer.parseInt(id));
-			bb.putLong(entry.getValue().getVersion());
+			bb.putInt(id);
+			bb.putLong(entry.version);
 		}
 
 		bb.putInt(writeset.size());
-		for (Map.Entry<String, AbstractObject> entry : writeset.entrySet()) {
-			String id = entry.getKey();
-			id = id.replace("account_", "");
+		for (Map.Entry<Integer, AbstractObject> entry : writeset.entrySet()) {
+			int id = entry.getKey();
+			//id = id.replace("account_", "");
 
 			Account account = (Account) entry.getValue();
-			bb.putInt(Integer.parseInt(id));
+			bb.putInt(id);
 			bb.putLong(account.getVersion());
 			bb.putInt(account.getAmount());
 		}
@@ -653,7 +662,7 @@ public class Bank extends STMService {
 
 		int readsetSize = bb.getInt();
 		for (int i = 0; i < readsetSize; i++) {
-			String id = "account_" + bb.getInt();
+			int id =  bb.getInt();
 			long version = bb.getLong();
 			Account account = new Account();
 			account.setId(id);
@@ -664,7 +673,7 @@ public class Bank extends STMService {
 
 		int writesetSize = bb.getInt();
 		for (int i = 0; i < writesetSize; i++) {
-			String id = "account_" + bb.getInt();
+			int id = bb.getInt();
 			long version = bb.getLong();
 			int value = bb.getInt();
 

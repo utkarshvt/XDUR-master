@@ -19,11 +19,12 @@ import stm.benchmark.tpcc.TpccOrder;
 import stm.benchmark.tpcc.TpccOrderline;
 import stm.benchmark.tpcc.TpccStock;
 import stm.benchmark.tpcc.TpccWarehouse;
-import stm.benchmark.vacation.Customer;
-import stm.benchmark.vacation.Reservation;
-import stm.benchmark.vacation.ReservationInfo;
+//import stm.benchmark.vacation.Customer;
+//import stm.benchmark.vacation.Reservation;
+//import stm.benchmark.vacation.ReservationInfo;
 import stm.impl.PaxosSTM;
 import stm.transaction.AbstractObject;
+import stm.transaction.ReadSetObject;
 import stm.transaction.TransactionContext;
 import lsr.common.ClientRequest;
 import lsr.common.Request;
@@ -63,7 +64,7 @@ public class GlobalCommitManager {
 		commitThread.start();
 
 		this.scanThread = new Thread(new Scanner(), "Scanner");
-		scanThread.start();
+		//scanThread.start();
 		this.client.init();
 	}
 
@@ -106,13 +107,12 @@ public class GlobalCommitManager {
                         	continue;
                 	}
 
-                	Map<String, AbstractObject> readset = ctx.getReadSet();
+                	ArrayList<ReadSetObject> readset = ctx.getReadSet();
                 	/* Iterate over the objects in the request's readset*/
-			for(Map.Entry<String, AbstractObject> entry: readset.entrySet()) 
+			for (ReadSetObject entry : readset) 
 			{
                         	
-				String objId = entry.getKey();
-                        	AbstractObject object = entry.getValue();
+				int objId = entry.objId;
 				if(stmInstance.abortedObjectMapcontainsKey(objId))
 				{
 					/* The transaction contains an object whose X copy is invalidated, thus this transaction will abort later.

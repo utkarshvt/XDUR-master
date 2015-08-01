@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Random;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import lsr.common.ClientRequest;
@@ -24,8 +25,9 @@ import stm.benchmark.tpcc.TpccItem;
 import stm.impl.PaxosSTM;
 import stm.impl.SharedObjectRegistry;
 import stm.transaction.AbstractObject;
+import stm.transaction.ReadSetObject;
 import stm.transaction.TransactionContext;
-
+/*
 public class Manager extends STMService {
 
 	SharedObjectRegistry sharedObjectRegistry;
@@ -77,7 +79,7 @@ public class Manager extends STMService {
 	 * @author sachin
 	 * 
 	 ************************************************************************/
-	class MonitorThread extends Thread {
+/*	class MonitorThread extends Thread {
 
 		public void run() {
 			int count = 0;
@@ -173,7 +175,7 @@ public class Manager extends STMService {
 //			}
 
 			/* Populate table */
-			for (i = 0; i < numRelation; i++) {
+/*			for (i = 0; i < numRelation; i++) {
 				int id = ids[i];
 				// int num = ((random.posrandom_generate() % 5) + 1) * 100;
 				// int price = ((random.posrandom_generate() % 5) * 10) + 50;
@@ -229,7 +231,7 @@ public class Manager extends STMService {
 	 * Pass reference to replice for sending a reply to client after read
 	 * request is executed or write request is committed.
 	 */
-	public void setReplica(Replica replica) {
+/*	public void setReplica(Replica replica) {
 		this.replica = replica;
 	}
 
@@ -243,7 +245,7 @@ public class Manager extends STMService {
 				stmInstance.OBJECT_WRITE_MODE, retry, stmInstance.getTransactionId());// table.find(id);
 		if (reservation == null) {
 			/* Create new reservation */
-			if (num < 1 || price < 0) {
+/*			if (num < 1 || price < 0) {
 				return false;
 			}
 			reservation = new Reservation(reservationId, id, num, price);
@@ -256,7 +258,7 @@ public class Manager extends STMService {
 			if (reservation.isNull == true)
 				reservation.isNull = false;
 			/* Update existing reservation */
-			if (!reservation.reservation_addToTotal(num)) {
+/*			if (!reservation.reservation_addToTotal(num)) {
 				return false;
 			}
 			if (reservation.numTotal == 0) {
@@ -280,7 +282,7 @@ public class Manager extends STMService {
 	 * ====================================================================
 	 * =========
 	 */
-	final boolean addCar(int carId, int numCars, int price,
+/*	final boolean addCar(int carId, int numCars, int price,
 			RequestId requestId, boolean retry) {
 		final String reservationStringId = Vacation.CAR_PREFIX + carId;
 		return addReservation(reservationStringId, carId, numCars, price,
@@ -296,11 +298,11 @@ public class Manager extends STMService {
 	 * ======================================
 	 * =======================================
 	 */
-	final boolean deleteCar(int carId, int numCar, RequestId requestId,
+/*	final boolean deleteCar(int carId, int numCar, RequestId requestId,
 			boolean retry) {
 		final String reservationStringId = Vacation.CAR_PREFIX + carId;
 		/* -1 keeps old price */
-		return addReservation(reservationStringId, carId, -numCar, -1,
+/*		return addReservation(reservationStringId, carId, -numCar, -1,
 				requestId, retry);
 	}
 
@@ -312,7 +314,7 @@ public class Manager extends STMService {
 	 * ====================================================================
 	 * =========
 	 */
-	final boolean addRoom(int roomId, int numRoom, int price,
+/*	final boolean addRoom(int roomId, int numRoom, int price,
 			RequestId requestId, boolean retry) {
 		final String reservationStringId = Vacation.ROOM_PREFIX + roomId;
 		return addReservation(reservationStringId, roomId, numRoom, price,
@@ -328,11 +330,11 @@ public class Manager extends STMService {
 	 * ====================================
 	 * =========================================
 	 */
-	final boolean deleteRoom(int roomId, int numRoom, RequestId requestId,
+/*	final boolean deleteRoom(int roomId, int numRoom, RequestId requestId,
 			boolean retry) {
 		final String reservationStringId = Vacation.ROOM_PREFIX + roomId;
 		/* -1 keeps old price */
-		return addReservation(reservationStringId, roomId, -numRoom, -1,
+/*		return addReservation(reservationStringId, roomId, -numRoom, -1,
 				requestId, retry);
 	}
 
@@ -344,7 +346,7 @@ public class Manager extends STMService {
 	 * ==========================================================
 	 * ===================
 	 */
-	final boolean addFlight(int flightId, int numSeat, int price,
+/*	final boolean addFlight(int flightId, int numSeat, int price,
 			RequestId requestId, boolean retry) {
 		final String reservationStringId = Vacation.FLIGHT_PREFIX + flightId;
 		return addReservation(reservationStringId, flightId, numSeat, price,
@@ -358,7 +360,7 @@ public class Manager extends STMService {
 	 * ====
 	 * =========================================================================
 	 */
-	boolean deleteFlight(int flightId, RequestId requestId, boolean retry) {
+/*	boolean deleteFlight(int flightId, RequestId requestId, boolean retry) {
 		final String reservationStringId = Vacation.FLIGHT_PREFIX + flightId;
 
 		// Reservation reservation = (Reservation) flightTable.find(flightId);
@@ -371,11 +373,11 @@ public class Manager extends STMService {
 
 		if (reservation.numUsed > 0) {
 			return false; /* somebody has a reservation */
-		}
+/*		}
 
 		return addReservation(reservationStringId, flightId,
-				-reservation.numTotal, -1 /* -1 keeps old price */, requestId,
-				retry);
+				-reservation.numTotal, -1 /* -1 keeps old price */
+/*				, requestId, retry);
 	}
 
 	/*
@@ -385,7 +387,7 @@ public class Manager extends STMService {
 	 * ======================================
 	 * =======================================
 	 */
-	boolean addCustomer(int customerId, RequestId requestId, boolean retry) {
+/*	boolean addCustomer(int customerId, RequestId requestId, boolean retry) {
 		final String customerStringId = Vacation.CUSTOMER_PREFIX + customerId;
 		Customer customer = (Customer) stmInstance.open(customerStringId,
 				stmInstance.TX_READ_WRITE_MODE, requestId,
@@ -419,7 +421,7 @@ public class Manager extends STMService {
 	 * ==============================================
 	 * ===============================
 	 */
-	@SuppressWarnings("unchecked")
+/*	@SuppressWarnings("unchecked")
 	boolean deleteCustomer(int customerId, RequestId requestId, boolean retry) {
 		final String customerStringId = Vacation.CUSTOMER_PREFIX + customerId;
 		Customer customer = (Customer) stmInstance.open(customerStringId,
@@ -563,7 +565,7 @@ public class Manager extends STMService {
 
 		if (!customer.customer_addReservationInfo(type, id, reservation.price)) {
 			/* Undo previous successful reservation */
-			// boolean status =
+/*			// boolean status =
 			reservation.reservation_cancel();
 			return false;
 		}
@@ -603,7 +605,7 @@ public class Manager extends STMService {
 	 * ==============================================
 	 * ===============================
 	 */
-	boolean cancel(String reservationStringId, String customerStringId,
+/*	boolean cancel(String reservationStringId, String customerStringId,
 			int customerId, int id, int type, RequestId requestId, boolean retry) {
 		Customer customerPtr;
 		Reservation reservationPtr;
@@ -628,7 +630,7 @@ public class Manager extends STMService {
 
 		if (!customerPtr.customer_removeReservationInfo(type, id)) {
 			/* Undo previous successful cancellation */
-			// boolean status =
+/*			// boolean status =
 			reservationPtr.reservation_make();
 			return false;
 		}
@@ -741,7 +743,7 @@ public class Manager extends STMService {
 					isFound = true;
 				}
 			} /* for n */
-			if (isFound) 
+/*			if (isFound) 
 			{
 				addCustomer(customerId, requestId, retry);
 			}
@@ -840,7 +842,7 @@ public class Manager extends STMService {
 					addRoom(id, 100, newPrice, requestId, retry);
 				}
 			} else { /* do delete */
-				if (t == Vacation.RESERVATION_CAR) {
+/*				if (t == Vacation.RESERVATION_CAR) {
 					deleteCar(id, 100, requestId, retry);
 				} else if (t == Vacation.RESERVATION_FLIGHT) {
 					deleteFlight(id, requestId, retry);
@@ -865,7 +867,7 @@ public class Manager extends STMService {
 	 * @param request
 	 * @param retry
 	 ************************************************************************/
-	public void executeWriteRequest(final ClientRequest request,
+/*	public void executeWriteRequest(final ClientRequest request,
 			final boolean retry) {
 		// TODO Auto-generated method stub
 		byte[] value = request.getValue();
@@ -923,7 +925,7 @@ public class Manager extends STMService {
 	 * @param readOnly
 	 *            : boolean specifying what should be the transaction type
 	 */
-	public byte[] createRequest(int percent, int requestType) {
+/*	public byte[] createRequest(int percent, int requestType) {
 		byte[] request = new byte[DEFAULT_LENGTH];
 		// Random random = new Random();
 
@@ -971,7 +973,7 @@ public class Manager extends STMService {
 	// }
 
 	// Dummy method
-	public void executeRequest(ClientRequest request, boolean retry) {
+/*	public void executeRequest(ClientRequest request, boolean retry) {
 
 	}
 
@@ -1001,7 +1003,7 @@ public class Manager extends STMService {
 	 * @param result
 	 * @param cRequest
 	 */
-	public void sendReply(byte[] result, ClientRequest cRequest) {
+/*	public void sendReply(byte[] result, ClientRequest cRequest) {
 		// System.out.println("Sending reply to " +
 		// cRequest.getRequestId().toString());
 		// replica.replyToClient(result, cRequest);
@@ -1011,7 +1013,7 @@ public class Manager extends STMService {
 	 * Called by network layer to commit a previous speculatively executed
 	 * batch.
 	 */
-	@Override
+/*	@Override
 	public void commitBatchOnDecision(final RequestId rId,
 			final TransactionContext txContext) {
 		// TODO Auto-generated method stub
@@ -1040,7 +1042,7 @@ public class Manager extends STMService {
 	 *         removes all the data for optimistically executed transaction
 	 *         (cleanup).
 	 ************************************************************************/
-	public void onCommit(RequestId rId, TransactionContext txContext) {
+/*	public void onCommit(RequestId rId, TransactionContext txContext) {
 
 		// Validate the transaction object versions or Decided InstanceIds and
 		// sequence numbers
@@ -1078,7 +1080,7 @@ public class Manager extends STMService {
 	/**
 	 * Used to execute read requests from clients locally.
 	 */
-	@Override
+/*	@Override
 	public void executeReadRequest(final ClientRequest cRequest) {
 		// TODO Auto-generated method stub
 		vacationSTMDispatcher.submit(new Runnable() {
@@ -1106,7 +1108,7 @@ public class Manager extends STMService {
 	 * @param value
 	 * @return
 	 */
-	public int getCommandName(byte[] value) {
+/*	public int getCommandName(byte[] value) {
 		ByteBuffer buffer = ByteBuffer.wrap(value);
 		byte transactionType = buffer.get();
 		int command = buffer.getInt();
@@ -1117,7 +1119,8 @@ public class Manager extends STMService {
 	
 	@Override
 	public byte[] serializeTransactionContext(TransactionContext ctx) throws IOException {
-		Map<String, AbstractObject> readset = ctx.getReadSet();
+		
+		ArrayList<ReadSetObject> readset = ctx.getReadSet();
 		Map<String, AbstractObject> writeset = ctx.getWriteSet();
 
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -1128,16 +1131,16 @@ public class Manager extends STMService {
 		bb.flip();
 
 		out.write(bb.array());
-		for (Map.Entry<String, AbstractObject> entry : readset.entrySet()) {
+		for (ReadSetObject entry : readset) {
 
-			String id = entry.getKey();
+			String id = entry.objId;
 			byte[] idBytes = id.getBytes(Charset.forName("UTF-8"));
 
 			bb = ByteBuffer.allocate(idBytes.length + 4 + 8);
 
 			bb.putInt(idBytes.length);
 			bb.put(idBytes);
-			bb.putLong(entry.getValue().getVersion());
+			bb.putLong(entry.version);
 
 			bb.flip();
 
@@ -1336,4 +1339,4 @@ public class Manager extends STMService {
 
 	}
 
-}
+}*/

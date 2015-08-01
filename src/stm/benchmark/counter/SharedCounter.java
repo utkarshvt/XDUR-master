@@ -25,6 +25,7 @@ import lsr.service.STMService;
 import stm.impl.PaxosSTM;
 import stm.impl.SharedObjectRegistry;
 import stm.transaction.AbstractObject;
+import stm.transaction.ReadSetObject;
 import stm.transaction.TransactionContext;
 
 
@@ -84,7 +85,7 @@ public class SharedCounter extends STMService
 		this.sharedObjectRegistry = sharedObjectRegistry;
                 this.stmInstance = stminstance;
 		
-		final String myid = "Sh_0";
+		final int myid = 0;
 		ShCountObject counter = new ShCountObject(myid);
 		this.sharedObjectRegistry.registerObjects(myid, counter, MaxSpec);
 		batcherTh.start();
@@ -121,7 +122,7 @@ public class SharedCounter extends STMService
 	{
 		 int success = 0;
                 RequestId requestId = cRequest.getRequestId();
-                final String myid = "Sh_0";
+                final int  myid = 0;
 		long tempcount = 0;
 
                 //System.out.println("delivery: " + myid);
@@ -187,8 +188,8 @@ public class SharedCounter extends STMService
         public byte[] serializeTransactionContext(TransactionContext ctx)
                         throws IOException {
 	   
-		Map<String, AbstractObject> readset = ctx.getReadSet();
-                Map<String, AbstractObject> writeset = ctx.getWriteSet();
+		ArrayList<ReadSetObject> readset = ctx.getReadSet();
+                Map<Integer, AbstractObject> writeset = ctx.getWriteSet();
 
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
                 ByteBuffer bb;

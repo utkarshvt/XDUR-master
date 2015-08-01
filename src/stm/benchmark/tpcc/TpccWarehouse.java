@@ -18,13 +18,13 @@ public class TpccWarehouse extends AbstractObject implements java.io.Serializabl
 		
 	private Random random = new Random();
 
-	private String id;
+	private int id;
 
 	public TpccWarehouse() {
 		// no argument constructor for kryo serialization	
 	}
 
-	public TpccWarehouse(String id) {			
+	public TpccWarehouse(int id) {			
 		this.id = id;
 		
 		this.W_NAME = Integer.toString(random.nextInt(100));
@@ -37,12 +37,12 @@ public class TpccWarehouse extends AbstractObject implements java.io.Serializabl
 		this.W_YTD = (float)300000.0;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 	
 	public TpccWarehouse deepcopy() {
-		TpccWarehouse newObject = new TpccWarehouse("");
+		TpccWarehouse newObject = new TpccWarehouse(0);
 		newObject.id = this.id;
 		newObject.W_NAME = this.W_NAME;
 		newObject.W_STREET_1 = this.W_STREET_1;

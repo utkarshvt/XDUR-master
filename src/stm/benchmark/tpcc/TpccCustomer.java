@@ -26,7 +26,7 @@ public class TpccCustomer extends AbstractObject implements java.io.Serializable
 	public String C_DATA;
 	private Random random = new Random();
 	
-	private String id;
+	private int id;
 
 	private String genCredit(){
 		if (random.nextInt(100) < 90) return "GC"; 
@@ -37,7 +37,7 @@ public class TpccCustomer extends AbstractObject implements java.io.Serializable
 		// no argument constructor for kryo serialization	
 	}
 
-	public TpccCustomer(String id) {
+	public TpccCustomer(int id) {
 
 		this.id = id;
 		
@@ -61,12 +61,12 @@ public class TpccCustomer extends AbstractObject implements java.io.Serializable
 		this.C_DATA = Integer.toString(random.nextInt(100));
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	public TpccCustomer deepcopy() {
-		TpccCustomer newObject = new TpccCustomer("");
+		TpccCustomer newObject = new TpccCustomer(0);
 		newObject.id = this.id;
 		newObject.C_FIRST = this.C_FIRST;
 		newObject.C_MIDDLE = this.C_MIDDLE;

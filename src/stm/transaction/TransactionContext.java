@@ -1,7 +1,7 @@
 package stm.transaction;
 
 import java.util.Map;
-
+import java.util.ArrayList;
 
 public class TransactionContext {
 	private int Tid;						/* Denotes the transaction number, added for parallel implementation */
@@ -25,7 +25,7 @@ public class TransactionContext {
 	{
 		return(this.Tid) ;
 	} 
-	public AbstractObject getLatestUnCommittedCopy(String objId){
+	public AbstractObject getLatestUnCommittedCopy(int objId){
 		return writeset.getobject(objId);
 	}
 	
@@ -37,11 +37,11 @@ public class TransactionContext {
 		return result;
 	}
 	
-	public void addObjectToWriteSet(String objId, AbstractObject object) {
+	public void addObjectToWriteSet(int objId, AbstractObject object) {
 		writeset.addToWriteSet(objId, object);
 	}
 	
-	public void addObjectToReadSet(String objId, AbstractObject object) {
+	public void addObjectToReadSet(int objId, AbstractObject object) {
 		readset.addToReadSet(objId, object);
 	}
 	
@@ -49,20 +49,20 @@ public class TransactionContext {
 		return writeset;
 	}
 
-	public Map<String, AbstractObject> getReadSet() {
+	public ArrayList<ReadSetObject> getReadSet() {
 		return readset.getReadSet();
 	}
 	
-	public Map<String, AbstractObject> getWriteSet() {
+	public Map<Integer, AbstractObject> getWriteSet() {
 		return writeset.getWriteSet();
 	}
 
-	public void readsetremove(String ObjId)
+	public void readsetremove(int ObjId)
 	{
 		readset.remove(ObjId);
 	}
 	        
-	public void writesetremove(String ObjId)
+	public void writesetremove(int ObjId)
         {
                 writeset.remove(ObjId);
         }

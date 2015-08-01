@@ -5,7 +5,7 @@ public abstract class AbstractObject {
 	  
 	  public long tc_version;
 	  
-	  public abstract String getId();
+	  public abstract int getId();
 	  
 	  public abstract AbstractObject deepcopy();
 	 

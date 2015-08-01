@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Iterator;
 
 import stm.transaction.AbstractObject;
-
+/*
 public class Customer extends AbstractObject
 {
 	String objId;
@@ -92,4 +92,4 @@ public class Customer extends AbstractObject
 
 
 }
-
+*/
