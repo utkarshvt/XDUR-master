@@ -1544,31 +1544,32 @@ public class Tpcc extends STMService {
 					switch (command) 
 					{
 						case TX_ORDER_STATUS:
-							stmInstance.executeReadRequest(new Runnable() 
-							{
-								public void run() {
-									orderStatus(request, count, retry, 0);
-									try
-                                                                        {
-                                                                         	//System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
-										barrier.await();
-									}
-									catch(InterruptedException ex)
+  							Thread th_ord = new Thread(new Runnable(){
+									public void run() 
 									{
-										System.out.println("getBalance gave barrier exception");
-									}
-									catch(BrokenBarrierException ex)
-									{
-										System.out.println("getBalance gave brokenbarrier exception");
-									}
+										orderStatus(request, count, retry, 0);
+										try
+                                                                        	{
+                                                                         		//System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+											barrier.await();
+										}
+										catch(InterruptedException ex)
+										{
+											System.out.println("getBalance gave barrier exception");
+										}
+										catch(BrokenBarrierException ex)
+										{
+											System.out.println("getBalance gave brokenbarrier exception");
+										}
 
-									readCount++;
-								}
+										readCount++;
+									}
 							});
+							th_ord.start();
 						break;
 
 						case TX_STOCKLEVEL:
-							stmInstance.executeReadRequest(new Runnable() {
+							Thread th_stock = new Thread(new Runnable(){
 							public void run() {
 									stockLevel(request, count, retry, 0);
 									try
@@ -1589,6 +1590,7 @@ public class Tpcc extends STMService {
 									readCount++;
 								}
 							});
+							th_stock.start();
 						break;
 
 						default:
@@ -1607,81 +1609,69 @@ public class Tpcc extends STMService {
 					{
 						case TX_DELIVERY: 
 						
-							if (retry == false) 
-							{
-								//System.out.println("Delivery op, Thread is " + batchnum + "Tx is " + writenum);
-								requestIdValueMap.put(requestId, value);
-								stmInstance.executeWriteRequest(new Runnable() {
+							//System.out.println("Delivery op, Thread is " + batchnum + "Tx is " + writenum);
+							requestIdValueMap.put(requestId, value);
+							Thread th_del = new Thread(new Runnable(){
 								public void run() 
 								{
 									delivery(request, count, retry, writenum);
 									/* Add to completed request batch */
 									stmInstance.addToCompletedBatch(request, writenum );
 									try
-                                                                        {
-                                                                               // System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
-                                                                                barrier.await();
-                                                                        }
-                                                                        catch(InterruptedException ex)
-                                                                        {
-                                                                                System.out.println("getBalance gave barrier exception");
-                                                                        }
-                                                                        catch(BrokenBarrierException ex)
-                                                                        {
-                                                                                System.out.println("getBalance gave brokenbarrier exception");
-                                                                        }
+                                                             		{
+                                                                		// System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                                                		barrier.await();
+                                                        		}
+                                                          		catch(InterruptedException ex)
+                                                           		{
+                                                                		System.out.println("getBalance gave barrier exception");
+                                                             		}
+                                                           		catch(BrokenBarrierException ex)
+                                                           		{
+                                                                		System.out.println("getBalance gave brokenbarrier exception");
+                                                           		}
 
 
 								}
-								});
-							} 
-							else 
-							{
-								// delivery(request, count, retry);
-							}
-							break;
+							});
+							th_del.start();
+						 
+						break;
 						
 						case TX_NEWORDER:
 							
-							if (retry == false) 
-							{
-								//System.out.println("NewOrder op, Thread is " + batchnum + "Tx is " + writenum);
-								requestIdValueMap.put(requestId, value);
-								stmInstance.executeWriteRequest(new Runnable() {
+							//System.out.println("NewOrder op, Thread is " + batchnum + "Tx is " + writenum);
+							requestIdValueMap.put(requestId, value);
+							Thread th_newOrd = new Thread(new Runnable(){
 								public void run() 
 								{
 									newOrder(request, count, retry, writenum);
 									stmInstance.addToCompletedBatch(request, writenum );
 									//stmInstance.onExecuteComplete(request);
 									try
-                                                                        {
-                                                                                //System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
-                                                                                barrier.await();
-                                                                        }
-                                                                        catch(InterruptedException ex)
-                                                                        {
-                                                                                System.out.println("getBalance gave barrier exception");
-                                                                        }
-                                                                        catch(BrokenBarrierException ex)
-                                                                        {
-                                                                                System.out.println("getBalance gave brokenbarrier exception");
-                                                                        }
+                                                          		{
+                                                                		//System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                                                    		barrier.await();
+                                                        		}
+                                                        		catch(InterruptedException ex)
+                                                          		{
+                                                               			System.out.println("getBalance gave barrier exception");
+                                                            		}
+                                                           		catch(BrokenBarrierException ex)
+                                                          		{
+                                                          			System.out.println("getBalance gave brokenbarrier exception");
+                                                          		}
 
 
 								}
-								});
-							} 
-							else 
-							{
-								// newOrder(request, count, retry);
-							}
-							break;
+							});
+							th_newOrd.start();
+						break;
 			
 						case TX_PAYMENT:
-							if (retry == false) {
-								//System.out.println("Payment op, Thread is " + batchnum + "Tx is " + writenum);
-								requestIdValueMap.put(requestId, value);
-								stmInstance.executeWriteRequest(new Runnable() {
+							//System.out.println("Payment op, Thread is " + batchnum + "Tx is " + writenum);
+							requestIdValueMap.put(requestId, value);
+							Thread th_pay = new Thread(new Runnable(){
 								public void run() 
 								{
 									payment(request, count, retry, writenum);
@@ -1689,7 +1679,7 @@ public class Tpcc extends STMService {
 									//stmInstance.onExecuteComplete(request);
 									try
                                                                         {
-                                                                  //              System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                                                  //           	System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
                                                                                 barrier.await();
                                                                         }
                                                                         catch(InterruptedException ex)
@@ -1704,12 +1694,8 @@ public class Tpcc extends STMService {
 
 								}
 								});
-							} 
-							else 
-							{
-								// payment(request, count, retry);
-							}
-							break;
+							th_pay.start();
+						break;
 						
 						default:
 							System.out.println("Wrong WR command " + command
