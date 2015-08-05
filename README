@@ -2,3 +2,4 @@ Changes from original code:
 
 1. Changed the readset to an ArrayList
 2. Changed all the Object IDs to int from String.
+3. The TPCC benchmark's request type identification code is a part of executor threads.
