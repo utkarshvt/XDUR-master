@@ -13,13 +13,13 @@ public class TpccOrder extends AbstractObject implements java.io.Serializable {
 	
 	private Random random = new Random();
 	
-	private String id;
+	private int id;
 
 	public TpccOrder() {
 		// no argument constructor for kryo serialization
 	}
 	
-	public TpccOrder(String id) {
+	public TpccOrder(int id) {
 
 		this.id = id;
 
@@ -31,12 +31,12 @@ public class TpccOrder extends AbstractObject implements java.io.Serializable {
 
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	public TpccOrder deepcopy() {
-		TpccOrder newObject = new TpccOrder("");
+		TpccOrder newObject = new TpccOrder(0);
 		newObject.id = this.id;
 		newObject.O_C_ID = this.O_C_ID;
 		newObject.O_ENTRY_D = this.O_ENTRY_D;

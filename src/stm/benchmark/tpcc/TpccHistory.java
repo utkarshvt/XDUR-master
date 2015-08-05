@@ -16,13 +16,13 @@ public class TpccHistory extends AbstractObject implements java.io.Serializable 
 	
 	private Random random = new Random();
 	
-	private String id;
+	private int id;
 
 	public TpccHistory() {
 		// no argument constructor for kryo serialization	
 	}
 
-	public TpccHistory(String id, int c_id, int d_id) {
+	public TpccHistory(int id, int c_id, int d_id) {
 
 		this.id = id;
 
@@ -34,12 +34,12 @@ public class TpccHistory extends AbstractObject implements java.io.Serializable 
 		this.H_DATA = Integer.toString(random.nextInt(100));
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 	
 	public TpccHistory deepcopy() {
-		TpccHistory newObject = new TpccHistory("", 0, 0);
+		TpccHistory newObject = new TpccHistory(0, 0, 0);
 		newObject.id = this.id;
 		newObject.H_W_ID = this.H_W_ID;
 		newObject.H_D_ID = this.H_D_ID;

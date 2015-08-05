@@ -7,14 +7,14 @@ import stm.transaction.AbstractObject;
 
 public class ShCountObject extends AbstractObject implements java.io.Serializable {
 
-        private String id;
+        private int id;
 
 	public long count;
         public ShCountObject() {
                 // no argument constructor for kryo serialization       
         }
 
-        public ShCountObject(String id) {
+        public ShCountObject(int id) {
                 this.id = id;
 		this.count = 0;
         }
@@ -26,7 +26,7 @@ public class ShCountObject extends AbstractObject implements java.io.Serializabl
                 return newObject;
         }
 
-        public String getId() {
+        public int getId() {
                 return id;
         }
 

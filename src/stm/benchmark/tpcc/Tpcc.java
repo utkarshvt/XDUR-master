@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.esotericsoftware.kryo.Kryo;
 import lsr.common.ClientRequest;
@@ -25,6 +26,7 @@ import lsr.service.STMService;
 import stm.impl.PaxosSTM;
 import stm.impl.SharedObjectRegistry;
 import stm.transaction.AbstractObject;
+import stm.transaction.ReadSetObject;
 import stm.transaction.TransactionContext;
 
 public class Tpcc extends STMService {
@@ -56,6 +58,18 @@ public class Tpcc extends STMService {
 	public final int NUM_ORDERS_PER_D = 30; // 30;
 	public final int MAX_CUSTOMER_NAMES = 1000; // 10;
 
+	/* Values representing offsets for objIds when objIds are integers instead of Strings */
+	
+	public int warehouseStart;
+	public int stockStart;
+        public int districtStart;
+        public int districtOffset;
+        public int customerStart;
+        public int historyStart;
+        public int orderStart;
+        public int orderlineStart;
+        public int warehouseOffset;
+	
 	/** data collector variables **/
 	static long startRead;
 	static long startWrite;
@@ -91,10 +105,13 @@ public class Tpcc extends STMService {
 	private int numReplicas;
 	private int accessibleObjects;
 
+	private int w_count;
+	private int item_count;
 	private int minW;
 	private int maxW;
 	private int accessibleWarehouses;
-
+	private int MaxSpec;
+	
 	/* Temporary Varibles to inject abort in the commit thread */
 
         private int abortLimit;         /* Max number of aborts */
@@ -161,15 +178,15 @@ public class Tpcc extends STMService {
 				totalinRead =  client.getReadCount();
 				totalinWrite +=  client.getWriteCount();
 				submitcount = totalinRead + totalinWrite;
-			        double temp = client.getWriteLatency();	
+			        //double temp = client.getWriteLatency();	
 				//System.out.println("Submitted = " + submitcount + " Completed write count = " + completedCount + " Completed Read Count = " + readCount + " Total = " + totalCount);
 				//System.out.println("Readcount = " + client.getReadCount() + " WriteCount = " + client.getWriteCount());
-				System.out.format("%5d  %5d  %5d  %4.2f  %5d  %5d  %5d	%6d\n",
-						((localReadCount - lastReadCount) * 10000)
+				System.out.format("%5d  %6d  %6d  %5.3f  %6d  %6d  %6d	%6d\n",
+						((localReadCount - lastReadCount) * 1000)
 								/ (endRead - startRead),
-						((localWriteCount - lastWriteCount) * 10000)
+						((localWriteCount - lastWriteCount) * 1000)
 								/ (endRead - startRead),
-						((localCompletedCount - lastCompletedCount) * 10000)
+						((localCompletedCount - lastCompletedCount) * 1000)
 								/ (endRead - startRead),
 						client.getWriteLatency(),
 						(localAbortCount - lastAbortCount),
@@ -197,7 +214,7 @@ public class Tpcc extends STMService {
                                 e1.printStackTrace();
                         }
 
-			System.exit(0);
+			//System.exit(0);
 		}
 	}
 
@@ -211,6 +228,8 @@ public class Tpcc extends STMService {
 		this.stmInstance = stminstance;
 
 		this.abortLimit = 0;
+		this.MaxSpec = MaxSpec;
+		/*
 		for (int id = 0; id < NUM_ITEMS; id++) {
 			final String myid = "i_" + Integer.toString(id);
 			TpccItem item = new TpccItem(myid);
@@ -254,8 +273,90 @@ public class Tpcc extends STMService {
 				TpccOrderline orderLine = new TpccOrderline(olmyid);
 				this.sharedObjectRegistry.registerObjects(olmyid, orderLine, MaxSpec);
 			}
+		}*/
+		for (int id = 0; id < NUM_ITEMS; id++) {
+			final int myid = id;
+			TpccItem item = new TpccItem(myid);
+			this.sharedObjectRegistry.registerObjects(myid, item, MaxSpec);
 		}
+		int w_start = NUM_ITEMS;
+		this.warehouseStart = w_start;		
+		this.stockStart = 1;									// Relative to warehouse ID
+		this.districtStart = NUM_ITEMS + 1;							// Relative to warehouse ID
+		this.districtOffset = NUM_CUSTOMERS_PER_D * 2  + 1;		
+		this.customerStart = 1;									// Relative to distrcit ID
+		this.historyStart = NUM_CUSTOMERS_PER_D + 1;						// Relative to district ID
+		this.orderStart = NUM_ITEMS + NUM_DISTRICTS + NUM_DISTRICTS * (NUM_CUSTOMERS_PER_D * 2) + 1;		// Relative to warehouse ID
+		this.orderlineStart = this.orderStart + NUM_ORDERS_PER_D;				// Relative to warehouse ID
+		this.warehouseOffset = NUM_ITEMS + NUM_DISTRICTS*this.districtOffset  + 2 * NUM_ORDERS_PER_D + 1;		
+		/*	
+		System.out.println("Warehouse start = " + this.warehouseStart);
+		System.out.println("Warehouse offset = " + this.warehouseOffset);
+		System.out.println("District start = " + (this.warehouseStart + this.districtStart));
+		System.out.println("District offset = " + this.districtOffset);
+		System.out.println("History start = " + (this.warehouseStart + this.districtStart + this.historyStart));
+		System.out.println("Orderstart start = " + (this.warehouseStart + this.orderStart));
+		System.out.println("Orderline start = " + (this.warehouseStart + this.orderlineStart));
+		*/	
+		int cur_id = w_start;
+		for (int id = 0; id < NUM_WAREHOUSES; id++) {
+		
+			final int myid = cur_id;
+			//System.out.println("Warehouse " + id + " Id = " + cur_id);
+			cur_id = cur_id+1;
+			TpccWarehouse warehouse = new TpccWarehouse(myid);
+			this.sharedObjectRegistry.registerObjects(myid, warehouse, MaxSpec);
 
+			for (int s_id = 0; s_id < NUM_ITEMS; s_id++) {
+				final int smyid = cur_id ;
+				cur_id = cur_id + 1;
+				TpccStock stock = new TpccStock(smyid);
+				this.sharedObjectRegistry.registerObjects(smyid, stock, MaxSpec);
+			}
+			for (int d_id = 0; d_id < NUM_DISTRICTS; d_id++) {
+				int dmyid = cur_id;
+				//System.out.println("District " + d_id + " Id = " + cur_id);
+				cur_id = cur_id+1;
+				TpccDistrict district = new TpccDistrict(dmyid);
+				this.sharedObjectRegistry.registerObjects(dmyid, district, MaxSpec);
+				//System.out.println("First customer Id = " + cur_id);	
+				for (int c_id = 0; c_id < NUM_CUSTOMERS_PER_D; c_id++) {
+					int cmyid = cur_id;
+					cur_id = cur_id + 1;
+					TpccCustomer customer = new TpccCustomer(cmyid);
+					this.sharedObjectRegistry.registerObjects(cmyid, customer, MaxSpec);
+				}
+				//System.out.println("First history Id = " + cur_id);
+				for (int c_id = 0; c_id < NUM_CUSTOMERS_PER_D; c_id++) {
+					int hmyid = cur_id ;
+					cur_id = cur_id + 1;
+					TpccHistory history = new TpccHistory(hmyid, c_id, d_id);
+					this.sharedObjectRegistry.registerObjects(hmyid, history, MaxSpec);
+
+				}
+				//System.out.println("Next district Id = " + cur_id);
+			}
+			//System.out.println("First order Id = " + cur_id);
+			for (int o_id = 0; o_id < NUM_ORDERS_PER_D; o_id++) {
+				int omyid = cur_id ;
+				cur_id = cur_id + 1;
+				TpccOrder order = new TpccOrder(omyid);
+				this.sharedObjectRegistry.registerObjects(omyid, order, MaxSpec);
+			}
+			//System.out.println("First orderline Id = " + cur_id);
+			for (int o_id = 0; o_id < NUM_ORDERS_PER_D; o_id++) {
+
+				int olmyid = cur_id;
+				cur_id = cur_id + 1;
+				TpccOrderline orderLine = new TpccOrderline(olmyid);
+				this.sharedObjectRegistry.registerObjects(olmyid, orderLine, MaxSpec);
+			}
+				//System.out.println("Next warehouse Id = " + cur_id);
+		}
+		
+
+		/* Implementing Integer object ids in Tpcc */
+		
 		//System.out.println("Size of shared Object Registry = "
 		//		+ this.sharedObjectRegistry.getCapacity());
 
@@ -273,7 +374,7 @@ public class Tpcc extends STMService {
 		this.accessibleObjects = this.NUM_ITEMS / numReplicas;
 		this.min = this.accessibleObjects * this.localId;
 		this.max = (this.accessibleObjects * (this.localId + 1));
-		
+		this.item_count = (max - min)/MaxSpec;
 
 		/*this.accessibleObjects = this.NUM_ITEMS;
 		this.min = this.accessibleObjects * 0;
@@ -285,7 +386,7 @@ public class Tpcc extends STMService {
 		this.accessibleWarehouses = this.NUM_WAREHOUSES / numReplicas;
 		this.minW = this.accessibleWarehouses * this.localId;
 		this.maxW = (this.accessibleWarehouses * (this.localId + 1));
-		
+		this.w_count = (maxW - minW)/MaxSpec;		
 		/*
 		this.accessibleWarehouses = this.NUM_WAREHOUSES;
 		this.minW = this.accessibleWarehouses * 0;
@@ -303,10 +404,21 @@ public class Tpcc extends STMService {
 	protected void orderStatus(ClientRequest cRequest, int count, boolean retry, int Tid) {
 		int success = 0;
 		RequestId requestId = cRequest.getRequestId();
-		String myid = "w_"
-				+ Integer.toString(random.nextInt(maxW - minW) + minW);
-		String cmyid = myid + "_c_"
-				+ Integer.toString(random.nextInt(NUM_CUSTOMERS_PER_D));
+		
+		int thw_id = Tid - 1;
+                int rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;
+
+
+                int myid = warehouseStart +
+                                + rwid *warehouseOffset;
+
+
+
+		/*int myid = warehouseStart + 
+				+ (random.nextInt(maxW - minW) + minW)*warehouseOffset;*/
+		int d_id = myid + districtStart + districtOffset * random.nextInt(NUM_DISTRICTS);
+		int cmyid = d_id + customerStart
+				+ random.nextInt(NUM_CUSTOMERS_PER_D);
 
 		TpccWarehouse warehouse = ((TpccWarehouse) stmInstance.open(myid,
 				this.stmInstance.TX_READ_MODE, requestId,
@@ -316,8 +428,8 @@ public class Tpcc extends STMService {
 				this.stmInstance.TX_READ_MODE, requestId,
 				this.stmInstance.OBJECT_READ_MODE, retry, Tid));
 
-		final String omyid = myid + "_o_"
-				+ Integer.toString(random.nextInt(NUM_ORDERS_PER_D));
+		final int omyid = myid + orderStart
+				+ random.nextInt(NUM_ORDERS_PER_D);
 		TpccOrder order = ((TpccOrder) stmInstance.open(omyid,
 				this.stmInstance.TX_READ_MODE, requestId,
 				this.stmInstance.OBJECT_READ_MODE, retry, Tid));
@@ -325,7 +437,7 @@ public class Tpcc extends STMService {
 		float olsum = (float) 0;
 		int i = 1;
 		while (i < order.O_OL_CNT) {
-			final String olmyid = myid + "_ol_" + Integer.toString(i);
+			final int olmyid = myid + orderlineStart + i;
 			TpccOrderline orderline = ((TpccOrderline) stmInstance.open(olmyid,
 					this.stmInstance.TX_READ_MODE, requestId,
 					this.stmInstance.OBJECT_READ_MODE, retry, Tid));
@@ -342,10 +454,25 @@ public class Tpcc extends STMService {
 	protected void delivery(ClientRequest cRequest, int count, boolean retry, int Tid) {
 		int success = 0;
 		RequestId requestId = cRequest.getRequestId();
-		
+		/*
 		Random randomGenerator = new Random();
 		int randomInt = randomGenerator.nextInt(100);
-		int tw_id = 0;
+		*/
+	
+		/*Integer clid = (int) (long) (requestId.getClientId()) - localId + minW;
+		int myid = warehouseStart +
+                                + clid *warehouseOffset;*/
+
+		int thw_id = Tid - 1;
+                int rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;
+
+
+                int myid = warehouseStart +
+                                + rwid *warehouseOffset;
+		
+
+		/*int tw_id = 0;
+		
 		if(randomInt < 15)
 		{
 			tw_id = random.nextInt(this.NUM_WAREHOUSES); 
@@ -354,9 +481,10 @@ public class Tpcc extends STMService {
 		{
 			tw_id = random.nextInt(maxW - minW) + minW;
 		}
+		tw_id = random.nextInt(maxW - minW) + minW;
 		final int w_id = tw_id;
-		final String myid = "w_"
-				+ Integer.toString(w_id);
+		final int myid = warehouseStart +
+                                + tw_id * warehouseOffset;*/
 
 	 
 		//System.out.println("delivery: " + myid);
@@ -377,10 +505,14 @@ public class Tpcc extends STMService {
 		
 			for (int d_id = 0; d_id < NUM_DISTRICTS; d_id++) {
 
-				final String omyid = myid + "_o_"
-						+ Integer.toString(random.nextInt(NUM_ORDERS_PER_D));
-				final String cmyid = myid + "_c_"
-						+ Integer.toString(random.nextInt(NUM_CUSTOMERS_PER_D));
+				int dmyid = myid + districtStart + districtOffset * random.nextInt(NUM_DISTRICTS);
+                		
+
+                                int cmyid = dmyid + customerStart + random.nextInt(NUM_CUSTOMERS_PER_D);
+
+				final int omyid = myid + orderStart
+						+ random.nextInt(NUM_ORDERS_PER_D);
+				//System.out.println("WarehouseId = " + myid + "DistrictId = " + dmyid + "Orderid = " + omyid);	
 
 				TpccOrder order = ((TpccOrder) stmInstance.Xopen(omyid,
 						this.stmInstance.TX_READ_WRITE_MODE, requestId,
@@ -396,7 +528,7 @@ public class Tpcc extends STMService {
 				int i = 1;
 				while (i < order.O_OL_CNT) {
 					if (i < NUM_ORDERS_PER_D) {
-						final String olmyid = myid + "_ol_" + Integer.toString(i);
+						final int olmyid =  myid + orderlineStart + i;
 						TpccOrderline orderline = ((TpccOrderline) stmInstance
 							.Xopen(olmyid, this.stmInstance.TX_READ_WRITE_MODE,
 									requestId,
@@ -448,14 +580,29 @@ public class Tpcc extends STMService {
 		int success = 0;
 		int i = 0;
 		RequestId requestId = cRequest.getRequestId();
-		final String myid = "w_"
-				+ Integer.toString(random.nextInt(maxW - minW) + minW);
+		
+		Integer clid = (int) (long) (requestId.getClientId()) - localId + minW;
+                int myid = warehouseStart +
+                                + clid *warehouseOffset;
+		
+		/*
+		int thw_id = Tid - 1;
+
+                int rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;
+
+                int myid = warehouseStart +
+                                + rwid *warehouseOffset;*/
+ 
+		/*int myid = warehouseStart +
+                                + (random.nextInt(maxW - minW) + minW)*warehouseOffset;*/
+
 		 //System.out.println("stockLevel: " + myid);
 		while (i < 20) {
 
 			/*************** Transaction start ***************/
-			final String omyid = myid + "_o_"
-					+ Integer.toString(random.nextInt(NUM_ORDERS_PER_D));
+			//int d_id = myid + districtStart + districtOffset * random.nextInt(NUM_DISTRICTS);
+			final int omyid = myid + orderStart
+					+ random.nextInt(NUM_ORDERS_PER_D);
 
 			TpccWarehouse warehouse = ((TpccWarehouse) stmInstance.open(myid,
 					this.stmInstance.TX_READ_MODE, requestId,
@@ -469,8 +616,8 @@ public class Tpcc extends STMService {
 				int j = 1;
 				while (j < order.O_OL_CNT) {
 					if (j < NUM_ORDERS_PER_D) {
-						final String olmyid = myid + "_ol_"
-								+ Integer.toString(j);
+						final int olmyid = myid + orderlineStart
+								+ j;
 						TpccOrderline orderline = ((TpccOrderline) stmInstance
 								.open(olmyid, this.stmInstance.TX_READ_MODE,
 										requestId,
@@ -488,10 +635,10 @@ public class Tpcc extends STMService {
 
 		int k = 1;
 		while (k <= 10) {
-			String wid = "w_"
-					+ Integer.toString(random.nextInt(maxW - minW) + minW);
+			int wid = warehouseStart
+					+ random.nextInt(maxW - minW) + minW;
 			if (k < NUM_ITEMS) {
-				String smyid = wid + "_s_" + Integer.toString(k);
+				int smyid = wid + stockStart + k;
 				TpccStock stock = ((TpccStock) stmInstance.open(smyid,
 						this.stmInstance.TX_READ_MODE, requestId,
 						this.stmInstance.OBJECT_READ_MODE, retry, Tid));
@@ -508,20 +655,34 @@ public class Tpcc extends STMService {
 
 		int success = 0;
 		RequestId requestId = cRequest.getRequestId();
-		Random randomGenerator = new Random();
-		int randomInt = randomGenerator.nextInt(100);
-		int tw_id = 0;
+		//Random randomGenerator = new Random();
+		//int randomInt = randomGenerator.nextInt(100);
+		
+		/*Integer clid = (int) (long) (requestId.getClientId()) - localId + minW;
+                int myid = warehouseStart +
+                                + clid *warehouseOffset;*/
+		
+		
+		int thw_id = Tid - 1;
+                int rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;
+
+                int myid = warehouseStart +
+                                + rwid *warehouseOffset;
+		
+		/*int tw_id = 0;
+		
 		if(randomInt < 15)
 		{
 			tw_id = random.nextInt(this.NUM_WAREHOUSES); 
 		}	
 		else
 		{
-			 tw_id = random.nextInt(maxW - minW) + minW;
+			tw_id = random.nextInt(maxW - minW) + minW;
 		}
-		final int w_id = tw_id;
+		tw_id = random.nextInt(maxW - minW) + minW;
+		final int w_id = tw_id;*/
 		//final int w_id = random.nextInt(maxW - minW) + minW;
-		final String myid = "w_" + Integer.toString(w_id);
+		//final int myid = warehouseStart + w_id * warehouseOffset;
 
 		 //System.out.println("order: " + myid);
 
@@ -539,7 +700,7 @@ public class Tpcc extends STMService {
 				continue;
 			}
 			final int d_id = random.nextInt(NUM_DISTRICTS);
-			final String dmyid = myid + "_" + Integer.toString(d_id);
+			final int dmyid = myid + districtStart + (d_id) * districtOffset;
 			TpccDistrict district = ((TpccDistrict) stmInstance.Xopen(dmyid,
 					this.stmInstance.TX_READ_WRITE_MODE, requestId,
 					this.stmInstance.OBJECT_WRITE_MODE, retry, Tid));
@@ -553,7 +714,7 @@ public class Tpcc extends STMService {
 			int o_id = district.D_NEXT_O_ID;
 			district.D_NEXT_O_ID = o_id + 1;
 			final int c_id = random.nextInt(NUM_CUSTOMERS_PER_D);
-			final String cmyid = myid + "_c_" + Integer.toString(c_id);
+			final int cmyid = dmyid + customerStart + c_id;
 			TpccCustomer customer = ((TpccCustomer) stmInstance.Xopen(cmyid,
 				this.stmInstance.TX_READ_WRITE_MODE, requestId,
 				this.stmInstance.OBJECT_WRITE_MODE, retry, Tid));
@@ -568,8 +729,8 @@ public class Tpcc extends STMService {
 			String C_CREDIT = customer.C_CREDIT;
 
 			// Create entries in ORDER and NEW-ORDER
-			final String omyid = myid + "_o_"
-					+ Integer.toString(random.nextInt(NUM_ORDERS_PER_D));
+			final int omyid = myid + orderStart +
+					+ random.nextInt(NUM_ORDERS_PER_D);
 
 			TpccOrder order = new TpccOrder(omyid);
 			order.O_C_ID = c_id;
@@ -581,8 +742,10 @@ public class Tpcc extends STMService {
 			order.O_ALL_LOCAL = true;
 			int i = 1;
 			while (i <= order.O_CARRIER_ID.length()) {
-				final int i_id = random.nextInt((max - min)) + min;
-				String item_id = "i_" + Integer.toString(i_id);
+				//final int i_id = random.nextInt((max - min)) + min;
+				final int i_id = random.nextInt(item_count) + (thw_id * item_count) + min;
+
+				int item_id = i_id;
 				TpccItem item = ((TpccItem) stmInstance.Xopen(item_id,
 						this.stmInstance.TX_READ_WRITE_MODE, requestId,
 						this.stmInstance.OBJECT_WRITE_MODE, retry, Tid));
@@ -602,14 +765,14 @@ public class Tpcc extends STMService {
 				String I_NAME = item.I_NAME;
 				String I_DATA = item.I_DATA;
 
-				String olmyid = myid + "_ol_"
-					+ Integer.toString(random.nextInt(1000) + NUM_ORDERS_PER_D);
+				int olmyid =  myid + orderlineStart 
+					+ (random.nextInt(1000) + NUM_ORDERS_PER_D);
 				TpccOrderline orderLine = new TpccOrderline(olmyid);
 				// TODO How to add the new object to shared object registry.
 				// This should also be supported in STM framework
 				orderLine.OL_QUANTITY = random.nextInt(1000);
 				orderLine.OL_I_ID = i_id;
-				orderLine.OL_SUPPLY_W_ID = w_id;
+				orderLine.OL_SUPPLY_W_ID = myid;
 				orderLine.OL_AMOUNT = (int) (orderLine.OL_QUANTITY * I_PRICE);
 				orderLine.OL_DELIVERY_D = null;
 				orderLine.OL_DIST_INFO = Integer.toString(d_id);
@@ -632,12 +795,24 @@ public class Tpcc extends STMService {
 		int success = 0;
 		RequestId requestId = cRequest.getRequestId();
 		final float h_amount = (float) (random.nextInt(500000) * 0.01);
+		
+		int thw_id = Tid - 1;
+                int rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;
 
+                int myid = warehouseStart +
+                                + rwid *warehouseOffset;
+		/*Integer clid = (int) (long) (requestId.getClientId()) - localId + minW;
+		
+                int myid = warehouseStart +
+                                + clid *warehouseOffset;
+		*/
 
+		
+		/*
 		Random randomGenerator = new Random();
 		int randomInt = randomGenerator.nextInt(100);
 		int tw_id = 0;
-		if(randomInt < 15)
+		if(randomInt < 0)
 		{
 			tw_id = random.nextInt(this.NUM_WAREHOUSES); 
 		}	
@@ -646,9 +821,10 @@ public class Tpcc extends STMService {
 			tw_id = random.nextInt(maxW - minW) + minW;
 		}
 		final int w_id = tw_id;
-		final String myid = "w_" + Integer.toString(w_id);
+		final int  myid = warehouseStart + w_id * warehouseOffset;*/
+		final int d_id = myid + districtStart + districtOffset * random.nextInt(NUM_DISTRICTS);
 		final int c_id = random.nextInt(NUM_CUSTOMERS_PER_D);
-		final String cmyid = myid + "_c_" + Integer.toString(c_id);
+		final int  cmyid = d_id + customerStart + c_id;
 
 		//System.out.println("payment: " + myid);
 		boolean xretry = true;
@@ -669,9 +845,10 @@ public class Tpcc extends STMService {
 			warehouse.W_YTD += h_amount;
 
 			// In DISTRICT table
-			final int d_id = random.nextInt(NUM_DISTRICTS);
-			final String dmyid = myid + "_" + Integer.toString(d_id);
-			TpccDistrict district = ((TpccDistrict) stmInstance.Xopen(dmyid,
+			//final int d_id = random.nextInt(NUM_DISTRICTS);
+			//final String dmyid = myid + "_" + Integer.toString(d_id);
+			
+			TpccDistrict district = ((TpccDistrict) stmInstance.Xopen(d_id,
 					this.stmInstance.TX_READ_WRITE_MODE, requestId,
 					this.stmInstance.OBJECT_WRITE_MODE, retry, Tid));
 			if(district == null)
@@ -929,7 +1106,7 @@ public class Tpcc extends STMService {
 			committedCount++;
 			//System.out.println("Objects after commit");
                 	//stmInstance.printRWSets(ctx);
-			//stmInstance.updateAbortMap(ctx);
+			stmInstance.updateAbortMap(ctx);
 		} else {
 			// Isn;t it needed to remove the previous content
 			if(abort_random == true)
@@ -962,7 +1139,7 @@ public class Tpcc extends STMService {
 			//System.out.println("Xcommit queue size is = " + stmInstance.getXCommitQueueSize());
 			//stmInstance.printabortedObjects();
 			abortedCount++;
-			//stmInstance.abortXcomitted();
+			stmInstance.abortXcomitted();
 			return;
 		}
 		// committedCount++;
@@ -1053,8 +1230,10 @@ public class Tpcc extends STMService {
 	@Override
 	public byte[] serializeTransactionContext(TransactionContext ctx)
 			throws IOException {
-		Map<String, AbstractObject> readset = ctx.getReadSet();
-		Map<String, AbstractObject> writeset = ctx.getWriteSet();
+		   
+		ArrayList<ReadSetObject> readset = ctx.getReadSet();
+
+		Map<Integer, AbstractObject> writeset = ctx.getWriteSet();
 
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		ByteBuffer bb;
@@ -1064,15 +1243,16 @@ public class Tpcc extends STMService {
 		bb.flip();
 
 		out.write(bb.array());
-		for (Map.Entry<String, AbstractObject> entry : readset.entrySet()) {
-			String id = entry.getKey();
-			byte[] idBytes = id.getBytes(Charset.forName("UTF-8"));
+		for (ReadSetObject entry : readset) {
+			int id = entry.objId;
+			//byte[] idBytes = id.getBytes(Charset.forName("UTF-8"));
+			/* Since id is int type, its size is 4 */
+			int idLength = 4;
+			bb = ByteBuffer.allocate(idLength + 4 + 8);
 
-			bb = ByteBuffer.allocate(idBytes.length + 4 + 8);
-
-			bb.putInt(idBytes.length);
-			bb.put(idBytes);
-			bb.putLong(entry.getValue().getVersion());
+			bb.putInt(idLength);
+			bb.putInt(id);
+			bb.putLong(entry.version);
 
 			bb.flip();
 			out.write(bb.array());
@@ -1085,14 +1265,15 @@ public class Tpcc extends STMService {
 		// System.out.println("SW:" + writeset.size());
 
 		out.write(bb.array());
-		for (Map.Entry<String, AbstractObject> entry : writeset.entrySet()) {
-			String id = entry.getKey();
-			byte[] idBytes = id.getBytes(Charset.forName("UTF-8"));
+		for (Map.Entry<Integer, AbstractObject> entry : writeset.entrySet()) {
+			int id = entry.getKey();
+			int idLength = 4;
+			//byte[] idBytes = id.getBytes(Charset.forName("UTF-8"));
 
-			ByteBuffer bb1 = ByteBuffer.allocate(idBytes.length + 4);
+			ByteBuffer bb1 = ByteBuffer.allocate(idLength + 4);
 
-			bb1.putInt(idBytes.length);
-			bb1.put(idBytes);
+			bb1.putInt(idLength);
+			bb1.putInt(id);
 
 			bb1.flip();
 			out.write(bb1.array());
@@ -1239,9 +1420,10 @@ public class Tpcc extends STMService {
 		int readsetSize = bb.getInt();
 		for (int i = 0; i < readsetSize; i++) {
 			byte[] value = new byte[bb.getInt()];
-			bb.get(value);
+			//bb.get(value);
 
-			String id = new String(value, Charset.forName("UTF-8"));
+			int id = bb.getInt();
+			//String id = new String(value, Charset.forName("UTF-8"));
 
 			long version = bb.getLong();
 
@@ -1254,9 +1436,9 @@ public class Tpcc extends STMService {
 		int writesetSize = bb.getInt();
 		for (int i = 0; i < writesetSize; i++) {
 			byte[] value = new byte[bb.getInt()];
-			bb.get(value);
-
-			String id = new String(value, Charset.forName("UTF-8"));
+			//bb.get(value);
+			int id = bb.getInt();
+			//String id = new String(value, Charset.forName("UTF-8"));
 
 			short type = bb.getShort();
 
@@ -1487,183 +1669,230 @@ public class Tpcc extends STMService {
 	}
 
 
-	/* The XBatcher thread */
+     private class XBatcher extends Thread {
+        //private final kryo kryo;
 	
-	private class XBatcher extends Thread {
-	//private final kryo kryo;
+        @Override
+        public void run() {
 
-	@Override
-	public void run() {
 
-	
-		int MaxSpec = stmInstance.getMaxSpec();
-		final boolean retry = false;
+                int MaxSpec = stmInstance.getMaxSpec();
+                final boolean retry = false;
 
-		ArrayList<ClientRequest> reqarray = new ArrayList<ClientRequest>(MaxSpec);
-		try
+                ArrayList<ClientRequest> reqarray = new ArrayList<ClientRequest>(MaxSpec);
+                try
                 {
-			Thread.sleep(10000);
-                        
-		} 
-		catch (InterruptedException e1)
-		{
-			// TODO Auto-generated catch block
+                        Thread.sleep(10000);
+
+                }
+                catch (InterruptedException e1)
+                {
+                        // TODO Auto-generated catch block
                         e1.printStackTrace();
                 }
+                while (true)
+                {
+                        /* Drain the request queue */
+                        int drain = stmInstance.XqueuedrainTo(reqarray,MaxSpec);
 
-		while (true) 
-		{
-			/* Drain the request queue */
-			int drain = stmInstance.XqueuedrainTo(reqarray,MaxSpec);
-
-			/* Reset lastXCommit */
-			stmInstance.resetLastXcommit();
-			AtomicInteger Barrier = new AtomicInteger(0);
-			final CyclicBarrier barrier = new CyclicBarrier(drain + 1);
+                        /* Reset lastXCommit */
+                        stmInstance.resetLastXcommit();
+                        AtomicInteger Tid = new AtomicInteger(0);
+                        final CyclicBarrier barrier = new CyclicBarrier(drain + 1);
                         /*if(drain > 0)
                         {
                             System.out.println("drain = " + drain);
                         }*/
-			int r_count = 0;
-			int t_index = 0;
-			while(r_count < drain)
-			{
-				final ClientRequest request = reqarray.remove(0);
-				r_count++;
-				
-				byte[] value = request.getValue();
-				ByteBuffer buffer = ByteBuffer.wrap(value);
-				final RequestId requestId = request.getRequestId();
+                        int r_count = 0;
+                        while(r_count < drain)
+                        {
+                                final ClientRequest request = reqarray.remove(0);
+                                Runnable task = new ExecThread(request, barrier, Tid);
+                                stmInstance.executeRequest(task);
+                                r_count++;
+                        } /*End inner while */
+                        /* Wait for all the thread to join */
+                        try
+                        {
+                                //System.out.println("XBatcher thread  joined, Threads waiting  = "  + barrier.getNumberWaiting());
+                                barrier.await();
+                                //if( drain != 0 )
+                                //      System.out.println("All " + drain + " threads joined");
+                        }
+                        catch(InterruptedException ex)
+                        {
+                                System.out.println("transfer gave barrier exception");
 
-				byte transactionType = buffer.get();
-				byte command = buffer.get();
-				final int count = buffer.getInt();
+                        }
+                        catch(BrokenBarrierException ex)
+                        {
 
-				if (transactionType == READ_ONLY_TX) 
-				{
-					final int batchnum = r_count;
-					switch (command) 
-					{
-						case TX_ORDER_STATUS:
-  							int res = Barrier.incrementAndGet();
-							Thread th_ord = new Thread(new Runnable(){
-								public void run() 
-								{
-									orderStatus(request, count, retry, 0);
-									int tmp = Barrier.getAndDecrement();	
-									readCount++;
-								}
-							});
-							th_ord.start();
-						break;
+                                System.out.println("transfer gave broken barrier exception");
+                        }
 
-						case TX_STOCKLEVEL:
-							int res = Barrier.incrementAndGet();
-							Thread th_stock = new Thread(new Runnable(){
-								public void run()
-								{
-									stockLevel(request, count, retry, 0);
-									int tmp = Barrier.getAndDecrement();	
-									readCount++;
-								}
-							});
-							th_stock.start();
-						break;
-
-						default:
-								System.out.println("Wrong RD command " + command
-									+ " transaction type " + transactionType);
-						break;
-					}
-				} 
-				else 
-				{
-					 t_index++;
-                                         final int batchnum = r_count;
-                                         final int writenum = t_index;
-
-					switch (command) 
-					{
-						case TX_DELIVERY: 
-							int res = Barrier.incrementAndGet();
-							//System.out.println("Delivery op, Thread is " + batchnum + "Tx is " + writenum);
-							requestIdValueMap.put(requestId, value);
-							Thread th_del = new Thread(new Runnable(){
-								public void run() 
-								{
-									delivery(request, count, retry, writenum);
-									/* Add to completed request batch */
-									stmInstance.addToCompletedBatch(request, writenum );
-									int tmp = Barrier.getAndDecrement();	
-
-
-								}
-							});
-							th_del.start();
-						 
-						break;
-						
-						case TX_NEWORDER:
-							int res = Barrier.incrementAndGet();
-							//System.out.println("NewOrder op, Thread is " + batchnum + "Tx is " + writenum);
-							requestIdValueMap.put(requestId, value);
-							Thread th_newOrd = new Thread(new Runnable(){
-								public void run() 
-								{
-									newOrder(request, count, retry, writenum);
-									stmInstance.addToCompletedBatch(request, writenum );
-									int tmp = Barrier.getAndDecrement();	
-									//stmInstance.onExecuteComplete(request);
-
-								}
-							});
-							th_newOrd.start();
-						break;
-			
-						case TX_PAYMENT:
-							int res = Barrier.incrementAndGet();
-							//System.out.println("Payment op, Thread is " + batchnum + "Tx is " + writenum);
-							requestIdValueMap.put(requestId, value);
-							Thread th_pay = new Thread(new Runnable(){
-								public void run() 
-								{
-									payment(request, count, retry, writenum);
-									stmInstance.addToCompletedBatch(request, writenum );
-									int tmp = Barrier.getAndDecrement();	
-									//stmInstance.onExecuteComplete(request);
-
-								}
-								});
-							th_pay.start();
-						break;
-						
-						default:
-							System.out.println("Wrong WR command " + command
-								+ " transaction type " + transactionType);
-						break;
-
-					}
-				}
-	
-			} /*End inner while */
-			/* Wait for all the thread to join */
-			
-			while(Barrier.get() != 0)
-			{
-				;
-			}
-			/* Sanity check */
-			/*if(checkBalances() == true)
-				System.out.println("Sanity check passed");
-			else
-				System.out.println("Sanity check failed");*/
-			/* Signal the globalCommitManager */
-			stmInstance.addBatchToCommitManager();
-			reqarray.clear();
-		}/*End outer while */
-	}/* End run*/
+                        /* Sanity check */
+                        /*if(checkBalances() == true)
+                                System.out.println("Sanity check passed");
+                        else
+                                System.out.println("Sanity check failed");*/
+                        /* Signal the globalCommitManager */
+                        stmInstance.addBatchToCommitManager();
+                        reqarray.clear();
+                }/*End outer while */
+        }/* End run*/
 }
 
 
+public class ExecThread implements Runnable
+{
+        private ClientRequest request;
+        CyclicBarrier barrier;
+        AtomicInteger Tid;
+        public ExecThread( ClientRequest cRequest, CyclicBarrier barrier, AtomicInteger Tid)
+        {
+                this.request = cRequest;
+                this.barrier = barrier;
+                this.Tid = Tid;
+	}
 
+        @Override
+        public void run()
+        {
+
+                byte[] value = request.getValue();
+                ByteBuffer buffer = ByteBuffer.wrap(value);
+                final RequestId requestId = request.getRequestId();
+
+                byte transactionType = buffer.get();
+                byte command = buffer.get();
+                final int count = buffer.getInt();
+                boolean retry = false;
+                if (transactionType == READ_ONLY_TX)
+                {
+                        switch (command)
+                        {
+                                case TX_ORDER_STATUS:
+                                        orderStatus(request, count, retry, 0);
+                                        try
+                                        {
+                                                //System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                                barrier.await();
+                                        }
+                                        catch(InterruptedException ex)
+                                        {
+                                                System.out.println("getBalance gave barrier exception");
+                                        }
+                                        catch(BrokenBarrierException ex)
+                                        {
+                                                System.out.println("getBalance gave brokenbarrier exception");
+                                        }
+
+
+                                        readCount++;
+                                break;
+                                case TX_STOCKLEVEL:
+                                        stockLevel(request, count, retry, 0);
+                                        try
+                                        {
+                                                //System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                                barrier.await();
+                                        }
+                                        catch(InterruptedException ex)
+                                        {
+                                                System.out.println("getBalance gave barrier exception");
+                                        }
+                                        catch(BrokenBarrierException ex)
+                                        {
+                                                System.out.println("getBalance gave brokenbarrier exception");
+                                        }
+                                        readCount++;
+                                break;
+
+                                default:
+                                        System.out.println("Wrong RD command " + command
+                                                + " transaction type " + transactionType);
+                                break;
+                        }
+                }
+
+                else
+                {
+                        int writenum = Tid.incrementAndGet();
+
+                        switch (command)
+                        {
+                                case TX_DELIVERY:
+                                        //System.out.println("Delivery op, Thread is " + batchnum + "Tx is " + writenum);
+                                        requestIdValueMap.put(requestId, value);
+                                        delivery(request, count, retry, writenum);
+                                        /* Add to completed request batch */
+                                        stmInstance.addToCompletedBatch(request, writenum );
+                                        try
+                                        {
+                                                //System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                                barrier.await();
+                                        }
+                                        catch(InterruptedException ex)
+                                        {
+                                                System.out.println("getBalance gave barrier exception");
+                                        }
+                                        catch(BrokenBarrierException ex)
+                                        {
+                                                System.out.println("getBalance gave brokenbarrier exception");
+                                        }
+                                break;
+
+                                case TX_NEWORDER:
+
+                                        //System.out.println("NewOrder op, Thread is " + batchnum + "Tx is " + writenum);
+                                        requestIdValueMap.put(requestId, value);
+                                        newOrder(request, count, retry, writenum);
+                                        stmInstance.addToCompletedBatch(request, writenum );
+                                        try
+                                        {
+                                                //System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                                barrier.await();
+                                        }
+                                        catch(InterruptedException ex)
+                                        {
+                                                System.out.println("getBalance gave barrier exception");
+                                        }
+                                        catch(BrokenBarrierException ex)
+                                        {
+                                                System.out.println("getBalance gave brokenbarrier exception");
+                                        }
+
+                                break;
+
+                               case TX_PAYMENT:
+                                        //System.out.println("Payment op, Thread is " + batchnum + "Tx is " + writenum);
+                                        requestIdValueMap.put(requestId, value);
+                                        payment(request, count, retry, writenum);
+                                        stmInstance.addToCompletedBatch(request, writenum );
+                                        try
+                                        {
+                                                //System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                                barrier.await();
+                                        }
+                                        catch(InterruptedException ex)
+                                        {
+                                                System.out.println("getBalance gave barrier exception");
+                                        }
+                                        catch(BrokenBarrierException ex)
+                                        {
+                                                System.out.println("getBalance gave brokenbarrier exception");
+                                        }
+                                break;
+
+                                default:
+                                        System.out.println("Wrong WR command " + command
+                                                + " transaction type " + transactionType);
+                                break;
+
+                        }
+                }
+        }
+
+
+}
 }

@@ -1,7 +1,7 @@
 package stm.benchmark.vacation;
 
 import stm.transaction.AbstractObject;
-
+/*
 public class Reservation extends AbstractObject implements Comparable<Reservation>
 {
 	public String objId;
@@ -121,4 +121,4 @@ public class Reservation extends AbstractObject implements Comparable<Reservatio
 	
 		return newObj;
 	}
-}
+}*/

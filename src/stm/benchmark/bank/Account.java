@@ -11,9 +11,10 @@ public class Account extends AbstractObject implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 2584138666421024340L;
 	private int amount;
-	private String Id;
+	//private String Id;
+	private int Id;
 	
-	public Account(int initialAmount, String Id) {
+	public Account(int initialAmount, int Id) {
 		super();
 		amount = initialAmount;
 		this.Id = Id;
@@ -22,7 +23,7 @@ public class Account extends AbstractObject implements java.io.Serializable {
 	public Account(int initialAmount) {
 		super();
 		amount = initialAmount;
-		this.Id = "";
+		this.Id = 0;
 	}
 
 
@@ -39,7 +40,7 @@ public class Account extends AbstractObject implements java.io.Serializable {
 	}
 	
 	@Override
-	public String getId() {
+	public int getId() {
 		return Id;
 	}
 
@@ -47,7 +48,7 @@ public class Account extends AbstractObject implements java.io.Serializable {
 	{
 		return new Account(this);
 	}
-	public void setId(String Id) {
+	public void setId(int Id) {
 		this.Id = Id;
 	}
 	

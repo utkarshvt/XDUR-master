@@ -14,13 +14,13 @@ public class TpccItem extends AbstractObject implements java.io.Serializable {
 	public String I_DATA;
 	
 	private Random random = new Random();
-	private String id;
+	private int id;
 
 	public TpccItem() {
 		// no argument constructor for kryo serialization	
 	}
 
-	public TpccItem(String id) {
+	public TpccItem(int id) {
 
 		this.id = id;
 
@@ -31,12 +31,12 @@ public class TpccItem extends AbstractObject implements java.io.Serializable {
 	}
 
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	public TpccItem deepcopy() {
-		TpccItem newObject = new TpccItem("");
+		TpccItem newObject = new TpccItem(0);
 		newObject.id = this.id;
 		newObject.I_IM_ID = this.I_IM_ID;
 		newObject.I_NAME = this.I_NAME;
