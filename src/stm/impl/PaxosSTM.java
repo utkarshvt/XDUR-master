@@ -378,7 +378,7 @@ public class PaxosSTM {
 			long objVersion = entry.version;
 		
 			//System.out.println(" Validate: " + objId + " " + sharedObjectRegistry.getLatestCommittedObject(objId).hashCode() + " ");				
-			if(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() != (objVersion - 1)) {
+			if(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() != (objVersion )) {
 				//System.out.print(" Validate: " + objId + " " + sharedObjectRegistry.getLatestCommittedObject(objId).hashCode() + " ");
 				if(objVersion < (sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()))
 					fallBehindAbort++;
@@ -707,9 +707,9 @@ public class PaxosSTM {
 			ReadSetObject entry = readset.get(i);
 			int objId = entry.objId;
 			/* Incrementing the readset entry's version */
-			entry.version++;
+			//entry.version++;
 			
-			readset.set(i,entry);
+			//readset.set(i,entry);
         		/* May have been already freed in the writeset, thus the check is needed */
 			if(sharedObjectRegistry.getOwner(objId) == Tid)
                         {
