@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import com.esotericsoftware.kryo.Kryo;
 
 import lsr.common.ClientRequest;
@@ -736,168 +737,6 @@ public class Bank extends STMService {
 		return request;
 	}
 
-	private class XBatcher extends Thread {
-	
-		//private final kryo kryo;
-
-                @Override
-                public void run() {
-                       
-                        int MaxSpec = stmInstance.getMaxSpec();
-			final boolean retry = false; 
-                      //  final CyclicBarrier barrier = new CyclicBarrier(MaxSpec + 1);
-			ArrayList<ClientRequest> reqarray = new ArrayList<ClientRequest>(MaxSpec);
-			try 
-			{
-				Thread.sleep(10000);
-			} catch (InterruptedException e1) 
-			{
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			while (true) 
-			{
-                                  
-				int drain = stmInstance.XqueuedrainTo(reqarray,MaxSpec);
-				/* Reset lastXCommit */
-				stmInstance.resetLastXcommit();
-                        	final CyclicBarrier barrier = new CyclicBarrier(drain + 1);
-                          	/*if(drain <= 4 && drain > 0)
-				{
-					System.out.println("drain = " + drain);
-				}*/
-				int r_count = 0;
-                              	int t_index = 0; 
-				while(r_count < drain)
-                                {
-				
-					final ClientRequest request = reqarray.remove(0);
-                                        r_count++;
-                                       	byte[] value = request.getValue();
-                                      	ByteBuffer buffer = ByteBuffer.wrap(value);
-                                     	final RequestId requestid = request.getRequestId();
-
-                                    	byte transactiontype = buffer.get();
-                                    	byte command = buffer.get();
-                                    	final int src = buffer.getInt();
-                                     	final int dst = buffer.getInt();
-					//System.out.println("Transactiontype  = " +  transactiontype  + " Command = " +  command + " Count = " + count + " RequestId = " + requestid.getSeqNumber()); 
-
-                                       	if (transactiontype == READ_ONLY_TX) {
-                                        	if (command == TX_GETBALANCE) {
-                                             		final int batchnum = r_count;
-                                                       	// keep the request stored locally to retry in case version
-                                                      	// match fails - not needed for read tx
-                                                     	// requestidvaluemap.put(requestid, request);
-                                                    	stmInstance.executeReadRequest(new Runnable() {
-                                                       	 	public void run() {
-                                                         		//System.out.println("Getbalance called for  " + batchnum );
-									getBalance(request, src, dst, retry, 0);
-                                                         		try
-									{
-										//System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
-										barrier.await();
-									}	
-									catch(InterruptedException ex)
-									{	
-										System.out.println("getBalance gave barrier exception");
-									}
-									catch(BrokenBarrierException ex)
-									{
-										System.out.println("getBalance gave brokenbarrier exception");
-									}
-								}
-                                                  	});
-                                              	} 
-                                       		else 
-                                          	{
-                                         		System.out.println("wrong rd command " + command
-                                           			+ " transaction type " + transactiontype);
-                                        	}
-                                	}
-                                  	else
-                                  	{
-
-                                		if (command == TX_TRANSFER) 
-						{
-                                        		// keep the request stored locally to retry in case version
-                                            		// match fails
-                                                      	t_index++;
-							final int batchnum = r_count;
-							final int writenum = t_index;
-                                                 	if (retry == false) 
-							{
-                                                 		requestIdValueMap.put(requestid, value);
-                                                         	// assert stmInstance != null;
-                                                          	stmInstance.executeWriteRequest(new Runnable() {
-                                                          		public void run() 	
-									{
-                                                                      		// retry boolean flag is false for first time
-                                                                    		// execution
-                                                                      		transfer(request, src, dst, retry, writenum);
-                                                                         	// system.out.print("&");
-                                                                           	stmInstance.addToCompletedBatch(request, writenum );
-										//stmInstance.onExecuteComplete(request);
-										try
-                                                                                {
-                                                                                		
-											//System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
-                                                                                        	
-											barrier.await();
-										}       
-                                                                                catch(InterruptedException ex)
-                                                                                {
-                                                                                        System.out.println("transfer gave barrier exception");
-                                                                                }
-										catch(BrokenBarrierException ex)
-										{
-											System.out.println("transfer gave broken barrier exception");
-										}
-									}
-                                                 		});
-                                        		}
-                                               		else
-                                                	{
-                                                        	// yet to implement... balaji
-                                                       		// transfer(request, src, dst, retry);
-                                                   	}
-                                       		}
-                                        	else
-                                              	{
-                                                	System.out.println("wrong wr command " + command
-                                                         	+ " transaction type " + transactiontype);
-                                        	}
-                                     	}
-              			}// End inner while
-				/* Wait for threads to join */
-                       		try
-				{
-                               		// System.out.println("XBatcher thread  joined, Threads waiting  = "  + barrier.getNumberWaiting());
-					barrier.await();
-                               		//System.out.println("All the threads joined");
-				}
-                        	catch(InterruptedException ex)
-                            	{
-                          		System.out.println("transfer gave barrier exception");
-                        	}
-                            	catch(BrokenBarrierException ex)
-                          	{
-                             		System.out.println("transfer gave broken barrier exception");
-                         	}
-				/* Sanity check */
-				/*if(checkBalances() == true)
-					System.out.println("Sanity check passed");
-				else
-					System.out.println("Sanity check failed");*/
-				/* Signal the globalCommitManager */
-                        	stmInstance.addBatchToCommitManager();
-
-                                reqarray.clear();
-                        } /* End outer while*/
-                }/* End run */
-        }
-
-
 	/**
 	 * Shuts down the executors if invoked. Here after no transaction can be
 	 * performed.
@@ -943,4 +782,165 @@ public class Bank extends STMService {
 
 	}
 
+	private class XBatcher extends Thread {
+	
+		//private final kryo kryo;
+
+                @Override
+                public void run() 
+		{
+                       
+                        int MaxSpec = stmInstance.getMaxSpec();
+			final boolean retry = false; 
+                      //  final CyclicBarrier barrier = new CyclicBarrier(MaxSpec + 1);
+			ArrayList<ClientRequest> reqarray = new ArrayList<ClientRequest>(MaxSpec);
+			try 
+			{
+				Thread.sleep(10000);
+			} catch (InterruptedException e1) 
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			while (true) 
+			{
+                                  
+				int drain = stmInstance.XqueuedrainTo(reqarray,MaxSpec);
+				/* Reset lastXCommit */
+				stmInstance.resetLastXcommit();
+                        	AtomicInteger Tid = new AtomicInteger(0);
+				final CyclicBarrier barrier = new CyclicBarrier(drain + 1);
+                          	/*if(drain <= 4 && drain > 0)
+				{
+					System.out.println("drain = " + drain);
+				}*/
+				int r_count = 0;
+				while(r_count < drain)
+                                {
+				
+					final ClientRequest request = reqarray.remove(0);
+                                	Runnable task = new ExecThread(request, barrier, Tid);
+                                	stmInstance.executeRequest(task);
+                                	r_count++;
+				}
+				// End inner while
+				/* Wait for threads to join */
+                       		try
+				{
+                               		// System.out.println("XBatcher thread  joined, Threads waiting  = "  + barrier.getNumberWaiting());
+					barrier.await();
+                               		//System.out.println("All the threads joined");
+				}
+                        	catch(InterruptedException ex)
+                            	{
+                          		System.out.println("transfer gave barrier exception");
+                        	}
+                            	catch(BrokenBarrierException ex)
+                          	{
+                             		System.out.println("transfer gave broken barrier exception");
+                         	}
+				/* Sanity check */
+				/*if(checkBalances() == true)
+					System.out.println("Sanity check passed");
+				else
+					System.out.println("Sanity check failed");*/
+				/* Signal the globalCommitManager */
+                        	stmInstance.addBatchToCommitManager();
+
+                                reqarray.clear();
+                        } /* End outer while*/
+                }/* End run */
+        }
+
+
+
+	public class ExecThread implements Runnable
+	{
+		
+		private ClientRequest request;
+        	CyclicBarrier barrier;
+        	AtomicInteger Tid;
+        	public ExecThread( ClientRequest cRequest, CyclicBarrier barrier, AtomicInteger Tid)
+        	{
+                	this.request = cRequest;
+                	this.barrier = barrier;
+                	this.Tid = Tid;
+        	}
+		
+		@Override
+        	public void run()
+        	{
+			boolean retry = false;
+			byte[] value = request.getValue();
+			ByteBuffer buffer = ByteBuffer.wrap(value);
+			final RequestId requestid = request.getRequestId();
+
+                        byte transactiontype = buffer.get();
+               		byte command = buffer.get();
+                 	final int src = buffer.getInt();
+          		final int dst = buffer.getInt();
+			//System.out.println("Transactiontype  = " +  transactiontype  + " Command = " +  command + " Count = " + count + " RequestId = " + requestid.getSeqNumber()); 
+				
+			if (transactiontype == READ_ONLY_TX) 
+			{
+                                        
+				if (command == TX_GETBALANCE) 
+				{
+                                             		
+                                    	// keep the request stored locally to retry in case version
+                              		// match fails - not needed for read tx
+                              		// requestidvaluemap.put(requestid, request);
+                                                    	
+
+                    			//System.out.println("Getbalance called for  " + batchnum );
+					getBalance(request, src, dst, retry, 0);
+                                  	try
+					{
+						//System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+						barrier.await();
+					}	
+					catch(InterruptedException ex)
+					{	
+						System.out.println("getBalance gave barrier exception");
+					}
+					catch(BrokenBarrierException ex)
+					{
+						System.out.println("getBalance gave brokenbarrier exception");
+					}
+				}
+			}
+			else
+    			{
+
+                               	int writenum = Tid.incrementAndGet();
+				if (command == TX_TRANSFER) 
+				{
+                                        // keep the request stored locally to retry in case version
+					// match fails
+                           		requestIdValueMap.put(requestid, value);
+                                       	transfer(request, src, dst, retry, writenum);
+                                   	stmInstance.addToCompletedBatch(request, writenum );
+					//stmInstance.onExecuteComplete(request);
+					try
+                                        {
+                                                                                		
+						//System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                               	barrier.await();
+					}       
+                                       	catch(InterruptedException ex)
+                                        {
+                                         	System.out.println("transfer gave barrier exception");
+                                        }
+					catch(BrokenBarrierException ex)
+					{
+						System.out.println("transfer gave broken barrier exception");
+					}
+				}
+				else
+				{
+					System.out.println("Wrong WR command " + command);
+				}
+			}
+		}
+	}
 }

@@ -1003,12 +1003,8 @@ public class Tpcc extends STMService {
 			}
 		}*/
 		//System.out.println("ClientId = " + request.getRequestId().getClientId() + " Seq = " + request.getRequestId().getSeqNumber());
-		if(request == null)
+		if(request != null)
 		{	//System.out.println("Request is null");
-		
-		}
-		else
-		{
 			requestIdRequestMap.put(request.getRequestId(),request);
 			stmInstance.xqueue(request);
 		}
