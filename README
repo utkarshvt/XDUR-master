@@ -3,3 +3,8 @@ Changes from original code:
 1. Changed the readset to an ArrayList
 2. Changed all the Object IDs to int from String.
 3. The TPCC benchmark's request type identification code is a part of executor threads.
+4. The Bank benchmark is modified to reflect the above change.
+5. The readset objects don't increment the version, as a result:
+	i) The vaidation phase is modified to compare against th object version.
+	ii) This can prevent the readset update cost evrytime a transaction commits.
+
