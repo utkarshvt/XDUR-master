@@ -7,4 +7,4 @@ Changes from original code:
 5. The readset objects don't increment the version, as a result:
 	i) The vaidation phase is modified to compare against th object version.
 	ii) This can prevent the readset update cost evrytime a transaction commits.
-
+6. Vacation benchmark is modified for tests.
