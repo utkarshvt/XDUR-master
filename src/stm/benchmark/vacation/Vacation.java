@@ -33,6 +33,9 @@ public class Vacation {
 	public static String ROOM_PREFIX = "r_";
 	public static String CUSTOMER_PREFIX = "cu_";
 	
+	
+
+
 	int numClients = PARAM_DEFAULT_CLIENTS;
 	int numQueriesPerTransactions = PARAM_DEFAULT_NUMBER;
 	int percentOfQueries = PARAM_DEFAULT_QUERIES;

@@ -541,7 +541,7 @@ public class PaxosImpl implements Paxos {
 				}
 			} catch (Throwable t) {
 				logger.log(Level.SEVERE, "Unexpected exception", t);
-				System.out.println("Exception in packet, Replica is " + p.localId);
+				System.out.println("Exception in packet");
 				t.printStackTrace();
 				System.exit(1);
 			}

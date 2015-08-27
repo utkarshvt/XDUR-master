@@ -1,7 +1,7 @@
 package stm.benchmark.vacation;
 
 import stm.transaction.AbstractObject;
-/*
+
 public class ReservationInfo extends AbstractObject implements Comparable<ReservationInfo>
 {
 	public int id;
@@ -39,9 +39,9 @@ public class ReservationInfo extends AbstractObject implements Comparable<Reserv
 	}
 
 	@Override
-	public String getId() {
+	public int getId() {
 		// TODO Auto-generated method stub
-		return null;
+		return id;
 	}
 
 	public ReservationInfo deepcopy()
@@ -53,4 +53,4 @@ public class ReservationInfo extends AbstractObject implements Comparable<Reserv
 		return newobj;
 	}
 
-}*/
+}
