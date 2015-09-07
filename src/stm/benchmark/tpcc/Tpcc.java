@@ -82,6 +82,7 @@ public class Tpcc extends STMService {
 	private long lastFallBehindAbort = 0;
 	private long lastCompletedCount = 0;
 	private long lastRqAbortCount = 0;
+	private long lastNetReqCount = 0;
 	static long readCount = 0;
 	static long writeCount = 0;
 	static boolean startedSampling = false;
@@ -140,12 +141,13 @@ public class Tpcc extends STMService {
 			long localCompletedCount = 0;
 			long localXAbortCount = 0;
 			long localFallBehindAbort = 0;
+			long localNetReqCount = 0;
 			long totalinRead = 0;
 			long totalinWrite = 0;
 			long totalCount = 0;
 			long submitcount = 0;
 			System.out
-					.println("Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time");
+					.println("Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts Total NetRequests Time");
 			try {
 				Thread.sleep(10000);
 			} catch (InterruptedException e1) {
@@ -172,6 +174,7 @@ public class Tpcc extends STMService {
 				localXAbortCount = XabortedCount;
 				FallBehindAbort = stmInstance.getFallBehindAbortCount();
 				localFallBehindAbort = FallBehindAbort;	
+				localNetReqCount = stmInstance.getReqCount();
 				endRead = System.currentTimeMillis();
 				client.collectLatencyData();
 				totalCount = completedCount + readCount;
@@ -191,7 +194,8 @@ public class Tpcc extends STMService {
 						client.getWriteLatency(),
 						(localAbortCount - lastAbortCount),
 						(localRqAbortCount - lastRqAbortCount),
-						(localFallBehindAbort - lastFallBehindAbort),
+						//(localFallBehindAbort - lastFallBehindAbort),
+						(localNetReqCount - lastNetReqCount),
 						(endRead - startRead));
 
 				lastReadCount = localReadCount;
@@ -201,6 +205,7 @@ public class Tpcc extends STMService {
 				lastCompletedCount = localCompletedCount;
 				lastRqAbortCount = localRqAbortCount;
 				lastFallBehindAbort = localFallBehindAbort;
+				lastNetReqCount = localNetReqCount;
 				count++;
 			}
 			long triggers = stmInstance.getRqAbortTrigCount();

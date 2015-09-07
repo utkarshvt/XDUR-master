@@ -18,6 +18,9 @@ public class NewClient {
 	private Paxos paxos;
 	private ClientNetwork clientNetwork;
 
+	private volatile long requestCount = 0;	
+	private volatile long proposeCount = 0;
+
 	ConcurrentHashMap<RequestId, RequestId> pendingClientRequestMap = new ConcurrentHashMap<RequestId, RequestId>();
 
 	BlockingQueue<Request> queue;
@@ -37,6 +40,7 @@ public class NewClient {
 							requestId.getClientId(), requestId.getSeqNumber(),
 							request.getValue());
 
+					requestCount++;
 					clientNetwork.sendMessage(msg, paxos.getLeaderId());
 
 				} catch (InterruptedException e) {
@@ -64,6 +68,8 @@ public class NewClient {
 					Request request = sends.take();
 
 					if (paxos.isLeader()) {
+						
+						proposeCount++;
 						paxos.propose(request);
 					} else {
 						queue.add(request);
@@ -108,4 +114,19 @@ public class NewClient {
 		this.clientNetwork = clientNetwork;
 	}
 
+
+	public long getMsgCount()
+	{
+		return this.requestCount;
+	}
+	
+	public long getProposeCount()
+	{
+		return this.proposeCount;
+	}
+
+	public long getReqCount()
+	{
+		return (this.proposeCount + this.requestCount);
+	}
 }

@@ -249,4 +249,10 @@ public class GlobalCommitManager {
 			}*/
 		}
 	}
+
+	public long getReqCount()
+	{
+		return client.getReqCount();
+	}
+
 }

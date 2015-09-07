@@ -880,5 +880,8 @@ public class PaxosSTM {
 		return globalCommitManager.getRqAbortTrigCount();
 	}
 
-
+	public long getReqCount()
+	{
+		return globalCommitManager.getReqCount();
+	}
 }	
