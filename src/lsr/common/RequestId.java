@@ -49,9 +49,8 @@ public class RequestId implements Serializable, Comparable<RequestId> {
 
     public int compareTo(RequestId requestId) {
         if (clientId != requestId.clientId) {
-		//throw new IllegalArgumentException("Cannot compare requests from diffrents clients.");
-            return (int)(clientId - requestId.clientId);	
-	}
+            throw new IllegalArgumentException("Cannot compare requests from diffrents clients.");
+        }
         return seqNumber - requestId.seqNumber;
     }
 
@@ -68,7 +67,7 @@ public class RequestId implements Serializable, Comparable<RequestId> {
     }
 
     public int hashCode() {
-        return (int) (clientId ^ ((clientId >>> 32) + 0)) ^ seqNumber;
+        return (int) (clientId ^ (clientId >>> 32)) ^ seqNumber;
     }
 
     public boolean isNop() {

@@ -168,10 +168,10 @@ class Acceptor {
             instance.getAccepts().set(descriptor.localId);
             // The propose message works as an implicit accept from the leader.
             instance.getAccepts().set(sender);
-            /* Switch for network layer */  
-	 // if (instance.isMajority(descriptor.numReplicas)) {
-                paxos.decide(instance.getId());
-           // }
+            if (instance.isMajority(descriptor.numReplicas)) {
+                //System.out.println("Called from acceptor");
+		paxos.decide(instance.getId());
+            }
         }
     }
 

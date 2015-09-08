@@ -51,7 +51,9 @@ class ProposerImpl implements Proposer {
 
     private BatchBuilder batchBuilder;
 
-    /**
+    private volatile long propose_length = 0; 
+
+   /**
      * Initializes new instance of <code>Proposer</code>. If the id of current
      * replica is 0 then state is set to <code>ACTIVE</code>. Otherwise
      * <code>INACTIVE</code> state is set.
@@ -231,7 +233,8 @@ class ProposerImpl implements Proposer {
             switch (ci.getState()) {
                 case DECIDED:
                     localLog.setValue(ci.getView(), ci.getValue());
-                    paxos.decide(ci.getId());
+                    //System.out.println("Called from propser");
+		    paxos.decide(ci.getId());
                     break;
 
                 case KNOWN:
@@ -366,6 +369,12 @@ class ProposerImpl implements Proposer {
 
         proposeRetransmitters.get(instanceId).stop(destination);
     }
+
+    public long getProposalSize()
+    {
+	return this.propose_length;
+    }		
+    
 
     final class BatchBuilder implements Runnable {
         /**
@@ -509,7 +518,9 @@ class ProposerImpl implements Proposer {
         private void send() {
             // Can send proposal
             ByteBuffer bb = ByteBuffer.allocate(batchSize);
-            bb.putInt(batchReqs.size());
+            
+	   //propose_length += batchReqs.size();	
+	   bb.putInt(batchReqs.size());
             for (Request req : batchReqs) {
                 req.writeTo(bb);
             }
@@ -540,8 +551,7 @@ class ProposerImpl implements Proposer {
             // Mark the instance as accepted locally
             instance.getAccepts().set(ProcessDescriptor.getInstance().localId);
             // Do not send propose message to self.
-            // Npt clearing the proposer, switch for test 
-	    destinations.clear(ProcessDescriptor.getInstance().localId);
+            destinations.clear(ProcessDescriptor.getInstance().localId);
 
             proposeRetransmitters.put(instance.getId(),
                     retransmitter.startTransmitting(message, destinations));

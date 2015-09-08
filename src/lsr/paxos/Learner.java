@@ -92,7 +92,8 @@ class Learner {
                                 instance.getId());
                 }
             } else {
-                paxos.decide(instance.getId());
+                //System.out.println("Called from learner");
+		paxos.decide(instance.getId());
             }
         }
     }

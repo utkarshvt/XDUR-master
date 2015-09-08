@@ -160,4 +160,20 @@ public class ClientTcpNetwork extends ClientNetwork implements Runnable {
     }
 
     private final static Logger logger = Logger.getLogger(ClientTcpNetwork.class.getCanonicalName());
+
+    public long getMsgCount()
+    {
+    	long sum = 0;
+	//this.p = ProcessDescriptor.getInstance();
+	//System.out.println("Total replicas = " + this.p.numReplicas);
+	for(int i = 0; i < this.p.numReplicas ; i++)
+	{
+		if(this.connections[i] != null)
+		{
+			//System.out.println("Replica = " + i);
+			sum += this.connections[i].getMsgCount();
+		}
+    	}	
+	return sum;	
+   }
 }

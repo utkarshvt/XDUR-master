@@ -18,8 +18,9 @@ public class NewClient {
 	private Paxos paxos;
 	private ClientNetwork clientNetwork;
 
-	private volatile long requestCount = 0;	
-	private volatile long proposeCount = 0;
+	private volatile long requestCount = 0;					// Counts the number of calls to  clientNetwork.sendMessage	
+        private volatile long proposeCount = 0;					// Counts the number of calls to paxos.propose()	
+
 
 	ConcurrentHashMap<RequestId, RequestId> pendingClientRequestMap = new ConcurrentHashMap<RequestId, RequestId>();
 
@@ -68,7 +69,6 @@ public class NewClient {
 					Request request = sends.take();
 
 					if (paxos.isLeader()) {
-						
 						proposeCount++;
 						paxos.propose(request);
 					} else {
@@ -114,19 +114,40 @@ public class NewClient {
 		this.clientNetwork = clientNetwork;
 	}
 
+	// Return the number of calls to clientNetwork.sendMessage
+    	public long getMsgCount()
+        {
+                return this.requestCount;
+        }
 
-	public long getMsgCount()
-	{
-		return this.requestCount;
+	// Return the number of calls to paxos.propose()
+        public long getProposeCount()
+        {
+                return this.proposeCount;
+        }
+
+	// Return the sum of calls to clientNetwork.sendMessage and paxos.propose()
+        public long getReqCount()
+        {
+                return (this.proposeCount + this.requestCount);
+        	//return this.requestCount;
+                //return this.proposeCount;
 	}
+
 	
-	public long getProposeCount()
+	public long getTcpMsgCount()
 	{
-		return this.proposeCount;
+		return clientNetwork.getMsgCount();
 	}
-
-	public long getReqCount()
+	/*
+	public long getPropMsgCount()
 	{
-		return (this.proposeCount + this.requestCount);
+		return paxos.getPropMsgCount();
+	}
+	*/
+
+	public long getProposalLength()
+	{
+		return paxos.getProposalSize();
 	}
 }

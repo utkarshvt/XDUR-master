@@ -249,10 +249,30 @@ public class GlobalCommitManager {
 			}*/
 		}
 	}
-
+ 	
+	// Return the number of requests submitted to network 
 	public long getReqCount()
-	{
+        {
+                //return 0;
 		return client.getReqCount();
+        }
+
+	public long getTcpMsgCount()
+	{
+		//return 0;
+		return client.getTcpMsgCount();
 	}
 
+	public long getPropMsgCount()
+	{
+		return 0;
+		//return client.getPropMsgCount();
+	}
+
+
+	public long getProposalLength()
+        {
+                //return 0;
+                return client.getProposalLength();
+        }
 }

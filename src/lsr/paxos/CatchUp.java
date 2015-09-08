@@ -555,7 +555,8 @@ public class CatchUp {
             oldInstance.setValue(newInstance.getView(), newInstance.getValue());
 
             // TODO: JK decide may trigger startCatchup() again
-            paxos.decide(oldInstance.getId());
+ 	    //System.out.println("Called from catchup");           	 
+	    paxos.decide(oldInstance.getId());
         }
     }
 

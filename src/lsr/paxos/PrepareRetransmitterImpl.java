@@ -35,8 +35,6 @@ class PrepareRetransmitterImpl implements PrepareRetransmitter {
     }
 
     public boolean isMajority() {
-        /* Temporary switch for paxos decision making */
-	return prepared.cardinality() >= ProcessDescriptor.getInstance().numReplicas / 2;
-    
-	}
+        return prepared.cardinality() > ProcessDescriptor.getInstance().numReplicas / 2;
+    }
 }

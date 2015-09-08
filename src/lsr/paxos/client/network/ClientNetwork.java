@@ -48,6 +48,7 @@ public abstract class ClientNetwork {
 
     public abstract void start();
 
+    public abstract long getMsgCount();
     /**
      * Adds a new message listener for a certain type of message or all messages
      * ( see {@link MessageType}). The listener cannot be added twice for the
@@ -134,4 +135,5 @@ public abstract class ClientNetwork {
     }
 
     private final static Logger logger = Logger.getLogger(ClientNetwork.class.getCanonicalName());
+
 }

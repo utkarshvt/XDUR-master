@@ -18,6 +18,7 @@ import lsr.common.Configuration;
 import lsr.common.ProcessDescriptor;
 import lsr.common.Reply;
 import lsr.common.Request;
+import lsr.common.RequestId;
 import lsr.common.SingleThreadDispatcher;
 import lsr.paxos.Batcher;
 import lsr.paxos.BatcherImpl;
@@ -342,10 +343,13 @@ public class Replica {
         /** Called by the paxos box when a new request is ordered. */
         public void onRequestOrdered(int instance, Deque<Request> values) {
         	
-        	for(Request request: values) {
-            	service.notifyCommitManager(request);
+        	//System.out.println("Batch Start");
+		for(Request request: values) {
+            	RequestId rId = request.getRequestId();
+		//System.out.println("ClientId = " + rId.getClientId() + " SeqNumber = " + rId.getSeqNumber());
+		service.notifyCommitManager(request);
         	}
-        	
+        	//System.out.println("Batch End");
         }
     }
 

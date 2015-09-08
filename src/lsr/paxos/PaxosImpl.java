@@ -7,6 +7,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.concurrent.ConcurrentHashMap;
+
+
 
 import lsr.common.Dispatcher;
 import lsr.common.Dispatcher.Priority;
@@ -90,8 +93,12 @@ public class PaxosImpl implements Paxos {
     private final SnapshotMaintainer snapshotMaintainer;
     private final Batcher batcher;
     
-	private final ClientNetwork clientNetwork;
+    private final ClientNetwork clientNetwork;
+	
 
+    /* Hashmap created for Cionsensus Instance Id and consensus request value */
+   private final ConcurrentHashMap<Integer, ConsensusInstance> CompletedInstanceMap = new ConcurrentHashMap<Integer, ConsensusInstance>();
+   CommitThread committer = new CommitThread();
     /**
      * Initializes new instance of {@link PaxosImpl}.
      * 
@@ -108,7 +115,9 @@ public class PaxosImpl implements Paxos {
         this.storage = storage;
         ProcessDescriptor p = ProcessDescriptor.getInstance();
 
-        // Used to collect statistics. If the benchmarkRun==false, these
+        
+
+	// Used to collect statistics. If the benchmarkRun==false, these
         // method initialize an empty implementation of ReplicaStats and
         // ThreadTimes,
         // which effectively disables collection of statistics
@@ -189,6 +198,7 @@ public class PaxosImpl implements Paxos {
         catchUp.start();
         failureDetector.start();
         dispatcher.start();
+    	committer.start();
     }
 
     /**
@@ -257,16 +267,17 @@ public class PaxosImpl implements Paxos {
      * @param instanceId - the id of instance that has been decided
      */
     public void decide(int instanceId) {
-        assert dispatcher.amIInDispatcher() : "Incorrect thread: " + Thread.currentThread();
-
+        
+	assert dispatcher.amIInDispatcher() : "Incorrect thread: " + Thread.currentThread();
         ConsensusInstance ci = storage.getLog().getInstance(instanceId);
-        assert ci != null : "Deciding on instance already removed from logs";
+	
+	assert ci != null : "Deciding on instance already removed from logs";
         assert ci.getState() != LogEntryState.DECIDED : "Deciding on already decided instance";
 
         ci.setDecided();
 
         if (logger.isLoggable(Level.INFO)) {
-            logger.info("Decided " + instanceId + ", Log Size: " + storage.getLog().size());
+            	logger.info("Decided " + instanceId + ", Log Size: " + storage.getLog().size());
         }
 
         // Benchmark. If the configuration property benchmarkRun is false,
@@ -283,17 +294,24 @@ public class PaxosImpl implements Paxos {
             // not leader. Should we start the catchup?
             if (ci.getId() > storage.getFirstUncommitted() +
                              ProcessDescriptor.getInstance().windowSize) {
-                // The last uncommitted value was already decided, since
-                // the decision just reached is outside the ordering window
-                // So start catchup.
-                catchUp.startCatchup();
-            }
+                	// The last uncommitted value was already decided, since
+                	// the decision just reached is outside the ordering window
+                	// So start catchup.
+                	catchUp.startCatchup();
+            	}
         }
 
-        Deque<Request> requests = batcher.unpack(ci.getValue());
-        decideCallback.onRequestOrdered(instanceId, requests);
-//		System.out.print("*");
-    }
+	/* Put the request in the Completed instance hashmap 
+	 * for the committer thread to execute the commit phase in the sequence of instanceId*/
+
+	CompletedInstanceMap.put(instanceId,ci);	
+        	
+
+	//System.out.println("Instance is = " + instanceId);
+	//Deque<Request> requests = batcher.unpack(ci.getValue());
+        //decideCallback.onRequestOrdered(instanceId, requests);
+	//System.out.print("*");
+  }
 
     /**
      * Increases the view of this process to specified value. The new view has
@@ -374,8 +392,7 @@ public class PaxosImpl implements Paxos {
                 // advance
 
                 // Ignore any message with a lower view.
-                //System.out.println("Message received");
-		if (msg.getView() < storage.getView()) {
+                if (msg.getView() < storage.getView()) {
                     return;
                 }
 
@@ -497,7 +514,13 @@ public class PaxosImpl implements Paxos {
         return proposer;
     }
     
-    /**
+    
+    public long getProposalSize()
+    {
+	return proposer.getProposalSize();
+    }		
+
+	/**
 	 * Receives messages from clients and pushes them on the proposer queue for
 	 * processing.
 	 */
@@ -548,6 +571,114 @@ public class PaxosImpl implements Paxos {
 		}
 	}
 
+	
+	private class CommitThread extends Thread
+	{
+		
+		private int lastInstanceId ;
+		public CommitThread()
+        	{
+                	this.lastInstanceId = -1;
+        	}
+
+		@Override
+        	public void run()
+		{
+        
+			//assert dispatcher.amIInDispatcher() : "Incorrect thread: " + Thread.currentThread();
+			
+			while(true)
+			{
+				
+				int instanceId = lastInstanceId + 1;
+				
+				//System.out.println("Checking for Instance  = " + instanceId);
+				if(!(CompletedInstanceMap.containsKey(instanceId)))
+				{
+						try
+                				{
+                        				Thread.sleep(1);
+
+                				}
+                				catch (InterruptedException e1)
+                				{
+                        				// TODO Auto-generated catch block
+                        				e1.printStackTrace();
+                				}
+					continue;
+				}
+				
+				ConsensusInstance ci = CompletedInstanceMap.get(instanceId);
+					
+				//assert ci != null : "Deciding on instance already removed from logs";
+        			//assert ci.getState() != LogEntryState.DECIDED : "Deciding on already decided instance";
+				
+				/*if(lastInstanceId >= 0)
+				{
+					ConsensusInstance prev_ci = CompletedInstanceMap.get(lastInstanceId);
+					if(prev_ci.getState() != LogEntryState.DECIDED)
+					{
+						continue;
+					}
+				}*/
+				/*if(instanceId > 0)
+				{
+		 			ConsensusInstance prevInstance = storage.getLog().getInstance(instanceId - 1);
+		 			if(prevInstance != null)
+		 			{
+						if(prevInstance.getState() != LogEntryState.DECIDED)
+						{
+							/* Previous instance has not been decided, return */
+				/*			return;
+						}
+					}
+				}
+	
+		
+
+        			ConsensusInstance ci = storage.getLog().getInstance(instanceId);*/
+					
+				/*
+        			ci.setDecided();
+
+        			if (logger.isLoggable(Level.INFO)) {
+            				logger.info("Decided " + instanceId + ", Log Size: " + storage.getLog().size());
+        			}
+
+        			// Benchmark. If the configuration property benchmarkRun is false,
+        			// these are empty calls.
+        			ReplicaStats.getInstance().consensusEnd(instanceId);
+        			ThreadTimes.getInstance().startInstance(instanceId + 1);
+	
+        			storage.updateFirstUncommitted();
+		
+        			if (isLeader()) {
+            				proposer.stopPropose(instanceId);
+            				proposer.ballotFinished();
+        			} else {
+            				// not leader. Should we start the catchup?
+            				if (ci.getId() > storage.getFirstUncommitted() +
+                             			ProcessDescriptor.getInstance().windowSize) {
+                				// The last uncommitted value was already decided, since
+                				// the decision just reached is outside the ordering window
+                				// So start catchup.
+                				catchUp.startCatchup();
+            				}
+        			}	
+				*/
+        			//System.out.println("Decided Instance is = " + instanceId);
+					
+
+				Deque<Request> requests = batcher.unpack(ci.getValue());
+        			decideCallback.onRequestOrdered(instanceId, requests);
+				CompletedInstanceMap.remove(instanceId);
+				//System.out.print("*");
+    				lastInstanceId++;
+  			}
+		}
+	}
+
 
     private final static Logger logger = Logger.getLogger(PaxosImpl.class.getCanonicalName());
+
 }

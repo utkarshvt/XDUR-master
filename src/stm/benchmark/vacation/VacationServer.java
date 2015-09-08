@@ -8,7 +8,7 @@ import stm.impl.SharedObjectRegistry;
 import lsr.common.Configuration;
 import lsr.paxos.ReplicationException;
 import lsr.paxos.replica.Replica;
-
+/*
 public class VacationServer {
 	
 	public static void main(String[] args) throws IOException, InterruptedException,
@@ -57,6 +57,6 @@ public class VacationServer {
 	private static void usage() {
 		System.out.println("Invalid arguments. Usage:\n"
 		                   + "   java lsr.paxos.Replica <replicaID> <numQueries/Tx 10>" +
-		                   "<Number Of Relations> <%Queries 90> <%Reserve 80> <#Read-threads> <clientCount> <#reqs> <MaxSpec>");
+		                   "<Number Of Relations> <%Queries 90> <%Reserve 80> <#Read-threads> <clientCount> <#reqs>");
 	}
-}
+}*/

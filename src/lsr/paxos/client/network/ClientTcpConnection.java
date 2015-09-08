@@ -46,7 +46,10 @@ public class ClientTcpConnection {
 
     private final ArrayBlockingQueue<byte[]> sendQueue = new ArrayBlockingQueue<byte[]>(128);
 
-    /**
+    /* To monitor network performance */
+    private volatile long MsgCount = 0;
+
+	/**
      * Creates a new TCP connection to specified replica.
      * 
      * @param network - related <code>TcpNetwork</code>.
@@ -91,7 +94,8 @@ public class ClientTcpConnection {
                     }
 
                     try {
-                        output.write(msg);
+                        MsgCount++;
+			output.write(msg);
                         output.flush();
                         //System.out.print(";");
                     } catch (IOException e) {
@@ -298,4 +302,10 @@ public class ClientTcpConnection {
     }
 
     private final static Logger logger = Logger.getLogger(ClientTcpConnection.class.getCanonicalName());
+
+
+    public long getMsgCount()
+    {
+	return this.MsgCount;
+    }
 }

@@ -47,8 +47,7 @@ public class UdpNetwork extends Network {
         }
 
         int localPort = p.getLocalProcess().getReplicaPort();
-        /* Disabled by Utkarsh */
-	System.out.println("Opening port:" + localPort);
+        System.out.println("Opening port:" + localPort);
         logger.info("Opening port: " + localPort);
         datagramSocket = new DatagramSocket(localPort);
 

@@ -88,4 +88,7 @@ public interface Paxos {
     void onSnapshotMade(Snapshot snapshot);
 
     Network getNetwork();
+
+    long getProposalSize();
+
 }

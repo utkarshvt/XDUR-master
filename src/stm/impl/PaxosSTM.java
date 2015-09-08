@@ -380,8 +380,8 @@ public class PaxosSTM {
 			//System.out.println(" Validate: " + objId + " " + sharedObjectRegistry.getLatestCommittedObject(objId).hashCode() + " ");				
 			if(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() != (objVersion )) {
 				//System.out.print(" Validate: " + objId + " " + sharedObjectRegistry.getLatestCommittedObject(objId).hashCode() + " ");
-				if(objVersion < (sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()))
-					fallBehindAbort++;
+				//if(objVersion < (sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()))
+					//fallBehindAbort++;
 				//System.out.println("Failed for comparing version " + objId + " " + 
 				//						sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() + " != " + 
 				//							(objVersion - 1));
@@ -447,7 +447,7 @@ public class PaxosSTM {
 			}*/
 			sharedObjectRegistry.updateCompletedObject(objId, null);
 		//	System.out.println("After setting to null, ownerof object " + objId + " is " + sharedObjectRegistry.getOwner(objId));
-			abortedObjectMap.put(objId,new AbortEntry(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()));
+			//abortedObjectMap.put(objId,new AbortEntry(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()));
 		}
 	
 		return true;
@@ -487,12 +487,13 @@ public class PaxosSTM {
 					
                         		abortedObjectMap.remove(objId);
 				}
-                		else
+                		/*
+				else
 				{	 System.out.println("Not Removing with version " + objId + " " +
                                                                         	sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() + " != " + 
                                                                                 	abortedObjectMap.get(objId).getVersion());
 				}		
-			
+				*/
 			}
 		}
 	}
@@ -881,7 +882,23 @@ public class PaxosSTM {
 	}
 
 	public long getReqCount()
-	{
+        {
 		return globalCommitManager.getReqCount();
+        }
+
+	public long getTcpMsgCount()
+	{
+		return globalCommitManager.getTcpMsgCount();
+	}
+ 	
+	public long getPropMsgCount()
+        {
+                return globalCommitManager.getPropMsgCount();
+        }
+
+
+	public long getProposalLength()
+	{
+		return  globalCommitManager.getProposalLength();
 	}
 }	

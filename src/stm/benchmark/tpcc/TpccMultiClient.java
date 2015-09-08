@@ -87,7 +87,7 @@ public class TpccMultiClient {
 
 							synchronized (requestId) {
 								tpcc.executeReadRequest(request);
-								requestId.wait(3000);
+								requestId.wait();
 							}
 
 							this.readLatency += System.currentTimeMillis()
@@ -105,7 +105,7 @@ public class TpccMultiClient {
 
 							synchronized (requestId) {
 								tpcc.executeRequest(request, false);
-								requestId.wait(3000);
+								requestId.wait();
 							}
 
 							this.writeLatency += System.currentTimeMillis()
@@ -125,7 +125,7 @@ public class TpccMultiClient {
 
 							synchronized (requestId) {
 								tpcc.executeReadRequest(request);
-								requestId.wait(3000);
+								requestId.wait();
 							}
 							this.readLatency += System.currentTimeMillis()
 									- start;
@@ -142,8 +142,8 @@ public class TpccMultiClient {
 
 							synchronized (requestId) {
 								tpcc.executeRequest(request, false);
-								submit++;
-								requestId.wait(3000);
+								//submit++;
+								requestId.wait();
 							}
 							this.writeLatency += System.currentTimeMillis()
 									- start;

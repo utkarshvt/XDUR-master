@@ -4,10 +4,10 @@ import java.util.LinkedList;
 import java.util.Iterator;
 
 import stm.transaction.AbstractObject;
-
+/*
 public class Customer extends AbstractObject
 {
-	int objId;
+	String objId;
 	public int id;
 	public LinkedList<ReservationInfo> reservationInfoList;
 	boolean isNull = false;
@@ -17,7 +17,7 @@ public class Customer extends AbstractObject
 	}
 
 	
-	public Customer(int objId, int id)
+	public Customer(String objId, int id)
 	{
 		this.objId = objId;
 		this.id = id;
@@ -70,9 +70,9 @@ public class Customer extends AbstractObject
 	}
 
 	@Override
-	public int getId() {
+	public String getId() {
 		// TODO Auto-generated method stub
-		return id;
+		return null;
 	}
 	public Customer deepcopy()
 	{
@@ -92,4 +92,4 @@ public class Customer extends AbstractObject
 
 
 }
-
+*/
