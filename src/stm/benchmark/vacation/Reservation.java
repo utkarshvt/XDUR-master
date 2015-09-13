@@ -1,10 +1,10 @@
 package stm.benchmark.vacation;
 
 import stm.transaction.AbstractObject;
-/*
+
 public class Reservation extends AbstractObject implements Comparable<Reservation>
 {
-	public String objId;
+	public int objId;
 	public int id;
 	public int numUsed;
 	public int numFree;
@@ -16,7 +16,7 @@ public class Reservation extends AbstractObject implements Comparable<Reservatio
 	{
 	}
 	
-	public Reservation(String objId, int id, int numTotal, int price)
+	public Reservation(int objId, int id, int numTotal, int price)
 	{
 		this.objId = objId;
 		this.id = id;
@@ -103,7 +103,7 @@ public class Reservation extends AbstractObject implements Comparable<Reservatio
 	}
 
 	@Override
-	public String getId() {
+	public int getId() {
 		// TODO Auto-generated method stub
 		return objId;
 	}
@@ -121,4 +121,4 @@ public class Reservation extends AbstractObject implements Comparable<Reservatio
 	
 		return newObj;
 	}
-}*/
+}
