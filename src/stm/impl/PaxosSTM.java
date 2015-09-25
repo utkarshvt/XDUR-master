@@ -46,6 +46,8 @@ public class PaxosSTM {
 	private long XAbortCount = 0;
 	private volatile long fallBehindAbort = 0;
 		
+	private int replicaCnt;						/* Total count of replicas */
+
 	private WriteTransactionExecutor writeExecutor;
 	private ReadTransactionExecutor readExecutor;
 	private WriteTransactionExecutor commitExecutor;
@@ -59,6 +61,7 @@ public class PaxosSTM {
 	/* Map to gather aborted Object Ids */
 	private ConcurrentHashMap<Integer, AbortEntry> abortedObjectMap;
 	
+	private List <ConcurrentHashMap<Integer, Long>> conflictObjMapList; 
 	private BlockingQueue<ClientRequest> XQueue = new LinkedBlockingQueue<ClientRequest>();
 	
 	/* Request batch which will be inserted on globalCommitManager's rQueue, needed to keep speculative txs in order*/
@@ -82,8 +85,9 @@ public class PaxosSTM {
 	public final String OBJECT_READ_MODE = "r";
 	public final String OBJECT_WRITE_MODE = "w";
 	
-	public PaxosSTM(SharedObjectRegistry sharedObjectRegistry, int readThreadCount, int MaxSpec) {
+	public PaxosSTM(SharedObjectRegistry sharedObjectRegistry, int readThreadCount, int MaxSpec, int numReplica) {
 		this.sharedObjectRegistry = sharedObjectRegistry;
+		replicaCnt = numReplica;
 		
 		TransactionId = new AtomicInteger(1);
 		lastXCommit = new AtomicInteger();
@@ -97,7 +101,11 @@ public class PaxosSTM {
 		requestSnapshotMap = new ConcurrentHashMap<RequestId, Integer>();
 		abortedObjectMap = new  ConcurrentHashMap<Integer, AbortEntry>();
 		BatchSize = 0;
-		}
+		
+		/* Initialize the conflcting object maps */
+		conflictObjMapList = new ArrayList <ConcurrentHashMap<Integer,Long>>(replicaCnt);
+		
+	}
 	
 	public void init(STMService service, int clientCount) {
 		this.service = service;
@@ -350,6 +358,10 @@ public class PaxosSTM {
 		requestIdContextMap.get(requestId).setResult(result);
 	}
 	
+	public void setCrossAccessContextFlag(RequestId requestId){
+		 requestIdContextMap.get(requestId).setFlag();
+	}
+
 	public byte[] getResultFromContext(RequestId requestId) {
 		return requestIdContextMap.get(requestId).getResult();
 	}
@@ -394,6 +406,17 @@ public class PaxosSTM {
 	}
 
 	
+	/* Check if the replica's hashmap is empty */
+	public boolean ConflictMapisEmpty(int replicaId)
+	{
+		if(conflictObjMapList.get(replicaId).isEmpty())
+			return true;
+		else
+			return false;
+	}
+
+	/*Update Conflict Object Map */
+
 	public void printRWSets(TransactionContext context)
 	{
 		 ArrayList<ReadSetObject> readset = context.getReadSet();
@@ -416,7 +439,7 @@ public class PaxosSTM {
 	}
 	/* Required to abort dummy transactions, will be removed later */
 	
-	public boolean emptyWriteSet(TransactionContext context, boolean rqueue)
+	public boolean emptyWriteSet(TransactionContext context, boolean rqueue, int replicaId)
 	{
 		//System.out.println("Going to empty the writeset");
 		
@@ -446,6 +469,7 @@ public class PaxosSTM {
 				 sharedObjectRegistry.updateCompletedObject(objId, null);
 			}*/
 			sharedObjectRegistry.updateCompletedObject(objId, null);
+			conflictObjMapList.get(replicaId).put(objId, sharedObjectRegistry.getLatestCommittedObject(objId).getVersion());
 		//	System.out.println("After setting to null, ownerof object " + objId + " is " + sharedObjectRegistry.getOwner(objId));
 			//abortedObjectMap.put(objId,new AbortEntry(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()));
 		}
@@ -529,6 +553,33 @@ public class PaxosSTM {
 		return commit;
 	}
 	
+	/* Update the conflict object map, this will be outside critical path */ 
+	public void updateConflictMap(TransactionContext context, int replicaId)
+	{
+		if(conflictObjMapList.get(replicaId).isEmpty())
+			return;
+
+		Map<Integer, AbstractObject> writeset = context.getWriteSet();
+
+                // Update all shared objects with shadowcopy object values and versions 
+                // Acquire lock over all objects - for multithreaded STM
+		
+                for(Map.Entry<Integer, AbstractObject> entry: writeset.entrySet()) {
+                        // update all objects
+                	int objId = entry.getKey();
+			if(conflictObjMapList.get(replicaId).contains(objId))
+			{
+				long version = conflictObjMapList.get(replicaId).get(objId);
+				if( version == (sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() - 1))
+				{
+					conflictObjMapList.get(replicaId).remove(objId);
+				}
+			}
+		}
+	
+	}
+	
+
 	public TransactionContext getTransactionContext(RequestId requestId) {
 		return requestIdContextMap.get(requestId);
 	}

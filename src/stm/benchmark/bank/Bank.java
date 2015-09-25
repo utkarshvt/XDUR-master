@@ -539,7 +539,7 @@ public class Bank extends STMService {
 			// break;
 		} else {
 			// Isn;t it needed to remove the previous content
-			stmInstance.emptyWriteSet(txContext,false);
+			stmInstance.emptyWriteSet(txContext,false, 0);
 			stmInstance.removeTransactionContext(requestId);
 			executeRequest(cRequest, false);
 			abortedCount++;
