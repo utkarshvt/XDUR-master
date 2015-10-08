@@ -69,6 +69,10 @@ public class PaxosSTM {
 	//private ConcurrentLinkedQueue<ClientRequest> XQueue = new ConcurrentLinkedQueue<ClientRequest>();
 	private int BatchSize;		
 
+	/* Thread to keep checking the conflict object map */
+	ConflictMapChecker CheckerTh = new ConflictMapChecker();
+
+
 	Kryo kryo = new Kryo();
 	KryoFactory factory = new KryoFactory() {
 	 public Kryo create () {
@@ -104,7 +108,7 @@ public class PaxosSTM {
 		
 		/* Initialize the conflcting object maps */
 		conflictObjMapList = new ArrayList <ConcurrentHashMap<Integer,Long>>(replicaCnt);
-		
+		CheckerTh.start();
 	}
 	
 	public void init(STMService service, int clientCount) {
@@ -952,4 +956,45 @@ public class PaxosSTM {
 	{
 		return  globalCommitManager.getProposalLength();
 	}
+
+
+	private class ConflictMapChecker extends Thread {
+	
+		@Override
+		public void run() {
+			
+			while(true)
+			{
+				for(int i = 0; i < replicaCnt; i++)
+                        	{
+                                	if(!ConflictMapisEmpty(i))
+					{
+						
+						for(Map.Entry<Integer,Long> entry : conflictObjMapList.get(i).entrySet())
+						{
+						
+							int objId = entry.getKey();
+							long version = entry.getValue();
+							if(version < sharedObjectRegistry.getLatestCommittedObject(objId).getVersion())
+								conflictObjMapList.get(i).remove(objId);
+						}
+					}
+				}
+				try
+                		{
+                        		Thread.sleep(10000);
+
+                		}
+                		catch (InterruptedException e1)
+                		{
+                        		// TODO Auto-generated catch block
+                        		e1.printStackTrace();
+                		}
+
+			}
+		}
+	} 			
+			
+
+			
 }	
