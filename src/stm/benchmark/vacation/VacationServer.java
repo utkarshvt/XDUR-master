@@ -13,7 +13,7 @@ public class VacationServer {
 	
 	public static void main(String[] args) throws IOException, InterruptedException,
     ExecutionException, ReplicationException {
-		if (args.length < 9 || args.length > 9) {
+		if (args.length < 9 || args.length > 10) {
 		    usage();
 		    System.exit(1);
 		}
@@ -26,6 +26,7 @@ public class VacationServer {
 		int clientCount = Integer.parseInt(args[6]);
 		int requests = Integer.parseInt(args[7]);
 		int MaxSpec = Integer.parseInt(args[8]);
+		int replicaCnt = Integer.parseInt(args[9]);
         
 		Configuration process = new Configuration();
 		
@@ -33,7 +34,7 @@ public class VacationServer {
 
 		SharedObjectRegistry sharedObjectRegistry = new SharedObjectRegistry(numRelations, MaxSpec);
 				
-		PaxosSTM stmInstance = new PaxosSTM(sharedObjectRegistry, numReadThreads, MaxSpec); //manager, client);
+		PaxosSTM stmInstance = new PaxosSTM(sharedObjectRegistry, numReadThreads, MaxSpec, replicaCnt); //manager, client);
 	    //sharedObjectRegistry.init(stmInstance);
 	    manager.init(sharedObjectRegistry, stmInstance, numRelations);
 		Replica replica = new Replica(process, replicaId, manager); //, stmInstance, client, tpccProfice);

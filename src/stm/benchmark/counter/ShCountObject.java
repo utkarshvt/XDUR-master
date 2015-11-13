@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import stm.transaction.AbstractObject;
-
+/*
 public class ShCountObject extends AbstractObject implements java.io.Serializable {
 
         private int id;
@@ -31,4 +31,4 @@ public class ShCountObject extends AbstractObject implements java.io.Serializabl
         }
 
 }
-
+*/

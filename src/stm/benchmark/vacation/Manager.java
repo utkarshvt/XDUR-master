@@ -1,5 +1,6 @@
 package stm.benchmark.vacation;
 
+import java.util.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -67,7 +68,7 @@ public class Manager extends STMService {
 
 	/* Hashmap created for Id and client request, may remove the Id Value hashmap entirely */
         private final ConcurrentHashMap<RequestId, ClientRequest> requestIdRequestMap = new ConcurrentHashMap<RequestId, ClientRequest>();
-
+	private List <ConcurrentHashMap<Integer,Long>> conflictObjMapList;
 
 	private volatile long committedCount = 0;
 	private volatile long abortedCount = 0;
@@ -247,6 +248,14 @@ public class Manager extends STMService {
 	public void initRequests() {
 		this.localId = ProcessDescriptor.getInstance().localId;
 		this.numReplicas = ProcessDescriptor.getInstance().numReplicas;
+		      
+		conflictObjMapList = new ArrayList <ConcurrentHashMap<Integer,Long>>(this.numReplicas);
+		for (int index = 0; index < this.numReplicas; index++)
+                {
+                        conflictObjMapList.add(index, new ConcurrentHashMap<Integer,Long>());
+                }
+
+
 	}
 
 	public void initClient(VacationMultiClient client) {
@@ -260,6 +269,21 @@ public class Manager extends STMService {
 	public void setReplica(Replica replica) {
 		this.replica = replica;
 	}
+
+	public boolean ConflictMapisEmpty(int replicaId)
+        {
+                if(conflictObjMapList.get(replicaId).isEmpty())
+                        return true;
+                else
+                        return false;
+        }
+
+        public Long ConflictMapGet(int objId, int repId)
+        {
+                Long version = conflictObjMapList.get(repId).get(objId);
+                return version;
+        }
+
 
 	boolean addReservation(int reservationId, // TransactionalRBTree<Integer,
 													// Reservation> table,
@@ -1170,6 +1194,50 @@ public class Manager extends STMService {
 		});
 	}
 
+	
+
+	public boolean addToContentionMap(int repId, int objId)
+        {
+
+                if(!checkRange(objId, repId))
+                        return false;
+                else
+                {
+                        conflictObjMapList.get(repId).put(objId, sharedObjectRegistry.getLatestCommittedObject(objId).getVersion());
+                        return true;
+                }
+        }
+
+        public boolean removeFromContentionMap(int repId, int objId)
+        {
+                /* No need to check for range, since an outside object will not be there */
+                conflictObjMapList.get(repId).remove(objId);
+		return true;
+        }
+
+        public boolean checkRange(int objId, int repId)
+        {
+
+
+                /*int minItem = this.accessibleObjects * repId;
+                int maxItem = (this.accessibleObjects * (repId + 1);
+
+                if((objId >= minItem) && (objId < maxItem))
+                        return true;
+
+                int minW = this.accessibleWarehouses * (repId);
+                int maxW = (this.accessibleWarehouses * (repId + 1));
+
+                int minWh = warehouseStart + minW * warehouseOffset;
+                int maxWh = warehouseStart + maxW * warehouseOffset;
+
+                if((objId >= minWh) && (objId < maxWh))
+                        return true;
+		*/
+                return true;
+
+        }
+
 	/*************************************************************************
 	 * 
 	 * @param requestId
@@ -1196,7 +1264,7 @@ public class Manager extends STMService {
 		// Validate read set first
 //		System.out.println("*onCommit");
 		if (stmInstance.validateReadset(txContext)) {
-			stmInstance.updateSharedObject(txContext);
+			stmInstance.updateSharedObject(txContext, 0, false);
 			committedCount++;
 		} else {
 			abortedCount++;

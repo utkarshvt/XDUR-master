@@ -14,7 +14,7 @@ public class TpccServer {
 
 	public static void main(String[] args) throws IOException,
 			InterruptedException, ExecutionException, ReplicationException {
-		if (args.length < 9 || args.length > 9) {
+		if (args.length < 9 || args.length > 10) {
 			usage();
 			System.exit(1);
 		}
@@ -27,6 +27,7 @@ public class TpccServer {
 		int clientCount = Integer.parseInt(args[6]);
 		int requests = Integer.parseInt(args[7]);
 		int MaxSpec = Integer.parseInt(args[8]);
+		int numReplica = Integer.parseInt(args[9]);
 		Configuration process = new Configuration();
 		Tpcc tpcc = new Tpcc();
 		
@@ -34,9 +35,9 @@ public class TpccServer {
 				itemCount, MaxSpec);
 		
 		PaxosSTM stmInstance = new PaxosSTM(sharedObjectRegistry,
-				readThreadCount, MaxSpec);
+				readThreadCount, MaxSpec, numReplica);
 		tpcc.TpccInit(sharedObjectRegistry, stmInstance, warehouseCount,
-				itemCount, MaxSpec);
+				itemCount, MaxSpec, numReplica);
 
 		Replica replica = new Replica(process, localId, tpcc);
 		tpcc.setReplica(replica);

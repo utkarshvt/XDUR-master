@@ -21,7 +21,7 @@ public class BankServer {
 
 	public static void main(String[] args) throws IOException,
 			InterruptedException, ExecutionException, ReplicationException {
-		if (args.length < 8 || args.length > 8) {
+		if (args.length < 8 || args.length > 9) {
 			usage();
 			System.exit(1);
 		}
@@ -33,7 +33,8 @@ public class BankServer {
 		int requests = Integer.parseInt(args[5]);
 		int MaxSpec = Integer.parseInt(args[6]);
 		int sharepercent = Integer.parseInt(args[7]);
-	
+		int replicaCnt = Integer.parseInt(args[8]);
+			
 		Configuration process = new Configuration();
 		Bank bank = new Bank();
 		
@@ -41,7 +42,7 @@ public class BankServer {
 				objectsCount, MaxSpec);
 
 		PaxosSTM stmInstance = new PaxosSTM(sharedObjectRegistry,
-				readThreadCount, MaxSpec);
+				readThreadCount, MaxSpec, replicaCnt);
 		bank.init(objectsCount, sharedObjectRegistry, stmInstance, MaxSpec, sharepercent);		
 
 		Replica replica = new Replica(process, localId, bank);

@@ -8,3 +8,5 @@ Changes from original code:
 	i) The vaidation phase is modified to compare against th object version.
 	ii) This can prevent the readset update cost evrytime a transaction commits.
 6. Vacation benchmark is modified for tests.
+7. Commit optimization added.
+8. Remote access pattern does not use hotspot.

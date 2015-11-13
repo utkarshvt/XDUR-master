@@ -1,5 +1,6 @@
 package stm.benchmark.bank;
 
+import java.util.*;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
@@ -78,6 +79,12 @@ public class Bank extends STMService {
         private volatile long FallBehindAbort = 0;
         private volatile long randomabortCount = 0;
 	
+
+	private volatile long skipCount = 0;
+	private volatile long readValCount = 0;
+	private volatile boolean skipFlag = false;
+
+
 	/**
 	 * Store request content w.r.t. requestId. It is useful when tansaction is
 	 * aborted and retried.
@@ -85,6 +92,8 @@ public class Bank extends STMService {
 	private final Map<RequestId, byte[]> requestIdValueMap = new HashMap<RequestId, byte[]>();
 	/* Hashmap created for Id and client request, may remove the Id Value hashmap entirely */
         private final ConcurrentHashMap<RequestId, ClientRequest> requestIdRequestMap = new ConcurrentHashMap<RequestId, ClientRequest>();
+
+	private List <ConcurrentHashMap<Integer,Long>> conflictObjMapList;
 
 	private int localId;
 	private int min;
@@ -127,6 +136,7 @@ public class Bank extends STMService {
                         long totalinWrite = 0;
                         long totalCount = 0;
                         long submitcount = 0;
+			
 
 			System.out
                                         .println("Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time");
@@ -245,6 +255,13 @@ public class Bank extends STMService {
 		this.localId = ProcessDescriptor.getInstance().localId;
 		this.numReplicas = ProcessDescriptor.getInstance().numReplicas;
 
+		conflictObjMapList = new ArrayList <ConcurrentHashMap<Integer,Long>>(this.numReplicas);
+		for (int index = 0; index < this.numReplicas; index++)
+                {
+                        conflictObjMapList.add(index, new ConcurrentHashMap<Integer,Long>());
+                }
+
+
 		if(this.sharedpercent > 0)
 		{
 			/* If sharedpercent is greater than zero some warehouses at the start are shared */
@@ -263,6 +280,55 @@ public class Bank extends STMService {
 		// System.out.println("O:" + this.accessibleObjects + "M:" + this.max +
 		// "m:" + this.min);
 	}
+
+	public boolean addToContentionMap(int repId, int objId)
+        {
+
+                if(!checkRange(objId, repId))
+                        return false;
+                else
+                {
+                        conflictObjMapList.get(repId).put(objId, sharedObjectRegistry.getLatestCommittedObject(objId).getVersion());
+                        return true;
+                }
+        	
+	}
+
+        public boolean removeFromContentionMap(int repId, int objId)
+        {
+                /* No need to check for range, since an outside object will not be there */
+                conflictObjMapList.get(repId).remove(objId);
+		return true;
+        }
+
+        public boolean checkRange(int objId, int repId)
+        {
+
+
+                int minAccount = this.accessibleObjects * repId;
+                int maxAccount = (this.accessibleObjects * (repId + 1));
+
+                if((objId >= minAccount) && (objId < maxAccount))
+                        return true;
+
+                return false;
+
+        }
+	
+	public boolean ConflictMapisEmpty(int replicaId)
+        {
+                if(conflictObjMapList.get(replicaId).isEmpty())
+                        return true;
+                else
+                        return false;
+        }
+
+        public Long ConflictMapGet(int objId, int repId)
+        {
+                Long version = conflictObjMapList.get(repId).get(objId);
+                return version;
+        }
+
 
 	/*************************************************************************
 	 * This is the speculative execution implementation for getBalance method.
@@ -373,7 +439,7 @@ public class Bank extends STMService {
 	
 		byte[] result = ByteBuffer.allocate(4).putInt(success).array();
 		stmInstance.storeResultToContext(requestId, result);
-}
+	}
 
 	/**
 	 * Used by createRequest when a request is created by client and src and dst
@@ -520,7 +586,7 @@ public class Bank extends STMService {
 	 * @return
 	 * 
 	 ************************************************************************/
-	public void onCommit(RequestId requestId, TransactionContext txContext) {
+	public void onCommit(RequestId requestId, TransactionContext ctx) {
 
 		// Validate the transaction object versions or Decided InstanceIds and
 		// sequence numbers
@@ -532,31 +598,77 @@ public class Bank extends STMService {
 		// RequestId requestId = cRequest.getRequestId();
 
 		// Validate read set first
-		ClientRequest cRequest = requestIdRequestMap.get(requestId);
-		if (stmInstance.validateReadset(txContext)) {
-			stmInstance.updateSharedObject(txContext);
-			committedCount++;
-			// break;
-		} else {
-			// Isn;t it needed to remove the previous content
-			stmInstance.emptyWriteSet(txContext,false);
-			stmInstance.removeTransactionContext(requestId);
-			executeRequest(cRequest, false);
-			abortedCount++;
-			return;
-			// stmInstance.updateSharedObject(requestId);
-		}
-		// remove the entries for this transaction LTM (TransactionContext,
-		// lastModifier)
-		// object = stmInstance.getResultFromContext(requestId);
-		// sendReply(stmInstance.getResultFromContext(requestId), cRequest);
-		client.replyToClient(requestId);
+		
+		long rId = requestId.getClientId() % (long)numReplicas;
+                int replicaId = (int)rId;
 
+
+		if(!skipFlag)
+		{
+			if((ConflictMapisEmpty(replicaId)) && (ctx.crossflag == false))
+			{
+                       		skipCount++;
+                      		stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
+                		committedCount++;
+			}
+			else
+			{
+				readValCount++;
+                              	if (stmInstance.validateReadset(ctx))
+                              	{
+                                 	stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
+                                  	committedCount++;
+                                	if(committedCount - skipCount > 150000)
+                                 	{
+                                         	skipFlag = true;
+
+                                 	}
+
+
+                     		}
+				else
+				{
+					                              
+					stmInstance.emptyWriteSet(ctx,false,replicaId, skipFlag);
+                                        stmInstance.removeTransactionContext(requestId);
+                                        byte[] value = requestIdValueMap.get(requestId);
+                                        if(value != null)
+                                        {
+                                                ClientRequest cRequest = new ClientRequest(requestId , value);
+                                                executeRequest(cRequest, false);
+                                        }
+                                        abortedCount++;
+                                        return;
+                                }
+                        }
+                }
+		else
+		{
+
+			if (stmInstance.validateReadset(ctx)) {
+				stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
+				committedCount++;
+			} else {
+				stmInstance.emptyWriteSet(ctx,false, replicaId, skipFlag);
+				stmInstance.removeTransactionContext(requestId);
+				byte[] value = requestIdValueMap.get(requestId);
+                           	if(value != null)
+                           	{
+                              		ClientRequest cRequest = new ClientRequest(requestId , value);
+					executeRequest(cRequest, false);
+                        	}
+				abortedCount++;
+				return;
+			}
+		}	
+		client.replyToClient(requestId);
 		stmInstance.removeTransactionContext(requestId);
 		requestIdValueMap.remove(requestId);
-		requestIdRequestMap.remove(requestId,cRequest);
 
 	}
+
+
+
 
 	/**
 	 * Read the command name from the client request byte array.
@@ -697,12 +809,12 @@ public class Bank extends STMService {
 	 * @param readOnly
 	 *            : boolean specifying what should be the transaction type
 	 */
-	public byte[] createRequest(boolean readonly) {
+	public byte[] createRequest(boolean readonly, boolean remote) {
 		byte[] request = new byte[DEFAULT_LENGTH];
 
 		/* Random object added to introduce contention */
-		Random randomGenerator = new Random();
-                int randomInt = randomGenerator.nextInt(100);
+		//Random randomGenerator = new Random();
+                //int randomInt = randomGenerator.nextInt(100);
 
 		ByteBuffer buffer = ByteBuffer.wrap(request);
 		if (readonly) {
@@ -714,11 +826,11 @@ public class Bank extends STMService {
 		}
 		
 		int src, dst;
-		if(randomInt < this.sharedpercent)
+		if((remote) && (!readonly))
 		{
 			/* Select a src and dst from shared acconts */	
-			src = random.nextInt(max - min);
-			dst = random.nextInt(max - min);
+			src = random.nextInt(numAccounts);
+			dst = random.nextInt(numAccounts);
 
 		}
 		else

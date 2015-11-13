@@ -20,6 +20,10 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.lang.Integer ;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+
 
 import stm.transaction.AbstractObject;
 import stm.transaction.TransactionContext;
@@ -45,7 +49,11 @@ public class PaxosSTM {
 	/* Added for stats */
 	private long XAbortCount = 0;
 	private volatile long fallBehindAbort = 0;
-		
+	private volatile long removeCnt = 0;	
+	private volatile long insertCount = 0;
+	private int replicaCnt;						/* Total count of replicas */
+
+	//private final ReentrantLock[] replicaLocks;
 	private WriteTransactionExecutor writeExecutor;
 	private ReadTransactionExecutor readExecutor;
 	private WriteTransactionExecutor commitExecutor;
@@ -59,10 +67,18 @@ public class PaxosSTM {
 	/* Map to gather aborted Object Ids */
 	private ConcurrentHashMap<Integer, AbortEntry> abortedObjectMap;
 	
+	//private ArrayList <Integer,HashMap<Integer, Long>> conflictObjMapList = new ConcurrentSkipListMap<Integer,HashMap<Integer, Long>>();
+	//private List <ConcurrentHashMap<Integer,Long>> conflictObjMapList;
+	
 	private BlockingQueue<ClientRequest> XQueue = new LinkedBlockingQueue<ClientRequest>();
 	
 	/* Request batch which will be inserted on globalCommitManager's rQueue, needed to keep speculative txs in order*/
 	private ConcurrentSkipListMap<Integer, ClientRequest> CompletedReqBatch = new ConcurrentSkipListMap<Integer, ClientRequest>(); 
+	
+ 	/* Thread to keep checking the conflict object map */
+        ConflictMapChecker [] checkerTh;
+
+
 	//private ConcurrentLinkedQueue<ClientRequest> XQueue = new ConcurrentLinkedQueue<ClientRequest>();
 	private int BatchSize;		
 
@@ -82,8 +98,9 @@ public class PaxosSTM {
 	public final String OBJECT_READ_MODE = "r";
 	public final String OBJECT_WRITE_MODE = "w";
 	
-	public PaxosSTM(SharedObjectRegistry sharedObjectRegistry, int readThreadCount, int MaxSpec) {
+	public PaxosSTM(SharedObjectRegistry sharedObjectRegistry, int readThreadCount, int MaxSpec, int numReplica) {
 		this.sharedObjectRegistry = sharedObjectRegistry;
+		replicaCnt = numReplica;
 		
 		TransactionId = new AtomicInteger(1);
 		lastXCommit = new AtomicInteger();
@@ -97,7 +114,29 @@ public class PaxosSTM {
 		requestSnapshotMap = new ConcurrentHashMap<RequestId, Integer>();
 		abortedObjectMap = new  ConcurrentHashMap<Integer, AbortEntry>();
 		BatchSize = 0;
-		}
+		
+		checkerTh = new ConflictMapChecker[numReplica];
+		/* Initialize the conflcting object maps */
+		//conflictObjMapList = new ArrayList <ConcurrentHashMap<Integer,Long>>(replicaCnt);
+		//replicaLocks = new ReentrantLock[replicaCnt];
+
+		/*for (int index = 0; index < replicaCnt; index++)
+		{
+			
+			//conflictObjMapList.put(index, new HashMap<Integer,Long>());
+			///conflictObjMapList.add(index, new ConcurrentHashMap<Integer,Long>());
+			//checkerTh[index] =  new ConflictMapChecker(index);	
+			//replicaLocks[index] = new ReentrantLock();
+		}	
+		/*
+		for (int index = 0; index < replicaCnt; index++)
+		{
+			
+			checkerTh[index].start();
+		}*/	
+		//CheckerTh.start();
+
+	}
 	
 	public void init(STMService service, int clientCount) {
 		this.service = service;
@@ -350,6 +389,14 @@ public class PaxosSTM {
 		requestIdContextMap.get(requestId).setResult(result);
 	}
 	
+	public void setCrossAccessContextFlag(RequestId requestId){
+		 requestIdContextMap.get(requestId).setFlag();
+	}
+
+	public void setRemoteId(RequestId requestId, int remoteId)
+	{
+		requestIdContextMap.get(requestId).remoteId = remoteId;
+	}
 	public byte[] getResultFromContext(RequestId requestId) {
 		return requestIdContextMap.get(requestId).getResult();
 	}
@@ -394,6 +441,22 @@ public class PaxosSTM {
 	}
 
 	
+	/* Check if the replica's hashmap is empty */
+	/*public boolean ConflictMapisEmpty(int replicaId)
+	{
+		if(conflictObjMapList.get(replicaId).isEmpty())
+			return true;
+		else
+			return false;
+	}
+
+	/* Get the replica's hashmap size */
+/*	public int ConflictMapSize(int replicaId)
+	{
+		return(conflictObjMapList.get(replicaId).size());
+	}
+	/*Update Conflict Object Map */
+
 	public void printRWSets(TransactionContext context)
 	{
 		 ArrayList<ReadSetObject> readset = context.getReadSet();
@@ -416,14 +479,17 @@ public class PaxosSTM {
 	}
 	/* Required to abort dummy transactions, will be removed later */
 	
-	public boolean emptyWriteSet(TransactionContext context, boolean rqueue)
+	public boolean emptyWriteSet(TransactionContext context, boolean rqueue, int replicaId, boolean skipFlag)
 	{
 		//System.out.println("Going to empty the writeset");
 		
 		if(context == null) {
 			return false;
 		}
-
+		//replicaLocks[replicaId].lock();
+		//HashMap<Integer, Long> tempMap =  conflictObjMapList.get(replicaId);
+		//HashMap tempMap =  conflictObjMapList.get(replicaId);
+		//System.out.println("ReplicaId = " + replicaId + "Size before addition = " + tempMap.size());
 		Map<Integer, AbstractObject> writeset = context.getWriteSet();
 		for(Map.Entry<Integer, AbstractObject> entry: writeset.entrySet()) {
 			int objId = entry.getKey();
@@ -446,10 +512,22 @@ public class PaxosSTM {
 				 sharedObjectRegistry.updateCompletedObject(objId, null);
 			}*/
 			sharedObjectRegistry.updateCompletedObject(objId, null);
-		//	System.out.println("After setting to null, ownerof object " + objId + " is " + sharedObjectRegistry.getOwner(objId));
+			if(skipFlag == false)
+			{
+				//conflictObjMapList.get(replicaId).put(objId, sharedObjectRegistry.getLatestCommittedObject(objId).getVersion());
+				service.addToContentionMap(objId, replicaId);
+				insertCount++;
+			}	
+			//tempMap.put(objId, sharedObjectRegistry.getLatestCommittedObject(objId).getVersion());
+	//	System.out.println("After setting to null, ownerof object " + objId + " is " + sharedObjectRegistry.getOwner(objId));
 			//abortedObjectMap.put(objId,new AbortEntry(sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()));
 		}
 	
+		//conflictObjMapList.add(replicaId,tempMap);
+		//System.out.println("ReplicaId = " + replicaId + "Size after addition = " +  tempMap.size());
+		//System.out.println("ReplicaId = " + replicaId + "Array Map Size after addition = " +  conflictObjMapList.get(replicaId).size());
+		
+		//replicaLocks[replicaId].unlock();
 		return true;
 	}
 		
@@ -511,7 +589,7 @@ public class PaxosSTM {
 		}
 
 	}
-	public boolean updateSharedObject(TransactionContext context) {
+	public boolean updateSharedObject(TransactionContext context, int repId, boolean skipFlag) {
 		boolean commit = true;
 		
 		Map<Integer, AbstractObject> writeset = context.getWriteSet();
@@ -522,13 +600,65 @@ public class PaxosSTM {
 
 		for(Map.Entry<Integer, AbstractObject> entry: writeset.entrySet()) {
 			// update all objects
-			sharedObjectRegistry.updateObject(entry.getKey(), entry.getValue(), timeStamp);
+			int objId = entry.getKey();
+			
+			//sharedObjectRegistry.updateObject(entry.getKey(), entry.getValue(), timeStamp);
+			sharedObjectRegistry.updateObject(objId, entry.getValue(), timeStamp);
+			
+		
+			if(skipFlag == false)
+			{
+				
+				if(context.crossflag == true)
+				{		
+					service.addToContentionMap(objId,context.remoteId);
+				}
+					
+				if(!service.ConflictMapisEmpty(repId))
+				{
+					Long version = service.ConflictMapGet(objId,repId);
+					if((version != null) && (version < sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()))
+					{		
+						service.removeFromContentionMap(objId, repId);
+						removeCnt++;
+					}
+			
+				}
+			}
+			
 		}
 		// release lock over all objects - for multithreaded STM
 
 		return commit;
 	}
 	
+	/* Update the conflict object map, this will be outside critical path */ 
+	/*public void updateConflictMap(TransactionContext context, int replicaId)
+	{
+		if(conflictObjMapList.get(replicaId).isEmpty())
+			return;
+
+		Map<Integer, AbstractObject> writeset = context.getWriteSet();
+
+                // Update all shared objects with shadowcopy object values and versions 
+                // Acquire lock over all objects - for multithreaded STM
+		
+                for(Map.Entry<Integer, AbstractObject> entry: writeset.entrySet()) {
+                        // update all objects
+                	int objId = entry.getKey();
+			if(conflictObjMapList.get(replicaId).containsKey(objId))
+			{
+				long version = conflictObjMapList.get(replicaId).get(objId);
+				if( version == (sharedObjectRegistry.getLatestCommittedObject(objId).getVersion() - 1))
+				{
+					conflictObjMapList.get(replicaId).remove(objId);
+				}
+			}
+		}
+	
+	}*/
+	
+
 	public TransactionContext getTransactionContext(RequestId requestId) {
 		return requestIdContextMap.get(requestId);
 	}
@@ -901,4 +1031,91 @@ public class PaxosSTM {
 	{
 		return  globalCommitManager.getProposalLength();
 	}
-}	
+
+	public long getRemCount()
+	{
+		/*for(int i = 0; i < replicaCnt; i++)
+		{
+			this.removeCnt += checkerTh[i].remCount;
+		}*/
+		return this.removeCnt;
+	}
+
+	public long getInsertCount()
+	{
+		return this.insertCount;
+	}
+       private class ConflictMapChecker extends Thread {
+
+                int repId; 
+		public int remCount = 0;
+		public ConflictMapChecker(int index)
+		{
+			repId = index;
+		}
+		@Override
+                public void run() {
+				
+			int i = repId;
+			/*
+                        while(true)
+                        {	
+                               
+				if(!ConflictMapisEmpty(i))
+                                {
+
+                                	replicaLocks[i].lock();
+					//HashMap<Integer, Long> tempMap =  conflictObjMapList.get(i);
+					HashMap<Integer, Long> tempMap =  conflictObjMapList.get(i);
+					//System.out.println("ReplicaId = " + i + "Size before removal = " +  tempMap.size());
+					for(Map.Entry<Integer,Long> entry : tempMap.entrySet())
+                                        {
+
+                                   		int objId = entry.getKey();
+                                             	long version = entry.getValue();
+                                          	if(version < sharedObjectRegistry.getLatestCommittedObject(objId).getVersion())
+                                             	{	
+							//boolean value = conflictObjMapList.get(i).remove(objId, version);
+							Integer key = new Integer(objId);
+							Long mapver = new Long(version);
+							Long value = tempMap.remove(key);
+							if(value != null)
+								remCount++;
+							
+							//System.out.println("Removing Object objId = " + objId + " Replica is " + i);
+						}
+                                        }
+                              		conflictObjMapList.add(i,tempMap);
+					//System.out.println("ReplicaId = " + i + "Size after removal = " +  tempMap.size());
+					//System.out.println("ReplicaId = " + i + "Array Map Size after removal = " +  conflictObjMapList.get(i).size());
+					replicaLocks[i].unlock();
+				}
+                               	else
+				{
+                                	/*try
+                                	{
+                                        	Thread.sleep(1);
+						
+                                	}
+                                	catch (InterruptedException e1)
+                                	{
+                                        	// TODO Auto-generated catch block
+                                        	e1.printStackTrace();
+                                	}*/
+				/*}
+                                try
+                                {
+                                	Thread.sleep(1);
+					
+                                }
+                                catch (InterruptedException e1)
+                                {
+                                        // TODO Auto-generated catch block
+                                        e1.printStackTrace();
+                                }
+			}
+                */        
+                }
+        }
+
+}

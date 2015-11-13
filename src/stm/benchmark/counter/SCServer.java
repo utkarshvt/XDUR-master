@@ -10,7 +10,7 @@ import lsr.common.Configuration;
 import lsr.paxos.ReplicationException;
 import lsr.paxos.replica.Replica;
 
-
+/*
 public class SCServer {
 
         public static void main(String[] args) throws IOException,
@@ -35,7 +35,7 @@ public class SCServer {
                                 1, MaxSpec);
 
                 PaxosSTM stmInstance = new PaxosSTM(sharedObjectRegistry,
-                                1, MaxSpec);
+                                1, MaxSpec, 0);
                 sc.SCInit(sharedObjectRegistry, stmInstance, MaxSpec);
 
                 Replica replica = new Replica(process, localId, sc);
@@ -64,4 +64,4 @@ public class SCServer {
                                                 + "<readPercentage> <tpccProfile> <clientCount> <#reqs>");
         }
 }
-
+*/

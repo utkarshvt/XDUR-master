@@ -36,6 +36,7 @@ public class TpccMultiClient {
 
 		private ArrayBlockingQueue<Integer> sends;
 		private final Random random;
+		private final Random remote;
 
 		public int readCount = 0;
 		public int writeCount = 0;
@@ -44,9 +45,10 @@ public class TpccMultiClient {
 
 		public ClientThread(long clientId) throws IOException {
 			this.clientId = clientId;
-
+			//System.out.println("ClientID = " + clientId);
 			sends = new ArrayBlockingQueue<Integer>(128);
 			this.random = new Random();
+			this.remote = new Random();
 		}
 
 		public void resetCounts() {
@@ -77,6 +79,7 @@ public class TpccMultiClient {
 						if (percent < 8) {
 							reqBytes = tpcc.createRequest(readOnly,
 									tpccProfile, percent);
+							
 							request = new ClientRequest(nextRequestId(),
 									reqBytes);
 							requestId = request.getRequestId();
@@ -132,8 +135,13 @@ public class TpccMultiClient {
 						} else {
 							reqBytes = tpcc.createRequest(readWrite,
 									tpccProfile, percent);
+							int cross = remote.nextInt(100);
+							boolean flag = false;
+							if(cross < 0)
+								flag = true;
+									
 							request = new ClientRequest(nextRequestId(),
-									reqBytes);
+									reqBytes, flag);
 							requestId = request.getRequestId();
 							pendingClientRequestMap.put(
 									requestId.getClientId(), requestId);

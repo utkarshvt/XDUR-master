@@ -27,7 +27,7 @@ public final class ClientRequest implements Serializable {
 
     private final RequestId requestId;
     private final byte[] value;
-    
+    private final boolean cross_access; 
 
     /**
      * Creates new <code>Request</code>.
@@ -40,8 +40,16 @@ public final class ClientRequest implements Serializable {
         assert value != null : "Value cannot be null";
         this.requestId = requestId;
         this.value = value;
+	this.cross_access = false;
     }
 
+    public ClientRequest(RequestId requestId, byte[] value, boolean flag) {
+        assert requestId != null : "Request ID cannot be null";
+        assert value != null : "Value cannot be null";
+        this.requestId = requestId;
+        this.value = value;
+	this.cross_access = flag;
+    }
     /**
      * Reads a request from the given <code>ByteBuffer</code> and advances the
      * position on the buffer.
@@ -88,6 +96,14 @@ public final class ClientRequest implements Serializable {
         return value;
     }
 
+    /**
+     * Returns the cross_Flag value held  by this request.
+     * 
+     * @return the value of this request
+     */
+    public boolean getCrossFlag() {
+        return cross_access;
+    }
     /**
      * The size of the request after serialization in bytes.
      * 

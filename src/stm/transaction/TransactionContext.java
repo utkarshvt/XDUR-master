@@ -8,8 +8,8 @@ public class TransactionContext {
 	WriteSet writeset = new WriteSet();
 	private ReadSet readset = new ReadSet();
 	private byte[] result;
-
-	
+	public boolean crossflag = false;				/* Set if the transaction acesses an object which does not belong its private set of warehouses */
+	public int remoteId = 0;					/* Contains the id of the replica whose objects it is accessing, valid only if the crossflag is set */	
 	/* Default constructor for deserialization, Tid = 0 */
 	public TransactionContext()
 	{
@@ -67,5 +67,8 @@ public class TransactionContext {
                 writeset.remove(ObjId);
         }
 
-
+	public void setFlag()
+	{
+		this.crossflag = true;
+	}
 }

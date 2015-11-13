@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import java.util.*;
 import java.util.ArrayList;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.BrokenBarrierException;
@@ -41,6 +42,8 @@ public class Tpcc extends STMService {
 	public final int DEFAULT_LENGTH = 6;
 
 	private Random random = new Random();
+
+	private Random remote = new Random();
 
 	SharedObjectRegistry sharedObjectRegistry;
 	PaxosSTM stmInstance;
@@ -84,8 +87,11 @@ public class Tpcc extends STMService {
 	private long lastRqAbortCount = 0;
 	private long lastNetReqCount = 0;		// To monitor the network requests sent
 	private long lastTcpReqCount = 0;
-	private long lastPropReqCount = 0;
-	
+	private long lastRemCount = 0;
+	private long lastSkipCount = 0;
+	private long lastReadValCount = 0;
+	private long lastInsertCount = 0;
+
 	static long readCount = 0;
 	static long writeCount = 0;
 	static boolean startedSampling = false;
@@ -98,10 +104,22 @@ public class Tpcc extends STMService {
 	private volatile long XabortedCount = 0;
 	private volatile long FallBehindAbort = 0; 
 	private volatile long randomabortCount = 0;
+	private volatile long insertCount = 0;
+	
+
+	private volatile long cross_count = 0;
+	private volatile long local_count = 0;
+	private volatile long skipCount = 0;
+	private volatile long readValCount = 0;
+	private volatile boolean skipFlag = false;
 	private final Map<RequestId, byte[]> requestIdValueMap = new HashMap<RequestId, byte[]>();
 	
 	/* Hashmap created for Id and client request, may remove the Id Value hashmap entirely */
 	private final ConcurrentHashMap<RequestId, ClientRequest> requestIdRequestMap = new ConcurrentHashMap<RequestId, ClientRequest>();
+
+	//private ArrayList <Integer,HashMap<Integer, Long>> conflictObjMapList = new ConcurrentSkipListMap<Integer,HashMap<Integer, Long>>();
+	private List <ConcurrentHashMap<Integer,Long>> conflictObjMapList;
+
 
 	private int localId;
 	private int min;
@@ -115,7 +133,7 @@ public class Tpcc extends STMService {
 	private int maxW;
 	private int accessibleWarehouses;
 	private int MaxSpec;
-	
+	private int replicaCnt;	
 	/* Temporary Varibles to inject abort in the commit thread */
 
         private int abortLimit;         /* Max number of aborts */
@@ -146,13 +164,18 @@ public class Tpcc extends STMService {
 			long localFallBehindAbort = 0;
 			long localNetReqCount = 0;
 			long localTcpReqCount = 0;
-			long localPropReqCount = 0;
+			long localRemCount = 0;
 			long totalinRead = 0;
 			long totalinWrite = 0;
 			long totalCount = 0;
 			long submitcount = 0;
+			long localSkipCount = 0;
+                        long localReadValCount = 0;
+			long localInsertCount = 0;
+			
+
 			System.out
-					.println("Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts NetRequests TCPConnectionRequests   ProposerCnt Time");
+					.println("Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts XAborts SkipRequests  ReadSetValidationCount  InsertCount  RemovalCount  Time");
 			try {
 				Thread.sleep(10000);
 			} catch (InterruptedException e1) {
@@ -177,10 +200,14 @@ public class Tpcc extends STMService {
 				localRqAbortCount = stmInstance.getRqAbortCount();
 				XabortedCount =   stmInstance.getXabortCount(); 
 				localXAbortCount = XabortedCount;
-				FallBehindAbort = stmInstance.getFallBehindAbortCount();
-				localFallBehindAbort = FallBehindAbort;	
-				localNetReqCount = stmInstance.getReqCount();
-				localTcpReqCount = stmInstance.getTcpMsgCount();
+				localSkipCount = skipCount;
+				localReadValCount = readValCount;
+				localInsertCount = stmInstance.getInsertCount();
+				localRemCount = stmInstance.getRemCount();
+				//FallBehindAbort = stmInstance.getFallBehindAbortCount();
+				//localFallBehindAbort = FallBehindAbort;	
+				//localNetReqCount = stmInstance.getReqCount();
+				//localTcpReqCount = stmInstance.getTcpMsgCount();
 				//localPropReqCount = stmInstance.getProposalLength();
 				endRead = System.currentTimeMillis();
 				client.collectLatencyData();
@@ -191,7 +218,7 @@ public class Tpcc extends STMService {
 			        //double temp = client.getWriteLatency();	
 				//System.out.println("Submitted = " + submitcount + " Completed write count = " + completedCount + " Completed Read Count = " + readCount + " Total = " + totalCount);
 				//System.out.println("Readcount = " + client.getReadCount() + " WriteCount = " + client.getWriteCount());
-				System.out.format("%5d  %6d  %6d  %5.3f  %6d  %6d  %6d	%6d  %6d  %6d\n",
+				System.out.format("%5d  %6d  %6d  %5.3f  %6d  %6d  %6d	 %6d   %6d    %6d  %6d\n",
 						((localReadCount - lastReadCount) * 1000)
 								/ (endRead - startRead),
 						((localWriteCount - lastWriteCount) * 1000)
@@ -201,15 +228,22 @@ public class Tpcc extends STMService {
 						client.getWriteLatency(),
 						((localAbortCount - lastAbortCount) * 1000)
 								/ (endRead - startRead),
-						(localRqAbortCount - lastRqAbortCount),
+						((localXAbortCount - lastXAbortCount) * 1000)
+								/ (endRead - startRead),
+						///(localRqAbortCount - lastRqAbortCount),
 						//(localFallBehindAbort - lastFallBehindAbort),
-						((localNetReqCount - lastNetReqCount) * 1000)
+						((localSkipCount - lastSkipCount) * 1000)
 								/ (endRead - startRead),
-						((localTcpReqCount - lastTcpReqCount) * 1000)
+						((localReadValCount - lastReadValCount) * 1000)
 								/ (endRead - startRead),
-						((localPropReqCount - lastPropReqCount) * 1000)
+						((localInsertCount - lastInsertCount) * 1000)
 								/ (endRead - startRead),
+						((localRemCount - lastRemCount) * 1000)
+								/ (endRead - startRead),
+						//((localPropReqCount - lastPropReqCount) * 1000)
+						//		/ (endRead - startRead),
 						(endRead - startRead));
+//				System.out.println("LocalRemcount = " + localRemCount + " LastRemCount = " + lastRemCount);
 						
 				lastReadCount = localReadCount;
 				lastWriteCount = localWriteCount;
@@ -218,28 +252,40 @@ public class Tpcc extends STMService {
 				lastCompletedCount = localCompletedCount;
 				lastRqAbortCount = localRqAbortCount;
 				lastFallBehindAbort = localFallBehindAbort;
-				lastNetReqCount = localNetReqCount;
-				lastTcpReqCount = localTcpReqCount;
-				lastPropReqCount = localPropReqCount;
+				lastSkipCount = localSkipCount;
+                                lastReadValCount = localReadValCount;
+				lastInsertCount = localInsertCount;
+				//lastNetReqCount = localNetReqCount;
+				lastRemCount = localRemCount;
+				//lastPropReqCount = localPropReqCount;
 				count++;
+			
 			}
 			long triggers = stmInstance.getRqAbortTrigCount();
 			//double ratio = (double)(localRqAbortCount / triggers);
 			System.out.println("Submitted = " + submitcount + " Completed write count = " + completedCount + " Completed Read Count = " + readCount + " Total = " + totalCount);
 			System.out.println("Comitted = " + committedCount + " Total Aborts = " + abortedCount + " Total RqAborts = " + localRqAbortCount + " Total Xaborts = " + localXAbortCount + " Total Commit Aborts = " + (abortedCount + localRqAbortCount) + " Random aborts = " +  randomabortCount + " FallBehindAborts = " + FallBehindAbort + " AbortTriggers = " + triggers) ;				  			  //System.out.format("RqAborts per abort = %4.4f\n",(double)(localRqAbortCount / triggers));
+			//System.out.println("Local request count = " + local_count + " Cross request count = " + cross_count);
 			try {
                                 Thread.sleep(10000);
                         } catch (InterruptedException e1) {
                                 // TODO Auto-generated catch block
                                 e1.printStackTrace();
                         }
-
+			
+			/*for(int i = 0; i < replicaCnt; i++)
+			{
+				if(ConflictMapisEmpty(i))
+					System.out.println("Replica "+ i + " map is empty");
+				else
+					System.out.println("Replicai " + i + " map is not empty" + " SIze is = " + ConflictMapSize(i));
+			}*/
 			System.exit(0);
 		}
 	}
 
 	public void TpccInit(SharedObjectRegistry sharedObjectRegistry,
-			PaxosSTM stminstance, int warehouseCount, int itemCount, int MaxSpec) {
+			PaxosSTM stminstance, int warehouseCount, int itemCount, int MaxSpec, int replicaCnt) {
 
 		this.NUM_ITEMS = itemCount;
 		this.NUM_WAREHOUSES = warehouseCount;
@@ -249,6 +295,7 @@ public class Tpcc extends STMService {
 
 		this.abortLimit = 0;
 		this.MaxSpec = MaxSpec;
+		this.replicaCnt = replicaCnt;
 		/*
 		for (int id = 0; id < NUM_ITEMS; id++) {
 			final String myid = "i_" + Integer.toString(id);
@@ -391,10 +438,17 @@ public class Tpcc extends STMService {
 		this.numReplicas = ProcessDescriptor.getInstance().numReplicas;
 
 	
+		conflictObjMapList = new ArrayList <ConcurrentHashMap<Integer,Long>>(this.numReplicas);	
+		for (int index = 0; index < this.numReplicas; index++)
+                {
+			conflictObjMapList.add(index, new ConcurrentHashMap<Integer,Long>());
+                }
+
 		this.accessibleObjects = this.NUM_ITEMS / numReplicas;
 		this.min = this.accessibleObjects * this.localId;
 		this.max = (this.accessibleObjects * (this.localId + 1));
 		this.item_count = (max - min)/MaxSpec;
+		
 		
 		/* Have a shared portion of items */
 		/*this.accessibleObjects = this.NUM_ITEMS / (numReplicas + 1);
@@ -420,7 +474,7 @@ public class Tpcc extends STMService {
 		/*this.accessibleWarehouses = this.NUM_WAREHOUSES / (numReplicas + 1);
 		this.minW = this.accessibleWarehouses * this.localId + 1;
 		this.maxW = (this.accessibleWarehouses * (this.localId + 2));
-		this.w_count = (maxW - minW)/MaxSpec;
+		this.w_count = (maxW - minW)/MaxSpec;*/
 		/*
 		this.accessibleWarehouses = this.NUM_WAREHOUSES;
 		this.minW = this.accessibleWarehouses * 0;
@@ -433,6 +487,97 @@ public class Tpcc extends STMService {
 
 	public void initClient(TpccMultiClient client) {
 		this.client = client;
+	}
+
+	public boolean ConflictMapisEmpty(int replicaId)
+        {
+                if(conflictObjMapList.get(replicaId).isEmpty())
+                        return true;
+                else
+                        return false;
+        }
+
+	public int ConflictMapSize(int replicaId)
+	{
+		return(conflictObjMapList.get(replicaId).size());
+	}
+
+	public Long  ConflictMapGet(int objId, int repId)
+	{
+		Long version = conflictObjMapList.get(repId).get(objId);
+		return version;
+	}
+	
+
+	public boolean addToContentionMap(int objId, int repId)
+	{
+
+		if(!checkRange(objId, repId))
+			return false;
+		else
+		{
+			conflictObjMapList.get(repId).put(objId, sharedObjectRegistry.getLatestCommittedObject(objId).getVersion());
+			return true;
+		}
+	}
+	
+	public boolean removeFromContentionMap(int objId, int repId)
+	{
+		/* No need to check for range, since an outside object will not be there */
+		conflictObjMapList.get(repId).remove(objId);
+		return true;
+	}	
+
+	public boolean checkRange(int objId, int repId)
+	{
+	     	this.numReplicas = ProcessDescriptor.getInstance().numReplicas;
+
+
+                /*this.accessibleObjects = this.NUM_ITEMS / numReplicas;
+                this.min = this.accessibleObjects * this.localId;
+                this.max = (this.accessibleObjects * (this.localId + 1));
+                this.item_count = (max - min)/MaxSpec;
+                */
+
+                /* Have a shared portion of items */
+                //this.accessibleObjects = this.NUM_ITEMS / (numReplicas + 1);
+                int minItem = this.accessibleObjects * repId;
+                int maxItem = this.accessibleObjects * (repId + 1);
+                
+		if((objId >= minItem) && (objId < maxItem))
+		{	
+			return true; 
+		}
+
+
+                /*
+                this.accessibleObjects = this.NUM_ITEMS;
+                this.min = this.accessibleObjects * 0;
+                this.max = (this.accessibleObjects *1);*/
+                // System.out.println("O:" + this.accessibleObjects + "M:" + this.max +
+                // "m:" + this.min);0 
+
+
+                /*this.accessibleWarehouses = this.NUM_WAREHOUSES / numReplicas;
+                this.minW = this.accessibleWarehouses * this.localId;
+                this.maxW = (this.accessibleWarehouses * (this.localId + 1));
+                this.w_count = (maxW - minW)/MaxSpec;
+                */
+                /* Have a shared portion of warehouses */
+                //this.accessibleWarehouses = this.NUM_WAREHOUSES / (numReplicas + 1);
+                int minW = this.accessibleWarehouses * (repId);
+                int maxW = (this.accessibleWarehouses * (repId + 1));
+                
+		int minWh = warehouseStart + minW * warehouseOffset;
+		int maxWh = warehouseStart + maxW * warehouseOffset;
+		
+		if((objId >= minWh) && (objId < maxWh))
+                {
+			return true;
+		}
+		
+		return false;
+
 	}
 
 	protected void orderStatus(ClientRequest cRequest, int count, boolean retry, int Tid) {
@@ -487,20 +632,36 @@ public class Tpcc extends STMService {
 	protected void delivery(ClientRequest cRequest, int count, boolean retry, int Tid) {
 		int success = 0;
 		RequestId requestId = cRequest.getRequestId();
-		/*
-		Random randomGenerator = new Random();
-		int randomInt = randomGenerator.nextInt(100);
-		*/
+		
+		//Random randomGenerator = new Random();
+	
 	
 		/*Integer clid = (int) (long) (requestId.getClientId()) - localId + minW;
 		int myid = warehouseStart +
                                 + clid *warehouseOffset;*/
 
 		int thw_id = Tid - 1;
-                int rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;
+                int rwid = 0;
+		int myid = 0;
+		//int rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;			/* TO avoid local conflicts among threads */
+		if(cRequest.getCrossFlag())
+		{
+			//rwid = random.nextInt(this.NUM_WAREHOUSES/(this.numReplicas + 1)); 
+			rwid = random.nextInt(this.NUM_WAREHOUSES); 
+			myid = warehouseStart + rwid * warehouseOffset;
+			//cross_count++;
+		}	
+		else
+		{
+			/* Access a warehouse from the local pool */
+                	//rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;
+			rwid = random.nextInt(maxW - minW) + minW;
+                	myid = warehouseStart + rwid *warehouseOffset;
+			//local_count++;
+		}
+		//int rwid = random.nextInt(maxW - minW) + minW;
 
-
-                int myid = warehouseStart + (rwid * warehouseOffset);
+                //int myid = warehouseStart + (rwid * warehouseOffset);
 
 		/*int tw_id = 0;
 		
@@ -686,18 +847,33 @@ public class Tpcc extends STMService {
 		int success = 0;
 		RequestId requestId = cRequest.getRequestId();
 		//Random randomGenerator = new Random();
-		//int randomInt = randomGenerator.nextInt(100);
 		
 		/*Integer clid = (int) (long) (requestId.getClientId()) - localId + minW;
                 int myid = warehouseStart +
                                 + clid *warehouseOffset;*/
 		
+		int rwid = 0;
+		int myid = 0;
+		
+		//Random randomGenerator = new Random();
+		//int randomInt = randomGenerator.nextInt(100);
 		
 		int thw_id = Tid - 1;
-                int rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;
 
-                int myid = warehouseStart + (rwid * warehouseOffset);
-		
+		if(cRequest.getCrossFlag())
+		{
+			rwid = random.nextInt(this.NUM_WAREHOUSES/(this.numReplicas + 1)); 
+			//rwid = random.nextInt(this.NUM_WAREHOUSES); 
+			myid = warehouseStart + rwid * warehouseOffset;
+			//cross_count++;
+		}	
+		else	
+		{
+                	//rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;
+                	rwid = random.nextInt(maxW - minW) + minW;
+			myid = warehouseStart + (rwid * warehouseOffset);
+			//local_count++;
+		}
 		/*int tw_id = 0;
 		
 		if(randomInt < 15)
@@ -826,29 +1002,35 @@ public class Tpcc extends STMService {
 		final float h_amount = (float) (random.nextInt(500000) * 0.01);
 	
 		/* Access remote warehouse */
-		Random randomGenerator = new Random();
-		int randomInt = randomGenerator.nextInt(100);
-		int tw_id = 0;
+		/*Random randomGenerator = new Random();
+		int randomInt = remote.nextInt(100);*/
+		
+		int rwid = 0;
 		int myid = 0;
+		
+		
 		/* Access a warehouse from the common pool */
-		/*if(randomInt < 5)
+		if(cRequest.getCrossFlag())
 		{
-			tw_id = random.nextInt(this.NUM_WAREHOUSES/(this.numReplicas + 1)); 
-			myid = warehouseStart + tw_id * warehouseOffset;
+			//rwid = random.nextInt(this.NUM_WAREHOUSES/(this.numReplicas + 1)); 
+			rwid = random.nextInt(this.NUM_WAREHOUSES); 
+			myid = warehouseStart + rwid * warehouseOffset;
+			//cross_count++;
 		}	
 		else
 		{
 			/* Access a warehouse from the local pool */
-		/*	int thw_id = Tid - 1;
-                	int rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;
-
+			int thw_id = Tid - 1;
+                	//rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;
+			rwid = random.nextInt(maxW - minW) + minW;
                 	myid = warehouseStart + rwid *warehouseOffset;
-		}*/
+			//local_count++;
+		}
 		/* Access a warehouse from the local pool */
-		int thw_id = Tid - 1;
+		/*int thw_id = Tid - 1;
                 int rwid = random.nextInt(w_count) + (thw_id * w_count) + minW;
 
-                myid = warehouseStart + (rwid * warehouseOffset);
+                myid = warehouseStart + (rwid * warehouseOffset);*/
 		/*Integer clid = (int) (long) (requestId.getClientId()) - localId + minW;
 		
                 int myid = warehouseStart +
@@ -929,8 +1111,14 @@ public class Tpcc extends STMService {
 					xretry = true;
 			}
 		}/* end while xretry */
-			byte[] result = ByteBuffer.allocate(4).putInt(success).array();
-			stmInstance.storeResultToContext(requestId, result);
+		if((rwid < this.minW) || (rwid >= this.maxW))
+		{
+			stmInstance.setCrossAccessContextFlag(requestId);
+			int remoteId = rwid/this.accessibleWarehouses;
+			stmInstance.setRemoteId(requestId, remoteId);
+		}  
+		byte[] result = ByteBuffer.allocate(4).putInt(success).array();
+		stmInstance.storeResultToContext(requestId, result);
 	}
 
 	/**
@@ -1149,61 +1337,136 @@ public class Tpcc extends STMService {
 		//System.out.println("Objects before commit");
 		//stmInstance.printRWSets(ctx);
 		boolean abort_random = false;
-		//ClientRequest cRequest = requestIdRequestMap.get(requestId);	
-		/*if(cRequest == null)
-		{
-			System.out.println("Null request for  ClientId = " + requestId.getClientId() + " SeqNumber = " + requestId.getSeqNumber());
+		long rId = requestId.getClientId() % (long)replicaCnt;
+		int replicaId = (int)rId;
+	
+		if(!skipFlag)
+		{	
+
+			if((ConflictMapisEmpty(replicaId)) && (ctx.crossflag == false))
+			{
+				skipCount++;
+				stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
+				committedCount++;
+			
+			}
+			else
+			{
+			
+				readValCount++;
+				//if ((stmInstance.validateReadset(ctx)) && (abort_random == false)) 
+				if (stmInstance.validateReadset(ctx))
+				{
+					stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
+					committedCount++;
+					if(committedCount - skipCount > 100000)
+					{
+						skipFlag = true;
+						/*for(int i = 0; i < replicaCnt; i++)
+						{
+							if(stmInstance.ConflictMapisEmpty(i))
+								System.out.println("Replica "+ i + " map is empty");
+							else
+								System.out.println("Replicai " + i + " map is not empty" + " SIze is = " + stmInstance.ConflictMapSize(i));
+						}*/
+					
+					}
+
+
+					//System.out.println("Committing ClientId = " + requestId.getClientId() + " SeqNumber = " + requestId.getSeqNumber());
+					//System.out.println("Objects after commit");
+                			//stmInstance.printRWSets(ctx);
+					//stmInstance.updateAbortMap(ctx);
+				} 
+				else 
+				{
+					//System.out.println("Aborting transaction randomly");
+					//System.out.println("Aborting tx genuinely");
+					//System.out.println("Aborting ClientId = " + requestId.getClientId() + " SeqNumber = " + requestId.getSeqNumber());	
+					stmInstance.emptyWriteSet(ctx,false,replicaId, skipFlag);
+					stmInstance.removeTransactionContext(requestId);
+					//ClientRequest cRequest = requestIdRequestMap.get(requestId);
+					/*if(cRequest == null)
+					{
+						if(requestIdRequestMap.isEmpty())
+							System.out.println("Req Map is empty");
+						System.out.println("Request is null");
+						System.out.println("ClientId = " + requestId.getClientId() + " Seq = " + requestId.getSeqNumber());
+						boolean ret = requestIdRequestMap.containsKey(requestId);
+						if(ret == false)
+					 		System.out.println("Request key is not present");
+						else
+							System.out.println("Request key is present");
+						return;
+					}*/ 
+					//requestIdRequestMap.remove(requestId,cRequest);
+					//requestIdValueMap.remove(requestId);
+					byte[] value = requestIdValueMap.get(requestId);
+					if(value != null)
+					{
+						ClientRequest cRequest = new ClientRequest(requestId , value);
+
+						executeRequest(cRequest, false);
+					}
+					//System.out.println("Xcommit queue size is = " + stmInstance.getXCommitQueueSize());
+					//stmInstance.printabortedObjects();
+					abortedCount++;
+					//stmInstance.abortXcomitted();
+					return;
+				}
+			}
 		}
 		else
-		{
-
-			System.out.println("Found request for  ClientId = " + requestId.getClientId() + " SeqNumber = " + requestId.getSeqNumber());
-		}
-		*/
-		if ((stmInstance.validateReadset(ctx)) && (abort_random == false)) {
-			stmInstance.updateSharedObject(ctx);
-			committedCount++;
-			//System.out.println("Committing ClientId = " + requestId.getClientId() + " SeqNumber = " + requestId.getSeqNumber());
-			//System.out.println("Objects after commit");
-                	//stmInstance.printRWSets(ctx);
-			//stmInstance.updateAbortMap(ctx);
-		} 
-		else 
-		{
-			//System.out.println("Aborting transaction randomly");
-			//System.out.println("Aborting tx genuinely");
-			//System.out.println("Aborting ClientId = " + requestId.getClientId() + " SeqNumber = " + requestId.getSeqNumber());	
-			stmInstance.emptyWriteSet(ctx,false);
-			stmInstance.removeTransactionContext(requestId);
-			//ClientRequest cRequest = requestIdRequestMap.get(requestId);
-			/*if(cRequest == null)
+		{		
+			readValCount++;
+			//if ((stmInstance.validateReadset(ctx)) && (abort_random == false)) 
+			if (stmInstance.validateReadset(ctx))
 			{
-				if(requestIdRequestMap.isEmpty())
-					System.out.println("Req Map is empty");
-				System.out.println("Request is null");
-				System.out.println("ClientId = " + requestId.getClientId() + " Seq = " + requestId.getSeqNumber());
-				boolean ret = requestIdRequestMap.containsKey(requestId);
-				if(ret == false)
-					 System.out.println("Request key is not present");
-				else
-					System.out.println("Request key is present");
+				stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
+				committedCount++;
+
+				//System.out.println("Committing ClientId = " + requestId.getClientId() + " SeqNumber = " + requestId.getSeqNumber());
+				//System.out.println("Objects after commit");
+                		//stmInstance.printRWSets(ctx);
+				//stmInstance.updateAbortMap(ctx);
+			} 
+			else 
+			{
+				//System.out.println("Aborting transaction randomly");
+				//System.out.println("Aborting tx genuinely");
+				//System.out.println("Aborting ClientId = " + requestId.getClientId() + " SeqNumber = " + requestId.getSeqNumber());	
+				stmInstance.emptyWriteSet(ctx, false, replicaId, skipFlag);
+				stmInstance.removeTransactionContext(requestId);
+				//ClientRequest cRequest = requestIdRequestMap.get(requestId);
+				/*if(cRequest == null)
+				{
+					if(requestIdRequestMap.isEmpty())
+						System.out.println("Req Map is empty");
+					System.out.println("Request is null");
+					System.out.println("ClientId = " + requestId.getClientId() + " Seq = " + requestId.getSeqNumber());
+					boolean ret = requestIdRequestMap.containsKey(requestId);
+					if(ret == false)
+					 	System.out.println("Request key is not present");
+					else
+						System.out.println("Request key is present");
+					return;
+				}*/ 
+				//requestIdRequestMap.remove(requestId,cRequest);
+				//requestIdValueMap.remove(requestId);
+				byte[] value = requestIdValueMap.get(requestId);
+				if(value != null)
+				{
+					ClientRequest cRequest = new ClientRequest(requestId , value);
+					executeRequest(cRequest, false);
+				}
+				//System.out.println("Xcommit queue size is = " + stmInstance.getXCommitQueueSize());
+				//stmInstance.printabortedObjects();
+				abortedCount++;
+				//stmInstance.abortXcomitted();
 				return;
-			}*/ 
-			//requestIdRequestMap.remove(requestId,cRequest);
-			//requestIdValueMap.remove(requestId);
-			byte[] value = requestIdValueMap.get(requestId);
-			if(value != null)
-			{
-				ClientRequest cRequest = new ClientRequest(requestId , value);
-
-				executeRequest(cRequest, false);
 			}
-			//System.out.println("Xcommit queue size is = " + stmInstance.getXCommitQueueSize());
-			//stmInstance.printabortedObjects();
-			abortedCount++;
-			//stmInstance.abortXcomitted();
-			return;
 		}
+		
 		// committedCount++;
 		// remove the entries for this transaction LTM (TransactionContext,
 		// lastModifier)
@@ -1213,6 +1476,10 @@ public class Tpcc extends STMService {
 		//System.out.println("Committing Tx");
 		client.replyToClient(requestId);
 
+		/*if(!stmInstance.ConflictMapisEmpty(replicaId))
+		{
+			stmInstance.updateConflictMap(ctx,replicaId);
+		}*/
 		stmInstance.removeTransactionContext(requestId);
 		requestIdValueMap.remove(requestId);
 		//requestIdRequestMap.remove(requestId,cRequest);
@@ -1299,6 +1566,26 @@ public class Tpcc extends STMService {
 
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		ByteBuffer bb;
+		int flag;
+		/*Add boolean flag */
+		if(ctx.crossflag == true)
+		{	 	
+			flag = 1;
+		}
+		else
+		{
+			flag = 0;
+		}	
+		bb = ByteBuffer.allocate(4);
+		bb.putInt(flag);
+		bb.flip();
+		out.write(bb.array());
+
+		bb = ByteBuffer.allocate(4);
+		bb.putInt(ctx.remoteId);
+		bb.flip();
+		out.write(bb.array());
+		
 
 		bb = ByteBuffer.allocate(4);
 		bb.putInt(readset.size());
@@ -1478,6 +1765,18 @@ public class Tpcc extends STMService {
 		ByteBuffer bb = ByteBuffer.wrap(bytes);
 
 		TransactionContext ctx = new TransactionContext();
+
+		int flag = bb.getInt();
+		if(flag == 0)
+		{
+			ctx.crossflag = false;
+		}
+		else
+		{
+			ctx.crossflag = true;
+		}
+	
+		ctx.remoteId = bb.getInt();
 
 		int readsetSize = bb.getInt();
 		for (int i = 0; i < readsetSize; i++) {
@@ -1729,6 +2028,7 @@ public class Tpcc extends STMService {
 	public Object getId() {
 		return id;
 	}
+
 
 
      private class XBatcher extends Thread {

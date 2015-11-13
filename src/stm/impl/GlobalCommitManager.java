@@ -125,7 +125,7 @@ public class GlobalCommitManager {
 						/* Request was removed from the rQueue, now the housekeeping activities associated with an Xcommit abort
 						 * need to be carried out*/
 				
-						stmInstance.emptyWriteSet(ctx, true);
+						stmInstance.emptyWriteSet(ctx, true, 0, false);
                         			stmInstance.removeTransactionContext(rId);
                         			stmInstance.getSTMService().executeRequest(request, false);
                         			//System.out.println("Aborted Tx from Rqueue");

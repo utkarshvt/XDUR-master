@@ -47,4 +47,8 @@ public abstract class STMService implements Service {
 
 	public abstract TransactionContext deserializeTransactionContext(byte[] bytes) throws IOException;
     
+	public abstract boolean addToContentionMap(int objId, int repId);
+	public abstract boolean removeFromContentionMap(int objId, int repId);
+	public abstract boolean ConflictMapisEmpty(int repId);
+	public abstract Long ConflictMapGet(int objId, int repId);
 }
