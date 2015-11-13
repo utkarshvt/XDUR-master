@@ -44,7 +44,7 @@ public class TpccMultiClient {
 
 		public ClientThread(long clientId) throws IOException {
 			this.clientId = clientId;
-			System.out.println("ClientID = " + clientId);
+			//System.out.println("ClientID = " + clientId);
 			sends = new ArrayBlockingQueue<Integer>(128);
 			this.random = new Random();
 		}

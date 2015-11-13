@@ -1196,7 +1196,7 @@ public class Manager extends STMService {
 		// Validate read set first
 //		System.out.println("*onCommit");
 		if (stmInstance.validateReadset(txContext)) {
-			stmInstance.updateSharedObject(txContext);
+			stmInstance.updateSharedObject(txContext, 0, false);
 			committedCount++;
 		} else {
 			abortedCount++;

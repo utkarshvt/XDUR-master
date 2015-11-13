@@ -534,12 +534,12 @@ public class Bank extends STMService {
 		// Validate read set first
 		ClientRequest cRequest = requestIdRequestMap.get(requestId);
 		if (stmInstance.validateReadset(txContext)) {
-			stmInstance.updateSharedObject(txContext);
+			stmInstance.updateSharedObject(txContext, 0, false);
 			committedCount++;
 			// break;
 		} else {
 			// Isn;t it needed to remove the previous content
-			stmInstance.emptyWriteSet(txContext,false, 0);
+			stmInstance.emptyWriteSet(txContext,false, 0, false);
 			stmInstance.removeTransactionContext(requestId);
 			executeRequest(cRequest, false);
 			abortedCount++;
