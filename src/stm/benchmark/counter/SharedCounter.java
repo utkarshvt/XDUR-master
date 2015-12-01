@@ -28,7 +28,7 @@ import stm.transaction.AbstractObject;
 import stm.transaction.ReadSetObject;
 import stm.transaction.TransactionContext;
 
-
+/*
 public class SharedCounter extends STMService
 {
 	public static final byte TX_INCREMENT = 0;
@@ -112,7 +112,7 @@ public class SharedCounter extends STMService
                 // System.out.println("O:" + this.accessibleWarehouses + "M:" +
                 // this.maxW +
                 // "m:" + this.minW);*/
-        }
+/*        }
 
         public void initClient(SCMultiClient client) {
                 this.client = client;
@@ -165,8 +165,8 @@ public class SharedCounter extends STMService
  	/**
          * Used to execute read requests from clients locally.
          */
-        @Override
-        public void executeReadRequest(final ClientRequest cRequest) {
+//        @Override
+  /*      public void executeReadRequest(final ClientRequest cRequest) {
                 // TODO Auto-generated method stub
 		/*
                 tpccSTMDispatcher.submit(new Runnable() {
@@ -174,7 +174,7 @@ public class SharedCounter extends STMService
                                 executeRequest(cRequest, false);
                         }
                 });*/
-        }
+  /*      }
 
 
 	@Override
@@ -201,7 +201,7 @@ public class SharedCounter extends STMService
                 out.write(bb.array());
 		
 		/* Dummy function, does not do anything */
-		return out.toByteArray();
+/*		return out.toByteArray();
 	}
 
 	  @Override
@@ -213,15 +213,15 @@ public class SharedCounter extends STMService
                 TransactionContext ctx = new TransactionContext();
 		
 		/* Dummy fnction, does not do anything */	
-		return ctx;
+/*		return ctx;
 	}
 
 	/**
          * Called by network layer to commit a previous speculatively executed
          * batch.
          */
-        @Override
-        public void commitBatchOnDecision(final RequestId rId,
+  //      @Override
+/*        public void commitBatchOnDecision(final RequestId rId,
                         final TransactionContext ctx) {
                 // TODO Auto-generated method stub
                 // Validate sequence
@@ -237,7 +237,7 @@ public class SharedCounter extends STMService
                                 writeCount++;
                         }
                 });*/
-        }
+ /*       }
      
 	/**
          * Shuts down the executors if invoked. Here after no transaction can be
@@ -245,7 +245,7 @@ public class SharedCounter extends STMService
          * 
          * @return
          */
-        public long shutDownExecutors() {
+   /*     public long shutDownExecutors() {
                 return stmInstance.shutDownExecutors();
         }
 
@@ -301,7 +301,7 @@ public class SharedCounter extends STMService
          * @param readOnly
          *            : boolean specifying what should be the transaction type
          */
-        public byte[] createRequest(boolean readOnly, boolean TpccProfile,
+     /*   public byte[] createRequest(boolean readOnly, boolean TpccProfile,
                         int percent) 
 	{
                 byte[] request = new byte[DEFAULT_LENGTH];
@@ -335,7 +335,7 @@ public class SharedCounter extends STMService
         }   
 	 /* The XBatcher thread */
 
-        private class XBatcher extends Thread {
+       /* private class XBatcher extends Thread {
         //private final kryo kryo;
 
 
@@ -361,16 +361,16 @@ public class SharedCounter extends STMService
                 while (true)
                 {
                         /* Drain the request queue */
-                        int drain = stmInstance.XqueuedrainTo(reqarray,MaxSpec);
+         /*               int drain = stmInstance.XqueuedrainTo(reqarray,MaxSpec);
 
                         /* Reset lastXCommit */
-                        stmInstance.resetLastXcommit();
+           /*             stmInstance.resetLastXcommit();
                         final CyclicBarrier barrier = new CyclicBarrier(drain + 1);
                         /*if(drain > 0)
                         {
                             System.out.println("drain = " + drain);
                         }*/
-                        int r_count = 0;
+/*                        int r_count = 0;
                         int t_index = 0;
 			while(r_count < drain)
                         {
@@ -435,7 +435,7 @@ public class SharedCounter extends STMService
 				}
                     	}
 			/* Wait for all the thread to join */
-                        try
+  /*                      try
                         {
                         //	System.out.println("XBatcher thread  joined, Threads waiting  = "  + barrier.getNumberWaiting());
                                 barrier.await();
@@ -457,11 +457,11 @@ public class SharedCounter extends STMService
                                 System.out.println("Sanity check passed");
                         else
                                 System.out.println("Sanity check failed");*/
-                        reqarray.clear();
+/*                        reqarray.clear();
                 }/*End outer while */
-        }/* End run*/
-}
+/*        }/* End run*/
+/*	}
 
 
 
-}
+}*/

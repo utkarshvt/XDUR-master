@@ -1,5 +1,6 @@
 package stm.benchmark.bank;
 
+import java.util.*;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +9,9 @@ import java.util.ArrayList;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+
+
 import com.esotericsoftware.kryo.Kryo;
 
 import lsr.common.ClientRequest;
@@ -66,6 +70,12 @@ public class Bank extends STMService {
 	private long lastFallBehindAbort = 0;
         private long lastCompletedCount = 0;
         private long lastRqAbortCount = 0;
+	private long lastSkipCount = 0;
+	private long lastInsertCount = 0;
+        private long lastRemCount = 0;
+
+
+
 	private volatile long readCount = 0;
 	static long writeCount = 0;
 	private int sharedpercent = 0;
@@ -78,6 +88,12 @@ public class Bank extends STMService {
         private volatile long FallBehindAbort = 0;
         private volatile long randomabortCount = 0;
 	
+
+	private volatile long skipCount = 0;
+	private volatile long readValCount = 0;
+	private volatile boolean skipFlag = false;
+
+
 	/**
 	 * Store request content w.r.t. requestId. It is useful when tansaction is
 	 * aborted and retried.
@@ -85,6 +101,8 @@ public class Bank extends STMService {
 	private final Map<RequestId, byte[]> requestIdValueMap = new HashMap<RequestId, byte[]>();
 	/* Hashmap created for Id and client request, may remove the Id Value hashmap entirely */
         private final ConcurrentHashMap<RequestId, ClientRequest> requestIdRequestMap = new ConcurrentHashMap<RequestId, ClientRequest>();
+
+	private List <ConcurrentHashMap<Integer,Long>> conflictObjMapList;
 
 	private int localId;
 	private int min;
@@ -127,9 +145,12 @@ public class Bank extends STMService {
                         long totalinWrite = 0;
                         long totalCount = 0;
                         long submitcount = 0;
+			long localSkipCount = 0;	
+			long localInsertCount = 0;
+                      	long localRemCount = 0;
 
 			System.out
-                                        .println("Read-Throughput/S  Write Throughput/S  CompletedCount/s Latency Aborts RQAborts FallBehindAborts Time");
+                                        .println("Read-Throughput/S  Write Throughput/S  CompletedCount/s  Latency  Aborts  XAborts   SkipCount  InsertCount  RemoveCount  Time");
 			try {
 				Thread.sleep(10000);
 			} catch (InterruptedException e1) {
@@ -137,7 +158,8 @@ public class Bank extends STMService {
 				e1.printStackTrace();
 			}
 			// Sample time is 20 seconds
-			while (count < 7) {
+			System.out.println(" ");
+			while (count < 10) {
 				startRead = System.currentTimeMillis();
 
 				try {
@@ -153,19 +175,25 @@ public class Bank extends STMService {
 				localRqAbortCount = stmInstance.getRqAbortCount();
 				XabortedCount =   stmInstance.getXabortCount();
                                 localXAbortCount = XabortedCount;
-                                FallBehindAbort = stmInstance.getFallBehindAbortCount();
+                               	localSkipCount = skipCount;
+			
+				localInsertCount = stmInstance.getInsertCount();
+                                localRemCount = stmInstance.getRemCount();
+	
+				//FallBehindAbort = stmInstance.getFallBehindAbortCount();
                                 localFallBehindAbort = FallBehindAbort;
 				endRead = System.currentTimeMillis();
 				client.collectLatencyData();
 				totalinRead =  client.getReadCount();
                                 totalinWrite +=  client.getWriteCount();
                                 submitcount = totalinRead + totalinWrite;
-                                double temp = client.getWriteLatency();
+                                
+				//double temp = client.getWriteLatency();
 
 				//System.out.println("completecoun = " + completedCount + " lstWriteCount = " + lastWriteCount + " Read count = " + readCount + " lastread = " + lastReadCount);
 				//System.out.println("Readcount = " + client.getReadCount() + "WriteCount = " + client.getWriteCount());
 				System.out
-						.format("%5d  %5d  %5d	%4.2f 	%5d  %5d   %6d 	%6d\n",
+						.format("%6d   %6d   %6d 	%5.3f 	 %6d    %6d   %6d   %6d   %6d   %6d\n",
 								((localReadCount - lastReadCount) * 1000)
 										/ (endRead - startRead),
 								((localWriteCount - lastWriteCount) * 1000)
@@ -173,9 +201,16 @@ public class Bank extends STMService {
 								((localCompletedCount - lastCompletedCount) * 1000)
                                                                 		/ (endRead - startRead),
 								client.getWriteLatency(),
-								(localAbortCount - lastAbortCount),
-                                                		(localRqAbortCount - lastRqAbortCount),
-                                                		(localFallBehindAbort - lastFallBehindAbort),
+								((localAbortCount - lastAbortCount) * 1000)
+										/ (endRead - startRead),
+                                                		((localXAbortCount - lastXAbortCount) * 1000)
+										 / (endRead - startRead),
+                                                		((localSkipCount - lastSkipCount) * 1000)
+										 / (endRead - startRead),
+                                                		((localInsertCount - lastInsertCount) * 1000)
+										 / (endRead - startRead),
+                                                		((localRemCount - lastRemCount) * 1000)
+										 / (endRead - startRead),
 								(endRead - startRead));
 
 				lastReadCount = localReadCount;
@@ -185,6 +220,9 @@ public class Bank extends STMService {
 				lastCompletedCount = localCompletedCount;
 				lastRqAbortCount = localRqAbortCount;
                                 lastFallBehindAbort = localFallBehindAbort;
+				lastSkipCount = localSkipCount;
+				lastInsertCount = localInsertCount;
+                                lastRemCount = localRemCount;
 
 
 				count++;
@@ -192,7 +230,27 @@ public class Bank extends STMService {
 		long triggers = stmInstance.getRqAbortTrigCount();
 		//double ratio = (double)(localRqAbortCount / triggers);
 		System.out.println("Submitted = " + submitcount + " Completed write count = " + completedCount + " Completed Read Count = " + readCount + " Total = " + totalCount);
-		System.out.println("Comitted = " + committedCount + " Total Aborts = " + abortedCount + " Total RqAborts = " + localRqAbortCount + " Total Xaborts = " + localXAbortCount + " Total Commit Aborts = " + (abortedCount + localRqAbortCount) + " Random aborts = " +  randomabortCount + " FallBehindAborts = " + FallBehindAbort + " AbortTriggers = " + triggers) ;                   	
+		System.out.println("Comitted = " + committedCount + " Total Aborts = " + abortedCount + " Total RqAborts = " + localRqAbortCount + " Total Xaborts = " + localXAbortCount) ;                   	
+		//System.out.println("Local request count = " + local_count + " Cross request count = " + cross_count);
+          	try 
+		{
+                    Thread.sleep(5000);
+                } 
+		catch (InterruptedException e1) 
+		{
+                    	// TODO Auto-generated catch block
+                      	e1.printStackTrace();
+             	}
+		
+		/*for(int i = 0; i < numReplicas; i++)
+                {
+                                if(ConflictMapisEmpty(i))
+                                        System.out.println("Replica "+ i + " map is empty");
+                                else
+                                        System.out.println("Replicai " + i + " map is not empty" + " SIze is = " + ConflictMapSize(i));
+                }*/
+
+		System.exit(0);
 	}
 }
 
@@ -245,6 +303,13 @@ public class Bank extends STMService {
 		this.localId = ProcessDescriptor.getInstance().localId;
 		this.numReplicas = ProcessDescriptor.getInstance().numReplicas;
 
+		conflictObjMapList = new ArrayList <ConcurrentHashMap<Integer,Long>>(this.numReplicas);
+		for (int index = 0; index < this.numReplicas; index++)
+                {
+                        conflictObjMapList.add(index, new ConcurrentHashMap<Integer,Long>());
+                }
+
+
 		if(this.sharedpercent > 0)
 		{
 			/* If sharedpercent is greater than zero some warehouses at the start are shared */
@@ -263,6 +328,71 @@ public class Bank extends STMService {
 		// System.out.println("O:" + this.accessibleObjects + "M:" + this.max +
 		// "m:" + this.min);
 	}
+
+	public boolean addToContentionMap(int objId, int repId)
+        {
+
+                if(checkRange(objId, repId) == false)
+                {
+		        return false;
+		}
+                else
+                {
+                        //if(repId > 2)
+			//	System.out.println("RepId = " + repId + " objId = " + objId);
+			conflictObjMapList.get(repId).put(objId, sharedObjectRegistry.getLatestCommittedObject(objId).getVersion());
+                        return true;
+                }
+        	
+	}
+
+        public boolean removeFromContentionMap(int objId, int repId)
+        {
+                /* No need to check for range, since an outside object will not be there */
+                conflictObjMapList.get(repId).remove(objId);
+		return true;
+        }
+
+        public boolean checkRange(int objId, int repId)
+        {
+
+	
+		if(repId > (numReplicas - 1))
+		{
+			//System.out.println("RangeCheck, got a replica = " + repId + " For object = " + objId);
+			return false;
+		}	
+                
+		int minAccount = this.accessibleObjects * repId;
+                int maxAccount = (this.accessibleObjects * (repId + 1)) - 1;
+
+                
+		if((objId >= minAccount) && (objId <= maxAccount))
+                        return true;
+
+                return false;
+
+        }
+	
+	public boolean ConflictMapisEmpty(int replicaId)
+        {
+                if(conflictObjMapList.get(replicaId).isEmpty())
+                        return true;
+                else
+                        return false;
+        }
+
+	public int ConflictMapSize(int replicaId)
+        {
+                return(conflictObjMapList.get(replicaId).size());
+        }
+
+        public Long ConflictMapGet(int objId, int repId)
+        {
+                Long version = conflictObjMapList.get(repId).get(objId);
+                return version;
+        }
+
 
 	/*************************************************************************
 	 * This is the speculative execution implementation for getBalance method.
@@ -370,10 +500,17 @@ public class Bank extends STMService {
 				XabortedCount++;
 			}
 		}
-	
+		if((dstId < this.min) || (dstId > this.max))
+                {
+                        stmInstance.setCrossAccessContextFlag(requestId);
+                        int remoteId = dstId/this.accessibleObjects;
+                        stmInstance.setRemoteId(requestId, remoteId);
+                }
+
+		
 		byte[] result = ByteBuffer.allocate(4).putInt(success).array();
 		stmInstance.storeResultToContext(requestId, result);
-}
+	}
 
 	/**
 	 * Used by createRequest when a request is created by client and src and dst
@@ -520,7 +657,7 @@ public class Bank extends STMService {
 	 * @return
 	 * 
 	 ************************************************************************/
-	public void onCommit(RequestId requestId, TransactionContext txContext) {
+	public void onCommit(RequestId requestId, TransactionContext ctx) {
 
 		// Validate the transaction object versions or Decided InstanceIds and
 		// sequence numbers
@@ -532,31 +669,77 @@ public class Bank extends STMService {
 		// RequestId requestId = cRequest.getRequestId();
 
 		// Validate read set first
-		ClientRequest cRequest = requestIdRequestMap.get(requestId);
-		if (stmInstance.validateReadset(txContext)) {
-			stmInstance.updateSharedObject(txContext, 0, false);
-			committedCount++;
-			// break;
-		} else {
-			// Isn;t it needed to remove the previous content
-			stmInstance.emptyWriteSet(txContext,false, 0, false);
-			stmInstance.removeTransactionContext(requestId);
-			executeRequest(cRequest, false);
-			abortedCount++;
-			return;
-			// stmInstance.updateSharedObject(requestId);
-		}
-		// remove the entries for this transaction LTM (TransactionContext,
-		// lastModifier)
-		// object = stmInstance.getResultFromContext(requestId);
-		// sendReply(stmInstance.getResultFromContext(requestId), cRequest);
-		client.replyToClient(requestId);
+		
+		long rId = requestId.getClientId() % (long)numReplicas;
+                int replicaId = (int)rId;
 
+
+		if(!skipFlag)
+		{
+			if((ConflictMapisEmpty(replicaId)) && (ctx.crossflag == false))
+			{
+                       		skipCount++;
+                      		stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
+                		committedCount++;
+			}
+			else
+			{
+				readValCount++;
+                              	if (stmInstance.validateReadset(ctx))
+                              	{
+                                 	stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
+                                  	committedCount++;
+                                	if(committedCount - skipCount > 40000)
+                                 	{
+                                         	skipFlag = true;
+
+                                 	}
+
+
+                     		}
+				else
+				{
+					                              
+					stmInstance.emptyWriteSet(ctx,false,replicaId, skipFlag);
+                                        stmInstance.removeTransactionContext(requestId);
+                                        byte[] value = requestIdValueMap.get(requestId);
+                                        if(value != null)
+                                        {
+                                                ClientRequest cRequest = new ClientRequest(requestId , value);
+                                                executeRequest(cRequest, false);
+                                        }
+                                        abortedCount++;
+                                        return;
+                                }
+                        }
+                }
+		else
+		{
+
+			if (stmInstance.validateReadset(ctx)) {
+				stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
+				committedCount++;
+			} else {
+				stmInstance.emptyWriteSet(ctx,false, replicaId, skipFlag);
+				stmInstance.removeTransactionContext(requestId);
+				byte[] value = requestIdValueMap.get(requestId);
+                           	if(value != null)
+                           	{
+                              		ClientRequest cRequest = new ClientRequest(requestId , value);
+					executeRequest(cRequest, false);
+                        	}
+				abortedCount++;
+				return;
+			}
+		}	
+		client.replyToClient(requestId);
 		stmInstance.removeTransactionContext(requestId);
 		requestIdValueMap.remove(requestId);
-		requestIdRequestMap.remove(requestId,cRequest);
 
 	}
+
+
+
 
 	/**
 	 * Read the command name from the client request byte array.
@@ -624,11 +807,27 @@ public class Bank extends STMService {
 		ArrayList<ReadSetObject> readset = ctx.getReadSet();
 		Map<Integer, AbstractObject> writeset = ctx.getWriteSet();
 
-		int packetSize = 4 + (readset.size() * 12) + 4
+		int packetSize = 4 + 4 + 4 + (readset.size() * 12) + 4
 				+ (writeset.size() * 16);
 		ByteBuffer bb = ByteBuffer.allocate(4 + packetSize);
-
 		bb.putInt(4 + packetSize);
+		
+		int flag;
+                /*Add boolean flag */
+                if(ctx.crossflag == true)
+                {
+                        //System.out.println("Putting cross-flag as true");
+			flag = 1;
+                }
+                else
+                {
+                        flag = 0;
+                }
+                
+		bb.putInt(flag);
+
+                bb.putInt(ctx.remoteId);
+
 		bb.putInt(readset.size());
 		for (ReadSetObject entry : readset) {
 			int id = entry.objId;
@@ -659,6 +858,19 @@ public class Bank extends STMService {
 		assert bytes.length == bb.getInt() : "bank byte deserializing error";
 
 		TransactionContext ctx = new TransactionContext();
+		int flag = bb.getInt();
+                if(flag == 0)
+                {
+                        ctx.crossflag = false;
+                }
+                else
+                {
+                        ctx.crossflag = true;
+                	//System.out.println("Getting cross flag as true");
+		}
+
+                ctx.remoteId = bb.getInt();
+
 
 		int readsetSize = bb.getInt();
 		for (int i = 0; i < readsetSize; i++) {
@@ -697,12 +909,12 @@ public class Bank extends STMService {
 	 * @param readOnly
 	 *            : boolean specifying what should be the transaction type
 	 */
-	public byte[] createRequest(boolean readonly) {
+	public byte[] createRequest(boolean readonly, boolean remote) {
 		byte[] request = new byte[DEFAULT_LENGTH];
 
 		/* Random object added to introduce contention */
-		Random randomGenerator = new Random();
-                int randomInt = randomGenerator.nextInt(100);
+		//Random randomGenerator = new Random();
+                //int randomInt = randomGenerator.nextInt(100);
 
 		ByteBuffer buffer = ByteBuffer.wrap(request);
 		if (readonly) {
@@ -714,16 +926,15 @@ public class Bank extends STMService {
 		}
 		
 		int src, dst;
-		if(randomInt < this.sharedpercent)
+		src = random.nextInt(max - min) + min;
+		if((remote) && (!readonly))
 		{
 			/* Select a src and dst from shared acconts */	
-			src = random.nextInt(max - min);
-			dst = random.nextInt(max - min);
+			dst = random.nextInt(numAccounts);
 
 		}
 		else
 		{	
-			src = random.nextInt(max - min) + min;
 			dst = random.nextInt(max - min) + min;
 		}
 		while (src == dst) {
@@ -761,139 +972,143 @@ public class Bank extends STMService {
 				int drain = stmInstance.XqueuedrainTo(reqarray,MaxSpec);
 				/* Reset lastXCommit */
 				stmInstance.resetLastXcommit();
-                        	final CyclicBarrier barrier = new CyclicBarrier(drain + 1);
+                        	AtomicInteger Tid = new AtomicInteger(0);
+				final CyclicBarrier barrier = new CyclicBarrier(drain + 1);
                           	/*if(drain <= 4 && drain > 0)
 				{
 					System.out.println("drain = " + drain);
 				}*/
 				int r_count = 0;
-                              	int t_index = 0; 
 				while(r_count < drain)
-                                {
-				
-					final ClientRequest request = reqarray.remove(0);
-                                        r_count++;
-                                       	byte[] value = request.getValue();
-                                      	ByteBuffer buffer = ByteBuffer.wrap(value);
-                                     	final RequestId requestid = request.getRequestId();
-
-                                    	byte transactiontype = buffer.get();
-                                    	byte command = buffer.get();
-                                    	final int src = buffer.getInt();
-                                     	final int dst = buffer.getInt();
-					//System.out.println("Transactiontype  = " +  transactiontype  + " Command = " +  command + " Count = " + count + " RequestId = " + requestid.getSeqNumber()); 
-
-                                       	if (transactiontype == READ_ONLY_TX) {
-                                        	if (command == TX_GETBALANCE) {
-                                             		final int batchnum = r_count;
-                                                       	// keep the request stored locally to retry in case version
-                                                      	// match fails - not needed for read tx
-                                                     	// requestidvaluemap.put(requestid, request);
-                                                    	stmInstance.executeReadRequest(new Runnable() {
-                                                       	 	public void run() {
-                                                         		//System.out.println("Getbalance called for  " + batchnum );
-									getBalance(request, src, dst, retry, 0);
-                                                         		try
-									{
-										//System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
-										barrier.await();
-									}	
-									catch(InterruptedException ex)
-									{	
-										System.out.println("getBalance gave barrier exception");
-									}
-									catch(BrokenBarrierException ex)
-									{
-										System.out.println("getBalance gave brokenbarrier exception");
-									}
-								}
-                                                  	});
-                                              	} 
-                                       		else 
-                                          	{
-                                         		System.out.println("wrong rd command " + command
-                                           			+ " transaction type " + transactiontype);
-                                        	}
-                                	}
-                                  	else
-                                  	{
-
-                                		if (command == TX_TRANSFER) 
-						{
-                                        		// keep the request stored locally to retry in case version
-                                            		// match fails
-                                                      	t_index++;
-							final int batchnum = r_count;
-							final int writenum = t_index;
-                                                 	if (retry == false) 
-							{
-                                                 		requestIdValueMap.put(requestid, value);
-                                                         	// assert stmInstance != null;
-                                                          	stmInstance.executeWriteRequest(new Runnable() {
-                                                          		public void run() 	
-									{
-                                                                      		// retry boolean flag is false for first time
-                                                                    		// execution
-                                                                      		transfer(request, src, dst, retry, writenum);
-                                                                         	// system.out.print("&");
-                                                                           	stmInstance.addToCompletedBatch(request, writenum );
-										//stmInstance.onExecuteComplete(request);
-										try
-                                                                                {
-                                                                                		
-											//System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
-                                                                                        	
-											barrier.await();
-										}       
-                                                                                catch(InterruptedException ex)
-                                                                                {
-                                                                                        System.out.println("transfer gave barrier exception");
-                                                                                }
-										catch(BrokenBarrierException ex)
-										{
-											System.out.println("transfer gave broken barrier exception");
-										}
-									}
-                                                 		});
-                                        		}
-                                               		else
-                                                	{
-                                                        	// yet to implement... balaji
-                                                       		// transfer(request, src, dst, retry);
-                                                   	}
-                                       		}
-                                        	else
-                                              	{
-                                                	System.out.println("wrong wr command " + command
-                                                         	+ " transaction type " + transactiontype);
-                                        	}
-                                     	}
-              			}// End inner while
-				/* Wait for threads to join */
-                       		try
-				{
-                               		// System.out.println("XBatcher thread  joined, Threads waiting  = "  + barrier.getNumberWaiting());
-					barrier.await();
-                               		//System.out.println("All the threads joined");
-				}
-                        	catch(InterruptedException ex)
-                            	{
-                          		System.out.println("transfer gave barrier exception");
+                        	{
+                                	final ClientRequest request = reqarray.remove(0);
+                                	Runnable task = new ExecThread(request, barrier, Tid);
+                                	stmInstance.executeRequest(task);
+                                	r_count++;
+                        	} /*End inner while */
+                        	/* Wait for all the thread to join */
+                        	try
+                        	{
+                                	//System.out.println("XBatcher thread  joined, Threads waiting  = "  + barrier.getNumberWaiting());
+                                	barrier.await();
+                                	//if( drain != 0 )
+                                	//      System.out.println("All " + drain + " threads joined");
                         	}
-                            	catch(BrokenBarrierException ex)
-                          	{
-                             		System.out.println("transfer gave broken barrier exception");
-                         	}
-				/* Sanity check */
-				/*if(checkBalances() == true)
-					System.out.println("Sanity check passed");
-				else
-					System.out.println("Sanity check failed");*/
-				/* Signal the globalCommitManager */
-                        	stmInstance.addBatchToCommitManager();
+                        	catch(InterruptedException ex)
+                        	{
+                                	System.out.println("transfer gave barrier exception");
 
-                                reqarray.clear();
-                        } /* End outer while*/
+                        	}
+                        	catch(BrokenBarrierException ex)
+                        	{
+
+                                	System.out.println("transfer gave broken barrier exception");
+                        	}
+
+                        	/* Sanity check */
+                        	/*if(checkBalances() == true)
+                                	System.out.println("Sanity check passed");
+                        	else
+                                	System.out.println("Sanity check failed");*/
+                        	/* Signal the globalCommitManager */
+                        	stmInstance.addBatchToCommitManager();
+                        	reqarray.clear();
+                	}/*End outer while */
+        	}/* End run*/
+
+	}
+
+				
+	public class ExecThread implements Runnable
+	{
+        	private ClientRequest request;
+        	CyclicBarrier barrier;
+        	AtomicInteger Tid;
+        	public ExecThread( ClientRequest cRequest, CyclicBarrier barrier, AtomicInteger Tid)
+        	{
+                	this.request = cRequest;
+                	this.barrier = barrier;
+                	this.Tid = Tid;
+        	}
+
+        	@Override
+        	public void run()
+        	{
+
+                	byte[] value = request.getValue();
+                	ByteBuffer buffer = ByteBuffer.wrap(value);
+                	final RequestId requestId = request.getRequestId();
+
+
+                	byte transactiontype = buffer.get();
+                 	byte command = buffer.get();
+             		final int src = buffer.getInt();
+               		final int dst = buffer.getInt();
+			boolean retry = false;
+			//System.out.println("Transactiontype  = " +  transactiontype  + " Command = " +  command + " Count = " + count + " RequestId = " + requestid.getSeqNumber()); 
+			if (transactiontype == READ_ONLY_TX) 
+			{
+ 				if (command == TX_GETBALANCE) 
+				{
+                                    	// keep the request stored locally to retry in case version
+                              		// match fails - not needed for read tx
+                                	// requestidvaluemap.put(requestid, request);
+                              		//System.out.println("Getbalance called for  " + batchnum );
+					getBalance(request, src, dst, retry, 0);
+                                     	try
+					{
+						//System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+						barrier.await();
+					}	
+					catch(InterruptedException ex)
+					{	
+						System.out.println("getBalance gave barrier exception");
+					}
+					catch(BrokenBarrierException ex)
+					{
+						System.out.println("getBalance gave brokenbarrier exception");
+					}
+				}
+                           	else 
+                         	{
+                                	System.out.println("wrong rd command " + command
+                                        			+ " transaction type " + transactiontype);
+                           	}
+                        }
+			else
+                      	{
+				int writenum = Tid.incrementAndGet();
+
+                         	if (command == TX_TRANSFER) 
+				{
+                                	// keep the request stored locally to retry in case version
+                                        // match fails
+                               		requestIdValueMap.put(requestId, value);
+                               		// assert stmInstance != null;
+                                     	transfer(request, src, dst, retry, writenum);
+                                	stmInstance.addToCompletedBatch(request, writenum );
+					try
+                                    	{
+                                        	//System.out.println("Thread joined = " + batchnum + " Threads waiting = " + barrier.getNumberWaiting());
+                                              	barrier.await();
+					}       
+                                    	catch(InterruptedException ex)
+                                   	{
+                                         	System.out.println("transfer gave barrier exception");
+                                	}
+					catch(BrokenBarrierException ex)
+					{
+						System.out.println("transfer gave broken barrier exception");
+					}
+				}
+                        	else
+                       		{
+                                	// yet to implement... balaji
+                                 	// transfer(request, src, dst, retry);
+                              		System.out.println("Wrong WR command " + command);
+
+				}
+                         }
                 }/* End run */
         }
 

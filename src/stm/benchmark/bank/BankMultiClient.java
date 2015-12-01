@@ -46,7 +46,8 @@ public class BankMultiClient {
         
         private ArrayBlockingQueue<Integer> sends;
         private final Random random;
-        
+       	private final Random remote;
+ 
         public int readCount = 0;
         public int writeCount = 0;
         public long readLatency =0; 
@@ -57,7 +58,9 @@ public class BankMultiClient {
         	
             sends = new ArrayBlockingQueue<Integer>(128);
             this.random = new Random();
-        }
+            this.remote = new Random();
+        
+	}
 
         public void resetCounts() {
             readCount = 0;
@@ -92,7 +95,7 @@ public class BankMultiClient {
                 	ClientRequest request;
                 	RequestId requestId;
                 	if(random.nextInt(100) < readPercentage) {
-                		reqBytes = bank.createRequest(readOnly);
+                		reqBytes = bank.createRequest(readOnly, false);
                 		request = new ClientRequest(nextRequestId(), reqBytes);
     					requestId = request.getRequestId();
                 		pendingClientRequestMap.put(requestId.getClientId(),
@@ -107,7 +110,12 @@ public class BankMultiClient {
                         
                         this.readLatency += System.currentTimeMillis() - start;
                 	} else {
-                		reqBytes = bank.createRequest(readWrite);
+                		int cross = remote.nextInt(100);
+				boolean flag = false;
+				if(cross < 20)
+					flag = true;
+
+				reqBytes = bank.createRequest(readWrite, flag);
                 		request = new ClientRequest(nextRequestId(), reqBytes);  
                 		requestId = request.getRequestId();
                 		pendingClientRequestMap.put(requestId.getClientId(),

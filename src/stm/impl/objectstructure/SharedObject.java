@@ -1,12 +1,13 @@
 package stm.impl.objectstructure;
 import stm.transaction.AbstractObject;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicIntegerArray;
 
 public class SharedObject {
 	
 	/* Fields added for parallelization */
         AtomicInteger owner;
-        private int readers_array[];
+        AtomicIntegerArray readers_array;
 	private int MaxSpec;
 	
 	private CommittedObjects committedObjects; 
@@ -15,7 +16,7 @@ public class SharedObject {
 	public SharedObject(AbstractObject object, int MaxSpec) {
 		
                 owner = new AtomicInteger(0);
-                readers_array = new int[MaxSpec];
+                readers_array = new AtomicIntegerArray(MaxSpec);
                 this.MaxSpec = MaxSpec;
 	
 		committedObjects = new CommittedObjects(object);
@@ -86,20 +87,25 @@ public class SharedObject {
         public void setReader(int Tid)
         {
                 int index = (Tid - 1) % MaxSpec;        /* Tx Ids start from 1 at present */
-                readers_array[index] = Tid;
+                readers_array.set(index, Tid);
         }
 
         public void clearReader(int Tid)
         {
                 int index = (Tid - 1) % MaxSpec;        /* Tx Ids start from 1 at present */
-                readers_array[index] = 0;
+                readers_array.compareAndSet(index, Tid, 0);
+			//System.out.println("Wrong clearReader");
         }
 
-        public int[] getReaderArray()
+        /*public AtomicIntgerArray getReaderArray()
         {
                 return (this.readers_array);
-        }
+        }*/
 
+	public int getReader(int index)
+	{
+		return readers_array.get(index);
+	}
         public int getOwner()
         {
                 return(this.owner.get());

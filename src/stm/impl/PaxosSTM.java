@@ -24,7 +24,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 
-
+import stm.impl.objectstructure.SharedObject;
 import stm.transaction.AbstractObject;
 import stm.transaction.TransactionContext;
 import stm.transaction.ReadSetObject;
@@ -68,7 +68,7 @@ public class PaxosSTM {
 	private ConcurrentHashMap<Integer, AbortEntry> abortedObjectMap;
 	
 	//private ArrayList <Integer,HashMap<Integer, Long>> conflictObjMapList = new ConcurrentSkipListMap<Integer,HashMap<Integer, Long>>();
-	private List <ConcurrentHashMap<Integer,Long>> conflictObjMapList;
+	//private List <ConcurrentHashMap<Integer,Long>> conflictObjMapList;
 	
 	private BlockingQueue<ClientRequest> XQueue = new LinkedBlockingQueue<ClientRequest>();
 	
@@ -120,12 +120,12 @@ public class PaxosSTM {
 		//conflictObjMapList = new ArrayList <ConcurrentHashMap<Integer,Long>>(replicaCnt);
 		//replicaLocks = new ReentrantLock[replicaCnt];
 
-		for (int index = 0; index < replicaCnt; index++)
+		/*for (int index = 0; index < replicaCnt; index++)
 		{
 			
 			//conflictObjMapList.put(index, new HashMap<Integer,Long>());
-			conflictObjMapList.add(index, new ConcurrentHashMap<Integer,Long>());
-			checkerTh[index] =  new ConflictMapChecker(index);	
+			///conflictObjMapList.add(index, new ConcurrentHashMap<Integer,Long>());
+			//checkerTh[index] =  new ConflictMapChecker(index);	
 			//replicaLocks[index] = new ReentrantLock();
 		}	
 		/*
@@ -314,6 +314,10 @@ public class PaxosSTM {
 		/* Check if it is possible to add the transaction in the object_array, wait if an aborted transaction is already present */
 		TransactionContext context = requestIdContextMap.get(requestId);
 		int Tid = context.getTransactionId();
+		if(pTid == 0)
+			System.out.println("Tid is 0");
+		if(Tid == 0)
+			System.out.println("Context Tid is 0");
 		if(CheckXaborted(Tid))
 		{
 			Xabort(Tid, requestId);
@@ -393,6 +397,10 @@ public class PaxosSTM {
 		 requestIdContextMap.get(requestId).setFlag();
 	}
 
+	public void setRemoteId(RequestId requestId, int remoteId)
+	{
+		requestIdContextMap.get(requestId).remoteId = remoteId;
+	}
 	public byte[] getResultFromContext(RequestId requestId) {
 		return requestIdContextMap.get(requestId).getResult();
 	}
@@ -438,7 +446,7 @@ public class PaxosSTM {
 
 	
 	/* Check if the replica's hashmap is empty */
-	public boolean ConflictMapisEmpty(int replicaId)
+	/*public boolean ConflictMapisEmpty(int replicaId)
 	{
 		if(conflictObjMapList.get(replicaId).isEmpty())
 			return true;
@@ -447,7 +455,7 @@ public class PaxosSTM {
 	}
 
 	/* Get the replica's hashmap size */
-	public int ConflictMapSize(int replicaId)
+/*	public int ConflictMapSize(int replicaId)
 	{
 		return(conflictObjMapList.get(replicaId).size());
 	}
@@ -510,7 +518,8 @@ public class PaxosSTM {
 			sharedObjectRegistry.updateCompletedObject(objId, null);
 			if(skipFlag == false)
 			{
-				conflictObjMapList.get(replicaId).put(objId, sharedObjectRegistry.getLatestCommittedObject(objId).getVersion());
+				//conflictObjMapList.get(replicaId).put(objId, sharedObjectRegistry.getLatestCommittedObject(objId).getVersion());
+				service.addToContentionMap(objId, replicaId);
 				insertCount++;
 			}	
 			//tempMap.put(objId, sharedObjectRegistry.getLatestCommittedObject(objId).getVersion());
@@ -600,15 +609,21 @@ public class PaxosSTM {
 			//sharedObjectRegistry.updateObject(entry.getKey(), entry.getValue(), timeStamp);
 			sharedObjectRegistry.updateObject(objId, entry.getValue(), timeStamp);
 			
-			/* Conflict map functionality*/
-			Long version = conflictObjMapList.get(repId).get(objId);
+		
 			if(skipFlag == false)
 			{
-				if((!conflictObjMapList.get(repId).isEmpty()))
+				
+				if(context.crossflag == true)
+				{		
+					service.addToContentionMap(objId,context.remoteId);
+				}
+					
+				if(!service.ConflictMapisEmpty(repId))
 				{
+					Long version = service.ConflictMapGet(objId,repId);
 					if((version != null) && (version < sharedObjectRegistry.getLatestCommittedObject(objId).getVersion()))
 					{		
-						conflictObjMapList.get(repId).remove(objId);
+						service.removeFromContentionMap(objId, repId);
 						removeCnt++;
 					}
 			
@@ -622,7 +637,7 @@ public class PaxosSTM {
 	}
 	
 	/* Update the conflict object map, this will be outside critical path */ 
-	public void updateConflictMap(TransactionContext context, int replicaId)
+	/*public void updateConflictMap(TransactionContext context, int replicaId)
 	{
 		if(conflictObjMapList.get(replicaId).isEmpty())
 			return;
@@ -645,7 +660,7 @@ public class PaxosSTM {
 			}
 		}
 	
-	}
+	}*/
 	
 
 	public TransactionContext getTransactionContext(RequestId requestId) {
@@ -669,12 +684,17 @@ public class PaxosSTM {
 	}
 
 	/* Abort the later readers in the readset */
-	public void XabortReaders( int [] readers, int Tid)
+	public void XabortReaders( SharedObject obj, int Tid)
 	{
 		for(int i = Tid ; i < MaxSpec; i++)
 		{
-			if(readers[i] > 0)
-				SetAbortArray(readers[i]);
+			int rId = obj.getReader(i);
+			if(rId > 0)
+			{
+				if(rId <= 0 || rId > MaxSpec)
+					System.out.println("RId = " + rId + " Tid = " + Tid);
+				SetAbortArray(rId);
+			}
 		}
 	}
 	/* XAbort a transaction by writing in the abort array */
@@ -684,7 +704,7 @@ public class PaxosSTM {
 		XAbortCount++;
 		/* Clear the abort_array */
 		int index = (Tid - 1)% MaxSpec;
-		this.abort_array.set(index,0);
+		//this.abort_array.set(index,0);
 		
 		//System.out.println("Tranaction Aborted " + Tid);
 		TransactionContext context = requestIdContextMap.get(Id);
@@ -714,16 +734,17 @@ public class PaxosSTM {
                         	//AbstractObject object = entry.getValue();
 		       		// sharedObjectRegistry.updateCompletedObject(objId, null);
 		       		context.writesetremove(objId);	
-		       		sharedObjectRegistry.clearReader(objId,Tid);
-				if(sharedObjectRegistry.getOwner(objId) == Tid)
+		       		//sharedObjectRegistry.clearReader(objId,Tid);
+				/*if(sharedObjectRegistry.getOwner(objId) == Tid)
                         	{
                                 	sharedObjectRegistry.compareAndSetOwner(objId,Tid,0);
-                        	}
+                        	}*/
 
 			}
 		}
 
                 
+		this.abort_array.set(index,0);
 		
 		return;	
 	}
@@ -814,9 +835,9 @@ public class PaxosSTM {
 			//System.out.println("Freeing ObjId WriteSet = " + objId + " TransactionId = " + Tid + " Version = " + object.getVersion());
 			sharedObjectRegistry.updateCompletedObject(objId, object);
 			/* Abort readers a final time before unlocking the object */
-			readers = sharedObjectRegistry.getReaderArray(objId);
-			XabortReaders(readers, Tid);
-
+			//readers = sharedObjectRegistry.getReaderArray(objId);
+			//XabortReaders(, Tid);
+			//sharedObjectRegistry.AbortReaders(this,objId, Tid);
 			sharedObjectRegistry.clearReader(objId, Tid);
 			sharedObjectRegistry.clearOwner(objId);		
 		}
@@ -876,7 +897,7 @@ public class PaxosSTM {
 		int index = (Tid - 1) % MaxSpec;
 		if( index < 0 )
 		{
-			System.out.println("Index less than 1)");
+			System.out.println("Index less than 1, Tid = " + Tid);
 
 		}
 		if (abort_array.get(index)  == 1)
@@ -890,7 +911,9 @@ public class PaxosSTM {
 		int index = (Tid - 1) % MaxSpec;
                 if ( index < 0)
 		{
-			System.out.println("Index less than 1)");
+			System.out.println("Index less than 1, SetAbortArray, Tid = " + Tid);
+			
+			
 		}
 		/* Wait for an aborted transaction to leave */
 		while(!CheckXaborted(Tid))

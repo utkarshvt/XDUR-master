@@ -79,8 +79,8 @@ public class SharedObjectRegistry {
 					stmInstance.SetAbortArray(Tid);
 					return null;
 				}
-				readers = shared.getReaderArray();
-				stmInstance.XabortReaders(readers, Tid);
+				//readers = shared.getReaderArray();
+				stmInstance.XabortReaders(shared, Tid);
 				if(stmInstance.CheckXaborted(Tid) == true)
 					return null;
 				object = shared.getLatestCompletedObject();
@@ -128,10 +128,10 @@ public class SharedObjectRegistry {
 		registry.get(Id).updateCommittedObject(object, timeStamp);
 	}
 
-	public int[] getReaderArray(int Id)
+	/*public int[] getReaderArray(int Id)
 	{
 		return registry.get(Id).getReaderArray();
-	}
+	}*/
 	public void clearReader(int Id, int Tid)
         {
               registry.get(Id).clearReader(Tid);
@@ -147,7 +147,12 @@ public class SharedObjectRegistry {
                 registry.get(Id).clearOwner();
         }
 	
-
+	public void AbortReaders(PaxosSTM stmInstance, int Id, int Tid)
+	{
+		SharedObject shared = registry.get(Id);
+		stmInstance.XabortReaders(shared, Tid);
+		
+	}
 	public boolean compareAndSetOwner(int Id, int prev,int  curr)
         {
                 return(registry.get(Id).compareAndSetOwner(prev,curr));

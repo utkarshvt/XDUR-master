@@ -1,5 +1,6 @@
 package stm.benchmark.vacation;
 
+import java.util.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -50,12 +51,20 @@ public class Manager extends STMService {
 
 	AtomicInteger lockThread = new AtomicInteger(0);
 	MonitorThread monitorTh = new MonitorThread();
-
+	XBatcher batcherTh = new XBatcher();
 	volatile long start = 0;
 	volatile long end = 0;
 
 	private long lastWriteCount = 0;
 	private long lastAbortCount = 0;
+ 	private long lastXAbortCount = 0;
+        private long lastCompletedCount = 0;
+        private long lastRemCount = 0;
+        private long lastSkipCount = 0;
+        private long lastReadValCount = 0;
+        private long lastInsertCount = 0;
+
+
 
 	volatile long writeCount = 0;
 	volatile long makeResCount = 0;
@@ -67,8 +76,12 @@ public class Manager extends STMService {
 
 	/* Hashmap created for Id and client request, may remove the Id Value hashmap entirely */
         private final ConcurrentHashMap<RequestId, ClientRequest> requestIdRequestMap = new ConcurrentHashMap<RequestId, ClientRequest>();
+	private List <ConcurrentHashMap<Integer,Long>> conflictObjMapList;
+	private volatile long skipCount = 0;
+        private volatile long readValCount = 0;
+        private volatile boolean skipFlag = false;
 
-
+	
 	private volatile long committedCount = 0;
 	private volatile long abortedCount = 0;
 
@@ -103,12 +116,27 @@ public class Manager extends STMService {
 			int count = 0;
 			long localWriteCount = 0;
 			long localAbortCount = 0;
+                        long localCompletedCount = 0;
+                        long localXAbortCount = 0;
+                        long localRemCount = 0;
+                        long localSkipCount = 0;
+                        long localReadValCount = 0;
+                        long localInsertCount = 0;
 
-			// System.out.println("MakeRes-thr" + "\t" + "DelCus-thr" +"\t" +
 			// "UpdateTab-thr" + "\t" + "Time-taken" +
-			System.out.println("Write-thr" + "\t" + "Write Latency" + "\t"
-					+ "Abort" + "\t" + "Time");
+			System.out.println("Write-thr" + "\t" + "CompletedCount" + "\t" + "Write Latency" + "\t"
+					+ "Abort" + "\t" + "Xaborts" + "\t" + "SkipCount" + "\t" + "ReadSetValidationCount" + "\t" + "Insertions" + "\t" + "Removals" + "\t" + "Time");
+			
+			try {
+                                Thread.sleep(10000);
+                        } catch (InterruptedException e1) {
+                                // TODO Auto-generated catch block
+                                e1.printStackTrace();
+                        }
+                        // Sample time is 20 seconds
 
+ 
+			System.out.println(" ");
 			while (count < 7) {
 
 				start = System.currentTimeMillis();
@@ -119,25 +147,53 @@ public class Manager extends STMService {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-
 				localWriteCount = committedCount;
-				localAbortCount = abortedCount;
+                                localCompletedCount = completedCount;
+                                localAbortCount = abortedCount;
+                                localXAbortCount =   stmInstance.getXabortCount();
+                                localSkipCount = skipCount;
+                                localReadValCount = readValCount;
+                                localInsertCount = stmInstance.getInsertCount();
+                                localRemCount = stmInstance.getRemCount();
+
 
 				end = System.currentTimeMillis();
 				client.collectLatencyData();
 
-				System.out.format("%5d  %4.2f %5d %6d\n",
+				System.out.format("%6d   %6d  %5.3f  %6d   %6d   %6d   %6d   %6d  %6d  %6d\n",
 						((localWriteCount - lastWriteCount) * 1000)
-								/ (end - start), client.getWriteLatency(),
-						(localAbortCount - lastAbortCount), (end - start));
+								/ (end - start), 
+						((localCompletedCount - lastCompletedCount) * 1000)
+                                                                / (end - start),
+						client.getWriteLatency(),
+						((localAbortCount - lastAbortCount)* 1000)
+								/(end - start),
+						((localXAbortCount - lastXAbortCount) * 1000)
+                                                                / (end - start),
+						((localSkipCount - lastSkipCount) * 1000)
+                                                                / (end - start),
+                                                ((localReadValCount - lastReadValCount) * 1000)
+                                                                / (end - start),
+                                                ((localInsertCount - lastInsertCount) * 1000)
+                                                                / (end - start),
+                                                ((localRemCount - lastRemCount) * 1000)
+                                                                / (end - start),
+ 						(end - start));
 
 				lastWriteCount = localWriteCount;
 				lastAbortCount = localAbortCount;
+ 				lastXAbortCount = localXAbortCount;
+                                lastCompletedCount = localCompletedCount;
+                                lastSkipCount = localSkipCount;
+                                lastReadValCount = localReadValCount;
+                                lastInsertCount = localInsertCount;
+                                lastRemCount = localRemCount;
 
 				count++;
 
 			}
-			System.exit(1);
+			System.out.println("Done");
+			System.exit(0);
 		}
 	}
 
@@ -181,7 +237,8 @@ public class Manager extends STMService {
 		this.Car_Offset = numRelations;
 		this.Flight_Offset = this.Car_Offset + numRelations;
 		this.Room_Offset = this.Flight_Offset + numRelations;
-		this.Customer_Offset = this.Customer_Offset + numRelations;
+		this.Customer_Offset = this.Room_Offset + numRelations;
+		//System.out.println("Car.offset = " + this.Car_Offset + " FlightOffset = " +  this.Flight_Offset + " Room Offset = " +  this.Room_Offset + " Customer Offset = " + this.Customer_Offset);
 		
 		int ids[] = new int[numRelation];
 		for (i = 0; i < numRelation; i++) {
@@ -242,11 +299,20 @@ public class Manager extends STMService {
 
 		// start the monitor thread
 		monitorTh.start();
+		batcherTh.start();
 	}
 
 	public void initRequests() {
 		this.localId = ProcessDescriptor.getInstance().localId;
 		this.numReplicas = ProcessDescriptor.getInstance().numReplicas;
+		      
+		conflictObjMapList = new ArrayList <ConcurrentHashMap<Integer,Long>>(this.numReplicas);
+		for (int index = 0; index < this.numReplicas; index++)
+                {
+                        conflictObjMapList.add(index, new ConcurrentHashMap<Integer,Long>());
+                }
+
+
 	}
 
 	public void initClient(VacationMultiClient client) {
@@ -261,6 +327,21 @@ public class Manager extends STMService {
 		this.replica = replica;
 	}
 
+	public boolean ConflictMapisEmpty(int replicaId)
+        {
+                if(conflictObjMapList.get(replicaId).isEmpty())
+                        return true;
+                else
+                        return false;
+        }
+
+        public Long ConflictMapGet(int objId, int repId)
+        {
+                Long version = conflictObjMapList.get(repId).get(objId);
+                return version;
+        }
+
+
 	boolean addReservation(int reservationId, // TransactionalRBTree<Integer,
 													// Reservation> table,
 			int id, int num, int price, RequestId requestId, boolean retry, int Tid) {
@@ -270,11 +351,12 @@ public class Manager extends STMService {
 				stmInstance.TX_READ_WRITE_MODE, requestId,
 				stmInstance.OBJECT_WRITE_MODE, retry, Tid);// table.find(id);
 		if (reservation == null) {
+			return false;
 			/* Create new reservation */
-			if (num < 1 || price < 0) {
+			/*if (num < 1 || price < 0) {
 				return false;
 			}
-			reservation = new Reservation(reservationId, id, num, price);
+			reservation = new Reservation(reservationId, id, num, price);*/
 			// assert(reservationPtr != NULL);
 			// stmInstance.write(reservation, reservationId, requestId); // do
 			// the registration at commit time
@@ -285,7 +367,8 @@ public class Manager extends STMService {
 				reservation.isNull = false;
 			/* Update existing reservation */
 			if (!reservation.reservation_addToTotal(num)) {
-				return false;
+				//return false;
+				return true;
 			}
 			if (reservation.numTotal == 0) {
 				reservation.isNull = true;
@@ -383,6 +466,8 @@ public class Manager extends STMService {
 	 * ==========================================================================
 	 * === manager_deleteFlight -- Delete an entire flight -- Fails if customer
 	 * has reservation on this flight -- Returns TRUE on success, else FALSE
+	 * Returns false if transaction is aborted, it doesn't affect the program's
+	 * correctness.
 	 * ====
 	 * =========================================================================
 	 */
@@ -398,7 +483,8 @@ public class Manager extends STMService {
 		}
 
 		if (reservation.numUsed > 0) {
-			return false; /* somebody has a reservation */
+			//return false; /* somebody has a reservation */
+			return true;
 		}
 
 		return addReservation(reservationIntId, flightId,
@@ -408,8 +494,11 @@ public class Manager extends STMService {
 
 	/*
 	 * ==========================================================================
-	 * === manager_addCustomer -- If customer already exists, returns failure --
+	 * === manager_addCustomer -- Originally, If customer already exists, returns failure --
 	 * Returns TRUE on success, else FALSE
+	 * In this case, return false if stmInstance.Xopen return null, which means that the 
+	 * transaction has been aborted.
+	 * The return value originally was not having any effect on the execution.
 	 * ======================================
 	 * =======================================
 	 */
@@ -421,18 +510,23 @@ public class Manager extends STMService {
 		;
 
 		// if (customerTable.contains(customerId))
-		if (customer != null) {
+		if (customer == null) {
 			return false;
+			
 		}
 
+		//if(customerIntId >= 500)
+		//	System.out.println("Custmer is null for CustId = " + customerId + " Final Id = " + customerIntId);
 		if (customer.isNull == true) {
 			customer.isNull = false;
 			// stmInstance.write(customer, customerStringId, requestId);
-		} else {
+		} 
+		/* Will never be called since, out of range customer query won't be there */
+		/*else {
 			customer = new Customer(customerIntId, customerId);
 			this.sharedObjectRegistry.registerObjects(customerIntId,
 					customer,MaxSpec);
-		}
+		}*/
 		// assert(customerPtr != null);
 		// customerTable.insert(customerId, customer);
 
@@ -442,8 +536,10 @@ public class Manager extends STMService {
 	/*
 	 * ==========================================================================
 	 * === manager_deleteCustomer -- Delete this customer and associated
-	 * reservations -- If customer does not exist, returns success -- Returns
+	 * reservations -- Originally, If customer does not exist, returns success -- Returns
 	 * TRUE on success, else FALSE
+	 * The function is modified to return false only if the transaction has been aborted,
+`	 * This modification doesn't effect the correctness.
 	 * ==============================================
 	 * ===============================
 	 */
@@ -454,10 +550,15 @@ public class Manager extends STMService {
 				stmInstance.TX_READ_WRITE_MODE, requestId,
 				stmInstance.OBJECT_WRITE_MODE, retry, Tid);
 		;
-		if (customer == null || customer.isNull == true) {
+		if (customer == null )
+		{
 			return false;
 		}
 
+		if(customer.isNull == true)
+		{
+			return true;
+		}
 		// stmInstance.write(customer, customerStringId, requestId);
 
 		LinkedList<ReservationInfo> reservationInfoList = customer.reservationInfoList;
@@ -554,7 +655,7 @@ public class Manager extends STMService {
 		final int customerIntId = this.Customer_Offset + customerId;
 		Customer customer;
 
-		customer = (Customer) stmInstance.open(customerIntId,
+		customer = (Customer) stmInstance.Xopen(customerIntId,
 				stmInstance.TX_READ_WRITE_MODE, requestId,
 				stmInstance.OBJECT_WRITE_MODE, retry, Tid);
 
@@ -564,13 +665,18 @@ public class Manager extends STMService {
 
 		return bill;
 	}
-
+	
+	/* This function will return false to indicate that the transaction has been aborted.
+	 * In other cases it returns true, this changes the funcationality a lottle but does
+	 * not have any effect on the correctness of the benchmark, since the function's return
+	 * value was ignored originally. If at all the benchmark is redesigned to use the return
+	 * as they were meant to be used originally, the retry behavior can be changed */
 	boolean reserve(int reservationStringId, int customerStringId,
 			int customerId, int id, int type, RequestId requestId, boolean retry) {
 		Customer customer;
 		Reservation reservation;
 
-		customer = (Customer) stmInstance.open(customerStringId,
+		customer = (Customer) stmInstance.Xopen(customerStringId,
 				stmInstance.TX_READ_WRITE_MODE, requestId,
 				stmInstance.OBJECT_WRITE_MODE, retry, stmInstance.getTransactionId());
 
@@ -578,7 +684,7 @@ public class Manager extends STMService {
 			return false;
 		}
 
-		reservation = (Reservation) stmInstance.open(reservationStringId,
+		reservation = (Reservation) stmInstance.Xopen(reservationStringId,
 				stmInstance.TX_READ_WRITE_MODE, requestId,
 				stmInstance.OBJECT_WRITE_MODE, retry, stmInstance.getTransactionId());
 		if (reservation == null) {
@@ -586,14 +692,16 @@ public class Manager extends STMService {
 		}
 
 		if (!reservation.reservation_make()) {
-			return false;
+			//return false;
+			return true;
 		}
 
 		if (!customer.customer_addReservationInfo(type, id, reservation.price)) {
 			/* Undo previous successful reservation */
 			// boolean status =
 			reservation.reservation_cancel();
-			return false;
+			//return false;
+			return true;
 		}
 		// stmInstance.write(customer, customerStringId, requestId);
 		// stmInstance.write(reservation, reservationStringId, requestId);
@@ -636,14 +744,14 @@ public class Manager extends STMService {
 		Customer customerPtr;
 		Reservation reservationPtr;
 
-		customerPtr = (Customer) stmInstance.open(customerIntId,
+		customerPtr = (Customer) stmInstance.Xopen(customerIntId,
 				stmInstance.TX_READ_WRITE_MODE, requestId,
 				stmInstance.OBJECT_WRITE_MODE, retry, stmInstance.getTransactionId());
 		if (customerPtr == null) {
 			return false;
 		}
 
-		reservationPtr = (Reservation) stmInstance.open(reservationIntId,
+		reservationPtr = (Reservation) stmInstance.Xopen(reservationIntId,
 				stmInstance.TX_READ_WRITE_MODE, requestId,
 				stmInstance.OBJECT_WRITE_MODE, retry, stmInstance.getTransactionId());
 		if (reservationPtr == null) {
@@ -710,10 +818,14 @@ public class Manager extends STMService {
 		int queryRange = (int) ((double) percentOfQueries / 100.0
 				* (double) numRelations + 0.5);
 
+		//System.out.println(" query Range = " + queryRange);
 		int accessibleRange = queryRange / this.numReplicas;
+		//System.out.println(" Accessible Range = " + accessibleRange);
+		
 		int min = accessibleRange * this.localId;
 
-		int numQuery = random.nextInt(numQueriesPerTransactions) + 1;
+		//int numQuery = random.nextInt(numQueriesPerTransactions) + 1;
+		int numQuery = numQueriesPerTransactions;
 		int customerId = random.nextInt(accessibleRange) + min + 1;
 		
 		if(customerId < min + 1 && customerId > min+accessibleRange+1) {
@@ -729,11 +841,11 @@ public class Manager extends STMService {
 			}
 		}
 
-		boolean isFound = false;
 		boolean xretry = true;
 		byte[] result = new byte[4];
 		while(xretry == true)
 		{
+			boolean isFound = false;
 			xretry = false;
 		
 			for (int n = 0; n < numQuery; n++) 
@@ -746,8 +858,13 @@ public class Manager extends STMService {
 					if (queryCar(id, requestId, retry, Tid) >= 0) 
 					{
 						price = queryCarPrice(id, requestId, retry, Tid);
+						if(price < 0)
+						{
+							xretry = true;
+							break;
+						}
 					}
-					if(stmInstance.CheckXaborted(Tid))
+					else
 					{
 						xretry = true;
 						break;
@@ -758,9 +875,14 @@ public class Manager extends STMService {
 					if (queryFlight(id, requestId, retry, Tid) >= 0) 
 					{
 						price = queryFlightPrice(id, requestId, retry, Tid);
+						if(price < 0)
+						{
+							xretry = true;
+							break;
+						}
+						
 					}
-					
-					if(stmInstance.CheckXaborted(Tid))
+					else
 					{
 						xretry = true;
 						break;
@@ -772,6 +894,11 @@ public class Manager extends STMService {
 					if (queryRoom(id, requestId, retry, Tid) >= 0) 
 					{
 						price = queryRoomPrice(id, requestId, retry, Tid);
+						if(price < 0)
+						{
+							xretry = true;
+							break;
+						}
 					}
 					
 					if(stmInstance.CheckXaborted(Tid))
@@ -795,15 +922,15 @@ public class Manager extends STMService {
 			/* for n */
 			if (isFound) 
 			{
-				addCustomer(customerId, requestId, retry, Tid);
-				if(stmInstance.CheckXaborted(Tid))
+				boolean ret = addCustomer(customerId, requestId, retry, Tid);
+				if(!ret)
 				{
 					xretry = true;
 				}
 			}
 			if (maxIds[Vacation.RESERVATION_CAR] > 0) 
 			{
-				reserveCar(customerId, maxIds[Vacation.RESERVATION_CAR], requestId,
+				boolean ret = reserveCar(customerId, maxIds[Vacation.RESERVATION_CAR], requestId,
 					retry, Tid);
 				if(stmInstance.CheckXaborted(Tid))
 				{
@@ -812,18 +939,18 @@ public class Manager extends STMService {
 			}
 			if (maxIds[Vacation.RESERVATION_FLIGHT] > 0) 
 			{
-				reserveFlight(customerId, maxIds[Vacation.RESERVATION_FLIGHT],
+				boolean ret = reserveFlight(customerId, maxIds[Vacation.RESERVATION_FLIGHT],
 						requestId, retry, Tid);
-				if(stmInstance.CheckXaborted(Tid))
+				if(!ret)
 				{
 					xretry = true;
 				}
 			}
 			if (maxIds[Vacation.RESERVATION_ROOM] > 0) 
 			{
-				reserveRoom(customerId, maxIds[Vacation.RESERVATION_ROOM],
+				boolean ret = reserveRoom(customerId, maxIds[Vacation.RESERVATION_ROOM],
 						requestId, retry, Tid);
-				if(stmInstance.CheckXaborted(Tid))
+				if(!ret)
 				{
 					xretry = true;
 				}
@@ -862,14 +989,14 @@ public class Manager extends STMService {
 		{
 			xretry = false;
 			int bill = queryCustomerBill(customerId, requestId, retry, Tid);
-			if(stmInstance.CheckXaborted(Tid))
+			if(bill < 0)
 			{
 				xretry = true;
 				continue;
 			}
 			if (bill >= 0) {
-				deleteCustomer(customerId, requestId, retry, Tid);
-				if(stmInstance.CheckXaborted(Tid))
+				boolean ret = deleteCustomer(customerId, requestId, retry, Tid);
+				if(!ret)
 				{
 					xretry = true;
 					continue;
@@ -907,7 +1034,8 @@ public class Manager extends STMService {
 		final int ops[] = new int[numQueriesPerTransactions];
 		final int prices[] = new int[numQueriesPerTransactions];
 
-		final int numUpdate = randomPtr.nextInt(numQueriesPerTransactions) + 1;
+		//final int numUpdate = randomPtr.nextInt(numQueriesPerTransactions) + 1;
+		final int numUpdate = numQueriesPerTransactions;
 		for (int n = 0; n < numUpdate; n++) {
 			types[n] = randomPtr.nextInt(Vacation.NUM_RESERVATION_TYPE);
 			ids[n] = (randomPtr.nextInt(accessibleRange) + min + 1);
@@ -928,22 +1056,22 @@ public class Manager extends STMService {
 				if (doAdd == 1) {
 					int newPrice = prices[n];
 					if (t == Vacation.RESERVATION_CAR) {
-							addCar(id, 100, newPrice, requestId, retry, Tid);
-						if(stmInstance.CheckXaborted(Tid))
+						boolean ret = 	addCar(id, 100, newPrice, requestId, retry, Tid);
+						if(!ret)
 						{
 							xretry = true;
 							break;
 						}
 					} else if (t == Vacation.RESERVATION_FLIGHT) {
-						addFlight(id, 100, newPrice, requestId, retry, Tid);
-						if(stmInstance.CheckXaborted(Tid))
+						boolean ret = addFlight(id, 100, newPrice, requestId, retry, Tid);
+						if(!ret)
 						{
 							xretry = true;
 							break;
 						}
 					} else if (t == Vacation.RESERVATION_ROOM) {
-						addRoom(id, 100, newPrice, requestId, retry, Tid);
-						if(stmInstance.CheckXaborted(Tid))
+						boolean ret = addRoom(id, 100, newPrice, requestId, retry, Tid);
+						if(!ret)
 						{
 							xretry = true;
 							break;
@@ -1170,6 +1298,50 @@ public class Manager extends STMService {
 		});
 	}
 
+	
+
+	public boolean addToContentionMap(int repId, int objId)
+        {
+
+                if(!checkRange(objId, repId))
+                        return false;
+                else
+                {
+                        conflictObjMapList.get(repId).put(objId, sharedObjectRegistry.getLatestCommittedObject(objId).getVersion());
+                        return true;
+                }
+        }
+
+        public boolean removeFromContentionMap(int repId, int objId)
+        {
+                /* No need to check for range, since an outside object will not be there */
+                conflictObjMapList.get(repId).remove(objId);
+		return true;
+        }
+
+        public boolean checkRange(int objId, int repId)
+        {
+
+
+                /*int minItem = this.accessibleObjects * repId;
+                int maxItem = (this.accessibleObjects * (repId + 1);
+
+                if((objId >= minItem) && (objId < maxItem))
+                        return true;
+
+                int minW = this.accessibleWarehouses * (repId);
+                int maxW = (this.accessibleWarehouses * (repId + 1));
+
+                int minWh = warehouseStart + minW * warehouseOffset;
+                int maxWh = warehouseStart + maxW * warehouseOffset;
+
+                if((objId >= minWh) && (objId < maxWh))
+                        return true;
+		*/
+                return true;
+
+        }
+
 	/*************************************************************************
 	 * 
 	 * @param requestId
@@ -1182,7 +1354,7 @@ public class Manager extends STMService {
 	 *         removes all the data for optimistically executed transaction
 	 *         (cleanup).
 	 ************************************************************************/
-	public void onCommit(RequestId rId, TransactionContext txContext) {
+	public void onCommit(RequestId requestId, TransactionContext ctx) {
 
 		// Validate the transaction object versions or Decided InstanceIds and
 		// sequence numbers
@@ -1194,28 +1366,76 @@ public class Manager extends STMService {
 		// RequestId requestId = cRequest.getRequestId();
 
 		// Validate read set first
-//		System.out.println("*onCommit");
-		if (stmInstance.validateReadset(txContext)) {
-			stmInstance.updateSharedObject(txContext, 0, false);
-			committedCount++;
-		} else {
-			abortedCount++;
-			// Isn;t it needed to remove the previous content
-			// stmInstance.removeTransactionContext(txContext);
-			// executeRequest(cRequest, retry);
-			// stmInstance.updateSharedObject(requestId);
-		}
-		// writeCount++;
-		// remove the entries for this transaction LTM (TransactionContext,
-		// lastModifier)
-		// object = stmInstance.getResultFromContext(requestId);
-		// sendReply(stmInstance.getResultFromContext(requestId), cRequest);
-		client.replyToClient(rId);
+		//System.out.println("*onCommit");
+		
+		long rId = requestId.getClientId() % (long)numReplicas;
+                int replicaId = (int)rId;
 
-		stmInstance.removeTransactionContext(rId);
-		requestIdValueMap.remove(rId);
 
-	}
+                if(!skipFlag)
+                {
+                        if((ConflictMapisEmpty(replicaId)) && (ctx.crossflag == false))
+                        {
+                                skipCount++;
+                                stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
+                                committedCount++;
+                        }
+                        else
+                        {
+                                readValCount++;
+                                if (stmInstance.validateReadset(ctx))
+                                {
+                                        stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
+                                        committedCount++;
+                                        if(committedCount - skipCount > 100000)
+                                        {
+                                                skipFlag = true;
+
+                                        }
+
+
+                                }
+                                else
+                                {
+
+                                        stmInstance.emptyWriteSet(ctx,false,replicaId, skipFlag);
+                                        stmInstance.removeTransactionContext(requestId);
+                                        byte[] value = requestIdValueMap.get(requestId);
+                                        if(value != null)
+                                        {
+                                                ClientRequest cRequest = new ClientRequest(requestId , value);
+                                                executeRequest(cRequest, false);
+                                        }
+                                        abortedCount++;
+                                        return;
+                               }
+                        }
+                }
+                else
+                {
+
+                        if (stmInstance.validateReadset(ctx)) {
+                                stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
+                                committedCount++;
+                        } else {
+                                stmInstance.emptyWriteSet(ctx,false, replicaId, skipFlag);
+                                stmInstance.removeTransactionContext(requestId);
+                                byte[] value = requestIdValueMap.get(requestId);
+                                if(value != null)
+                                {
+                                        ClientRequest cRequest = new ClientRequest(requestId , value);
+                                        executeRequest(cRequest, false);
+                                }
+                                abortedCount++;
+                                return;
+                        }
+                }
+                client.replyToClient(requestId);
+                stmInstance.removeTransactionContext(requestId);
+                requestIdValueMap.remove(requestId);
+
+        }
+		
 
 	/**
 	 * Used to execute read requests from clients locally.
@@ -1265,6 +1485,27 @@ public class Manager extends STMService {
 
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		ByteBuffer bb;
+
+                int flag;
+                /*Add boolean flag */
+                if(ctx.crossflag == true)
+                {
+                        flag = 1;
+                }
+                else
+                {
+                        flag = 0;
+                }
+                bb = ByteBuffer.allocate(4);
+                bb.putInt(flag);
+                bb.flip();
+                out.write(bb.array());
+
+                bb = ByteBuffer.allocate(4);
+                bb.putInt(ctx.remoteId);
+                bb.flip();
+                out.write(bb.array());
+
 
 		bb = ByteBuffer.allocate(4);
 		bb.putInt(readset.size());
@@ -1380,6 +1621,18 @@ public class Manager extends STMService {
 		ByteBuffer bb = ByteBuffer.wrap(bytes);
 
 		TransactionContext ctx = new TransactionContext();
+      		int flag = bb.getInt();
+                if(flag == 0)
+                {
+                        ctx.crossflag = false;
+                }
+                else
+                {
+                        ctx.crossflag = true;
+                }
+
+                ctx.remoteId = bb.getInt();
+
 
 		int readsetSize = bb.getInt();
 		for (int i = 0; i < readsetSize; i++) {
@@ -1537,10 +1790,11 @@ public class Manager extends STMService {
                         /* Wait for all the thread to join */
                         try
                         {
-                                //System.out.println("XBatcher thread  joined, Threads waiting  = "  + barrier.getNumberWaiting());
+                                //if(drain != 0)
+				//	System.out.println("XBatcher thread  joined, Threads waiting  = "  + barrier.getNumberWaiting());
                                 barrier.await();
                                 //if( drain != 0 )
-                                //      System.out.println("All " + drain + " threads joined");
+                                  //    System.out.println("All " + drain + " threads joined");
                         }
                         catch(InterruptedException ex)
                         {
@@ -1593,9 +1847,13 @@ public class ExecThread implements Runnable
                 
 		int writenum = Tid.incrementAndGet();
 
+		if(writenum == 0)
+		{
+			System.out.println("Writenum = 0");
+		}
 		if (commandType == Vacation.ACTION_MAKE_RESERVATION) 
 		{
-
+			//System.out.println("Transaction " + writenum + " Make Res started");
                 	requestIdValueMap.put(requestId, value);
 			makeReservation(request, writenum, retry);
 			stmInstance.addToCompletedBatch(request, writenum );
@@ -1617,7 +1875,8 @@ public class ExecThread implements Runnable
                 } 
 		else if (commandType == Vacation.ACTION_DELETE_CUSTOMER) 
 		{
-                	requestIdValueMap.put(requestId, value);
+                	//System.out.println("Transaction " + writenum + " Delete Cust started");
+			requestIdValueMap.put(requestId, value);
 			deleteCustomer(request, writenum, retry);
 			stmInstance.addToCompletedBatch(request, writenum );
 			try
@@ -1639,7 +1898,7 @@ public class ExecThread implements Runnable
                 } 
 		else if (commandType == Vacation.ACTION_UPDATE_TABLES) 
 		{
-
+			//System.out.println("Transaction " + writenum + " Update Table started");
                 	requestIdValueMap.put(requestId, value);
 			updateTable(request, writenum, retry);
 			stmInstance.addToCompletedBatch(request, writenum );

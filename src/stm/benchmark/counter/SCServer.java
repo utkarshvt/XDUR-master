@@ -10,7 +10,7 @@ import lsr.common.Configuration;
 import lsr.paxos.ReplicationException;
 import lsr.paxos.replica.Replica;
 
-
+/*
 public class SCServer {
 
         public static void main(String[] args) throws IOException,
@@ -64,4 +64,4 @@ public class SCServer {
                                                 + "<readPercentage> <tpccProfile> <clientCount> <#reqs>");
         }
 }
-
+*/
