@@ -10,3 +10,10 @@ Changes from original code:
 6. Vacation benchmark is modified for tests.
 7. Optimized commit added.
 8. Skewed access pattern.
+
+
+Commit 12/1/15:
+
+1. Changed readers array to AtomicInteger.
+2. Uniform remote access.
+3. Latest Tpcc, Bank and Vacation codes.
