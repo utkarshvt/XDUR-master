@@ -125,7 +125,7 @@ public class Manager extends STMService {
 
 			// "UpdateTab-thr" + "\t" + "Time-taken" +
 			System.out.println("Write-thr" + "\t" + "CompletedCount" + "\t" + "Write Latency" + "\t"
-					+ "Abort" + "\t" + "Xaborts" + "\t" + "SkipCount" + "\t" + "ReadSetValidationCount" + "\t" + "Insertions" + "\t" + "Removals" + "\t" + "Time");
+					+ "Abort" + "\t" + "Xaborts" + "\t" + "SkipCount" + "\t" + "ReadSetValidationCount" + "\t" + "Insertions" + "\t" + "Removals" + "\t" + "Time" + "\t" + "Queue Size");
 			
 			try {
                                 Thread.sleep(10000);
@@ -137,7 +137,7 @@ public class Manager extends STMService {
 
  
 			System.out.println(" ");
-			while (count < 7) {
+			while (count < 10) {
 
 				start = System.currentTimeMillis();
 				// Sample time is 30 seconds
@@ -160,7 +160,7 @@ public class Manager extends STMService {
 				end = System.currentTimeMillis();
 				client.collectLatencyData();
 
-				System.out.format("%6d   %6d  %5.3f  %6d   %6d   %6d   %6d   %6d  %6d  %6d\n",
+				System.out.format("%6d   %6d  %5.3f  %6d   %6d   %6d   %6d   %6d  %6d  %6d  %6d\n",
 						((localWriteCount - lastWriteCount) * 1000)
 								/ (end - start), 
 						((localCompletedCount - lastCompletedCount) * 1000)
@@ -174,11 +174,12 @@ public class Manager extends STMService {
                                                                 / (end - start),
                                                 ((localReadValCount - lastReadValCount) * 1000)
                                                                 / (end - start),
-                                                ((localInsertCount - lastInsertCount) * 1000)
+                                                ((localInsertCount - lastInsertCount) * 2000)
                                                                 / (end - start),
                                                 ((localRemCount - lastRemCount) * 1000)
                                                                 / (end - start),
- 						(end - start));
+ 						(end - start),
+						stmInstance.xqueueSize());
 
 				lastWriteCount = localWriteCount;
 				lastAbortCount = localAbortCount;
@@ -192,7 +193,23 @@ public class Manager extends STMService {
 				count++;
 
 			}
+			
+			try {
+                                Thread.sleep(2000);
+                        } catch (InterruptedException e1) {
+                                // TODO Auto-generated catch block
+                                e1.printStackTrace();
+                        }
 			System.out.println("Done");
+			
+			/*for(int i = 0; i < numReplicas; i++)
+                        {
+                                if(ConflictMapisEmpty(i))
+                                        System.out.println("Replica "+ i + " map is empty");
+                                else
+                                        System.out.println("Replicai " + i + " map is not empty" + " SIze is = " + ConflictMapSize(i));
+                        }*/
+
 			System.exit(0);
 		}
 	}
@@ -333,6 +350,11 @@ public class Manager extends STMService {
                         return true;
                 else
                         return false;
+        }
+
+        public int ConflictMapSize(int replicaId)
+        {
+                return(conflictObjMapList.get(replicaId).size());
         }
 
         public Long ConflictMapGet(int objId, int repId)
@@ -802,9 +824,11 @@ public class Manager extends STMService {
 
 		RequestId requestId = request.getRequestId();
 		Random random = new Random();
-
-		final int types[] = new int[numQueriesPerTransactions];
-		final int ids[] = new int[numQueriesPerTransactions];
+		boolean cross = false;
+		int cross_count = 0;
+		int cross_limit = 2;
+		final int types[] = new int[numQueriesPerTransactions + 4] ;
+		final int ids[] = new int[numQueriesPerTransactions + 4];
 
 		final int maxPrices[] = new int[Vacation.NUM_RESERVATION_TYPE];
 		final int maxIds[] = new int[Vacation.NUM_RESERVATION_TYPE];
@@ -821,11 +845,21 @@ public class Manager extends STMService {
 		//System.out.println(" query Range = " + queryRange);
 		int accessibleRange = queryRange / this.numReplicas;
 		//System.out.println(" Accessible Range = " + accessibleRange);
-		
-		int min = accessibleRange * this.localId;
+		int repId = 0;
+		if(request.getCrossFlag())
+		{
+			repId = random.nextInt(this.numReplicas);
+			cross = true;
+		}
+		else
+		{
+			repId = this.localId;
+		}
 
+		int cmin = accessibleRange * repId;
+		int min = accessibleRange * this.localId;
 		//int numQuery = random.nextInt(numQueriesPerTransactions) + 1;
-		int numQuery = numQueriesPerTransactions;
+		int numQuery = numQueriesPerTransactions +  random.nextInt(4) + 1;
 		int customerId = random.nextInt(accessibleRange) + min + 1;
 		
 		if(customerId < min + 1 && customerId > min+accessibleRange+1) {
@@ -834,11 +868,20 @@ public class Manager extends STMService {
 
 		for (int n = 0; n < numQuery; n++) {
 			types[n] = random.nextInt(Vacation.NUM_RESERVATION_TYPE);
-			ids[n] = random.nextInt(accessibleRange) + min + 1;
-			
-			if(ids[n] < min + 1 && ids[n] > min+accessibleRange+1) {
-				System.out.println("mR ids: " + ids[n]);
+			if(cross == true)
+			{
+				ids[n] = random.nextInt(accessibleRange) + cmin + 1;
+				cross_count++;	
+				if(cross_count >= cross_limit)
+					cross = false;
 			}
+			else
+			{
+				ids[n] = random.nextInt(accessibleRange) + min + 1;
+			}
+			/*if(ids[n] < min + 1 && ids[n] > min+accessibleRange+1) {
+				System.out.println("mR ids: " + ids[n]);
+			}*/
 		}
 
 		boolean xretry = true;
@@ -858,6 +901,7 @@ public class Manager extends STMService {
 					if (queryCar(id, requestId, retry, Tid) >= 0) 
 					{
 						price = queryCarPrice(id, requestId, retry, Tid);
+						
 						if(price < 0)
 						{
 							xretry = true;
@@ -964,6 +1008,14 @@ public class Manager extends STMService {
                         	xretry = true;
 		}
 		// stmInstance.onCommit(request);
+		
+		if(repId != this.localId)
+                {
+                        stmInstance.setCrossAccessContextFlag(requestId);
+                        int remoteId = repId;
+                        stmInstance.setRemoteId(requestId, remoteId);
+                }
+
 		return result;
 	}
 
@@ -976,7 +1028,20 @@ public class Manager extends STMService {
 				* (double) numRelations + 0.5);
 
 		int accessibleRange = queryRange / this.numReplicas;
-		int min = accessibleRange * this.localId;
+		
+		int repId = 0;
+                if(request.getCrossFlag())
+                {
+                        repId = randomPtr.nextInt(this.numReplicas);
+                }
+                else
+                {
+                        repId = this.localId;
+                }
+
+                int min = accessibleRange * repId;
+
+		//int min = accessibleRange * this.localId;
 //		int max = accessibleRange * (this.localId+1);
 		
 //		System.out.println("Local Id: " + this.localId + " Num Rep: " + this.numReplicas);
@@ -1013,8 +1078,15 @@ public class Manager extends STMService {
 		}
 
 		byte[] result = new byte[4];
+		if(repId != this.localId)
+                {
+                        stmInstance.setCrossAccessContextFlag(requestId);
+                        int remoteId = repId;
+                        stmInstance.setRemoteId(requestId, remoteId);
+                }
 
-		stmInstance.updateUnCommittedSharedCopy(requestId);
+		
+		//stmInstance.updateUnCommittedSharedCopy(requestId);
 		// stmInstance.onCommit(request);
 		return result;
 	}
@@ -1026,19 +1098,49 @@ public class Manager extends STMService {
 		int queryRange = (int) ((double) percentOfQueries / 100.0
 				* (double) numRelations + 0.5);
 
+		boolean cross = false;
+                int cross_count = 0;
+                int cross_limit = 2;
+
+		System.out.println("Update Tabel called");
 		int accessibleRange = queryRange / this.numReplicas;
+		int repId = 0;
+                if(request.getCrossFlag())
+                {
+                       	cross = true;
+			repId = randomPtr.nextInt(this.numReplicas);
+                	//repId = this.localId;
+		}
+                else
+                {
+                        repId = this.localId;
+                }
+
+		int cmin = accessibleRange * repId;
 		int min = accessibleRange * this.localId;
 
-		final int types[] = new int[numQueriesPerTransactions];
-		final int ids[] = new int[numQueriesPerTransactions];
-		final int ops[] = new int[numQueriesPerTransactions];
-		final int prices[] = new int[numQueriesPerTransactions];
+		final int types[] = new int[numQueriesPerTransactions + 5];
+		final int ids[] = new int[numQueriesPerTransactions + 5];
+		final int ops[] = new int[numQueriesPerTransactions + 5];
+		final int prices[] = new int[numQueriesPerTransactions + 5];
 
 		//final int numUpdate = randomPtr.nextInt(numQueriesPerTransactions) + 1;
-		final int numUpdate = numQueriesPerTransactions;
+		//final int numUpdate = numQueriesPerTransactions;
+		final int numUpdate = numQueriesPerTransactions + randomPtr.nextInt(5) + 1;
 		for (int n = 0; n < numUpdate; n++) {
 			types[n] = randomPtr.nextInt(Vacation.NUM_RESERVATION_TYPE);
-			ids[n] = (randomPtr.nextInt(accessibleRange) + min + 1);
+			if(cross == true)
+			{
+				ids[n] = (randomPtr.nextInt(accessibleRange) + cmin + 1);
+				cross_count++;
+				if(cross_count >= cross_limit)
+					cross = false;
+			}
+			else
+			{
+				ids[n] = (randomPtr.nextInt(accessibleRange) + min + 1);
+			
+			}
 			ops[n] = randomPtr.nextInt(2);
 			if (ops[n] == 1) {
 				prices[n] = ((randomPtr.nextInt(5)) * 10) + 50;
@@ -1112,7 +1214,13 @@ public class Manager extends STMService {
 				xretry = true;
 		}
 
-		stmInstance.updateUnCommittedSharedCopy(requestId);
+		if(repId != this.localId)
+                {
+                        stmInstance.setCrossAccessContextFlag(requestId);
+                        int remoteId = repId;
+                        stmInstance.setRemoteId(requestId, remoteId);
+                }
+		//stmInstance.updateUnCommittedSharedCopy(requestId);
 
 		byte[] result = new byte[4];
 		// stmInstance.onCommit(request);
@@ -1176,7 +1284,7 @@ public class Manager extends STMService {
 
 		if(request != null)
                 {       //System.out.println("Request is null");
-                        requestIdRequestMap.put(request.getRequestId(),request);
+                        //requestIdRequestMap.put(request.getRequestId(),request);
                         stmInstance.xqueue(request);
                 }
 
@@ -1209,7 +1317,8 @@ public class Manager extends STMService {
 		} else {
 			buffer.put(READ_WRITE_TX);
 			; // buffer.putInt(TransactionType.ReadWriteTransaction.ordinal());
-			buffer.putInt(Vacation.ACTION_UPDATE_TABLES);
+			//buffer.putInt(Vacation.ACTION_UPDATE_TABLES);
+			buffer.putInt(Vacation.ACTION_MAKE_RESERVATION);
 		}
 
 		buffer.flip();
@@ -1300,19 +1409,23 @@ public class Manager extends STMService {
 
 	
 
-	public boolean addToContentionMap(int repId, int objId)
+	public boolean addToContentionMap(int objId, int repId)
         {
 
-                if(!checkRange(objId, repId))
-                        return false;
+                //System.out.println("Adding Object " + objId  + " to replica " + repId);
+		if(checkRange(objId, repId) == false)
+                {
+		        return false;
+		}
                 else
                 {
+                	//System.out.println("Added Object " + objId  + " to replica " + repId);
                         conflictObjMapList.get(repId).put(objId, sharedObjectRegistry.getLatestCommittedObject(objId).getVersion());
                         return true;
                 }
         }
 
-        public boolean removeFromContentionMap(int repId, int objId)
+        public boolean removeFromContentionMap(int objId, int repId)
         {
                 /* No need to check for range, since an outside object will not be there */
                 conflictObjMapList.get(repId).remove(objId);
@@ -1323,22 +1436,23 @@ public class Manager extends STMService {
         {
 
 
-                /*int minItem = this.accessibleObjects * repId;
-                int maxItem = (this.accessibleObjects * (repId + 1);
+                if(repId >= this.numReplicas)
+			return false;
 
-                if((objId >= minItem) && (objId < maxItem))
-                        return true;
-
-                int minW = this.accessibleWarehouses * (repId);
-                int maxW = (this.accessibleWarehouses * (repId + 1));
-
-                int minWh = warehouseStart + minW * warehouseOffset;
-                int maxWh = warehouseStart + maxW * warehouseOffset;
-
-                if((objId >= minWh) && (objId < maxWh))
-                        return true;
-		*/
-                return true;
+		
+		int objIndex = objId % numRelations;
+		int accessibleObjects = numRelations/numReplicas;
+		int minObj = accessibleObjects * repId;
+		int maxObj = accessibleObjects * (repId + 1);
+		//System.out.println("objId = " + objId + " objIndex = " + objIndex + " access = " + accessibleObjects + " minObj = " + minObj + " maxObj =" + maxObj);	
+			
+		if((objIndex >= minObj) && (objIndex < maxObj))
+		{
+			//System.out.println("CheckRange returns true");
+			return true;
+		}
+                
+		return false;
 
         }
 
@@ -1370,7 +1484,7 @@ public class Manager extends STMService {
 		
 		long rId = requestId.getClientId() % (long)numReplicas;
                 int replicaId = (int)rId;
-
+		//System.out.println("Going to commit ClientId = " + requestId.getClientId() + " SeqNumber = " + requestId.getSeqNumber());
 
                 if(!skipFlag)
                 {
@@ -1387,7 +1501,7 @@ public class Manager extends STMService {
                                 {
                                         stmInstance.updateSharedObject(ctx, replicaId, skipFlag);
                                         committedCount++;
-                                        if(committedCount - skipCount > 100000)
+                                        if(committedCount - skipCount > 100)
                                         {
                                                 skipFlag = true;
 
@@ -1404,7 +1518,7 @@ public class Manager extends STMService {
                                         if(value != null)
                                         {
                                                 ClientRequest cRequest = new ClientRequest(requestId , value);
-                                                executeRequest(cRequest, false);
+                                               	executeWriteRequest(cRequest, false);
                                         }
                                         abortedCount++;
                                         return;
@@ -1424,13 +1538,14 @@ public class Manager extends STMService {
                                 if(value != null)
                                 {
                                         ClientRequest cRequest = new ClientRequest(requestId , value);
-                                        executeRequest(cRequest, false);
+                                        executeWriteRequest(cRequest, false);
                                 }
                                 abortedCount++;
                                 return;
                         }
                 }
-                client.replyToClient(requestId);
+                //System.out.println("Committing ClientId = " + requestId.getClientId() + " SeqNumber = " + requestId.getSeqNumber());
+		client.replyToClient(requestId);
                 stmInstance.removeTransactionContext(requestId);
                 requestIdValueMap.remove(requestId);
 

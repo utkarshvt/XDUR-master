@@ -137,7 +137,7 @@ public class TpccMultiClient {
 									tpccProfile, percent);
 							int cross = remote.nextInt(100);
 							boolean flag = false;
-							if(cross < 10)
+							if(cross < 20)
 								flag = true;
 									
 							request = new ClientRequest(nextRequestId(),

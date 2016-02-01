@@ -112,7 +112,7 @@ public class BankMultiClient {
                 	} else {
                 		int cross = remote.nextInt(100);
 				boolean flag = false;
-				if(cross < 20)
+				if(cross < 10)
 					flag = true;
 
 				reqBytes = bank.createRequest(readWrite, flag);

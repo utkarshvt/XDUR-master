@@ -30,6 +30,7 @@ public class VacationMultiClient {
     class ClientThread extends Thread {
         private ArrayBlockingQueue<Integer> sends;
         private final Random random;
+        private final Random remote;
 
         public int writeCount = 0;
         public long writeLatency =0;
@@ -40,6 +41,7 @@ public class VacationMultiClient {
         public ClientThread(long clientId) throws IOException {
             sends = new ArrayBlockingQueue<Integer>(128);
             this.random = new Random();
+            this.remote = new Random();
             
             this.clientId = clientId;
         }
@@ -71,7 +73,12 @@ public class VacationMultiClient {
                     } else {
                     	reqBytes = manager.createRequest(percent, Vacation.ACTION_UPDATE_TABLES);
                     }
-                    request = new ClientRequest(nextRequestId(), reqBytes);
+                    	int cross = remote.nextInt(100);
+			boolean flag = false;
+			if(cross < 0)
+				flag = true;
+			
+			request = new ClientRequest(nextRequestId(), reqBytes, flag);
 					requestId = request.getRequestId();
             		pendingClientRequestMap.put(requestId.getClientId(),
 							requestId);
